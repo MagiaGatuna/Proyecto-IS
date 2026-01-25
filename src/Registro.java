@@ -18,7 +18,7 @@ public class Registro extends JFrame {
 
 
         try {
-            setIconImage(new ImageIcon(getClass().getResource("/res/icon.png")).getImage());
+            setIconImage(new ImageIcon(getClass().getResource("/res/logoSistemaComedor.png")).getImage());
         } catch (Exception e) {
             System.out.println("No se pudo encontrar la imagen del icono.");
         }
@@ -46,7 +46,7 @@ public class Registro extends JFrame {
         add(panelCentro, BorderLayout.CENTER);
 
 
-        ImageIcon Logo = new ImageIcon(getClass().getResource("/res/LogoUCV.png"));
+        ImageIcon Logo = new ImageIcon("res/LogoUCV.png");
         Image LogoEscalado = Logo.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ImageIcon logoFinal = new ImageIcon(LogoEscalado);
         JLabel etiquetaLogo = new JLabel(logoFinal);
@@ -62,7 +62,41 @@ public class Registro extends JFrame {
 
 
         agregarCampo(tarjeta, "Nombres", 20, 180);
-        agregarCampo(tarjeta, "Cédula de Identidad", 20, 230);
+
+        JTextField cedula = new JTextField("Cédula de identidad");
+        cedula.setBounds(70, 230, 180, 40);
+        cedula.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+        cedula.setForeground(Color.GRAY);
+        tarjeta.add(cedula);
+        cedula.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(0xCCCCCC), 1),
+            BorderFactory.createEmptyBorder(0, 5, 0, 0)
+        ));
+
+        cedula.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (cedula.getText().equals("Cédula de identidad")) {
+                    cedula.setText("");
+                    cedula.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (cedula.getText().isEmpty()) {
+                    cedula.setForeground(Color.GRAY);
+                    cedula.setText("Cédula de identidad");
+                }
+            }}
+        );
+
+        String[] opcionesCedula = {"V-", "E-"};
+        JComboBox<String> comboCedula = new JComboBox<>(opcionesCedula);
+        comboCedula.setBounds(20, 235, 45, 30);
+        comboCedula.setBackground(Color.WHITE);
+        tarjeta.add(comboCedula);
+        comboCedula.setEditable(false);
 
         
         agregarCampo(tarjeta, "Apellidos", 290, 180);
@@ -104,17 +138,14 @@ public class Registro extends JFrame {
         tarjeta.add(btnAceptar);
 
         
-        JLabel lblPass = new JLabel("Contraseña:");
-        lblPass.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
-        lblPass.setForeground(new Color(0x000000));
-        lblPass.setBounds(20, 320, 150, 20);
-        tarjeta.add(lblPass);
+        
 
         txtPassword = new JPasswordField();
         txtPassword.setBounds(20, 345, 190, 40);
+        configurarPasswordConPlaceholder(txtPassword, "Contraseña");
         tarjeta.add(txtPassword);
 
-    
+        
         ImageIcon iconVer = new ImageIcon(new ImageIcon(getClass().getResource("/res/ojoAbierto.png"))
         .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
         ImageIcon iconOcultar = new ImageIcon(new ImageIcon(getClass().getResource("/res/ojoCerrado.png"))
@@ -127,7 +158,7 @@ public class Registro extends JFrame {
         btnShowPass.setBorderPainted(false);
         btnShowPass.setFocusPainted(false);
         btnShowPass.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
+    
 
         btnShowPass.addActionListener(e -> {
             if (btnShowPass.isSelected()) {
@@ -142,16 +173,12 @@ public class Registro extends JFrame {
         tarjeta.add(btnShowPass);
         tarjeta.setComponentZOrder(btnShowPass, 0);
 
-        JLabel lblConfirm = new JLabel("Confirmar Contraseña:");
-        lblConfirm.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 17));
-        lblConfirm.setBounds(290, 320, 180, 20);
-        lblConfirm.setForeground(new Color(0x000000));
-        tarjeta.add(lblConfirm);
+        
 
         txtConfirmPassword = new JPasswordField();
         txtConfirmPassword.setBounds(290, 345, 190, 40);
         tarjeta.add(txtConfirmPassword);
-
+        configurarPasswordConPlaceholder(txtConfirmPassword, "Confirmar Contraseña");
 
         JLabel lblLogin = new JLabel("¿Ya tienes cuenta? Inicia sesión aquí");
         lblLogin.setBounds(0, 450, 540, 20);
@@ -237,8 +264,39 @@ public class Registro extends JFrame {
                 boton.setBackground(colorOriginal);
                 boton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
             }
-    });
-}
+        });
+    }
+
+    private void configurarPasswordConPlaceholder(JPasswordField campo, String texto) {
+        
+        campo.setEchoChar((char) 0); 
+        campo.setText(texto);
+        campo.setForeground(Color.GRAY);
+        campo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+
+        campo.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                
+                String passActual = new String(campo.getPassword());
+                if (passActual.equals(texto)) {
+                    campo.setText("");
+                    campo.setEchoChar('•'); 
+                    campo.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                
+                if (campo.getPassword().length == 0) {
+                    campo.setEchoChar((char) 0); 
+                    campo.setText(texto);
+                    campo.setForeground(Color.GRAY);
+                }
+            }
+        });
+    }
 
     class PanelRedondeado extends JPanel {
         private int radio;

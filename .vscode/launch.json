@@ -6,10 +6,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Registro",
+            "request": "launch",
+            "mainClass": "src.Registro",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "Landingpage"
-
         }
     ]
 }
