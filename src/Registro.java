@@ -18,7 +18,7 @@ public class Registro extends JFrame {
 
 
         try {
-            setIconImage(new ImageIcon(getClass().getResource("/res/icon.png")).getImage());
+            setIconImage(new ImageIcon(getClass().getResource("/res/logoSistemaComedor.png")).getImage());
         } catch (Exception e) {
             System.out.println("No se pudo encontrar la imagen del icono.");
         }
@@ -46,7 +46,7 @@ public class Registro extends JFrame {
         add(panelCentro, BorderLayout.CENTER);
 
 
-        ImageIcon Logo = new ImageIcon(getClass().getResource("/res/LogoUCV.png"));
+        ImageIcon Logo = new ImageIcon("res/LogoUCV.png");
         Image LogoEscalado = Logo.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
         ImageIcon logoFinal = new ImageIcon(LogoEscalado);
         JLabel etiquetaLogo = new JLabel(logoFinal);
@@ -145,7 +145,7 @@ public class Registro extends JFrame {
         configurarPasswordConPlaceholder(txtPassword, "Contraseña");
         tarjeta.add(txtPassword);
 
-    
+        
         ImageIcon iconVer = new ImageIcon(new ImageIcon(getClass().getResource("/res/ojoAbierto.png"))
         .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
         ImageIcon iconOcultar = new ImageIcon(new ImageIcon(getClass().getResource("/res/ojoCerrado.png"))
