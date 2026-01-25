@@ -61,8 +61,22 @@ acerca.setPreferredSize(new Dimension(150,45));
 acerca.setFont(fuente2);
 acerca.setForeground(new Color(255,255,255));
 
+ImageIcon icono1= new ImageIcon ("res/instagram.png");
+Image insta_ima= icono1.getImage().getScaledInstance(30,30,Image.SCALE_SMOOTH);
+
 ImageIcon icono2= new ImageIcon ("res/LogoUCV.png");
 Image tam_ima= icono2.getImage().getScaledInstance(90,90,Image.SCALE_SMOOTH);
+
+ImageIcon icono3= new ImageIcon ("res/comedorfoto.jpeg");
+Image comedor_inicio= icono3.getImage().getScaledInstance(1140,360,Image.SCALE_SMOOTH);
+
+JLabel imagen_central= new JLabel(new ImageIcon(comedor_inicio));
+imagen_central.setBounds(110,320,1140,360);
+
+
+JLabel instagram_logo= new JLabel(new ImageIcon(insta_ima));
+instagram_logo.setBounds(10,10,30,30);
+
 
 JLabel logoucv= new JLabel(new ImageIcon(tam_ima));
 logoucv.setBounds(10,5,60,60);
@@ -96,15 +110,21 @@ texto.setFont(fuente3);
 texto.setBounds(110,240, 700, 300);
 texto.setForeground(new Color(0,0,0));
 
+
 barrita.setLayout(null);
 barrita.setBackground(new Color(92,180,155));
 barrita.setBounds(0,alto-70,pantalla,50);
+
+barrita.add(instagram_logo);
+
 barrita.add(label2);
+
 
 add(barrita);
 add(titulo);
 add(barra);
 add(texto);
+add(imagen_central);
 
 }
 
