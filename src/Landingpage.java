@@ -119,6 +119,7 @@ barrita.add(instagram_logo);
 
 barrita.add(label2);
 
+setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
 
 add(barrita);
 add(titulo);
