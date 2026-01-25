@@ -39,7 +39,7 @@ Font fuente2= new Font ("Arial", Font.PLAIN, 16);
 Font fuente3= new Font ("Arial", Font.PLAIN, 20);
 
 barra= new JToolBar ();
-barra.setBounds(0,0,pantalla,80);
+barra.setBounds(0,0,pantalla,100);
 barra.setBackground(new Color(255,255,255));
 barra.setBorderPainted(false);
 
@@ -60,6 +60,18 @@ acerca.setBackground(new Color(14,9,137));
 acerca.setPreferredSize(new Dimension(150,45));
 acerca.setFont(fuente2);
 acerca.setForeground(new Color(255,255,255));
+
+ImageIcon icono2= new ImageIcon ("res/LogoUCV.png");
+Image tam_ima= icono2.getImage().getScaledInstance(90,90,Image.SCALE_SMOOTH);
+
+JLabel logoucv= new JLabel(new ImageIcon(tam_ima));
+logoucv.setBounds(10,5,60,60);
+label1.setBounds(200,10,200,30);
+label1.setFont(fuente2);
+
+barra.add(logoucv);
+barra.addSeparator();
+barra.add(label1);
 
 barra.add(Box.createHorizontalGlue());
 barra.add(inicio_sesion);
