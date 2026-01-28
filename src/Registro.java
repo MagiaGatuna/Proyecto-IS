@@ -91,7 +91,7 @@ public class Registro extends JFrame {
             }}
         );
 
-        String[] opcionesCedula = {"V-", "E-"};
+        String[] opcionesCedula = {"V-", "E-", "P-"};
         JComboBox<String> comboCedula = new JComboBox<>(opcionesCedula);
         comboCedula.setBounds(20, 235, 45, 30);
         comboCedula.setBackground(Color.WHITE);
