@@ -10,8 +10,8 @@ private JLabel label1;
 private JLabel label2;
 private JTextArea texto;
 private JToolBar barra;
-private JButton inicio_sesion;
-private JButton registro;
+protected JButton inicio_sesion;
+protected JButton registro;
 private JButton acerca;
 private JPanel barrita;
 
@@ -36,6 +36,8 @@ barrainferior(alto,pantalla);
 mediopantalla(pantalla);
 
 }
+
+
 
 private void darEstiloBoton(JButton boton, int ancho, int alto) {
         
@@ -173,6 +175,19 @@ label2.setBounds(50,5,pantalla,40);
 barrita.add(label2);
 
 add(barrita);
+}
+
+public JButton getRegistro(){
+
+return registro;
+}
+public JButton getInicio(){
+
+return inicio_sesion;
+}
+public JButton getAcercade(){
+
+return acerca;
 }
 
 public static void main (String args[]){

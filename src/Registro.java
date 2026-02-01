@@ -18,7 +18,7 @@ public class Registro extends JFrame {
 
 
         try {
-            setIconImage(new ImageIcon(getClass().getResource("/res/logoSistemaComedor.png")).getImage());
+            setIconImage(new ImageIcon(getClass().getResource("res/logoSistemaComedor.png")).getImage());
         } catch (Exception e) {
             System.out.println("No se pudo encontrar la imagen del icono.");
         }
@@ -146,10 +146,8 @@ public class Registro extends JFrame {
         tarjeta.add(txtPassword);
 
         
-        ImageIcon iconVer = new ImageIcon(new ImageIcon(getClass().getResource("/res/ojoAbierto.png"))
-        .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon iconOcultar = new ImageIcon(new ImageIcon(getClass().getResource("/res/ojoCerrado.png"))
-                .getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon iconVer = new ImageIcon(new ImageIcon("res/ojoAbierto.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
+        ImageIcon iconOcultar = new ImageIcon(new ImageIcon("res/ojoCerrado.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
 
         JToggleButton btnShowPass = new JToggleButton(iconVer);
         btnShowPass.setBounds(210, 347, 35, 35);

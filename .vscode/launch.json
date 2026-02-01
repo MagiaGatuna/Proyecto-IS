@@ -6,9 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Landingpage",
+            "name": "Main",
             "request": "launch",
-            "mainClass": "src.Landingpage",
+            "mainClass": "src.Main",
             "projectName": "Proyecto-IS_bf4b1e30"
         },
         {
@@ -16,20 +16,13 @@
             "name": "Registro",
             "request": "launch",
             "mainClass": "src.Registro",
-            "projectName": "Proyecto-IS_c1f479ce"
+            "projectName": "Proyecto-IS_bf4b1e30"
         },
         {
             "type": "java",
             "name": "Landingpage",
             "request": "launch",
             "mainClass": "src.Landingpage",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "Landingpage",
-            "request": "launch",
-            "mainClass": "Landingpage",
             "projectName": "Proyecto-IS_bf4b1e30"
         }
     ]
