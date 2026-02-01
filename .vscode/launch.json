@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "EmpleadoView",
+            "request": "launch",
+            "mainClass": "EmpleadoView",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
+            "name": "AlumnoView",
+            "request": "launch",
+            "mainClass": "AlumnoView",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "src.Main",
