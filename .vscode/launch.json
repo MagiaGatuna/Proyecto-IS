@@ -8,6 +8,20 @@
             "type": "java",
             "name": "EmpleadoView",
             "request": "launch",
+            "mainClass": "src.EmpleadoView",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
+            "name": "AlumnoView",
+            "request": "launch",
+            "mainClass": "src.AlumnoView",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
+            "name": "EmpleadoView",
+            "request": "launch",
             "mainClass": "EmpleadoView",
             "projectName": "Proyecto-IS_bd5ad3b4"
         },

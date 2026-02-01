@@ -1,3 +1,4 @@
+package src;
 import javax.swing.*;
 import java.awt.*;
 
@@ -75,7 +76,7 @@ public class AlumnoView extends JFrame {
 
         panel.add(Box.createVerticalStrut(5));
 
-        JLabel lblBienvenida = new JLabel("<html><center>!BIENVENIDO/A ESTUDIANTE<br>" + username + "¡</center></html>");
+        JLabel lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A ESTUDIANTE<br>" + username + "!</center></html>");
         lblBienvenida.setFont(new Font("Arial", Font.BOLD, 50));
         lblBienvenida.setForeground(COLOR_TEXTO_AZUL);
         lblBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);
