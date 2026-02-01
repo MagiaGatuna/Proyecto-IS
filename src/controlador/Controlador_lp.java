@@ -6,7 +6,6 @@ import src.Registro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.JOptionPane;
 
 public class Controlador_lp implements ActionListener{
 
@@ -18,11 +17,12 @@ public class Controlador_lp implements ActionListener{
         this.inicio=inicio;
         this.ventanaRegistro=ventanaRegistro;
         this.inicio.getRegistro().addActionListener(this);
+        this.inicio.getAcercade().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
-       
+        
         if(e.getSource()==inicio.getAcercade()){
             JOptionPane.showMessageDialog(null,"Desarrolladores: Alexandra Amselmi, Valentina Almeida, Corina Matheus y Andrés Ortiz");
         }
