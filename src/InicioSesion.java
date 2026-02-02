@@ -1,7 +1,7 @@
 package src;
+/*import src.Landingpage;
+import src.Registro; */
 
-import src.Landingpage;
-import src.Registro;
 import javax.swing.*; 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -53,13 +53,13 @@ class Conectar_ventanas {
     cambiarVentana(new HomeAdmin());//igual sucede aqui
     }
 
-    public void mostrarLandingpage() {
+    /*public void mostrarLandingpage() {
     cambiarVentana(new Landingpage());//igual sucede aqui
     }
 
     public void mostrarRegistro() {
     cambiarVentana(new Registro());//igual sucede aqui
-    }
+    }*/
 
     private void cambiarVentana(JFrame nueva) {//aqui nos aseguramos de que al abrir la ventana la vieja se cierre 
     if (ventanaActual != null) ventanaActual.dispose();
@@ -80,6 +80,8 @@ public class InicioSesion extends JFrame {
     private JLabel label_Sinoregistro;//texto de pregunta si nos hemos registrado
     private JTextField cedula_id;//campo donde el usuario coloca la cedula
     private JTextField contraseña;//campo donde el usuario coloca el password
+    protected JButton boton_Registro;
+    protected JButton boton_Home;
 //constructor para el diseño de la ventana
     public InicioSesion() { 
 
@@ -141,20 +143,36 @@ public class InicioSesion extends JFrame {
     boton_InicioSesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarHomeAdmin());
 
 //creamos el boton que nos permite redireccionar a el registro.
-    JButton boton_Registro=Diseño_interfaz.Creador_Botones("Registro",280, 415, 100, 30,Diseño_interfaz.colorazul);
+    boton_Registro=Diseño_interfaz.Creador_Botones("Registro",280, 415, 100, 30,Diseño_interfaz.colorazul);
     Panel1.add(boton_Registro);
 
     add(Panel1);//luego de agregar todos los elementos agragamos nuestro panel, el que se creo por diseño
-    boton_Registro.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarRegistro());
+    //boton_Registro.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarRegistro());
 
 //creamos el boton que nos redirecciona el inicio
-    JButton boton_Home=Diseño_interfaz.Creador_Botones("Home",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
+    boton_Home=Diseño_interfaz.Creador_Botones("Home",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
     add(boton_Home);//lo añadimos a la ventana principal
-    boton_Home.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarLandingpage());
+    //boton_Home.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarLandingpage());
 
 
  }
 
+ public JButton getHome(){
+    return boton_Home;
+ }
+ public JButton getRegistro(){
+    return boton_Registro;
+ }
+
+ HomeAdmin redirecadmin= new HomeAdmin();
+
+ public JButton getBotonadmin(){
+    return redirecadmin.getHome2();
+ }
+ public void ocultar(){//aqui problema
+this.redirecadmin.cierra();
+}
+ 
   public static void main(String args[]) { 
         Conectar_ventanas.getInstancia().mostrarInicioSesion();
     }
@@ -188,7 +206,7 @@ class HomeAdmin extends JFrame {
     add(barraSuperior);//agregamos a la venatana principal
 //creamos el boton para regresar al inicio
     boton_cerrarsesion = Diseño_interfaz.Creador_Botones("CERRAR SESION", anchoP - 220, 35, 180, 45, Diseño_interfaz.colorazul);
-    boton_cerrarsesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarInicioSesion());
+    //boton_cerrarsesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarInicioSesion());
     barraSuperior.add(boton_cerrarsesion); // Se agrega a la barra
 // Sección Menú
     add(Diseño_interfaz.Creador_iconos("res/Menu.png", (espacio * 0) + (espacio/2) - 75, yIconos, 150, 150));
@@ -215,6 +233,14 @@ add(labela);//lo agreagamos a la ventana principal
 barraSuperior.add(Diseño_interfaz.Creador_iconos("logo_ucv.png",20, 1, 120, 120)); // Se agrega a la barra, no al JFrame
 //creamos las imagenes por diseño
 
+  }
+
+  public JButton getHome2(){
+    return boton_cerrarsesion;
+  }
+  public void cierra(){
+    this.setVisible(false);
+    this.dispose();
   }
 }
 
