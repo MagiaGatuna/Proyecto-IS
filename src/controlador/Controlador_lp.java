@@ -42,7 +42,6 @@ public class Controlador_lp implements ActionListener{
         
         if(e.getSource()==inicio.getInicio()){
 
-            
             inicio_sesion.setExtendedState(JFrame.MAXIMIZED_BOTH);
             inicio_sesion.setResizable(false);
             inicio_sesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

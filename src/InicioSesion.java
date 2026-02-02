@@ -1,4 +1,7 @@
 package src;
+
+import src.Landingpage;
+import src.Registro;
 import javax.swing.*; 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -48,6 +51,14 @@ class Conectar_ventanas {
 
     public void mostrarHomeAdmin() {
     cambiarVentana(new HomeAdmin());//igual sucede aqui
+    }
+
+    public void mostrarLandingpage() {
+    cambiarVentana(new Landingpage());//igual sucede aqui
+    }
+
+    public void mostrarRegistro() {
+    cambiarVentana(new Registro());//igual sucede aqui
     }
 
     private void cambiarVentana(JFrame nueva) {//aqui nos aseguramos de que al abrir la ventana la vieja se cierre 
@@ -134,12 +145,16 @@ public class InicioSesion extends JFrame {
     Panel1.add(boton_Registro);
 
     add(Panel1);//luego de agregar todos los elementos agragamos nuestro panel, el que se creo por diseño
+    boton_Registro.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarRegistro());
 
 //creamos el boton que nos redirecciona el inicio
     JButton boton_Home=Diseño_interfaz.Creador_Botones("Home",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
     add(boton_Home);//lo añadimos a la ventana principal
-   
+    boton_Home.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarLandingpage());
+
+
  }
+
   public static void main(String args[]) { 
         Conectar_ventanas.getInstancia().mostrarInicioSesion();
     }
