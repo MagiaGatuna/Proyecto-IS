@@ -8,6 +8,9 @@ public class Registro extends JFrame {
 
     JPasswordField txtPassword;
     JPasswordField txtConfirmPassword;
+    JButton btnAceptar;
+    JButton btnHome;
+    JLabel lblLogin;
 
     public Registro() {
     
@@ -25,7 +28,7 @@ public class Registro extends JFrame {
 
         JPanel panelNorte = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
         panelNorte.setOpaque(false);
-        JButton btnHome = new JButton("HOME");
+        btnHome = new JButton("HOME");
         btnHome.setBackground(new Color(0x0E0989));
         btnHome.setForeground(Color.WHITE);
         btnHome.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
@@ -127,7 +130,7 @@ public class Registro extends JFrame {
         comboRol.setEditable(false);
     
 
-        JButton btnAceptar = new JButton("ACEPTAR REGISTRO");
+        btnAceptar = new JButton("ACEPTAR REGISTRO");
         btnAceptar.setBounds(130, 400, 300, 40);
         btnAceptar.setBackground(new Color(0x4F4C96));
         btnAceptar.setForeground(Color.WHITE);
@@ -137,8 +140,8 @@ public class Registro extends JFrame {
         darEstiloBoton(btnAceptar,300,40);
         tarjeta.add(btnAceptar);
 
-        
-        
+
+    
 
         txtPassword = new JPasswordField();
         txtPassword.setBounds(20, 345, 190, 40);
@@ -178,7 +181,7 @@ public class Registro extends JFrame {
         tarjeta.add(txtConfirmPassword);
         configurarPasswordConPlaceholder(txtConfirmPassword, "Confirmar Contraseña");
 
-        JLabel lblLogin = new JLabel("¿Ya tienes cuenta? Inicia sesión aquí");
+        lblLogin = new JLabel("¿Ya tienes cuenta? Inicia sesión aquí");
         lblLogin.setBounds(0, 450, 540, 20);
         lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
         lblLogin.setForeground(new Color(0x4F4C96));
@@ -315,6 +318,17 @@ public class Registro extends JFrame {
             super.paintComponent(g);
         }
     }
+
+    public JButton getAceptar(){
+        return btnAceptar;
+    }
+    public JButton getHome(){
+    return btnHome;
+    }
+    public JLabel getinicio_label(){
+        return lblLogin;
+    }
+
     public static void main(String args[]) {
     
         Registro ventanaRegistro = new Registro();

@@ -1,4 +1,5 @@
 package src;
+import src.controlador.Controlador_reg;
 import src.controlador.Controlador_lp;
 import javax.swing.*;
 
@@ -6,9 +7,12 @@ public class Main{
     public static void main(String[] args){
         Landingpage inicio= new Landingpage();
         Registro registro_b= new Registro();
+        InicioSesion in_sesion= new InicioSesion();
 
         Controlador_lp control1;
-        control1= new Controlador_lp(inicio, registro_b);
+        control1= new Controlador_lp(inicio, registro_b, in_sesion);
+        Controlador_reg control2;
+        control2= new Controlador_reg(inicio, registro_b, in_sesion);
 
         inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
         inicio.setResizable(false);
