@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "InicioSesion",
+            "request": "launch",
+            "mainClass": "src.InicioSesion",
+            "projectName": "Comedor inge_161f220e"
+        },
+        {
+            "type": "java",
             "name": "EmpleadoView",
             "request": "launch",
             "mainClass": "src.EmpleadoView",
