@@ -1,10 +1,8 @@
 package src;
-/*import src.Landingpage;
-import src.Registro; */
 
 import javax.swing.*; 
 import java.awt.*;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionListener;
 
 //la clase que contiena la factorizacion
 class Diseño_interfaz {
@@ -49,18 +47,6 @@ class Conectar_ventanas {
     cambiarVentana(new InicioSesion());//si la llmamos es porque queremos ver esta ventana
     }
 
-    public void mostrarHomeAdmin() {
-    cambiarVentana(new HomeAdmin());//igual sucede aqui
-    }
-
-    /*public void mostrarLandingpage() {
-    cambiarVentana(new Landingpage());//igual sucede aqui
-    }
-
-    public void mostrarRegistro() {
-    cambiarVentana(new Registro());//igual sucede aqui
-    }*/
-
     private void cambiarVentana(JFrame nueva) {//aqui nos aseguramos de que al abrir la ventana la vieja se cierre 
     if (ventanaActual != null) ventanaActual.dispose();
     ventanaActual = nueva;
@@ -82,6 +68,7 @@ public class InicioSesion extends JFrame {
     private JTextField contraseña;//campo donde el usuario coloca el password
     protected JButton boton_Registro;
     protected JButton boton_Home;
+    protected JButton boton_InicioSesion;
 //constructor para el diseño de la ventana
     public InicioSesion() { 
 
@@ -138,9 +125,8 @@ public class InicioSesion extends JFrame {
     Panel1.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",190, 20, 120, 120));
     
 //creamos el boton que redirecciona a el inicio de sesion
-    JButton boton_InicioSesion=Diseño_interfaz.Creador_Botones("INICIAR SESION",150, 340, 200, 45,Diseño_interfaz.colorazul);
+    boton_InicioSesion=Diseño_interfaz.Creador_Botones("INICIAR SESION",150, 340, 200, 45,Diseño_interfaz.colorazul);
     Panel1.add(boton_InicioSesion);
-    boton_InicioSesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarHomeAdmin());
 
 //creamos el boton que nos permite redireccionar a el registro.
     boton_Registro=Diseño_interfaz.Creador_Botones("Registro",280, 415, 100, 30,Diseño_interfaz.colorazul);
@@ -152,7 +138,6 @@ public class InicioSesion extends JFrame {
 //creamos el boton que nos redirecciona el inicio
     boton_Home=Diseño_interfaz.Creador_Botones("Home",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
     add(boton_Home);//lo añadimos a la ventana principal
-    //boton_Home.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarLandingpage());
 
 
  }
@@ -163,15 +148,10 @@ public class InicioSesion extends JFrame {
  public JButton getRegistro(){
     return boton_Registro;
  }
-
- HomeAdmin redirecadmin= new HomeAdmin();
-
- public JButton getBotonadmin(){
-    return redirecadmin.getHome2();
+ public JButton getAdmin(){
+    return boton_InicioSesion;
  }
- public void ocultar(){//aqui problema
-this.redirecadmin.cierra();
-}
+
  
   public static void main(String args[]) { 
         Conectar_ventanas.getInstancia().mostrarInicioSesion();

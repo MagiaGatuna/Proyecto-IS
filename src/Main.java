@@ -10,6 +10,7 @@ public class Main{
         Landingpage inicio= new Landingpage();
         Registro registro_b= new Registro();
         InicioSesion in_sesion= new InicioSesion();
+        HomeAdmin admin= new HomeAdmin();
         
 
         Controlador_lp control1;
@@ -17,7 +18,7 @@ public class Main{
         Controlador_reg control2;
         control2= new Controlador_reg(inicio, registro_b, in_sesion);
         Controlador_inicioS control3;
-        control3=new Controlador_inicioS(inicio, registro_b, in_sesion, in_sesion.getBotonadmin());
+        control3=new Controlador_inicioS(inicio, registro_b, in_sesion, admin);
 
         inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
         inicio.setResizable(false);

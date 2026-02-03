@@ -32,7 +32,6 @@ public class HomeAdmin extends JFrame {
     add(barraSuperior);//agregamos a la venatana principal
 //creamos el boton para regresar al inicio
     boton_cerrarsesion = Diseño_interfaz.Creador_Botones("CERRAR SESION", anchoP - 220, 35, 180, 45, Diseño_interfaz.colorazul);
-    //boton_cerrarsesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarInicioSesion());
     barraSuperior.add(boton_cerrarsesion); // Se agrega a la barra
 // Sección Menú
     add(Diseño_interfaz.Creador_iconos("res/Menu.png", (espacio * 0) + (espacio/2) - 75, yIconos, 150, 150));
@@ -64,8 +63,5 @@ barraSuperior.add(Diseño_interfaz.Creador_iconos("logo_ucv.png",20, 1, 120, 120
   public JButton getHome2(){
     return boton_cerrarsesion;
   }
-  public void cierra(){
-    this.setVisible(false);
-    this.dispose();
-  }
+  
 }
