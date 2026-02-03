@@ -3,6 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 //import java.awt.event.*;
 
+import src.util.BotonUtil; 
+
 public class Landingpage extends JFrame{
 
 private JLabel titulo;
@@ -39,34 +41,7 @@ mediopantalla(pantalla);
 
 
 
-private void darEstiloBoton(JButton boton, int ancho, int alto) {
-        
-    Color colorOriginal = boton.getBackground();
-    Color colorHover = colorOriginal.brighter(); 
-    
-    Dimension dimension = new Dimension(ancho, alto);
-    boton.setPreferredSize(dimension);
-    boton.setMinimumSize(dimension);
-    boton.setMaximumSize(dimension);
 
-    boton.setFocusPainted(false);
-    boton.setBorderPainted(false); 
-    boton.setContentAreaFilled(true);
-
-    boton.addMouseListener(new java.awt.event.MouseAdapter() {
-        @Override
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            boton.setBackground(colorHover);
-            boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        }
-
-        @Override
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            boton.setBackground(colorOriginal);
-            boton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
-        }
-    });
-}
 
 private void barrasuperior(int pantalla){
 
@@ -96,7 +71,7 @@ inicio_sesion.setPreferredSize(new Dimension(150,45));
 inicio_sesion.setFont(fuente2_1);
 inicio_sesion.setForeground(new Color(0,0,0));
 inicio_sesion.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-darEstiloBoton(inicio_sesion, 150, 30);
+BotonUtil.darEstiloBoton(inicio_sesion, 150, 30);
 
 registro= new JButton ("Registro");
 registro.setBackground(new Color(14,9,137));
@@ -104,7 +79,7 @@ registro.setPreferredSize(new Dimension(150,45));
 registro.setFont(fuente2_1);
 registro.setForeground(new Color(255,255,255));
 registro.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-darEstiloBoton(registro, 150, 30);
+BotonUtil.darEstiloBoton(registro, 150, 30);
 
 acerca= new JButton ("Acerca de");
 acerca.setBackground(new Color(14,9,137));
@@ -112,7 +87,7 @@ acerca.setPreferredSize(new Dimension(150,45));
 acerca.setFont(fuente2_1);
 acerca.setForeground(new Color(255,255,255));
 acerca.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-darEstiloBoton(acerca, 150, 30);
+BotonUtil.darEstiloBoton(acerca, 150, 30);
 
 barra.add(Box.createHorizontalGlue());
 barra.add(inicio_sesion);
