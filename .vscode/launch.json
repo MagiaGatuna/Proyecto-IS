@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "InicioSesion",
+            "request": "launch",
+            "mainClass": "src.InicioSesion",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
+            "name": "Registro",
+            "request": "launch",
+            "mainClass": "src.Registro",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
             "name": "EmpleadoView",
             "request": "launch",
             "mainClass": "src.EmpleadoView",

@@ -1,5 +1,8 @@
 package src;
-import javax.swing.*; 
+import javax.swing.*;
+
+import src.util.BotonUtil;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -15,6 +18,17 @@ public class HomeAdmin extends JFrame {
   JLabel labela;
 
    public HomeAdmin(){
+
+    try {
+        ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
+        if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
+            setIconImage(icon.getImage());
+        } else {
+            System.out.println("No se pudo cargar la imagen del icono.");
+        }
+    } catch (Exception e) {
+        System.out.println("No se pudo encontrar la imagen del icono: " + e.getMessage());
+    }
 
     setLayout(null);
      //centrammos la barra
@@ -32,11 +46,13 @@ public class HomeAdmin extends JFrame {
     add(barraSuperior);//agregamos a la venatana principal
 //creamos el boton para regresar al inicio
     boton_cerrarsesion = Diseño_interfaz.Creador_Botones("CERRAR SESION", anchoP - 220, 35, 180, 45, Diseño_interfaz.colorazul);
+    BotonUtil.darEstiloBoton(boton_cerrarsesion, 170, 40);
     //boton_cerrarsesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarInicioSesion());
     barraSuperior.add(boton_cerrarsesion); // Se agrega a la barra
 // Sección Menú
     add(Diseño_interfaz.Creador_iconos("res/Menu.png", (espacio * 0) + (espacio/2) - 75, yIconos, 150, 150));
     add(Diseño_interfaz.Creador_Botones("EDITAR MENÚ SEMANAL", (espacio * 0) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
+    
     add(Diseño_interfaz.Creador_Botones("EDITAR TURNOS", (espacio * 0) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul));
 // Sección Reportes
     add(Diseño_interfaz.Creador_iconos("res/estadistica.png", (espacio * 1) + (espacio/2) - 60, yIconos + 15, 120, 120));

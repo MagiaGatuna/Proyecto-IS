@@ -1,6 +1,7 @@
 package src;
 import javax.swing.*;
 import java.awt.*;
+import src.util.BotonUtil; 
 
 public class EmpleadoView extends JFrame {
 
@@ -33,8 +34,15 @@ public class EmpleadoView extends JFrame {
     private void iniciarVentana() {
         setTitle("AlumnoView");
         try {
-            setIconImage(new ImageIcon("res/LogoUCV.png").getImage());
-        } catch (Exception e) { System.out.println("Logo no encontrado"); }
+            ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
+            if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
+                setIconImage(icon.getImage());
+            } else {
+                System.out.println("No se pudo cargar la imagen del icono.");
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo encontrar la imagen del icono: " + e.getMessage());
+        }
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize.width, screenSize.height);
@@ -57,6 +65,7 @@ public class EmpleadoView extends JFrame {
 
         btnCerrarSesion = new JButton("CERRAR SESIÓN");
         estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
+        BotonUtil.darEstiloBoton(btnCerrarSesion, 170, 40);
         
         JPanel wrapperBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         wrapperBoton.setOpaque(false);
@@ -102,6 +111,7 @@ public class EmpleadoView extends JFrame {
 
         btnVerMenu = new JButton("VER MENÚ");
         estilizarBoton(btnVerMenu, COLOR_BOTON_PRINCIPAL, new Dimension(200, 40));
+        BotonUtil.darEstiloBoton(btnVerMenu, 200, 40);
         bloqueMenu.add(btnVerMenu);
 
         btnVerMenuDiario = new JButton("MENÚ DIARIO");
@@ -127,6 +137,7 @@ public class EmpleadoView extends JFrame {
 
         btnVerConsumos = new JButton("CONSUMOS");
         estilizarBoton(btnVerConsumos, COLOR_BOTON_PRINCIPAL, new Dimension(200, 40));
+        BotonUtil.darEstiloBoton(btnVerConsumos, 200, 40);
         bloqueConsumos.add(btnVerConsumos);
 
 

@@ -2,7 +2,10 @@ package src;
 /*import src.Landingpage;
 import src.Registro; */
 
-import javax.swing.*; 
+import javax.swing.*;
+
+import src.util.BotonUtil;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 
@@ -139,11 +142,13 @@ public class InicioSesion extends JFrame {
     
 //creamos el boton que redirecciona a el inicio de sesion
     JButton boton_InicioSesion=Diseño_interfaz.Creador_Botones("INICIAR SESION",150, 340, 200, 45,Diseño_interfaz.colorazul);
+    BotonUtil.darEstiloBoton(boton_InicioSesion, 200, 45);
     Panel1.add(boton_InicioSesion);
     boton_InicioSesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarHomeAdmin());
 
 //creamos el boton que nos permite redireccionar a el registro.
     boton_Registro=Diseño_interfaz.Creador_Botones("Registro",280, 415, 100, 30,Diseño_interfaz.colorazul);
+    BotonUtil.darEstiloBoton(boton_Registro, 100, 30);
     Panel1.add(boton_Registro);
 
     add(Panel1);//luego de agregar todos los elementos agragamos nuestro panel, el que se creo por diseño
@@ -151,6 +156,7 @@ public class InicioSesion extends JFrame {
 
 //creamos el boton que nos redirecciona el inicio
     boton_Home=Diseño_interfaz.Creador_Botones("Home",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
+    BotonUtil.darEstiloBoton(boton_Home, 80, 30);
     add(boton_Home);//lo añadimos a la ventana principal
     //boton_Home.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarLandingpage());
 
