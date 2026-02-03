@@ -28,11 +28,11 @@ public class EmpleadoView extends JFrame {
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
 
-        setVisible(true);
+       // setVisible(true);
     }
 
     private void iniciarVentana() {
-        setTitle("AlumnoView");
+        setTitle("EmpleadoView");
         try {
             ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
             if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {

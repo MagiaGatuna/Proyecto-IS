@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Landingpage",
+            "request": "launch",
+            "mainClass": "src.Landingpage",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
             "name": "InicioSesion",
             "request": "launch",
             "mainClass": "src.InicioSesion",

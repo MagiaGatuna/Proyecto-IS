@@ -25,7 +25,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e){
-         if(e.getSource() == alumno.getinicio()){
+        if(e.getSource() == alumno.getinicio()){
 
             inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
             inicio.setResizable(false);

@@ -30,7 +30,7 @@ public class AlumnoView extends JFrame {
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
 
-        setVisible(true);
+       // setVisible(true);
     }
 
     private void iniciarVentana() {
