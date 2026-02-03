@@ -39,13 +39,13 @@ public class Controlador_inicioS implements ActionListener{
 
         }
         if(e.getSource() == inicio_sesion.getAdmin()){
-
-            admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            admin.setResizable(false);
-            admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            admin.setVisible(true);
-            inicio_sesion.setVisible(false);
-
+            if (validarInicioSesion()) {
+                admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                admin.setResizable(false);
+                admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                admin.setVisible(true);
+                inicio_sesion.setVisible(false);
+            }
         }
         if(e.getSource()==inicio_sesion.getRegistro()){
 
@@ -64,24 +64,27 @@ public class Controlador_inicioS implements ActionListener{
             inicio_sesion.setVisible(false);
 
         }
-        /*if(e.getSource() == botonhomeadmin){
-            if (ValidarUtil.cedulaEsValida(inicio_sesion.getCedula_id()) && ValidarUtil.campoEstaVacio(inicio_sesion.getCedula_id(), "Cédula de identidad") == false){
-                                
-                inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                inicio.setResizable(false);
-                inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                inicio.setVisible(true);
-                inicio_sesion.setVisible(false);
-                this.inicio_sesion.ocultar();
-            }else{
-                JOptionPane.showMessageDialog(ventanaRegistro,  
-                "Por favor corrija los siguientes errores:\n\n" + "Cedula inválida.",
-                "Errores en el formulario",
-                JOptionPane.ERROR_MESSAGE);
-            }
-            //Hola me dio sueño mañana resuelvo estas  validaciones :)
-        }*/
-        
 
+    }
+
+    private boolean validarInicioSesion(){
+        StringBuilder errores = new StringBuilder();
+
+        if(ValidarUtil.campoEstaVacio(inicio_sesion.getCedula_id(), "Cédula de identidad")){
+            errores.append("- El campo Cédula es obligatorio\n\n");
+        } else if (!ValidarUtil.cedulaEsValida(inicio_sesion.getCedula_id())) {
+            errores.append("- La cédula debe contener solo números\n");
+        }
+
+        if(ValidarUtil.campoEstaVacio(inicio_sesion.getContraseña(), "Contraseña")){
+            errores.append("- El campo Contraseña es obligatorio\n\n");
+        }
+        
+        if (errores.length() > 0) {
+            JOptionPane.showMessageDialog(null, "Por favor corrija los siguientes errores:\n\n" + errores.toString(),
+                "Errores en el formulario", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 }

@@ -181,6 +181,10 @@ public class InicioSesion extends JFrame {
     return boton_InicioSesion;
  }
 
+ public JPasswordField getContraseña(){
+    return contraseña;
+ }
+
  
 
 public JTextField getCedula_id() { return cedula_id; }
