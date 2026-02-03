@@ -80,8 +80,5 @@ barraSuperior.add(Diseño_interfaz.Creador_iconos("logo_ucv.png",20, 1, 120, 120
   public JButton getHome2(){
     return boton_cerrarsesion;
   }
-  public void cierra(){
-    this.setVisible(false);
-    this.dispose();
-  }
+  
 }
