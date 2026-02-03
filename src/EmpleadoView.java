@@ -159,6 +159,10 @@ public class EmpleadoView extends JFrame {
         boton.setPreferredSize(dimension); 
     }
 
+    public JButton getinicio(){
+        return btnCerrarSesion;
+    }
+
     public static void main(String[] args) {
             new EmpleadoView("USERNAME");
     }

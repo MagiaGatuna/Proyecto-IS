@@ -9,6 +9,13 @@
             "name": "EmpleadoView",
             "request": "launch",
             "mainClass": "src.EmpleadoView",
+            "projectName": "Proyecto-IS_bf4b1e30"
+        },
+        {
+            "type": "java",
+            "name": "EmpleadoView",
+            "request": "launch",
+            "mainClass": "src.EmpleadoView",
             "projectName": "Proyecto-IS_c1f479ce"
         },
         {

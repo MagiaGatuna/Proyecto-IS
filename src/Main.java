@@ -3,6 +3,7 @@ package src;
 import src.controlador.Controlador_reg;
 import src.controlador.Controlador_inicioS;
 import src.controlador.Controlador_lp;
+import src.controlador.Controlador_Alumno_Empleado;
 import javax.swing.*;
 
 public class Main{
@@ -11,6 +12,8 @@ public class Main{
         Registro registro_b= new Registro();
         InicioSesion in_sesion= new InicioSesion();
         HomeAdmin admin= new HomeAdmin();
+        AlumnoView alumno= new AlumnoView("Alumno1");
+        EmpleadoView empleado= new EmpleadoView("Empleado1");
         
 
         Controlador_lp control1;
@@ -19,6 +22,8 @@ public class Main{
         control2= new Controlador_reg(inicio, registro_b, in_sesion);
         Controlador_inicioS control3;
         control3=new Controlador_inicioS(inicio, registro_b, in_sesion, admin);
+        Controlador_Alumno_Empleado control4;
+        control4= new Controlador_Alumno_Empleado(inicio,alumno,empleado);
 
         inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
         inicio.setResizable(false);

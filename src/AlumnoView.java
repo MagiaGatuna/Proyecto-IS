@@ -159,6 +159,10 @@ public class AlumnoView extends JFrame {
         boton.setPreferredSize(dimension); 
     }
 
+    public JButton getinicio(){
+        return btnCerrarSesion;
+    }
+
     public static void main(String[] args) {
             new AlumnoView("USERNAME");
     }
