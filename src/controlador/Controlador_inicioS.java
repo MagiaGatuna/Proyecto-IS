@@ -64,7 +64,7 @@ public class Controlador_inicioS implements ActionListener{
             inicio_sesion.setVisible(false);
 
         }
-        if(e.getSource() == botonhomeadmin){
+        /*if(e.getSource() == botonhomeadmin){
             if (ValidarUtil.cedulaEsValida(inicio_sesion.getCedula_id()) && ValidarUtil.campoEstaVacio(inicio_sesion.getCedula_id(), "Cédula de identidad") == false){
                                 
                 inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -80,7 +80,7 @@ public class Controlador_inicioS implements ActionListener{
                 JOptionPane.ERROR_MESSAGE);
             }
             //Hola me dio sueño mañana resuelvo estas  validaciones :)
-        }
+        }*/
         
 
     }
