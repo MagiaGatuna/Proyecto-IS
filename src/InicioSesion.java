@@ -5,6 +5,7 @@ import src.Registro; */
 import javax.swing.*;
 
 import src.util.BotonUtil;
+import src.util.PasswordYPlaceholderUtil;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -82,11 +83,22 @@ public class InicioSesion extends JFrame {
     private JLabel label_Saludo;//texto de bienvenida
     private JLabel label_Sinoregistro;//texto de pregunta si nos hemos registrado
     private JTextField cedula_id;//campo donde el usuario coloca la cedula
-    private JTextField contraseña;//campo donde el usuario coloca el password
+    private JPasswordField contraseña;//campo donde el usuario coloca el password
     protected JButton boton_Registro;
     protected JButton boton_Home;
 //constructor para el diseño de la ventana
     public InicioSesion() { 
+
+        try{
+            ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
+            if(icon.getImageLoadStatus() == MediaTracker.COMPLETE){
+                setIconImage(icon.getImage());
+            }else{
+                System.out.println("No se pudo cargar la imagen del icono.");
+            }
+        }catch(Exception e){
+            System.out.println("No se pudo encontrar la imagen del icono: " + e.getMessage());
+        }
 
     setLayout(null); 
     getContentPane().setBackground(Color.WHITE);
@@ -130,13 +142,22 @@ public class InicioSesion extends JFrame {
     Panel1.add(label_Sinoregistro);//por diseño lo agregamos a nuestro contenedor
 
 //creamos el campo donde el usuario ingresara su cedula
-    cedula_id= new JTextField();//creamos el objeto
+    
+    cedula_id= new JTextField("Cédula de identidad");//creamos el objeto
     cedula_id.setBounds(125, 210, 250, 40);//colocamos las coordenadas de el objeto
     Panel1.add(cedula_id);//Por diseño lo agregamos a el contenedor
+    PasswordYPlaceholderUtil.configurarPlaceholder(cedula_id, "Cédula de identidad"); 
+    cedula_id.requestFocusInWindow();
+
 //creamos el campo donde el usuario ingresa su contraseña
-    contraseña= new JTextField();//creamos el objeto
+    contraseña= new JPasswordField();//creamos el objeto
     contraseña.setBounds(125, 270, 250, 40);//colocamos sus coodenadas 
+    PasswordYPlaceholderUtil.configurarPasswordConPlaceholder(contraseña, "Contraseña");
     Panel1.add(contraseña);//Por diseño se agrega a el contenedor
+    
+    JToggleButton btnMostrarOcultar = PasswordYPlaceholderUtil.crearBotonMostrarOcultar(contraseña, 380, 275, 30, 30);
+    Panel1.add(btnMostrarOcultar);
+
 //creamos el icono que poor diseño es ta en la interfaz
     Panel1.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",190, 20, 120, 120));
     
@@ -160,7 +181,8 @@ public class InicioSesion extends JFrame {
     add(boton_Home);//lo añadimos a la ventana principal
     //boton_Home.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarLandingpage());
 
-
+    this.getContentPane().setFocusable(true);
+    this.getContentPane().requestFocusInWindow();
  }
 
  public JButton getHome(){
@@ -179,6 +201,8 @@ public class InicioSesion extends JFrame {
 this.redirecadmin.cierra();
 }
  
+
+public JTextField getCedula_id() { return cedula_id; }
   public static void main(String args[]) { 
         Conectar_ventanas.getInstancia().mostrarInicioSesion();
     }

@@ -35,6 +35,9 @@ public class PasswordYPlaceholderUtil {
     }
 
     public static void configurarPlaceholder(JTextField campo, String texto){
+        campo.setForeground(Color.GRAY);
+        campo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+        
         campo.addFocusListener(new java.awt.event.FocusAdapter() {
             @Override
             public void focusGained(java.awt.event.FocusEvent evt) {

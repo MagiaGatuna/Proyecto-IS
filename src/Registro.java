@@ -2,10 +2,9 @@ package src;
 import javax.swing.*;
 import java.awt.*;
 import src.util.BotonUtil;
-import src.util.ValidarUtil;
 import src.util.PasswordYPlaceholderUtil;
 
-import static src.util.ValidarUtil.*;
+
 
 
 
@@ -152,15 +151,9 @@ public class Registro extends JFrame {
         BotonUtil.darEstiloBoton(btnAceptar,300,40);
         tarjeta.add(btnAceptar);
 
-        btnAceptar.addActionListener(e -> {
-            if (validarRegistro()){
-                JOptionPane.showMessageDialog(this,
-                    "¡Registro completado exitosamente!",
-                    "Éxito",
-                    JOptionPane.INFORMATION_MESSAGE);
-                
-            }
-        });
+        
+            
+
 
 
         txtPassword = new JPasswordField();
@@ -239,63 +232,7 @@ public class Registro extends JFrame {
         return campo;
     }
 
-    public boolean validarRegistro(){
-        StringBuilder errores = new StringBuilder();
-        
-        if(ValidarUtil.campoEstaVacio(txtNombres, "Nombres")){
-            errores.append("- El campo Nombres es obligatorio\n");
-        }
-        
-        if(ValidarUtil.campoEstaVacio(txtApellidos, "Apellidos")){
-            errores.append("- El campo Apellidos es obligatorio\n");
-        }
-        
-        if(ValidarUtil.campoEstaVacio(txtCedula, "Cédula de identidad")){
-            errores.append("- El campo Cédula es obligatorio\n");
-        } else if (!ValidarUtil.cedulaEsValida(txtCedula)) {
-            errores.append("- La cédula debe contener solo números\n");
-        }
-        
-        if(ValidarUtil.campoEstaVacio(txtCorreo, "Correo Electrónico")){
-            errores.append("- El campo Correo Electrónico es obligatorio\n");
-        } else if (!ValidarUtil.esEmailValido(txtCorreo.getText().trim())) {
-            errores.append("- El formato del correo electrónico no es válido (ejemplo: usuario@dominio.com)\n");
-        }
-        
-        if(comboSexo.getSelectedIndex() == 0){
-            errores.append("- Debe seleccionar un Sexo\n");
-        }
-        
-        if(comboRol.getSelectedIndex() == 0){
-            errores.append("- Debe seleccionar un Rol\n");
-        }
-        
-        String password = new String(txtPassword.getPassword());
-        if(campoEstaVacio(txtPassword, "Contraseña")){
-            errores.append("- El campo Contraseña es obligatorio\n");
-        }
-        
-        String confirmPassword = new String(txtConfirmPassword.getPassword());
-        if(campoEstaVacio(txtConfirmPassword, "Confirmar Contraseña")){
-            errores.append("- Debe confirmar la contraseña\n");
-        }
-            
-        if(!password.equals(confirmPassword)){
-            errores.append("- Las contraseñas no coinciden\n");
-        }
-        
     
-
-        if(errores.length() > 0){
-            JOptionPane.showMessageDialog(this, 
-                "Por favor corrija los siguientes errores:\n\n" + errores.toString(),
-                "Errores en el formulario",
-                JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
-        return true;
-    }
 
     class PanelRedondeado extends JPanel{
         private int radio;
@@ -328,6 +265,16 @@ public class Registro extends JFrame {
     public JLabel getinicio_label(){
         return lblLogin;
     }
+
+    public JTextField getTxtNombres() { return txtNombres; }
+    public JTextField getTxtApellidos() { return txtApellidos; }
+    public JTextField getTxtCedula() { return txtCedula; }
+    public JTextField getTxtCorreo() { return txtCorreo; }
+    public JPasswordField getTxtPassword() { return txtPassword; }
+    public JPasswordField getTxtConfirmPassword() { return txtConfirmPassword; }
+    public JComboBox<String> getComboSexo() { return comboSexo; }
+    public JComboBox<String> getComboRol() { return comboRol; }
+    public JComboBox<String> getComboCedula() { return comboCedula; }
 
     public static void main(String args[]){
     

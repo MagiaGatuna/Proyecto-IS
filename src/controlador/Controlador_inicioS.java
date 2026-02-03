@@ -3,6 +3,7 @@ package src.controlador;
 import src.Landingpage;
 import src.Registro;
 import src.InicioSesion;
+import src.util.ValidarUtil;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -45,15 +46,21 @@ public class Controlador_inicioS implements ActionListener{
 
         }
         if(e.getSource() == botonhomeadmin){
-
-            inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            inicio.setResizable(false);
-            inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            inicio.setVisible(true);
-            inicio_sesion.setVisible(false);
-            this.inicio_sesion.ocultar();
-
+            if (ValidarUtil.cedulaEsValida(inicio_sesion.getCedula_id()) && ValidarUtil.campoEstaVacio(inicio_sesion.getCedula_id(), "Cédula de identidad") == false){
+                                
+                inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                inicio.setResizable(false);
+                inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                inicio.setVisible(true);
+                inicio_sesion.setVisible(false);
+                this.inicio_sesion.ocultar();
+            }else{
+                JOptionPane.showMessageDialog(ventanaRegistro,  
+                "Por favor corrija los siguientes errores:\n\n" + "Cedula inválida.",
+                "Errores en el formulario",
+                JOptionPane.ERROR_MESSAGE);
+            }
+            //Hola me dio sueño mañana resuelvo estas  validaciones :)
         }
-
     }
 }
