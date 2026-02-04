@@ -10,6 +10,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class Controlador_reg implements ActionListener{
     private Landingpage inicio;
     private Registro ventanaRegistro;
@@ -69,6 +78,7 @@ public class Controlador_reg implements ActionListener{
 
     private boolean validarRegistro(){  
         StringBuilder errores = new StringBuilder();
+        StringBuilder problemas = new StringBuilder();
 
         
         // Validar nombres
@@ -123,8 +133,74 @@ public class Controlador_reg implements ActionListener{
                 "Errores en el formulario",
                 JOptionPane.ERROR_MESSAGE);
             return false;
+        }else{
+            try{
+                Path rutaUsuarios = Paths.get("res/data/usuarios.json").toAbsolutePath();
+                JSONArray listaUsuarios = new JSONArray();
+
+                if(Files.exists(rutaUsuarios)){
+                    String contenido = new String(Files.readAllBytes(rutaUsuarios), StandardCharsets.UTF_8);
+                    if (!contenido.trim().isEmpty()) {
+                        listaUsuarios = new JSONArray(contenido);
+                    }
+                }
+
+                for(int i=0; i<listaUsuarios.length(); i++){
+                    JSONObject usuario = listaUsuarios.getJSONObject(i);
+                    if(usuario.getString("cedula").trim().equals(ventanaRegistro.getTxtCedula().getText().trim())){
+                        problemas.append("-  Esta cédula ya se encuentra registrada\n");
+                    }
+                }
+
+                if(ventanaRegistro.getComboRol().getSelectedItem().toString().equals("Administrador")) {
+                    try{
+                        Path rutaAdmins = Paths.get("res/data/administradores.json").toAbsolutePath();
+                        if (!Files.exists(rutaAdmins)) {
+                            problemas.append("- No existe el archivo de administradores autorizados\n\n");
+                        }
+
+                        String contenidoAdmins = new String(Files.readAllBytes(rutaAdmins), StandardCharsets.UTF_8);
+                        JSONArray listaAdmins = new JSONArray(contenidoAdmins);
+                        boolean autorizado = false;
+                        
+                        for (int i=0; i<listaAdmins.length(); i++) {
+                            JSONObject admin = listaAdmins.getJSONObject(i);
+                            if (admin.getString("cedula").trim().replaceAll("[^0-9]", "").equals(ventanaRegistro.getTxtCedula().getText().trim().replaceAll("[^0-9]", ""))){
+                                autorizado = true;
+                                break;
+                            }
+                        }
+
+                        if (!autorizado) {
+                            problemas.append("- El usuario a registrar no está en la lista de administradores permitidos\n");
+                        }
+
+                    }catch(IOException e){
+                        problemas.append("- Error al leer la base de datos de los administradores\n");
+                    }
+                }
+
+                if(problemas.length()>0){
+                    JOptionPane.showMessageDialog(null, "¡Lo sentimos! no se pudo registrar el usuario:\n\n" + problemas.toString(),
+                        "Errores en el formulario", JOptionPane.ERROR_MESSAGE);
+                        return false;
+                }else{
+                    JSONObject nuevoUsuario = new JSONObject();
+                    nuevoUsuario.put("cedula", ventanaRegistro.getTxtCedula().getText().trim());
+                    nuevoUsuario.put("nombres", ventanaRegistro.getTxtNombres().getText().trim());
+                    nuevoUsuario.put("apellidos", ventanaRegistro.getTxtApellidos().getText().trim());
+                    nuevoUsuario.put("sexo", ventanaRegistro.getComboSexo().getSelectedItem().toString());
+                    nuevoUsuario.put("contraseña", password);
+                    nuevoUsuario.put("rol", ventanaRegistro.getComboRol().getSelectedItem().toString());
+                    listaUsuarios.put(nuevoUsuario);
+
+                    Files.write(rutaUsuarios, listaUsuarios.toString(4).getBytes(StandardCharsets.UTF_8));
+                    return true;
+                }
+            }catch(IOException e){
+                problemas.append("-  Error al guardar los datos del usuario\n");
+                return false;
+            }
         }
-        
-        return true;
     }
 }
