@@ -6,13 +6,5 @@
         "rol": "Estudiante",
         "nombres": "Corina",
         "contraseña": "123"
-    },
-    {
-        "apellidos": "1",
-        "cedula": "1234",
-        "sexo": "Femenino",
-        "rol": "Administrador",
-        "nombres": "1",
-        "contraseña": "1"
     }
 ]
