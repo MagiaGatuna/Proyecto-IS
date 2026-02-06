@@ -3,12 +3,15 @@ package src.controlador;
 import src.Landingpage;
 import src.Registro;
 import src.InicioSesion;
-import src.util.ValidarUtil;
 import src.HomeAdmin;
+import src.modelo.validadorInicioS;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+
 import javax.swing.*;
+
 
 public class Controlador_inicioS implements ActionListener{
     //getHome y getRegistro
@@ -16,6 +19,8 @@ public class Controlador_inicioS implements ActionListener{
     private Registro ventanaRegistro;
     private InicioSesion inicio_sesion;
     private HomeAdmin admin;
+
+    String Rol="";
 
     public Controlador_inicioS(Landingpage inicio, Registro ventanaRegistro, InicioSesion inicio_sesion, HomeAdmin admin){
         this.inicio=inicio;
@@ -39,7 +44,21 @@ public class Controlador_inicioS implements ActionListener{
 
         }
         if(e.getSource() == inicio_sesion.getAdmin()){
-            if (validarInicioSesion()) {
+            if (validadorInicioS.validarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña())){
+                Rol = validadorInicioS.getRol();
+                /*   
+                    if((Rol.equals("Administrador"))){
+                        
+                    }
+                    if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
+        
+                        
+                    }
+                    if((Rol.equals("Estudiante"))){
+                    
+
+                    }
+                 */ 
                 admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 admin.setResizable(false);
                 admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -67,24 +86,4 @@ public class Controlador_inicioS implements ActionListener{
 
     }
 
-    private boolean validarInicioSesion(){
-        StringBuilder errores = new StringBuilder();
-
-        if(ValidarUtil.campoEstaVacio(inicio_sesion.getCedula_id(), "Cédula de identidad")){
-            errores.append("- El campo Cédula es obligatorio\n\n");
-        } else if (!ValidarUtil.cedulaEsValida(inicio_sesion.getCedula_id())) {
-            errores.append("- La cédula debe contener solo números\n");
-        }
-
-        if(ValidarUtil.campoEstaVacio(inicio_sesion.getContraseña(), "Contraseña")){
-            errores.append("- El campo Contraseña es obligatorio\n\n");
-        }
-        
-        if (errores.length() > 0) {
-            JOptionPane.showMessageDialog(null, "Por favor corrija los siguientes errores:\n\n" + errores.toString(),
-                "Errores en el formulario", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        return true;
-    }
 }

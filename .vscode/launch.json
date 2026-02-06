@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MenuSemanal",
+            "request": "launch",
+            "mainClass": "src.MenuSemanal",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
+            "name": "PantallaPrincipal",
+            "request": "launch",
+            "mainClass": "src.PantallaPrincipal",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
             "name": "Landingpage",
             "request": "launch",
             "mainClass": "src.Landingpage",
@@ -17,7 +31,6 @@
             "request": "launch",
             "mainClass": "src.MenuSemanal",
             "projectName": "Proyecto-IS_bf4b1e30"
-
         },
         {
             "type": "java",
