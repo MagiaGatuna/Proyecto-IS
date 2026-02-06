@@ -33,6 +33,7 @@ public class MenuSemanal extends JFrame{
     private JToolBar barra_s;
     private JToolBar barra_d;
 
+
     public MenuSemanal(){
         setLayout(null);
         int pantalla= Toolkit.getDefaultToolkit().getScreenSize().width;
@@ -325,17 +326,56 @@ public class MenuSemanal extends JFrame{
         return volverHome;
     }
 
-    //ver si estos los puedo generalizar
+    public JButton getreservas(String indicador){
+        if(indicador=="desayuno"){
+            return reservar_d;
+        }
+        if(indicador=="almuerzo"){
+            return reservar_a;
+        }
+        if(indicador=="cena"){
+            return reservar_c;
+        }
+        return null;
+    }
+
+    public JLabel getaforo(String id){
+        if(id=="desayuno"){
+            return aforo_d;
+        }
+        if(id=="almuerzo"){
+            return aforo_a;
+        }
+        if(id=="cena"){
+            return aforo_c;
+        }
+        return null;
+    }
+
+    public JTextArea get_texto(String id){
+        if(id=="desayuno"){
+            return texto_desayuno;
+        }
+        if(id=="almuerzo"){
+            return texto_almuerzo;
+        }
+        if(id=="cena"){
+            return texto_cena;
+        }
+        return null;
+    }
+
+
     public JButton getboton_dia(String diferenciador){
-        if (diferenciador=="Lunes"){
+        if (diferenciador=="MONDAY"){
             return lunes;
-        }else if (diferenciador=="Martes"){
+        }else if (diferenciador=="TUESDAY"){
             return martes;
-        }else if (diferenciador=="Miercoles"){
+        }else if (diferenciador=="WEDNESDAY"){
             return miercoles;
-        }else if (diferenciador=="Jueves"){
+        }else if (diferenciador=="THURSDAY"){
             return jueves;
-        }else if (diferenciador=="Viernes"){
+        }else if (diferenciador=="FRIDAY"){
             return viernes;
         }else{
             return null;
