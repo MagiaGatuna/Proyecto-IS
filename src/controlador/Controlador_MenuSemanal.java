@@ -55,17 +55,19 @@ public class Controlador_MenuSemanal implements ActionListener{
             alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             alumno.setVisible(true);
             menu.setVisible(false);
+            menu.dispose();
             }
             
         }
 
         
-        if(e.getSource()==menu.getvolver()&& (Rol=="Trabajador" || Rol== "Docente")){//Aqui va un && con el JSON del tipo de usuario
+        if(e.getSource()==menu.getvolver() && (Rol.equals("Trabajador")||Rol.equals("Docente"))){//Aqui va un && con el JSON del tipo de usuario
             empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
             empleado.setResizable(false);
             empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             empleado.setVisible(true);
             menu.setVisible(false);
+            menu.dispose();
         }
         
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario

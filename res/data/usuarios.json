@@ -22,5 +22,13 @@
         "rol": "Trabajador",
         "nombres": "Lilia",
         "contraseña": "1234567"
+    },
+    {
+        "apellidos": "A",
+        "cedula": "15151515",
+        "sexo": "Femenino",
+        "rol": "Estudiante",
+        "nombres": "Alexandra",
+        "contraseña": "123"
     }
 ]
