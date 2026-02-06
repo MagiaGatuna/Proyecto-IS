@@ -6,16 +6,52 @@
     "configurations": [
         {
             "type": "java",
+<<<<<<< Updated upstream
             "name": "PantallaPrincipal",
             "request": "launch",
             "mainClass": "src.PantallaPrincipal",
             "projectName": "Proyecto-IS_c1f479ce"
+=======
+            "name": "AlumnoView",
+            "request": "launch",
+            "mainClass": "src.AlumnoView",
+            "projectName": "Comedor inge_161f220e"
+        },
+        {
+            "type": "java",
+            "name": "HomeAdmin",
+            "request": "launch",
+            "mainClass": "src.HomeAdmin",
+            "projectName": "Comedor inge_161f220e"
+        },
+        {
+            "type": "java",
+            "name": "Monedero",
+            "request": "launch",
+            "mainClass": "src.Monedero",
+            "projectName": "Comedor inge_161f220e"
+        },
+        {
+            "type": "java",
+            "name": "EmpleadoView",
+            "request": "launch",
+            "mainClass": "src.EmpleadoView",
+            "projectName": "Comedor inge_161f220e"
+        },
+        {
+            "type": "java",
+            "name": "Registro",
+            "request": "launch",
+            "mainClass": "src.Registro",
+            "projectName": "Comedor inge_161f220e"
+>>>>>>> Stashed changes
         },
         {
             "type": "java",
             "name": "Landingpage",
             "request": "launch",
             "mainClass": "src.Landingpage",
+<<<<<<< Updated upstream
             "projectName": "Proyecto-IS_c1f479ce"
         },
         {
@@ -25,6 +61,9 @@
             "mainClass": "src.MenuSemanal",
             "projectName": "Proyecto-IS_bf4b1e30"
 
+=======
+            "projectName": "Comedor inge_161f220e"
+>>>>>>> Stashed changes
         },
         {
             "type": "java",

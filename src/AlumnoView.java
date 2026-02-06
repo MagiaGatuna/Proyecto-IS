@@ -4,7 +4,7 @@ import javax.swing.*;
 import src.util.BotonUtil;
 
 import java.awt.*;
-
+import src.util.Conectar_ventanas;
 public class AlumnoView extends JFrame {
 
 
@@ -20,12 +20,14 @@ public class AlumnoView extends JFrame {
     private JButton btnVerMenuSemanal;
     private JButton btnVerConsumos;
     private JButton btnCerrarSesion;
+    private Usuario userLogueado; 
 
-    public AlumnoView(String username) {
-        iniciarVentana();
+    public AlumnoView(Usuario u) {
         
+        iniciarVentana();
+        this.userLogueado = u;
         JPanel panelNorte = crearPanelSuperior();
-        JPanel panelCentro = crearPanelCentral(username);
+        JPanel panelCentro = crearPanelCentral(u.getNombre());
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
@@ -67,7 +69,13 @@ public class AlumnoView extends JFrame {
 
         btnCerrarSesion = new JButton("CERRAR SESIÓN");
         estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
-        BotonUtil.darEstiloBoton(btnCerrarSesion, 170, 40);
+  panel.add(Box.createHorizontalGlue());
+        JPanel contenedorBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 20));
+    contenedorBotones.setOpaque(false);
+        JButton btnMonedero = new JButton("MONEDERO");
+        estilizarBoton(btnMonedero, Color.BLUE, new Dimension(130, 40)); 
+        btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
+    panel.add(btnMonedero);
         
         JPanel wrapperBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         wrapperBoton.setOpaque(false);
@@ -87,7 +95,7 @@ public class AlumnoView extends JFrame {
 
         panel.add(Box.createVerticalStrut(5));
 
-        JLabel lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A ESTUDIANTE<br>" + username + "!</center></html>");
+        JLabel lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A ESTUDIANTE<br>" + username+ "!</center></html>");
         lblBienvenida.setFont(new Font("Arial", Font.BOLD, 50));
         lblBienvenida.setForeground(COLOR_TEXTO_AZUL);
         lblBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -177,6 +185,7 @@ public class AlumnoView extends JFrame {
     }
 
     public static void main(String[] args) {
-            new AlumnoView("USERNAME");
+           Usuario pruebaEstudiante = new Usuario("Jeon Jung-kook", 50.0, "estudiante");
+    new AlumnoView(pruebaEstudiante);
     }
 }

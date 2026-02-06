@@ -6,8 +6,13 @@ import src.util.BotonUtil;
 import src.util.PasswordYPlaceholderUtil;
 
 import java.awt.*;
+<<<<<<< Updated upstream
 //import java.awt.event.ActionListener;
 
+=======
+import java.awt.event.ActionListener;
+import src.util.Conectar_ventanas;
+>>>>>>> Stashed changes
 //la clase que contiena la factorizacion
 class Diseño_interfaz {
 
@@ -34,6 +39,7 @@ public static JLabel Creador_iconos(String ruta, int x, int y, int ancho, int al
     return etiqueta;
 } 
   }
+<<<<<<< Updated upstream
 
 //como se nos explico en clase, usamos el patron Singleton para cambiar de ventanas 
 class Conectar_ventanas {
@@ -62,6 +68,8 @@ class Conectar_ventanas {
 }
 
 
+=======
+>>>>>>> Stashed changes
 //inicio de sesion
 public class InicioSesion extends JFrame { 
     //declacion de elementos a usar
@@ -177,8 +185,16 @@ public class InicioSesion extends JFrame {
  public JButton getRegistro(){
     return boton_Registro;
  }
+<<<<<<< Updated upstream
  public JButton getAdmin(){
     return boton_InicioSesion;
+=======
+Usuario pruebaAdmin = new Usuario("Admin Valentina", 0.0, "empleado");
+ HomeAdmin redirecadmin= new HomeAdmin(pruebaAdmin);
+
+ public JButton getBotonadmin(){
+    return redirecadmin.getHome2();
+>>>>>>> Stashed changes
  }
 
  public JPasswordField getContraseña(){

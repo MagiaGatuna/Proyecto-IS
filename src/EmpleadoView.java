@@ -1,8 +1,12 @@
 package src;
 import javax.swing.*;
 import java.awt.*;
+<<<<<<< Updated upstream
 import src.util.BotonUtil; 
 
+=======
+import src.util.Conectar_ventanas;
+>>>>>>> Stashed changes
 public class EmpleadoView extends JFrame {
 
 
@@ -18,12 +22,15 @@ public class EmpleadoView extends JFrame {
     private JButton btnVerMenuSemanal;
     private JButton btnVerConsumos;
     private JButton btnCerrarSesion;
+    private JButton btnMonedero;
+    private Usuario userLogueado;
 
-    public EmpleadoView(String username) {
+    public EmpleadoView(Usuario pr2) {
+        this.userLogueado = pr2;
         iniciarVentana();
         
         JPanel panelNorte = crearPanelSuperior();
-        JPanel panelCentro = crearPanelCentral(username);
+        JPanel panelCentro = crearPanelCentral(pr2.getNombre());
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
@@ -62,11 +69,19 @@ public class EmpleadoView extends JFrame {
         panel.add(lblIconoUCV);
 
         panel.add(Box.createHorizontalGlue());
+        JPanel contenedorBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 20));
+    contenedorBotones.setOpaque(false);
+        btnMonedero = new JButton("MONEDERO");
+        estilizarBoton(btnMonedero, Color.BLUE, new Dimension(130, 40)); 
+        btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
 
         btnCerrarSesion = new JButton("CERRAR SESIÓN");
         estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
+<<<<<<< Updated upstream
         BotonUtil.darEstiloBoton(btnCerrarSesion, 170, 40);
         
+=======
+>>>>>>> Stashed changes
         JPanel wrapperBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         wrapperBoton.setOpaque(false);
         wrapperBoton.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 50));
@@ -175,6 +190,7 @@ public class EmpleadoView extends JFrame {
     }
 
     public static void main(String[] args) {
-            new EmpleadoView("USERNAME");
+            Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "estudiante");
+    new AlumnoView(pruebaEstudiante);
     }
 }
