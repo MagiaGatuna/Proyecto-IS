@@ -59,7 +59,7 @@ public class Controlador_inicioS implements ActionListener{
                         admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         admin.setVisible(true);
                         inicio_sesion.setVisible(false);
-                        
+                        inicio_sesion.dispose();
                     }
                     if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
                     EmpleadoView empleado= new EmpleadoView("");//sustituyan la cedula por el nombre mas tarde
@@ -73,7 +73,7 @@ public class Controlador_inicioS implements ActionListener{
                     empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     empleado.setVisible(true);
                     inicio_sesion.setVisible(false);
-                    
+                    inicio_sesion.dispose();
                         
                     }
                     if((Rol.equals("Estudiante"))){
@@ -87,7 +87,7 @@ public class Controlador_inicioS implements ActionListener{
                     alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     alumno.setVisible(true);
                     inicio_sesion.setVisible(false);
-                    
+                    inicio_sesion.dispose();
 
                     }
                  

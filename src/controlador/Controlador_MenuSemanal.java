@@ -50,24 +50,28 @@ public class Controlador_MenuSemanal implements ActionListener{
         if(e.getSource()==menu.getvolver() ){//Aqui va un && con el JSON del tipo de usuario
             
             if((Rol.equals("Estudiante"))){
+                if(this.alumno != null){
             alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
             alumno.setResizable(false);
             alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             alumno.setVisible(true);
             menu.setVisible(false);
             menu.dispose();
+                }
             }
             
         }
 
         
         if(e.getSource()==menu.getvolver() && (Rol.equals("Trabajador")||Rol.equals("Docente"))){//Aqui va un && con el JSON del tipo de usuario
+            if(this.empleado != null){
             empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
             empleado.setResizable(false);
             empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             empleado.setVisible(true);
             menu.setVisible(false);
             menu.dispose();
+            }
         }
         
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario

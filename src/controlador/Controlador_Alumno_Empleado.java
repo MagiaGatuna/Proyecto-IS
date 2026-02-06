@@ -23,16 +23,21 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         this.menu_semanal=menu_semanal;
         this.alumno=alumno;
         this.empleado=empleado;
-        this.empleado.getinicio().addActionListener(this);
+
+        if(this.alumno != null){
         this.alumno.getinicio().addActionListener(this);
         this.alumno.getMenuS().addActionListener(this);
         this.alumno.getMenuD().addActionListener(this);
+        }
+        if(this.empleado != null){
+        this.empleado.getinicio().addActionListener(this);
         this.empleado.getMenuS().addActionListener(this);
         this.empleado.getMenuD().addActionListener(this);
+        }
     }
     @Override
     public void actionPerformed(ActionEvent e){
-        if(e.getSource() == alumno.getinicio()){
+        if(alumno != null && e.getSource() == alumno.getinicio()){
 
             inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
             inicio.setResizable(false);
@@ -41,7 +46,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
             alumno.setVisible(false);
 
         }
-        if(e.getSource() == empleado.getinicio()){
+        if(empleado != null && e.getSource() == empleado.getinicio()){
 
             inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
             inicio.setResizable(false);
@@ -51,8 +56,8 @@ public class Controlador_Alumno_Empleado implements ActionListener{
 
         }
         
-        if(e.getSource() == alumno.getMenuS()){
-
+        if(alumno != null && e.getSource() == alumno.getMenuS()){
+        
             menu_semanal.setExtendedState(JFrame.MAXIMIZED_BOTH);
             menu_semanal.setResizable(false);
             menu_semanal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +66,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
 
         }
         
-        if(e.getSource() == empleado.getMenuS()){
+        if(empleado != null && e.getSource() == empleado.getMenuS()){
 
             menu_semanal.setExtendedState(JFrame.MAXIMIZED_BOTH);
             menu_semanal.setResizable(false);
