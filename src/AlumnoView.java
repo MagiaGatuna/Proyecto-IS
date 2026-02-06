@@ -175,6 +175,12 @@ public class AlumnoView extends JFrame {
     public JButton getinicio(){
         return btnCerrarSesion;
     }
+    public JButton getMenuS(){
+        return btnVerMenuSemanal;
+    }
+    public JButton getMenuD(){
+        return btnVerMenuDiario;
+    }
 
     public static void main(String[] args) {
             new AlumnoView("USERNAME");

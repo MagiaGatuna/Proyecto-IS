@@ -5,6 +5,8 @@ import src.AlumnoView;
 import src.MenuSemanal;
 import src.EmpleadoView;
 
+import src.modelo.validadorInicioS;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -15,6 +17,7 @@ public class Controlador_MenuSemanal implements ActionListener{
     private AlumnoView alumno;
     private EmpleadoView empleado;
     private MenuSemanal menu;
+    private String Rol="";
 
     private int hora;
     private String dia;
@@ -33,6 +36,7 @@ public class Controlador_MenuSemanal implements ActionListener{
         this.menu.getboton_dia("THURSDAY").addActionListener(this);
         this.menu.getboton_dia("FRIDAY").addActionListener(this);
         this.menu.getvolver().addActionListener(this);
+        
 
         pintarboton(dia); 
         desactivar_botones(hora);
@@ -41,24 +45,29 @@ public class Controlador_MenuSemanal implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-        
-        if(e.getSource()==menu.getvolver()){//Aqui va un && con el JSON del tipo de usuario
+        Rol = validadorInicioS.getRol();
+       
+        if(e.getSource()==menu.getvolver() ){//Aqui va un && con el JSON del tipo de usuario
+            
+            if((Rol.equals("Estudiante"))){
             alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
             alumno.setResizable(false);
             alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             alumno.setVisible(true);
             menu.setVisible(false);
+            }
+            
         }
 
-        /*
-        if(e.getSource()==menu.getvolver()){//Aqui va un && con el JSON del tipo de usuario
+        
+        if(e.getSource()==menu.getvolver()&& (Rol=="Trabajador" || Rol== "Docente")){//Aqui va un && con el JSON del tipo de usuario
             empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
             empleado.setResizable(false);
             empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             empleado.setVisible(true);
             menu.setVisible(false);
         }
-        */
+        
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario
             pintarboton("MONDAY");
 

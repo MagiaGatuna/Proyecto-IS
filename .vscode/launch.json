@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "AlumnoView",
+            "request": "launch",
+            "mainClass": "src.AlumnoView",
+            "projectName": "Proyecto-IS_bf4b1e30"
+        },
+        {
+            "type": "java",
             "name": "MenuSemanal",
             "request": "launch",
             "mainClass": "src.MenuSemanal",

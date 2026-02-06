@@ -173,6 +173,12 @@ public class EmpleadoView extends JFrame {
     public JButton getinicio(){
         return btnCerrarSesion;
     }
+    public JButton getMenuS(){
+        return btnVerMenuSemanal;
+    }
+    public JButton getMenuD(){
+        return btnVerMenuDiario;
+    }
 
     public static void main(String[] args) {
             new EmpleadoView("USERNAME");
