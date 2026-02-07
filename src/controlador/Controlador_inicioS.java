@@ -67,7 +67,7 @@ public class Controlador_inicioS implements ActionListener{
                     EmpleadoView empleado= new EmpleadoView(usuarioLogueado);//sustituyan la cedula por el nombre mas tarde
                     MenuSemanal menu_s_e= new MenuSemanal();
 
-                    Controlador_Alumno_Empleado control5= new Controlador_Alumno_Empleado(inicio, null,empleado,menu_s_e);
+                    Controlador_Alumno_Empleado control5= new Controlador_Alumno_Empleado(inicio, null,empleado,menu_s_e,null);
                     Controlador_MenuSemanal control6= new Controlador_MenuSemanal(null, empleado,menu_s_e);
 
                     empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -82,7 +82,7 @@ public class Controlador_inicioS implements ActionListener{
                     AlumnoView alumno= new AlumnoView(usuarioLogueado);//sustituyan la cedula por el nombre mas tarde
                     MenuSemanal menu_s= new MenuSemanal();
 
-                    Controlador_Alumno_Empleado control4= new Controlador_Alumno_Empleado(inicio, alumno,null,menu_s);
+                    Controlador_Alumno_Empleado control4= new Controlador_Alumno_Empleado(inicio, alumno,null,menu_s,null);
                     Controlador_MenuSemanal control7= new Controlador_MenuSemanal(alumno, null,menu_s);
                     alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     alumno.setResizable(false);

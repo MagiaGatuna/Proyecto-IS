@@ -21,6 +21,7 @@ public class EmpleadoView extends JFrame {
     private JButton btnCerrarSesion;
     private JButton btnMonedero;
     private Usuario userLogueado;
+    private JPanel panelContenedorMonedero;
 
     public EmpleadoView(Usuario pr2) {
         this.userLogueado = pr2;
@@ -64,7 +65,9 @@ public class EmpleadoView extends JFrame {
 
         JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
         panel.add(lblIconoUCV);
-
+        panelContenedorMonedero = new JPanel(new BorderLayout());
+        panelContenedorMonedero.setOpaque(false); 
+        panel.add(panelContenedorMonedero);
         panel.add(Box.createHorizontalGlue());
         JPanel contenedorBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 20));
         contenedorBotones.setOpaque(false);
@@ -188,7 +191,9 @@ public class EmpleadoView extends JFrame {
     public JButton getMenuD(){
         return btnVerMenuDiario;
     }
-
+    public JPanel getPanelMonedero() {
+    return panelContenedorMonedero;
+}
     public static void main(String[] args) {
             Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
 

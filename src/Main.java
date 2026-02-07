@@ -20,7 +20,7 @@ public class Main {
         
         Controlador_inicioS control3 = new Controlador_inicioS(inicio, registro_b, in_sesion);
         MenuSemanal menu_s = new MenuSemanal();
-        Controlador_Alumno_Empleado control4 = new Controlador_Alumno_Empleado(inicio, alumno, empleado,menu_s);
+        Controlador_Alumno_Empleado control4 = new Controlador_Alumno_Empleado(inicio, alumno, empleado,menu_s,null);
 
         inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
         inicio.setResizable(false);

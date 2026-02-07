@@ -20,6 +20,7 @@ public class AlumnoView extends JFrame {
     private JButton btnVerConsumos;
     private JButton btnCerrarSesion;
     private Usuario userLogueado; 
+    private JPanel panelContenedorMonedero;
 
     public AlumnoView(Usuario u) {
         
@@ -54,7 +55,7 @@ public class AlumnoView extends JFrame {
         getContentPane().setBackground(COLOR_FONDO);
         setLayout(new BorderLayout(10, 10));
     }
-
+    
     private JPanel crearPanelSuperior() {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
@@ -63,6 +64,10 @@ public class AlumnoView extends JFrame {
 
         JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
         panel.add(lblIconoUCV);
+
+        panelContenedorMonedero = new JPanel(new BorderLayout());
+    panelContenedorMonedero.setOpaque(false); 
+    panel.add(panelContenedorMonedero);
 
         panel.add(Box.createHorizontalGlue());
 
@@ -188,7 +193,9 @@ public class AlumnoView extends JFrame {
     public JButton getMenuD(){
         return btnVerMenuDiario;
     }
-
+   public JPanel getPanelMonedero() {
+    return panelContenedorMonedero;
+}
     public static void main(String[] args) {
            Usuario pruebaEstudiante = new Usuario("Jeon Jung-kook", 50.0, "estudiante");
            AlumnoView vista = new AlumnoView(pruebaEstudiante);
