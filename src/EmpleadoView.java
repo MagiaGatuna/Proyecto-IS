@@ -1,12 +1,9 @@
 package src;
 import javax.swing.*;
 import java.awt.*;
-<<<<<<< Updated upstream
-import src.util.BotonUtil; 
-
-=======
 import src.util.Conectar_ventanas;
->>>>>>> Stashed changes
+import src.util.BotonUtil;
+import src.modelo.Usuario;
 public class EmpleadoView extends JFrame {
 
 
@@ -70,18 +67,15 @@ public class EmpleadoView extends JFrame {
 
         panel.add(Box.createHorizontalGlue());
         JPanel contenedorBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 20));
-    contenedorBotones.setOpaque(false);
+        contenedorBotones.setOpaque(false);
         btnMonedero = new JButton("MONEDERO");
         estilizarBoton(btnMonedero, Color.BLUE, new Dimension(130, 40)); 
         btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
-
+        panel.add(btnMonedero);
         btnCerrarSesion = new JButton("CERRAR SESIÓN");
         estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
-<<<<<<< Updated upstream
         BotonUtil.darEstiloBoton(btnCerrarSesion, 170, 40);
         
-=======
->>>>>>> Stashed changes
         JPanel wrapperBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         wrapperBoton.setOpaque(false);
         wrapperBoton.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 50));
@@ -188,7 +182,7 @@ public class EmpleadoView extends JFrame {
     public JButton getinicio(){
         return btnCerrarSesion;
     }
-    public JButton getMenuS(){
+     public JButton getMenuS(){
         return btnVerMenuSemanal;
     }
     public JButton getMenuD(){
@@ -196,7 +190,12 @@ public class EmpleadoView extends JFrame {
     }
 
     public static void main(String[] args) {
-            Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "estudiante");
-    new AlumnoView(pruebaEstudiante);
+            Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
+
+     EmpleadoView vista = new EmpleadoView(pruebaEstudiante);
+    
+    vista.setVisible(true);
+    
+    vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 }

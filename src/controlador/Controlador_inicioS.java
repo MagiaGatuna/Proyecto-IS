@@ -9,6 +9,7 @@ import src.EmpleadoView;
 import src.MenuSemanal;
 import src.modelo.Usuario;
 import src.modelo.validadorInicioS;
+import src.util.LimpiarFormulariosUtil;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +19,10 @@ import javax.swing.*;
 
 
 public class Controlador_inicioS implements ActionListener{
-    //getHome y getRegistro
     private Landingpage inicio;
     private Registro ventanaRegistro;
     private InicioSesion inicio_sesion;
-
+    
     String Rol="";
 
     public Controlador_inicioS(Landingpage inicio, Registro ventanaRegistro, InicioSesion inicio_sesion){
@@ -93,10 +93,13 @@ public class Controlador_inicioS implements ActionListener{
 
                     }
                  
+            }else{
+                LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
             }
         }
         if(e.getSource()==inicio_sesion.getRegistro()){
 
+            LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
             ventanaRegistro.setExtendedState(JFrame.MAXIMIZED_BOTH);
             ventanaRegistro.setResizable(false);
             ventanaRegistro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -104,7 +107,7 @@ public class Controlador_inicioS implements ActionListener{
             inicio_sesion.setVisible(false);
         }
         if(e.getSource()==inicio_sesion.getHome()){
-
+            LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
             inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
             inicio.setResizable(false);
             inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

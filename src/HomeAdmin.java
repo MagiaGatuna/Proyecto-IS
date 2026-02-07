@@ -58,11 +58,11 @@ labela.setHorizontalAlignment(SwingConstants.CENTER);// nos aseguramos de alinea
 labela.setBounds(0, 120,anchoP, 100);//Por diseño, colocam0so estas coordenadas
 add(labela);//lo agreagamos a la ventana principal
 //creamos el logo
-barraSuperior.add(Diseño_interfaz.Creador_iconos("logo_ucv.png",20, 1, 120, 120)); // Se agrega a la barra, no al JFrame
+barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120, 120)); // Se agrega a la barra, no al JFrame
 //creamos las imagenes por diseño
 //seccion de el monedero 
 JButton btnMonedero = Diseño_interfaz.Creador_Botones("MONEDERO", anchoP - 360, 35, 120, 45, Color.BLUE);
-barraSuperior.add(btnMonedero); // <--- IMPORTANTE: add a la barra, no al frame
+barraSuperior.add(btnMonedero); 
 
 btnMonedero.addActionListener(e -> {
     Conectar_ventanas.getInstancia().desplegarMonedero(this, userActivo);
@@ -80,12 +80,12 @@ btnMonedero.addActionListener(e -> {
   }
 
   public static void main(String[] args) {
-    // Creamos un usuario de prueba tipo admin
-    Usuario pruebaAdmin = new Usuario("Suga", 150.0, "empleado");
+   
+    Usuario pruebaAdmin = new Usuario("Suga", 150.0, "administrador");
     
-    // Se lo pasamos al constructor
     HomeAdmin frame = new HomeAdmin(pruebaAdmin);
-    frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Para que abra en pantalla completa
+    frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
     frame.setVisible(true);
+    
 }
 }
