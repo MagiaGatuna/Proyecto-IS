@@ -3,7 +3,7 @@ import java.awt.*;
 import javax.swing.*;
 
 public class LimpiarFormulariosUtil {
-    private void limpiarRegistro(JTextField txtNombres, JTextField txtApellidos, JTextField txtCedula, JTextField txtCorreo, JComboBox<String> comboCedula, JComboBox<String> comboSexo, JComboBox<String> comboRol, JPasswordField txtPassword, JPasswordField txtConfirmPassword) {
+    public static void limpiarRegistro(JTextField txtNombres, JTextField txtApellidos, JTextField txtCedula, JTextField txtCorreo, JComboBox<String> comboCedula, JComboBox<String> comboSexo, JComboBox<String> comboRol, JPasswordField txtPassword, JPasswordField txtConfirmPassword) {
         txtNombres.setText("Nombres");
         txtNombres.setForeground(Color.GRAY);
         
@@ -28,5 +28,15 @@ public class LimpiarFormulariosUtil {
         txtConfirmPassword.setEchoChar((char) 0);
         txtConfirmPassword.setForeground(Color.GRAY);
     }
-
+    
+    public static void limpiarInicioSesion(JTextField txtCedula, JPasswordField txtPassword) {
+    // Reset de Cédula
+    txtCedula.setText("Cédula de identidad");
+    txtCedula.setForeground(Color.GRAY);
+    
+    // Reset de Contraseña
+    txtPassword.setText("Contraseña");
+    txtPassword.setEchoChar((char) 0); // Para que se vea el texto y no los puntos
+    txtPassword.setForeground(Color.GRAY);
+}
 }

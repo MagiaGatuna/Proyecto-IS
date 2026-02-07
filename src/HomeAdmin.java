@@ -1,12 +1,10 @@
 package src;
 import javax.swing.*;
-
 import src.util.BotonUtil;
-
 import java.awt.*;
-import java.awt.event.ActionListener;
-
-
+import src.util.Conectar_ventanas;
+import src.util.Diseño_interfaz;
+import src.modelo.Usuario;
 
 public class HomeAdmin extends JFrame {
   JButton boton_cerrarsesion;
@@ -16,25 +14,13 @@ public class HomeAdmin extends JFrame {
   JButton boton_Inventario;
   JButton boton_Consumos;
   JLabel labela;
-
-   public HomeAdmin(){
-
-    try {
-        ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
-        if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
-            setIconImage(icon.getImage());
-        } else {
-            System.out.println("No se pudo cargar la imagen del icono.");
-        }
-    } catch (Exception e) {
-        System.out.println("No se pudo encontrar la imagen del icono: " + e.getMessage());
-    }
-
+  private Usuario userActivo;
+   public HomeAdmin(Usuario u){
+    this.userActivo = u;
     setLayout(null);
      //centrammos la barra
     Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     int anchoP = pantalla.width;
-    int altoP = pantalla.height;
     int espacio = anchoP / 4;
     int yIconos = 280;
     int yBotones = 420;
@@ -66,19 +52,40 @@ public class HomeAdmin extends JFrame {
     add(Diseño_interfaz.Creador_iconos("res/comida.png", (espacio * 3) + (espacio/2) - 60, yIconos + 15, 120, 120));
     add(Diseño_interfaz.Creador_Botones("CONSUMOS", (espacio * 3) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
 //creamos el saludo de bienvenida
-labela=new JLabel("¡BIENVENIDO ADMINISTRADOR!");//creamos el objeto
+labela=new JLabel("¡Bienvenido administrador  "+ userActivo.getNombre()+ "!");//creamos el objeto
 labela.setFont(new Font("Arial", Font.BOLD, 30)); //Por diseño ajustamos la funte de la letra
 labela.setHorizontalAlignment(SwingConstants.CENTER);// nos aseguramos de alinearla
 labela.setBounds(0, 120,anchoP, 100);//Por diseño, colocam0so estas coordenadas
 add(labela);//lo agreagamos a la ventana principal
 //creamos el logo
-barraSuperior.add(Diseño_interfaz.Creador_iconos("logo_ucv.png",20, 1, 120, 120)); // Se agrega a la barra, no al JFrame
+barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120, 120)); // Se agrega a la barra, no al JFrame
 //creamos las imagenes por diseño
+//seccion de el monedero 
+JButton btnMonedero = Diseño_interfaz.Creador_Botones("MONEDERO", anchoP - 360, 35, 120, 45, Color.BLUE);
+barraSuperior.add(btnMonedero); 
+
+btnMonedero.addActionListener(e -> {
+    Conectar_ventanas.getInstancia().desplegarMonedero(this, userActivo);
+});
+
 
   }
 
   public JButton getHome2(){
     return boton_cerrarsesion;
   }
-  
+  public void cierra(){
+    this.setVisible(false);
+    this.dispose();
+  }
+
+  public static void main(String[] args) {
+   
+    Usuario pruebaAdmin = new Usuario("Suga", 150.0, "administrador");
+    
+    HomeAdmin frame = new HomeAdmin(pruebaAdmin);
+    frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+    frame.setVisible(true);
+    
+}
 }
