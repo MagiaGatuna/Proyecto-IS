@@ -38,6 +38,8 @@ public class Controlador_reg implements ActionListener{
 
         });
 
+        LimpiarFormulariosUtil.limpiarRegistro(ventanaRegistro.getTxtNombres(),ventanaRegistro.getTxtApellidos(),ventanaRegistro.getTxtCedula(),ventanaRegistro.getTxtCorreo(),ventanaRegistro.getComboCedula(),ventanaRegistro.getComboSexo(),ventanaRegistro.getComboRol(),ventanaRegistro.getTxtPassword(),ventanaRegistro.getTxtConfirmPassword());
+        
     }
     
     @Override
@@ -64,8 +66,6 @@ public class Controlador_reg implements ActionListener{
                 inicio_sesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 inicio_sesion.setVisible(true);
                 ventanaRegistro.setVisible(false);
-            }else{
-                LimpiarFormulariosUtil.limpiarRegistro(ventanaRegistro.getTxtNombres(),ventanaRegistro.getTxtApellidos(),ventanaRegistro.getTxtCedula(),ventanaRegistro.getTxtCorreo(),ventanaRegistro.getComboCedula(),ventanaRegistro.getComboSexo(),ventanaRegistro.getComboRol(),ventanaRegistro.getTxtPassword(),ventanaRegistro.getTxtConfirmPassword());
             }
         }
         

@@ -26,10 +26,12 @@ public class Controlador_inicioS implements ActionListener{
         this.inicio=inicio;
         this.ventanaRegistro=ventanaRegistro;
         this.inicio_sesion=inicio_sesion;
-       
+    
         this.inicio_sesion.getRegistro().addActionListener(this);
         this.inicio_sesion.getHome().addActionListener(this);
         this.inicio_sesion.getAdmin().addActionListener(this);
+        
+        LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
     }
 
     @Override
@@ -83,10 +85,6 @@ public class Controlador_inicioS implements ActionListener{
                 inicio_sesion.setVisible(false);
                 inicio_sesion.dispose();
             }
-         
-    }else{
-        // Si falla, los mismos objetos se pasan para limpiar
-        LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
     }
 }
 
