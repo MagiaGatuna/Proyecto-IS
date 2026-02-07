@@ -35,62 +35,56 @@ public class Controlador_inicioS implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e){
         if(e.getSource() == inicio_sesion.getAdmin()){
-            // CAMBIO: Extraer el texto real de los campos para validar
-            String cedulaTxt = inicio_sesion.getCedula_id().getText();
-            String passTxt = new String(inicio_sesion.getContraseña().getPassword());
-
-            if (validadorInicioS.validarInicioSesion(cedulaTxt, passTxt)){
-                Rol = validadorInicioS.getRol();
-                Usuario usuarioLogueado = validadorInicioS.getUsuarioActual();
-                    
-                    if((Rol.equals("Administrador"))){
-                        HomeAdmin admin = new HomeAdmin(usuarioLogueado);
-                        admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        admin.setResizable(false);
-                        admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        admin.setVisible(true);
-                        inicio_sesion.setVisible(false);
-                        inicio_sesion.dispose();
-                    }
-
-                    if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
-                        EmpleadoView empleado= new EmpleadoView(usuarioLogueado);
-                        MenuSemanal menu_s_e= new MenuSemanal();
-
-                        // CAMBIO: Instanciar controladores aquí para evitar NullPointerException del Main
-                        new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e, null);
-                        new Controlador_MenuSemanal(null, empleado, menu_s_e);
-
-                        empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        empleado.setResizable(false);
-                        empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        empleado.setVisible(true);
-                        inicio_sesion.setVisible(false);
-                        inicio_sesion.dispose();
-                    }
-
-                    if((Rol.equals("Estudiante"))){
-                        AlumnoView alumno= new AlumnoView(usuarioLogueado);
-                        MenuSemanal menu_s= new MenuSemanal();
-                        
-                        // CAMBIO: Instanciar controladores aquí para evitar NullPointerException del Main
-                        new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, null);
-                        new Controlador_MenuSemanal(alumno, null, menu_s);
-
-                        alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        alumno.setResizable(false);
-                        alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                        alumno.setVisible(true);
-                        inicio_sesion.setVisible(false);
-                        inicio_sesion.dispose();
-                    }
-                 
-            }else{
-                // Si falla, se limpia usando los componentes originales
-                LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
-                JOptionPane.showMessageDialog(null, "Datos incorrectos");
+    // Pasamos los objetos JTextField y JPasswordField directamente como pide tu validador
+    if (validadorInicioS.validarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña())){
+        Rol = validadorInicioS.getRol();
+        Usuario usuarioLogueado = validadorInicioS.getUsuarioActual();
+            
+            if((Rol.equals("Administrador"))){
+                HomeAdmin admin = new HomeAdmin(usuarioLogueado);
+                admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                admin.setResizable(false);
+                admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                admin.setVisible(true);
+                inicio_sesion.setVisible(false);
+                inicio_sesion.dispose();
             }
-        }
+
+            if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
+                EmpleadoView empleado= new EmpleadoView(usuarioLogueado);
+                MenuSemanal menu_s_e= new MenuSemanal();
+
+                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e, null);
+                new Controlador_MenuSemanal(null, empleado, menu_s_e);
+
+                empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                empleado.setResizable(false);
+                empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                empleado.setVisible(true);
+                inicio_sesion.setVisible(false);
+                inicio_sesion.dispose();
+            }
+
+            if((Rol.equals("Estudiante"))){
+                AlumnoView alumno= new AlumnoView(usuarioLogueado);
+                MenuSemanal menu_s= new MenuSemanal();
+                
+                new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, null);
+                new Controlador_MenuSemanal(alumno, null, menu_s);
+
+                alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                alumno.setResizable(false);
+                alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                alumno.setVisible(true);
+                inicio_sesion.setVisible(false);
+                inicio_sesion.dispose();
+            }
+         
+    }else{
+        // Si falla, los mismos objetos se pasan para limpiar
+        LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
+    }
+}
 
         if(e.getSource()==inicio_sesion.getRegistro()){
             LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
