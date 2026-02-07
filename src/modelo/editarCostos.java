@@ -11,7 +11,64 @@ import org.json.JSONObject;
 
 public class editarCostos {
 
-    public static void agregarCF(String Nombre, String Costo){
+    public static String getCF(){
+        Path rutaCF = Paths.get("res/data/costosFijos.json").toAbsolutePath();
+        double sumaTotal = 0.0;
+
+        try{
+            if(Files.exists(rutaCF)){
+                String contenido = new String(Files.readAllBytes(rutaCF), StandardCharsets.UTF_8);
+                if(!contenido.trim().isEmpty()){
+                    JSONArray lista = new JSONArray(contenido);
+
+                    for(int i = 0; i < lista.length(); i++){
+                        JSONObject cf = lista.getJSONObject(i);
+                        sumaTotal += cf.getDouble("costo");
+                    }
+                }
+            }
+        }catch(IOException e){
+            return "Error";
+        }
+
+        return String.format("$%.2f", sumaTotal);
+    }
+
+    public static String actualizarTextArea() {
+        Path rutaCF=Paths.get("res/data/costosFijos.json").toAbsolutePath();
+        StringBuilder sb = new StringBuilder();
+        
+        sb.append("--- LISTA DE COSTOS FIJOS ---\n\n");
+
+        try{
+            if(Files.exists(rutaCF)){
+                String contenido = new String(Files.readAllBytes(rutaCF), StandardCharsets.UTF_8);
+                if(!contenido.trim().isEmpty()){
+                    JSONArray listaCF = new JSONArray(contenido);
+
+                    for(int i=0; i < listaCF.length(); i++){
+                        JSONObject cf = listaCF.getJSONObject(i);
+                        String nombre = cf.getString("nombre");
+                        
+                        double costo = cf.getDouble("costo"); 
+
+                        sb.append(String.format("- %-15s : $%10.2f\n", nombre, costo));
+                    }
+                }else{
+                    sb.append("(No existen costos fijos registrados)");
+                }
+            }else{
+                sb.append("(No se encontró el archivo de datos de costos fijos)");
+            }
+        }catch(IOException e){
+            return "Error al leer los datos: " + e.getMessage();
+        }
+
+        return sb.toString();
+    }
+
+
+    public static void agregarCF(String Nombre, double Costo){
         Path rutaCF = Paths.get("res/data/costosFijos.json").toAbsolutePath();
         JSONArray listaCF = new JSONArray();
         JSONObject nuevoCF = new JSONObject();
@@ -45,7 +102,7 @@ public class editarCostos {
         }
     }
 
-    public static void editarCF(String Nombre, String Costo){
+    public static void editarCF(String Nombre, double Costo){
         Path rutaCF = Paths.get("res/data/costosFijos.json").toAbsolutePath();
         JSONArray listaCF = new JSONArray();
 
