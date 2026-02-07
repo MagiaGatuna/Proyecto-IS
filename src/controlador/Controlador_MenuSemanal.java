@@ -31,14 +31,18 @@ public class Controlador_MenuSemanal implements ActionListener{
         hora= Calcular_dia.gethora();
         dia= Calcular_dia.getdia();
 
-        this.menu.getboton_dia("MONDAY").addActionListener(this);
-        this.menu.getboton_dia("TUESDAY").addActionListener(this);
-        this.menu.getboton_dia("WEDNESDAY").addActionListener(this);
-        this.menu.getboton_dia("THURSDAY").addActionListener(this);
-        this.menu.getboton_dia("FRIDAY").addActionListener(this);
-        this.menu.getvolver().addActionListener(this);
-        
+      String[] diasSemana = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
 
+for (String d : diasSemana) {
+    JButton btn = this.menu.getboton_dia(d);
+    if (btn != null) { // <--- EL IF VA AQUÍ
+        btn.addActionListener(this);
+    }
+}
+
+if (this.menu.getvolver() != null) {
+    this.menu.getvolver().addActionListener(this);
+}
         pintarboton(dia); 
         desactivar_botones(hora);
 
@@ -99,20 +103,26 @@ public class Controlador_MenuSemanal implements ActionListener{
         pintarboton(pinta);
         menu.repaint();
     }
-    
-    public void pintarboton(String hoy){
-            
-                menu.setColorBoton("FRIDAY",new Color(255,255,255));
-                menu.setColorBoton("THURSDAY",new Color(255,255,255));
-                menu.setColorBoton("WEDNESDAY",new Color(255,255,255));
-                menu.setColorBoton("TUESDAY",new Color(255,255,255));
-                menu.setColorBoton("MONDAY",new Color(255,255,255));
+public void pintarboton(String hoy) {
+    String[] diasArr = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
 
-                menu.setColorBoton(hoy,new Color(180,236,227));
+    // Ponemos todos en blanco, pero validando que existan
+    for (String d : diasArr) {
+        JButton b = menu.getboton_dia(d);
+        if (b != null) { // <--- OTRO IF AQUÍ
+            b.setBackground(new Color(255, 255, 255));
+        }
+    }
 
-                menu.repaint();
-            }
-
+    // Pintamos el día actual (hoy)
+    JButton btnHoy = menu.getboton_dia(hoy);
+    if (btnHoy != null) { // <--- EL IF MÁS IMPORTANTE
+        btnHoy.setBackground(new Color(180, 236, 227));
+    } else {
+        // Si hoy es SÁBADO (SATURDAY) o DOMINGO, el programa no se rompe
+        System.out.println("Hoy es fin de semana o el nombre no coincide: " + hoy);
+    }
+}
     public void desactivar_botones(int minutos){
         if(minutos>=420){
             menu.getreservas("desayuno").setEnabled(false);

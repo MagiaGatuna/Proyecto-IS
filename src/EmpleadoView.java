@@ -1,8 +1,9 @@
 package src;
 import javax.swing.*;
 import java.awt.*;
-import src.util.BotonUtil; 
-
+import src.util.Conectar_ventanas;
+import src.util.BotonUtil;
+import src.modelo.Usuario;
 public class EmpleadoView extends JFrame {
 
 
@@ -18,12 +19,16 @@ public class EmpleadoView extends JFrame {
     private JButton btnVerMenuSemanal;
     private JButton btnVerConsumos;
     private JButton btnCerrarSesion;
+    private JButton btnMonedero;
+    private Usuario userLogueado;
+    private JPanel panelContenedorMonedero;
 
-    public EmpleadoView(String username) {
+    public EmpleadoView(Usuario pr2) {
+        this.userLogueado = pr2;
         iniciarVentana();
         
         JPanel panelNorte = crearPanelSuperior();
-        JPanel panelCentro = crearPanelCentral(username);
+        JPanel panelCentro = crearPanelCentral(pr2.getNombre());
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
@@ -60,9 +65,16 @@ public class EmpleadoView extends JFrame {
 
         JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
         panel.add(lblIconoUCV);
-
+        panelContenedorMonedero = new JPanel(new BorderLayout());
+        panelContenedorMonedero.setOpaque(false); 
+        panel.add(panelContenedorMonedero);
         panel.add(Box.createHorizontalGlue());
-
+        JPanel contenedorBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 20));
+        contenedorBotones.setOpaque(false);
+        btnMonedero = new JButton("MONEDERO");
+        estilizarBoton(btnMonedero, Color.BLUE, new Dimension(130, 40)); 
+        btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
+        panel.add(btnMonedero);
         btnCerrarSesion = new JButton("CERRAR SESIÓN");
         estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
         BotonUtil.darEstiloBoton(btnCerrarSesion, 170, 40);
@@ -173,14 +185,22 @@ public class EmpleadoView extends JFrame {
     public JButton getinicio(){
         return btnCerrarSesion;
     }
-    public JButton getMenuS(){
+     public JButton getMenuS(){
         return btnVerMenuSemanal;
     }
     public JButton getMenuD(){
         return btnVerMenuDiario;
     }
-
+    public JPanel getPanelMonedero() {
+    return panelContenedorMonedero;
+}
     public static void main(String[] args) {
-            new EmpleadoView("USERNAME");
+            Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
+
+     EmpleadoView vista = new EmpleadoView(pruebaEstudiante);
+    
+    vista.setVisible(true);
+    
+    vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 }

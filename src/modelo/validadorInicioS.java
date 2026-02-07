@@ -87,4 +87,22 @@ public class validadorInicioS {
     public static String getRol(){
             return listaUsuarios.getJSONObject(indiceUsuarioEncontrado).getString("rol");
     }
+public static Usuario getUsuarioActual() {
+    if (indiceUsuarioEncontrado != -1) {
+        JSONObject datos = listaUsuarios.getJSONObject(indiceUsuarioEncontrado);
+        
+        // CAMBIO: Usar "nombres" en lugar de "nombre"
+        String nombreReal = datos.getString("nombres");
+        
+        // CAMBIO: Si el saldo no existe en el JSON, le ponemos 0.0 por defecto
+        double saldoReal = datos.has("saldo") ? datos.getDouble("saldo") : 0.0;
+        
+        return new Usuario(
+            nombreReal, 
+            saldoReal,
+            datos.getString("rol")
+        );
+    }
+    return null;
+}
 }

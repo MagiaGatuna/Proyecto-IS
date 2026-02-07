@@ -30,5 +30,13 @@
         "rol": "Estudiante",
         "nombres": "Alexandra",
         "contraseña": "123"
+    },
+    {
+        "apellidos": "Matheus",
+        "cedula": "1234",
+        "sexo": "Masculino",
+        "rol": "Administrador",
+        "nombres": "Cristian",
+        "contraseña": "1234"
     }
 ]

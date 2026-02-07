@@ -1,120 +1,59 @@
 {
-    // Use IntelliSense para saber los atributos posibles.
-    // Mantenga el puntero para ver las descripciones de los existentes atributos.
-    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-            "name": "AlumnoView",
-            "request": "launch",
-            "mainClass": "src.AlumnoView",
-            "projectName": "Proyecto-IS_bf4b1e30"
-        },
-        {
-            "type": "java",
-            "name": "MenuSemanal",
-            "request": "launch",
-            "mainClass": "src.MenuSemanal",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "PantallaPrincipal",
-            "request": "launch",
-            "mainClass": "src.PantallaPrincipal",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "Landingpage",
-            "request": "launch",
-            "mainClass": "src.Landingpage",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "MenuSemanal",
-            "request": "launch",
-            "mainClass": "src.MenuSemanal",
-            "projectName": "Proyecto-IS_bf4b1e30"
-        },
-        {
-            "type": "java",
             "name": "InicioSesion",
             "request": "launch",
-            "mainClass": "src.InicioSesion",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "Registro",
-            "request": "launch",
-            "mainClass": "src.Registro",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "EmpleadoView",
-            "request": "launch",
-            "mainClass": "src.EmpleadoView",
-            "projectName": "Proyecto-IS_bf4b1e30"
-        },
-        {
-            "type": "java",
-            "name": "EmpleadoView",
-            "request": "launch",
-            "mainClass": "src.EmpleadoView",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "AlumnoView",
-            "request": "launch",
-            "mainClass": "src.AlumnoView",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "EmpleadoView",
-            "request": "launch",
-            "mainClass": "EmpleadoView",
-            "projectName": "Proyecto-IS_bd5ad3b4"
-        },
-        {
-            "type": "java",
-            "name": "AlumnoView",
-            "request": "launch",
-            "mainClass": "AlumnoView",
-            "projectName": "Proyecto-IS_bd5ad3b4"
+            "mainClass": "src.InicioSesion"
         },
         {
             "type": "java",
             "name": "Main",
             "request": "launch",
-            "mainClass": "src.Main",
-            "projectName": "Proyecto-IS_c1f479ce"
+            "mainClass": "src.Main"
         },
         {
             "type": "java",
-            "name": "Main",
+            "name": "Monedero",
             "request": "launch",
-            "mainClass": "src.Main",
-            "projectName": "Proyecto-IS_bf4b1e30"
+            "mainClass": "src.Monedero"
+        },
+        {
+            "type": "java",
+            "name": "AlumnoView",
+            "request": "launch",
+            "mainClass": "src.AlumnoView"
+        },
+        {
+            "type": "java",
+            "name": "EmpleadoView",
+            "request": "launch",
+            "mainClass": "src.EmpleadoView"
+        },
+        {
+            "type": "java",
+            "name": "HomeAdmin",
+            "request": "launch",
+            "mainClass": "src.HomeAdmin"
         },
         {
             "type": "java",
             "name": "Registro",
             "request": "launch",
-            "mainClass": "src.Registro",
-            "projectName": "Proyecto-IS_bf4b1e30"
+            "mainClass": "src.Registro"
         },
         {
             "type": "java",
             "name": "Landingpage",
             "request": "launch",
-            "mainClass": "src.Landingpage",
-            "projectName": "Proyecto-IS_bf4b1e30"
+            "mainClass": "src.Landingpage"
+        },
+        {
+            "type": "java",
+            "name": "MenuSemanal",
+            "request": "launch",
+            "mainClass": "src.MenuSemanal"
         }
     ]
 }
