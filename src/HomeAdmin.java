@@ -36,7 +36,7 @@ public class HomeAdmin extends JFrame {
     //boton_cerrarsesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarInicioSesion());
     barraSuperior.add(boton_cerrarsesion); // Se agrega a la barra
 // Sección Menú
-    add(Diseño_interfaz.Creador_iconos("res/Menu.png", (espacio * 0) + (espacio/2) - 75, yIconos, 150, 150));
+    add(Diseño_interfaz.Creador_iconos("res/Menu.png", (espacio * 0) + (espacio/2) - 75, yIconos, 150, 130));
     add(Diseño_interfaz.Creador_Botones("EDITAR MENÚ SEMANAL", (espacio * 0) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
     
     add(Diseño_interfaz.Creador_Botones("EDITAR TURNOS", (espacio * 0) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul));
@@ -47,6 +47,8 @@ public class HomeAdmin extends JFrame {
 // Sección Inventario
     add(Diseño_interfaz.Creador_iconos("res/suministros.png", (espacio * 2) + (espacio/2) - 60, yIconos + 15, 120, 120));
     add(Diseño_interfaz.Creador_Botones("INVENTARIO", (espacio * 2) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
+    add(Diseño_interfaz.Creador_Botones("COSTOS FIJOS", (espacio * 2) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul));
+     add(Diseño_interfaz.Creador_Botones("COSTOS VARIABLES", (espacio * 2) + (espacio/2) - 90, yBotones + 100, 180, 40, Diseño_interfaz.colorazul));
 
 // Sección Consumos
     add(Diseño_interfaz.Creador_iconos("res/comida.png", (espacio * 3) + (espacio/2) - 60, yIconos + 15, 120, 120));
