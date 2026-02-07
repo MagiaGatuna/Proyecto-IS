@@ -6,5 +6,29 @@
         "rol": "Estudiante",
         "nombres": "Corina",
         "contraseña": "123"
+    },
+    {
+        "apellidos": "Moros",
+        "cedula": "12548736",
+        "sexo": "Femenino",
+        "rol": "Estudiante",
+        "nombres": "Elena",
+        "contraseña": "123456"
+    },
+    {
+        "apellidos": "Vanrouge",
+        "cedula": "22222222",
+        "sexo": "Masculino",
+        "rol": "Trabajador",
+        "nombres": "Lilia",
+        "contraseña": "1234567"
+    },
+    {
+        "apellidos": "A",
+        "cedula": "15151515",
+        "sexo": "Femenino",
+        "rol": "Estudiante",
+        "nombres": "Alexandra",
+        "contraseña": "123"
     }
 ]

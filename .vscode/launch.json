@@ -1,146 +1,59 @@
 {
-    // Use IntelliSense para saber los atributos posibles.
-    // Mantenga el puntero para ver las descripciones de los existentes atributos.
-    // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
             "type": "java",
-<<<<<<< Updated upstream
-            "name": "PantallaPrincipal",
+            "name": "InicioSesion",
             "request": "launch",
-            "mainClass": "src.PantallaPrincipal",
-            "projectName": "Proyecto-IS_c1f479ce"
-=======
-            "name": "AlumnoView",
-            "request": "launch",
-            "mainClass": "src.AlumnoView",
-            "projectName": "Comedor inge_161f220e"
+            "mainClass": "src.InicioSesion"
         },
         {
             "type": "java",
-            "name": "HomeAdmin",
+            "name": "Main",
             "request": "launch",
-            "mainClass": "src.HomeAdmin",
-            "projectName": "Comedor inge_161f220e"
+            "mainClass": "src.Main"
         },
         {
             "type": "java",
             "name": "Monedero",
             "request": "launch",
-            "mainClass": "src.Monedero",
-            "projectName": "Comedor inge_161f220e"
+            "mainClass": "src.Monedero"
+        },
+        {
+            "type": "java",
+            "name": "AlumnoView",
+            "request": "launch",
+            "mainClass": "src.AlumnoView"
         },
         {
             "type": "java",
             "name": "EmpleadoView",
             "request": "launch",
-            "mainClass": "src.EmpleadoView",
-            "projectName": "Comedor inge_161f220e"
+            "mainClass": "src.EmpleadoView"
+        },
+        {
+            "type": "java",
+            "name": "HomeAdmin",
+            "request": "launch",
+            "mainClass": "src.HomeAdmin"
         },
         {
             "type": "java",
             "name": "Registro",
             "request": "launch",
-            "mainClass": "src.Registro",
-            "projectName": "Comedor inge_161f220e"
->>>>>>> Stashed changes
+            "mainClass": "src.Registro"
         },
         {
             "type": "java",
             "name": "Landingpage",
             "request": "launch",
-            "mainClass": "src.Landingpage",
-<<<<<<< Updated upstream
-            "projectName": "Proyecto-IS_c1f479ce"
+            "mainClass": "src.Landingpage"
         },
         {
             "type": "java",
             "name": "MenuSemanal",
             "request": "launch",
-            "mainClass": "src.MenuSemanal",
-            "projectName": "Proyecto-IS_bf4b1e30"
-
-=======
-            "projectName": "Comedor inge_161f220e"
->>>>>>> Stashed changes
-        },
-        {
-            "type": "java",
-            "name": "InicioSesion",
-            "request": "launch",
-            "mainClass": "src.InicioSesion",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "Registro",
-            "request": "launch",
-            "mainClass": "src.Registro",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "EmpleadoView",
-            "request": "launch",
-            "mainClass": "src.EmpleadoView",
-            "projectName": "Proyecto-IS_bf4b1e30"
-        },
-        {
-            "type": "java",
-            "name": "EmpleadoView",
-            "request": "launch",
-            "mainClass": "src.EmpleadoView",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "AlumnoView",
-            "request": "launch",
-            "mainClass": "src.AlumnoView",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "EmpleadoView",
-            "request": "launch",
-            "mainClass": "EmpleadoView",
-            "projectName": "Proyecto-IS_bd5ad3b4"
-        },
-        {
-            "type": "java",
-            "name": "AlumnoView",
-            "request": "launch",
-            "mainClass": "AlumnoView",
-            "projectName": "Proyecto-IS_bd5ad3b4"
-        },
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "src.Main",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "src.Main",
-            "projectName": "Proyecto-IS_bf4b1e30"
-        },
-        {
-            "type": "java",
-            "name": "Registro",
-            "request": "launch",
-            "mainClass": "src.Registro",
-            "projectName": "Proyecto-IS_bf4b1e30"
-        },
-        {
-            "type": "java",
-            "name": "Landingpage",
-            "request": "launch",
-            "mainClass": "src.Landingpage",
-            "projectName": "Proyecto-IS_bf4b1e30"
+            "mainClass": "src.MenuSemanal"
         }
     ]
 }

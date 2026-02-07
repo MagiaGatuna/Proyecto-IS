@@ -188,6 +188,12 @@ public class EmpleadoView extends JFrame {
     public JButton getinicio(){
         return btnCerrarSesion;
     }
+    public JButton getMenuS(){
+        return btnVerMenuSemanal;
+    }
+    public JButton getMenuD(){
+        return btnVerMenuDiario;
+    }
 
     public static void main(String[] args) {
             Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "estudiante");

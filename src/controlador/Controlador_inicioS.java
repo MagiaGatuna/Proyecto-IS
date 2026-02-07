@@ -3,43 +3,41 @@ package src.controlador;
 import src.Landingpage;
 import src.Registro;
 import src.InicioSesion;
-import src.util.ValidarUtil;
 import src.HomeAdmin;
+import src.AlumnoView;
+import src.EmpleadoView;
+import src.MenuSemanal;
+import src.modelo.validadorInicioS;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 import javax.swing.*;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class Controlador_inicioS implements ActionListener{
     //getHome y getRegistro
     private Landingpage inicio;
     private Registro ventanaRegistro;
     private InicioSesion inicio_sesion;
-    private HomeAdmin admin;
 
     String Rol="";
 
-    public Controlador_inicioS(Landingpage inicio, Registro ventanaRegistro, InicioSesion inicio_sesion, HomeAdmin admin){
+    public Controlador_inicioS(Landingpage inicio, Registro ventanaRegistro, InicioSesion inicio_sesion){
         this.inicio=inicio;
         this.ventanaRegistro=ventanaRegistro;
         this.inicio_sesion=inicio_sesion;
-        this.admin=admin;
+       
         this.inicio_sesion.getRegistro().addActionListener(this);
         this.inicio_sesion.getHome().addActionListener(this);
-        this.admin.getHome2().addActionListener(this);
+
         this.inicio_sesion.getAdmin().addActionListener(this);
+        
     }
     @Override
     public void actionPerformed(ActionEvent e){
+        /* 
         if(e.getSource() == admin.getHome2()){
 
             inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -48,27 +46,51 @@ public class Controlador_inicioS implements ActionListener{
             inicio.setVisible(true);
             admin.setVisible(false);
 
-        }
+        }*/
         if(e.getSource() == inicio_sesion.getAdmin()){
-            if (validarInicioSesion()){
-                /*   
+            if (validadorInicioS.validarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña())){
+                Rol = validadorInicioS.getRol();
+                    
                     if((Rol.equals("Administrador"))){
-                        
+
+                        HomeAdmin admin= new HomeAdmin();
+                        admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                        admin.setResizable(false);
+                        admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                        admin.setVisible(true);
+                        inicio_sesion.setVisible(false);
+                        inicio_sesion.dispose();
                     }
                     if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
-        
+                    EmpleadoView empleado= new EmpleadoView("");//sustituyan la cedula por el nombre mas tarde
+                    MenuSemanal menu_s_e= new MenuSemanal();
+
+                    Controlador_Alumno_Empleado control5= new Controlador_Alumno_Empleado(inicio, null,empleado,menu_s_e);
+                    Controlador_MenuSemanal control6= new Controlador_MenuSemanal(null, empleado,menu_s_e);
+
+                    empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    empleado.setResizable(false);
+                    empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    empleado.setVisible(true);
+                    inicio_sesion.setVisible(false);
+                    inicio_sesion.dispose();
                         
                     }
                     if((Rol.equals("Estudiante"))){
-                    
+                    AlumnoView alumno= new AlumnoView("");//sustituyan la cedula por el nombre mas tarde
+                    MenuSemanal menu_s= new MenuSemanal();
+
+                    Controlador_Alumno_Empleado control4= new Controlador_Alumno_Empleado(inicio, alumno,null,menu_s);
+                    Controlador_MenuSemanal control7= new Controlador_MenuSemanal(alumno, null,menu_s);
+                    alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    alumno.setResizable(false);
+                    alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    alumno.setVisible(true);
+                    inicio_sesion.setVisible(false);
+                    inicio_sesion.dispose();
 
                     }
-                 */ 
-                admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                admin.setResizable(false);
-                admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                admin.setVisible(true);
-                inicio_sesion.setVisible(false);
+                 
             }
         }
         if(e.getSource()==inicio_sesion.getRegistro()){
@@ -89,60 +111,6 @@ public class Controlador_inicioS implements ActionListener{
 
         }
 
-    }
-
-    private boolean validarInicioSesion(){
-        StringBuilder errores = new StringBuilder();
-
-        if(ValidarUtil.campoEstaVacio(inicio_sesion.getCedula_id(), "Cédula de identidad")){
-            errores.append("- El campo Cédula es obligatorio\n\n");
-        } else if(!ValidarUtil.cedulaEsValida(inicio_sesion.getCedula_id())){
-            errores.append("- La cédula debe contener solo números\n");
-        }
-
-        if(ValidarUtil.campoEstaVacio(inicio_sesion.getContraseña(), "Contraseña")){
-            errores.append("- El campo Contraseña es obligatorio\n\n");
-        }
-        
-        if(errores.length()>0){
-            JOptionPane.showMessageDialog(null, "Por favor corrija los siguientes errores:\n\n" + errores.toString(),
-                "Errores en el formulario", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }else{
-            StringBuilder problemas = new StringBuilder();
-            try {
-                Path rutaRaiz = Paths.get("res/data/usuarios.json").toAbsolutePath();
-                if (!Files.exists(rutaRaiz)) {
-                    problemas.append("- Archivo no encontrado\n\n");
-                }
-                    
-                
-                String contenidoJson = new String(Files.readAllBytes(rutaRaiz), StandardCharsets.UTF_8);
-                JSONArray listaUsuarios = new JSONArray(contenidoJson);
-                int i=0;
-                for(; i<listaUsuarios.length(); i++){
-                    JSONObject usuario = listaUsuarios.getJSONObject(i);
-                    if(usuario.getString("cedula").trim().equals(inicio_sesion.getCedula_id().getText().trim())){
-                        if(usuario.getString("contraseña").equals(String.valueOf(inicio_sesion.getContraseña().getPassword()))){
-                            Rol=usuario.getString("rol");
-                            return true;
-                        } else {
-                            problemas.append("- Contraseña incorrecta\n\n");
-                            break;
-                        }
-                    }
-                }
-                if(i==listaUsuarios.length())
-                    problemas.append("- Usuario no registrado\n\n");
-            }catch(IOException e){
-                problemas.append("- Error al leer la base de datos de usuarios\n\n");
-            }
-
-            JOptionPane.showMessageDialog(null, "¡Lo sentimos! no se pudo iniciar sesion:\n\n" + problemas.toString(),
-                "Errores en el formulario", JOptionPane.ERROR_MESSAGE);
-            return false;
-        }
-        
     }
 
 }
