@@ -37,8 +37,6 @@ public class editarCostos {
     public static String actualizarTextArea() {
         Path rutaCF=Paths.get("res/data/costosFijos.json").toAbsolutePath();
         StringBuilder sb = new StringBuilder();
-        
-        sb.append("--- LISTA DE COSTOS FIJOS ---\n\n");
 
         try{
             if(Files.exists(rutaCF)){
@@ -52,7 +50,7 @@ public class editarCostos {
                         
                         double costo = cf.getDouble("costo"); 
 
-                        sb.append(String.format("- %-15s : $%10.2f\n", nombre, costo));
+                        sb.append(String.format("- %-15s   $ %.2f\n", nombre, costo));
                     }
                 }else{
                     sb.append("(No existen costos fijos registrados)");
@@ -119,7 +117,6 @@ public class editarCostos {
                 if(cf.getString("nombre").trim().equalsIgnoreCase(Nombre.trim())){
                     cf.put("costo", Costo); // Aquí se reemplaza el valor anterior
                     Files.write(rutaCF, listaCF.toString(4).getBytes(StandardCharsets.UTF_8));
-                    JOptionPane.showMessageDialog(null, "Costo actualizado correctamente");
                     return;
                 }
             }

@@ -3,6 +3,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GestorCVView",
+            "request": "launch",
+            "mainClass": "src.GestorCVView",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
+            "name": "GestorCFView",
+            "request": "launch",
+            "mainClass": "src.GestorCFView",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
+            "name": "GestorMenusView",
+            "request": "launch",
+            "mainClass": "src.GestorMenusView",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
+            "name": "MenuDView",
+            "request": "launch",
+            "mainClass": "src.MenuDView",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
             "name": "InicioSesion",
             "request": "launch",
             "mainClass": "src.InicioSesion"
