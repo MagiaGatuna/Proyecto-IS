@@ -34,8 +34,10 @@ public class Controlador_inicioS implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
+        System.out.println("Se presionó un botón: " + e.getActionCommand());
         if(e.getSource() == inicio_sesion.getAdmin()){
     // Pasamos los objetos JTextField y JPasswordField directamente como pide tu validador
+        System.out.println("Botón de Login detectado correctamente");
     if (validadorInicioS.validarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña())){
         Rol = validadorInicioS.getRol();
         Usuario usuarioLogueado = validadorInicioS.getUsuarioActual();
@@ -53,8 +55,9 @@ public class Controlador_inicioS implements ActionListener{
             if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
                 EmpleadoView empleado= new EmpleadoView(usuarioLogueado);
                 MenuSemanal menu_s_e= new MenuSemanal();
-
-                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e, null);
+                JPanel monederoTemp = new JPanel();
+                monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
+                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e,monederoTemp);
                 new Controlador_MenuSemanal(null, empleado, menu_s_e);
 
                 empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -68,8 +71,9 @@ public class Controlador_inicioS implements ActionListener{
             if((Rol.equals("Estudiante"))){
                 AlumnoView alumno= new AlumnoView(usuarioLogueado);
                 MenuSemanal menu_s= new MenuSemanal();
-                
-                new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, null);
+                JPanel monederoTemp = new JPanel();
+                monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
+                new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, monederoTemp);
                 new Controlador_MenuSemanal(alumno, null, menu_s);
 
                 alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
