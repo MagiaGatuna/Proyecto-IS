@@ -79,7 +79,6 @@ public class GestorMenusView extends JFrame {
 
 
     private JPanel crearPanelCentral() {
-        // Panel contenedor que tendrá 2 columnas (Izquierda y Derecha)
         JPanel panelCentral = new JPanel(new GridLayout(1, 2, 40, 0)); 
         panelCentral.setBackground(COLOR_FONDO_GRIS);
         panelCentral.setBorder(new EmptyBorder(20, 40, 40, 40)); 
