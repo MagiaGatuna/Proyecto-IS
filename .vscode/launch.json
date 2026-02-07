@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GestorMenusView",
+            "request": "launch",
+            "mainClass": "src.GestorMenusView",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
+            "name": "MenuDView",
+            "request": "launch",
+            "mainClass": "src.MenuDView",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
             "name": "InicioSesion",
             "request": "launch",
             "mainClass": "src.InicioSesion"
