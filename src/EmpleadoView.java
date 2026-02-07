@@ -1,7 +1,9 @@
 package src;
 import javax.swing.*;
 import java.awt.*;
-
+import src.util.Conectar_ventanas;
+import src.util.BotonUtil;
+import src.modelo.Usuario;
 public class EmpleadoView extends JFrame {
 
 
@@ -17,24 +19,35 @@ public class EmpleadoView extends JFrame {
     private JButton btnVerMenuSemanal;
     private JButton btnVerConsumos;
     private JButton btnCerrarSesion;
+    private JButton btnMonedero;
+    private Usuario userLogueado;
+    private JPanel panelContenedorMonedero;
 
-    public EmpleadoView(String username) {
+    public EmpleadoView(Usuario pr2) {
+        this.userLogueado = pr2;
         iniciarVentana();
         
         JPanel panelNorte = crearPanelSuperior();
-        JPanel panelCentro = crearPanelCentral(username);
+        JPanel panelCentro = crearPanelCentral(pr2.getNombre());
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
 
-        setVisible(true);
+       // setVisible(true);
     }
 
     private void iniciarVentana() {
-        setTitle("AlumnoView");
+        setTitle("EmpleadoView");
         try {
-            setIconImage(new ImageIcon("res/LogoUCV.png").getImage());
-        } catch (Exception e) { System.out.println("Logo no encontrado"); }
+            ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
+            if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
+                setIconImage(icon.getImage());
+            } else {
+                System.out.println("No se pudo cargar la imagen del icono.");
+            }
+        } catch (Exception e) {
+            System.out.println("No se pudo encontrar la imagen del icono: " + e.getMessage());
+        }
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setSize(screenSize.width, screenSize.height);
@@ -52,11 +65,19 @@ public class EmpleadoView extends JFrame {
 
         JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
         panel.add(lblIconoUCV);
-
+        panelContenedorMonedero = new JPanel(new BorderLayout());
+        panelContenedorMonedero.setOpaque(false); 
+        panel.add(panelContenedorMonedero);
         panel.add(Box.createHorizontalGlue());
-
+        JPanel contenedorBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 20));
+        contenedorBotones.setOpaque(false);
+        btnMonedero = new JButton("MONEDERO");
+        estilizarBoton(btnMonedero, Color.BLUE, new Dimension(130, 40)); 
+        btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
+        panel.add(btnMonedero);
         btnCerrarSesion = new JButton("CERRAR SESIÓN");
         estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
+        BotonUtil.darEstiloBoton(btnCerrarSesion, 170, 40);
         
         JPanel wrapperBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         wrapperBoton.setOpaque(false);
@@ -76,7 +97,7 @@ public class EmpleadoView extends JFrame {
 
         panel.add(Box.createVerticalStrut(5));
 
-        JLabel lblBienvenida = new JLabel("<html><center>!BIENVENIDO/A EMPLEADO/A<br>" + username + "¡</center></html>");
+        JLabel lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A EMPLEADO/A<br>" + username + "!</center></html>");
         lblBienvenida.setFont(new Font("Arial", Font.BOLD, 50));
         lblBienvenida.setForeground(COLOR_TEXTO_AZUL);
         lblBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -102,6 +123,7 @@ public class EmpleadoView extends JFrame {
 
         btnVerMenu = new JButton("VER MENÚ");
         estilizarBoton(btnVerMenu, COLOR_BOTON_PRINCIPAL, new Dimension(200, 40));
+        BotonUtil.darEstiloBoton(btnVerMenu, 200, 40);
         bloqueMenu.add(btnVerMenu);
 
         btnVerMenuDiario = new JButton("MENÚ DIARIO");
@@ -127,6 +149,7 @@ public class EmpleadoView extends JFrame {
 
         btnVerConsumos = new JButton("CONSUMOS");
         estilizarBoton(btnVerConsumos, COLOR_BOTON_PRINCIPAL, new Dimension(200, 40));
+        BotonUtil.darEstiloBoton(btnVerConsumos, 200, 40);
         bloqueConsumos.add(btnVerConsumos);
 
 
@@ -159,7 +182,25 @@ public class EmpleadoView extends JFrame {
         boton.setPreferredSize(dimension); 
     }
 
+    public JButton getinicio(){
+        return btnCerrarSesion;
+    }
+     public JButton getMenuS(){
+        return btnVerMenuSemanal;
+    }
+    public JButton getMenuD(){
+        return btnVerMenuDiario;
+    }
+    public JPanel getPanelMonedero() {
+    return panelContenedorMonedero;
+}
     public static void main(String[] args) {
-            new EmpleadoView("USERNAME");
+            Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
+
+     EmpleadoView vista = new EmpleadoView(pruebaEstudiante);
+    
+    vista.setVisible(true);
+    
+    vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 }

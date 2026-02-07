@@ -1,13 +1,27 @@
 package src;
 import javax.swing.*;
 import java.awt.*;
+import src.util.BotonUtil;
+import src.util.PasswordYPlaceholderUtil;
+
+
 
 
 
 public class Registro extends JFrame {
 
-    JPasswordField txtPassword;
-    JPasswordField txtConfirmPassword;
+    private JPasswordField txtPassword;
+    private JPasswordField txtConfirmPassword;
+    private JTextField txtNombres;
+    private JTextField txtApellidos;
+    private JTextField txtCedula;
+    private JTextField txtCorreo;
+    private JComboBox<String> comboCedula;
+    private JComboBox<String> comboSexo;
+    private JComboBox<String> comboRol;
+    private JButton btnAceptar;
+    private JButton btnHome;
+    private JLabel lblLogin;
 
     public Registro() {
     
@@ -17,21 +31,26 @@ public class Registro extends JFrame {
         getContentPane().setBackground(Color.WHITE);
 
 
-        try {
-            setIconImage(new ImageIcon(getClass().getResource("res/logoSistemaComedor.png")).getImage());
-        } catch (Exception e) {
-            System.out.println("No se pudo encontrar la imagen del icono.");
+        try{
+            ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
+            if(icon.getImageLoadStatus() == MediaTracker.COMPLETE){
+                setIconImage(icon.getImage());
+            }else{
+                System.out.println("No se pudo cargar la imagen del icono.");
+            }
+        }catch(Exception e){
+            System.out.println("No se pudo encontrar la imagen del icono: " + e.getMessage());
         }
 
         JPanel panelNorte = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
         panelNorte.setOpaque(false);
-        JButton btnHome = new JButton("HOME");
+        btnHome = new JButton("HOME");
         btnHome.setBackground(new Color(0x0E0989));
         btnHome.setForeground(Color.WHITE);
         btnHome.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
         btnHome.setFocusPainted(false);
         btnHome.setBorderPainted(false);
-        darEstiloBoton(btnHome,77,30);
+        BotonUtil.darEstiloBoton(btnHome,77,30);
         panelNorte.add(btnHome);
         add(panelNorte, BorderLayout.NORTH);
 
@@ -46,12 +65,20 @@ public class Registro extends JFrame {
         add(panelCentro, BorderLayout.CENTER);
 
 
-        ImageIcon Logo = new ImageIcon("res/LogoUCV.png");
-        Image LogoEscalado = Logo.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-        ImageIcon logoFinal = new ImageIcon(LogoEscalado);
-        JLabel etiquetaLogo = new JLabel(logoFinal);
-        etiquetaLogo.setBounds(200, 10, 140, 140);
-        tarjeta.add(etiquetaLogo);
+        try{
+            ImageIcon Logo = new ImageIcon("res/LogoUCV.png");
+            if(Logo.getImageLoadStatus() == MediaTracker.COMPLETE) {
+                Image LogoEscalado = Logo.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+                ImageIcon logoFinal = new ImageIcon(LogoEscalado);
+                JLabel etiquetaLogo = new JLabel(logoFinal);
+                etiquetaLogo.setBounds(200, 10, 140, 140);
+                tarjeta.add(etiquetaLogo);
+            }else{
+                System.out.println("No se pudo cargar el logo UCV.");
+            }
+        }catch (Exception e){
+            System.out.println("Error al cargar el logo UCV: " + e.getMessage());
+        }
 
         JLabel titulo = new JLabel("REGISTRO DEL COMEDOR");
         titulo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 24));
@@ -61,54 +88,41 @@ public class Registro extends JFrame {
         tarjeta.add(titulo);
 
 
-        agregarCampo(tarjeta, "Nombres", 20, 180);
+        txtNombres = agregarCampo(tarjeta, "Nombres", 20, 180);
 
-        JTextField cedula = new JTextField("Cédula de identidad");
-        cedula.setBounds(70, 230, 180, 40);
-        cedula.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-        cedula.setForeground(Color.GRAY);
-        tarjeta.add(cedula);
-        cedula.setBorder(BorderFactory.createCompoundBorder(
+        txtCedula = new JTextField("Cédula de identidad");
+        txtCedula.setBounds(70, 230, 180, 40);
+        txtCedula.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+        txtCedula.setForeground(Color.GRAY);
+        tarjeta.add(txtCedula);
+        txtCedula.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(new Color(0xCCCCCC), 1),
             BorderFactory.createEmptyBorder(0, 5, 0, 0)
         ));
 
-        cedula.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                if (cedula.getText().equals("Cédula de identidad")) {
-                    cedula.setText("");
-                    cedula.setForeground(Color.BLACK);
-                }
-            }
-
-            @Override
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                if (cedula.getText().isEmpty()) {
-                    cedula.setForeground(Color.GRAY);
-                    cedula.setText("Cédula de identidad");
-                }
-            }}
-        );
+        PasswordYPlaceholderUtil.configurarPlaceholder(txtNombres, "Nombres");
+        PasswordYPlaceholderUtil.configurarPlaceholder(txtCedula, "Cédula de identidad");
 
         String[] opcionesCedula = {"V-", "E-", "P-"};
-        JComboBox<String> comboCedula = new JComboBox<>(opcionesCedula);
+        comboCedula = new JComboBox<>(opcionesCedula);
         comboCedula.setBounds(20, 235, 45, 30);
         comboCedula.setBackground(Color.WHITE);
         tarjeta.add(comboCedula);
         comboCedula.setEditable(false);
 
         
-        agregarCampo(tarjeta, "Apellidos", 290, 180);
-        agregarCampo(tarjeta, "Correo Electrónico", 290, 230);
+        txtApellidos = agregarCampo(tarjeta, "Apellidos", 290, 180);
+        PasswordYPlaceholderUtil.configurarPlaceholder(txtApellidos, "Apellidos");
+        txtCorreo = agregarCampo(tarjeta, "Correo Electrónico", 290, 230);
+        PasswordYPlaceholderUtil.configurarPlaceholder(txtCorreo, "Correo Electrónico");
         
         JLabel etiquetaSexo = new JLabel("Sexo:");
         etiquetaSexo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
         etiquetaSexo.setBounds(20, 290, 540, 20);
         tarjeta.add(etiquetaSexo);
         
-        String[] opcionesSexo = {"", "Femenino", "Masculino"};
-        JComboBox<String> comboSexo = new JComboBox<>(opcionesSexo);
+        String[] opcionesSexo = {"", "Femenino", "Masculino", "Prefiero no decirlo"};
+        comboSexo = new JComboBox<>(opcionesSexo);
         comboSexo.setBounds(80, 285, 120, 30);
         comboSexo.setBackground(Color.WHITE);
         tarjeta.add(comboSexo);
@@ -119,84 +133,82 @@ public class Registro extends JFrame {
         etiquetaRol.setBounds(290, 290, 540, 20);
         tarjeta.add(etiquetaRol);
 
-        String[] opcionesRol = {"", "Estudiante", "Docente", "Trabajador"};
-        JComboBox<String> comboRol = new JComboBox<>(opcionesRol);
+        String[] opcionesRol = {"", "Estudiante", "Docente", "Trabajador", "Administrador"};
+        comboRol = new JComboBox<>(opcionesRol);
         comboRol.setBounds(335, 285, 120, 30);
         comboRol.setBackground(Color.WHITE);
         tarjeta.add(comboRol);
         comboRol.setEditable(false);
     
 
-        JButton btnAceptar = new JButton("ACEPTAR REGISTRO");
+        btnAceptar = new JButton("ACEPTAR REGISTRO");
         btnAceptar.setBounds(130, 400, 300, 40);
         btnAceptar.setBackground(new Color(0x4F4C96));
         btnAceptar.setForeground(Color.WHITE);
         btnAceptar.setFocusPainted(false);
         btnAceptar.setBorderPainted(false);
         btnAceptar.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-        darEstiloBoton(btnAceptar,300,40);
+        BotonUtil.darEstiloBoton(btnAceptar,300,40);
         tarjeta.add(btnAceptar);
 
         
-        
+            
+
+
 
         txtPassword = new JPasswordField();
         txtPassword.setBounds(20, 345, 190, 40);
-        configurarPasswordConPlaceholder(txtPassword, "Contraseña");
+        PasswordYPlaceholderUtil.configurarPasswordConPlaceholder(txtPassword, "Contraseña");
         tarjeta.add(txtPassword);
+        txtPassword.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(0xCCCCCC), 1),
+            BorderFactory.createEmptyBorder(0, 5, 0, 0)
+        ));
 
         
-        ImageIcon iconVer = new ImageIcon(new ImageIcon("res/ojoAbierto.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-        ImageIcon iconOcultar = new ImageIcon(new ImageIcon("res/ojoCerrado.png").getImage().getScaledInstance(20, 20, Image.SCALE_SMOOTH));
-
-        JToggleButton btnShowPass = new JToggleButton(iconVer);
-        btnShowPass.setBounds(210, 347, 35, 35);
-
-        btnShowPass.setContentAreaFilled(false); 
-        btnShowPass.setBorderPainted(false);
-        btnShowPass.setFocusPainted(false);
-        btnShowPass.setCursor(new Cursor(Cursor.HAND_CURSOR));
-    
-
-        btnShowPass.addActionListener(e -> {
-            if (btnShowPass.isSelected()) {
-                txtPassword.setEchoChar((char) 0); 
-                btnShowPass.setIcon(iconOcultar);  
-            } else {
-                txtPassword.setEchoChar('•');     
-                btnShowPass.setIcon(iconVer);     
-            }
-        });
-
-        tarjeta.add(btnShowPass);
-        tarjeta.setComponentZOrder(btnShowPass, 0);
-
+        JToggleButton ojo1 = PasswordYPlaceholderUtil.crearBotonMostrarOcultar(
+            txtPassword,
+            220, 355,
+            20, 20
+        );
+        tarjeta.add(ojo1);
         
 
         txtConfirmPassword = new JPasswordField();
         txtConfirmPassword.setBounds(290, 345, 190, 40);
         tarjeta.add(txtConfirmPassword);
-        configurarPasswordConPlaceholder(txtConfirmPassword, "Confirmar Contraseña");
+        PasswordYPlaceholderUtil.configurarPasswordConPlaceholder(txtConfirmPassword, "Confirmar Contraseña");
+        txtConfirmPassword.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(0xCCCCCC), 1),
+            BorderFactory.createEmptyBorder(0, 5, 0, 0)
+        ));
 
-        JLabel lblLogin = new JLabel("¿Ya tienes cuenta? Inicia sesión aquí");
+        JToggleButton ojo2 = PasswordYPlaceholderUtil.crearBotonMostrarOcultar(
+            txtConfirmPassword,
+            490, 355,
+            20, 20
+        );
+        tarjeta.add(ojo2);
+
+        lblLogin = new JLabel("¿Ya tienes una cuenta? Inicia sesión aquí");
         lblLogin.setBounds(0, 450, 540, 20);
         lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
         lblLogin.setForeground(new Color(0x4F4C96));
         lblLogin.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
-        lblLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblLogin.addMouseListener(new java.awt.event.MouseAdapter(){
             @Override
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+            public void mouseClicked(java.awt.event.MouseEvent evt){
                 System.out.println("Abriendo ventana de Login...");
             }
 
             @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
+            public void mouseEntered(java.awt.event.MouseEvent evt){
                 lblLogin.setText("<html><u>¿Ya tienes cuenta? Inicia sesión aquí</u></html>");
             }
 
             @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
+            public void mouseExited(java.awt.event.MouseEvent evt){
                 lblLogin.setText("¿Ya tienes cuenta? Inicia sesión aquí");
             }
         });
@@ -206,7 +218,7 @@ public class Registro extends JFrame {
     }
 
     
-    private void agregarCampo(JPanel panel, String texto, int x, int y) {
+    private JTextField agregarCampo(JPanel panel, String texto, int x, int y){
         JTextField campo = new JTextField(texto);
         campo.setBounds(x, y, 230, 40);
         campo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
@@ -216,98 +228,24 @@ public class Registro extends JFrame {
             BorderFactory.createLineBorder(new Color(0xCCCCCC), 1),
             BorderFactory.createEmptyBorder(0, 5, 0, 0)
         ));
-
-        campo.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                if (campo.getText().equals(texto)) {
-                    campo.setText("");
-                    campo.setForeground(Color.BLACK);
-                }
-            }
-
-            @Override
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                if (campo.getText().isEmpty()) {
-                    campo.setForeground(Color.GRAY);
-                    campo.setText(texto);
-                }
-            }}
-        );
+        
+        return campo;
     }
 
-    private void darEstiloBoton(JButton boton, int ancho, int alto) {
-        
-        Color colorOriginal = boton.getBackground();
-        Color colorHover = colorOriginal.brighter(); 
-        
-        Dimension dimension = new Dimension(ancho, alto);
-        boton.setPreferredSize(dimension);
-        boton.setMinimumSize(dimension);
-        boton.setMaximumSize(dimension);
     
-        boton.setFocusPainted(false);
-        boton.setBorderPainted(false); 
-        boton.setContentAreaFilled(true);
 
-        boton.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                boton.setBackground(colorHover);
-                boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-            }
-
-            @Override
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                boton.setBackground(colorOriginal);
-                boton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
-            }
-        });
-    }
-
-    private void configurarPasswordConPlaceholder(JPasswordField campo, String texto) {
-        
-        campo.setEchoChar((char) 0); 
-        campo.setText(texto);
-        campo.setForeground(Color.GRAY);
-        campo.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-
-        campo.addFocusListener(new java.awt.event.FocusAdapter() {
-            @Override
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                
-                String passActual = new String(campo.getPassword());
-                if (passActual.equals(texto)) {
-                    campo.setText("");
-                    campo.setEchoChar('•'); 
-                    campo.setForeground(Color.BLACK);
-                }
-            }
-
-            @Override
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                
-                if (campo.getPassword().length == 0) {
-                    campo.setEchoChar((char) 0); 
-                    campo.setText(texto);
-                    campo.setForeground(Color.GRAY);
-                }
-            }
-        });
-    }
-
-    class PanelRedondeado extends JPanel {
+    class PanelRedondeado extends JPanel{
         private int radio;
         private Color colorFondo;
 
-        public PanelRedondeado(int radio, Color color) {
+        public PanelRedondeado(int radio, Color color){
             this.radio = radio;
             this.colorFondo = color;
             setOpaque(false);
         }
 
         @Override
-        protected void paintComponent(Graphics g) {
+        protected void paintComponent(Graphics g){
             Graphics2D g2 = (Graphics2D) g;
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             g2.setColor(colorFondo);
@@ -315,7 +253,30 @@ public class Registro extends JFrame {
             super.paintComponent(g);
         }
     }
-    public static void main(String args[]) {
+    
+    public JButton getAceptar(){
+        return btnAceptar;
+    }
+    
+    public JButton getHome(){
+        return btnHome;
+    }
+    
+    public JLabel getinicio_label(){
+        return lblLogin;
+    }
+
+    public JTextField getTxtNombres() { return txtNombres; }
+    public JTextField getTxtApellidos() { return txtApellidos; }
+    public JTextField getTxtCedula() { return txtCedula; }
+    public JTextField getTxtCorreo() { return txtCorreo; }
+    public JPasswordField getTxtPassword() { return txtPassword; }
+    public JPasswordField getTxtConfirmPassword() { return txtConfirmPassword; }
+    public JComboBox<String> getComboSexo() { return comboSexo; }
+    public JComboBox<String> getComboRol() { return comboRol; }
+    public JComboBox<String> getComboCedula() { return comboCedula; }
+
+    public static void main(String args[]){
     
         Registro ventanaRegistro = new Registro();
         ventanaRegistro.setBounds(0, 0, 640, 640);
@@ -323,8 +284,5 @@ public class Registro extends JFrame {
         
         ventanaRegistro.setLocationRelativeTo(null);
         ventanaRegistro.setVisible(true);
-
-        
     }
 }
-    
