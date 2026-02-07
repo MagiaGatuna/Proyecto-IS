@@ -7,6 +7,7 @@ import src.HomeAdmin;
 import src.AlumnoView;
 import src.EmpleadoView;
 import src.MenuSemanal;
+import src.modelo.Usuario;
 import src.modelo.validadorInicioS;
 
 import java.awt.event.ActionEvent;
@@ -50,10 +51,11 @@ public class Controlador_inicioS implements ActionListener{
         if(e.getSource() == inicio_sesion.getAdmin()){
             if (validadorInicioS.validarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña())){
                 Rol = validadorInicioS.getRol();
+                Usuario usuarioLogueado = validadorInicioS.getUsuarioActual();
                     
                     if((Rol.equals("Administrador"))){
 
-                        HomeAdmin admin= new HomeAdmin();
+                       HomeAdmin admin = new HomeAdmin(usuarioLogueado);
                         admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
                         admin.setResizable(false);
                         admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,7 +64,7 @@ public class Controlador_inicioS implements ActionListener{
                         inicio_sesion.dispose();
                     }
                     if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
-                    EmpleadoView empleado= new EmpleadoView("");//sustituyan la cedula por el nombre mas tarde
+                    EmpleadoView empleado= new EmpleadoView(usuarioLogueado);//sustituyan la cedula por el nombre mas tarde
                     MenuSemanal menu_s_e= new MenuSemanal();
 
                     Controlador_Alumno_Empleado control5= new Controlador_Alumno_Empleado(inicio, null,empleado,menu_s_e);
@@ -77,7 +79,7 @@ public class Controlador_inicioS implements ActionListener{
                         
                     }
                     if((Rol.equals("Estudiante"))){
-                    AlumnoView alumno= new AlumnoView("");//sustituyan la cedula por el nombre mas tarde
+                    AlumnoView alumno= new AlumnoView(usuarioLogueado);//sustituyan la cedula por el nombre mas tarde
                     MenuSemanal menu_s= new MenuSemanal();
 
                     Controlador_Alumno_Empleado control4= new Controlador_Alumno_Empleado(inicio, alumno,null,menu_s);

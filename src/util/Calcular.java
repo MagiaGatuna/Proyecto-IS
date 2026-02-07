@@ -1,5 +1,5 @@
-package src;
-
+package src.util;
+import src.modelo.Usuario;
 public class Calcular {
    
     public static double CCB = 5.0; 

@@ -1,10 +1,9 @@
 package src;
 import javax.swing.*;
-
 import src.util.BotonUtil;
-
 import java.awt.*;
 import src.util.Conectar_ventanas;
+import src.modelo.Usuario;
 public class AlumnoView extends JFrame {
 
 

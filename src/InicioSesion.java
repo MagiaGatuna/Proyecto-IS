@@ -1,75 +1,13 @@
 package src;
 
 import javax.swing.*;
+import java.awt.*;
 
 import src.util.BotonUtil;
 import src.util.PasswordYPlaceholderUtil;
-
-import java.awt.*;
-<<<<<<< Updated upstream
-//import java.awt.event.ActionListener;
-
-=======
-import java.awt.event.ActionListener;
 import src.util.Conectar_ventanas;
->>>>>>> Stashed changes
-//la clase que contiena la factorizacion
-class Diseño_interfaz {
-
-public static final Color colorazul=new Color(60, 60, 140);
-public static final Color turquesa=new Color(158, 200, 185);
-
-//factorizamos los elementos mas comunes
-public static JButton Creador_Botones(String texto, int x, int y, int ancho, int alto, Color fondo){
-    JButton nuevo_boton = new JButton(texto);//creamos un objeto para el boton
-    nuevo_boton.setBounds(x, y,ancho, alto);//colocamos las coordenadas de el nuevo objeto
-    nuevo_boton.setBackground(fondo);//Por diseño,aqui agregariamos el color azul
-    nuevo_boton.setForeground(Color.WHITE);//Para legibilidad, agregamos color blanco a las letras de el boton
-    nuevo_boton.setFocusable(false);
-    return nuevo_boton;//retornamos el nuevo diseño
-}
-
-public static JLabel Creador_iconos(String ruta, int x, int y, int ancho, int alto){
-
-    ImageIcon icono= new ImageIcon(ruta);//creamos un objeto que busque la imagen en la carpeta
-    Image copiaicono= icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);//extraemos la informacion de la imagen,luego copia esos datos y cmabia el tamaño,y le indica que no sea pixeleada
-    ImageIcon icono_final = new ImageIcon(copiaicono);//creamos un objeto que tenga el nuevo logo ajustado a nuestro panel
-    JLabel etiqueta = new JLabel(icono_final);//creamos el objeto para que la imgen sea visible,donde va a estar 
-    etiqueta.setBounds(x, y, ancho, alto);//colocamos las coordenadas, segun el diseño
-    return etiqueta;
-} 
-  }
-<<<<<<< Updated upstream
-
-//como se nos explico en clase, usamos el patron Singleton para cambiar de ventanas 
-class Conectar_ventanas {
-    private static Conectar_ventanas instancia;//guarda la copia de la clase
-    private JFrame ventanaActual;//un oabjeto vetnana 
-
-    private Conectar_ventanas() {}//hacemos un constructor para que nadie cree copias accidentales
-
-    public static Conectar_ventanas getInstancia() {
-    if (instancia == null) instancia = new Conectar_ventanas();//si la instancia esta vacia, creeaala
-    return instancia;//en cualquier caso devuelve la que ya existe
-    }
-    //para los camabios de las ventanas 
-    public void mostrarInicioSesion() {
-    cambiarVentana(new InicioSesion());//si la llmamos es porque queremos ver esta ventana
-    }
-
-    private void cambiarVentana(JFrame nueva) {//aqui nos aseguramos de que al abrir la ventana la vieja se cierre 
-    if (ventanaActual != null) ventanaActual.dispose();
-    ventanaActual = nueva;
-    ventanaActual.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    ventanaActual.setExtendedState(JFrame.MAXIMIZED_BOTH);
-    ventanaActual.setLocationRelativeTo(null);
-    ventanaActual.setVisible(true);
-    }
-}
-
-
-=======
->>>>>>> Stashed changes
+import src.util.Diseño_interfaz;
+import src.modelo.Usuario;
 //inicio de sesion
 public class InicioSesion extends JFrame { 
     //declacion de elementos a usar
@@ -185,25 +123,21 @@ public class InicioSesion extends JFrame {
  public JButton getRegistro(){
     return boton_Registro;
  }
-<<<<<<< Updated upstream
- public JButton getAdmin(){
-    return boton_InicioSesion;
-=======
 Usuario pruebaAdmin = new Usuario("Admin Valentina", 0.0, "empleado");
  HomeAdmin redirecadmin= new HomeAdmin(pruebaAdmin);
 
- public JButton getBotonadmin(){
-    return redirecadmin.getHome2();
->>>>>>> Stashed changes
- }
+public JButton getAdmin() { 
+    return boton_InicioSesion; 
+}
 
- public JPasswordField getContraseña(){
-    return contraseña;
- }
+public JTextField getCedula_id() { 
+    return cedula_id; 
+}
 
- 
+public JPasswordField getContraseña() { 
+    return contraseña; 
+}
 
-public JTextField getCedula_id() { return cedula_id; }
   public static void main(String args[]) { 
         Conectar_ventanas.getInstancia().mostrarInicioSesion();
     }

@@ -87,4 +87,17 @@ public class validadorInicioS {
     public static String getRol(){
             return listaUsuarios.getJSONObject(indiceUsuarioEncontrado).getString("rol");
     }
+
+    public static Usuario getUsuarioActual() {
+    if (indiceUsuarioEncontrado != -1) {
+        JSONObject datos = listaUsuarios.getJSONObject(indiceUsuarioEncontrado);
+        // Creamos el objeto Usuario con los datos del JSON
+        return new Usuario(
+            datos.getString("nombre"), // Asumo que tienes "nombre" en el JSON
+            datos.getDouble("saldo"),  // y "saldo"
+            datos.getString("rol")
+        );
+    }
+    return null;
+}
 }

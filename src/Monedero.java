@@ -2,6 +2,8 @@ package src;
 import javax.swing.*;
 import java.awt.*;
 import src.util.Calcular;
+import src.util.Diseño_interfaz;
+import src.modelo.Usuario;
 
 public class Monedero extends JPanel {
  //declaramos los elementos a utilizar 

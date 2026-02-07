@@ -2,7 +2,7 @@ package src.util;
 import src.InicioSesion;
 import src.HomeAdmin;
 import src.Monedero;
-import src.Usuario;
+import src.modelo.Usuario;
 import javax.swing.*; 
 import java.awt.*;
 //como se nos explico en clase, usamos el patron Singleton para cambiar de ventanas 

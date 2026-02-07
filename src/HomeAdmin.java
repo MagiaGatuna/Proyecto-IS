@@ -1,12 +1,10 @@
 package src;
 import javax.swing.*;
-
 import src.util.BotonUtil;
-
 import java.awt.*;
-import java.awt.event.ActionListener;
 import src.util.Conectar_ventanas;
-
+import src.util.Diseño_interfaz;
+import src.modelo.Usuario;
 
 public class HomeAdmin extends JFrame {
   JButton boton_cerrarsesion;
@@ -16,31 +14,13 @@ public class HomeAdmin extends JFrame {
   JButton boton_Inventario;
   JButton boton_Consumos;
   JLabel labela;
-<<<<<<< Updated upstream
-
-   public HomeAdmin(){
-
-    try {
-        ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
-        if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
-            setIconImage(icon.getImage());
-        } else {
-            System.out.println("No se pudo cargar la imagen del icono.");
-        }
-    } catch (Exception e) {
-        System.out.println("No se pudo encontrar la imagen del icono: " + e.getMessage());
-    }
-
-=======
   private Usuario userActivo;
    public HomeAdmin(Usuario u){
     this.userActivo = u;
->>>>>>> Stashed changes
     setLayout(null);
      //centrammos la barra
     Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     int anchoP = pantalla.width;
-    int altoP = pantalla.height;
     int espacio = anchoP / 4;
     int yIconos = 280;
     int yBotones = 420;
@@ -94,9 +74,6 @@ btnMonedero.addActionListener(e -> {
   public JButton getHome2(){
     return boton_cerrarsesion;
   }
-<<<<<<< Updated upstream
-  
-=======
   public void cierra(){
     this.setVisible(false);
     this.dispose();
@@ -111,5 +88,4 @@ btnMonedero.addActionListener(e -> {
     frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // Para que abra en pantalla completa
     frame.setVisible(true);
 }
->>>>>>> Stashed changes
 }

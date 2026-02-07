@@ -1,4 +1,4 @@
-package src;
+package src.modelo;
 
 public class Usuario {
     private String nombre;
