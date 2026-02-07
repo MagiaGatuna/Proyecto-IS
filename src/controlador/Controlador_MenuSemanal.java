@@ -21,6 +21,7 @@ public class Controlador_MenuSemanal implements ActionListener{
 
     private int hora;
     private String dia;
+    private String pinta;
 
     public Controlador_MenuSemanal(AlumnoView alumno,EmpleadoView empleado,MenuSemanal menu){
         this.alumno= alumno;
@@ -75,36 +76,42 @@ public class Controlador_MenuSemanal implements ActionListener{
         }
         
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario
-            pintarboton("MONDAY");
+        pinta = "MONDAY";
 
         }
         if(e.getSource()==menu.getboton_dia("TUESDAY")){//Aqui va un && con el JSON del tipo de usuario
-            pintarboton("TUESDAY");
+            pinta = "TUESDAY";
             
         }
         if(e.getSource()==menu.getboton_dia("WEDNESDAY")){//Aqui va un && con el JSON del tipo de usuario
-            pintarboton("WEDNESDAY");
+             pinta = "WEDNESDAY";
 
         }
         if(e.getSource()==menu.getboton_dia("THURSDAY")){//Aqui va un && con el JSON del tipo de usuario
-            pintarboton("THURSDAY");
+             pinta = "THURSDAY";
             
         }
         if(e.getSource()==menu.getboton_dia("FRIDAY")){//Aqui va un && con el JSON del tipo de usuario
-            pintarboton("FRIDAY");
+             pinta = "FRIDAY";
             
         }
 
+        pintarboton(pinta);
+        menu.repaint();
     }
-
+    
     public void pintarboton(String hoy){
-                menu.getboton_dia("MONDAY").setBackground(new Color(255,255,255));
-                menu.getboton_dia("TUESDAY").setBackground(new Color(255,255,255));
-                menu.getboton_dia("WEDNESDAY").setBackground(new Color(255,255,255));
-                menu.getboton_dia("THURSDAY").setBackground(new Color(255,255,255));
-                menu.getboton_dia("FRIDAY").setBackground(new Color(255,255,255));
-                menu.getboton_dia(hoy).setBackground(new Color(180,236,227));
-    }
+            
+                menu.setColorBoton("FRIDAY",new Color(255,255,255));
+                menu.setColorBoton("THURSDAY",new Color(255,255,255));
+                menu.setColorBoton("WEDNESDAY",new Color(255,255,255));
+                menu.setColorBoton("TUESDAY",new Color(255,255,255));
+                menu.setColorBoton("MONDAY",new Color(255,255,255));
+
+                menu.setColorBoton(hoy,new Color(180,236,227));
+
+                menu.repaint();
+            }
 
     public void desactivar_botones(int minutos){
         if(minutos>=420){

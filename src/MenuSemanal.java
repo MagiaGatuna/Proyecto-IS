@@ -365,17 +365,27 @@ public class MenuSemanal extends JFrame{
         return null;
     }
 
+    public void setColorBoton(String hoy, Color colorcito){
+        JButton boton_auxiliar= getboton_dia(hoy);
+        if(boton_auxiliar != null){
+            boton_auxiliar.setBackground(colorcito);
+            boton_auxiliar.setBorderPainted(false);
+            boton_auxiliar.setOpaque(true);
+            boton_auxiliar.setContentAreaFilled(true);
+        }
+
+    }
 
     public JButton getboton_dia(String diferenciador){
-        if (diferenciador=="MONDAY"){
+        if (diferenciador.equals("MONDAY")){
             return lunes;
-        }else if (diferenciador=="TUESDAY"){
+        }else if (diferenciador.equals("TUESDAY")){
             return martes;
-        }else if (diferenciador=="WEDNESDAY"){
+        }else if (diferenciador.equals("WEDNESDAY")){
             return miercoles;
-        }else if (diferenciador=="THURSDAY"){
+        }else if (diferenciador.equals("THURSDAY")){
             return jueves;
-        }else if (diferenciador=="FRIDAY"){
+        }else if (diferenciador.equals("FRIDAY")){
             return viernes;
         }else{
             return null;
