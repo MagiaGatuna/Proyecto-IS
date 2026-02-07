@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MenuDView",
+            "request": "launch",
+            "mainClass": "src.MenuDView",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
+            "name": "AlumnoView",
+            "request": "launch",
+            "mainClass": "src.AlumnoView",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
+            "name": "Landingpage",
+            "request": "launch",
+            "mainClass": "src.Landingpage",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
+            "name": "EmpleadoView",
+            "request": "launch",
+            "mainClass": "src.EmpleadoView",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "src.Main",
+            "projectName": "Proyecto-IS_bd5ad3b4"
+        },
+        {
+            "type": "java",
             "name": "EmpleadoView",
             "request": "launch",
             "mainClass": "EmpleadoView",
