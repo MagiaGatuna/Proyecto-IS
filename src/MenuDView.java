@@ -6,7 +6,8 @@ import java.awt.*;
 
 public class MenuDView extends JFrame {
 
-    String diaSemana, diaMes, MM, AA;
+    String diaSemana, MM;
+    int diaMes, AA;
     String Nombre;
     String Descripcion;
     int ValNutri;
@@ -22,7 +23,12 @@ public class MenuDView extends JFrame {
     private JButton btnHome;
     private JButton btnCerrarSesion;
 
-    public MenuDView() {
+    public MenuDView(String diaSemana, int diaMes, String MM, int AA) {
+
+        this.diaSemana = diaSemana;
+        this.diaMes = diaMes;
+        this.MM = MM;
+        this.AA = AA;
 
         iniciarVentana();
 
@@ -106,15 +112,12 @@ public class MenuDView extends JFrame {
                 panel.add(mensajeMD);
             panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            JLabel mensajeFecha= new JLabel(diaSemana + diaMes + "de" + MM + AA);
+            JLabel mensajeFecha= new JLabel(diaSemana + " " +  diaMes + " de " + MM + " " + AA);
             estilizarMensaje(mensajeFecha, COLOR_TEXTO_TITULO, 45);
             mensajeFecha.setAlignmentX(Component.CENTER_ALIGNMENT);
             mensajeFecha.setHorizontalAlignment(SwingConstants.CENTER); 
                 panel.add(mensajeFecha);
             panel.add(Box.createRigidArea(new Dimension(0, 15)));
-
-            Fecha(diaSemana, diaMes, MM, AA); // funcion auxiliar pa simplifica'
-            MenuDiario(Nombre, Descripcion, ValNutri); // funcion auxiliar pa simplifica' x2
 
             JPanel menusD= new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
             menusD.setOpaque(false);
@@ -222,14 +225,6 @@ public class MenuDView extends JFrame {
 }
 
 
-    public void Fecha(String diaSemana, String diaMes, String MM, String AA){
-
-        // extrae fecha de la base de datos y modifica una variable ya creada
-
-        // Posiblemente tambien traudctor de fecha de base de datos a un lenguaje mas casual para el jlabel
-
-    }
-
     public void MenuDiario(String Nombre, String Descripcion, int ValNutri){
 
 
@@ -237,17 +232,5 @@ public class MenuDView extends JFrame {
         // extrae menu en base a la fecha y modifica valores importantes de la base de datos
 
 
-
     }
-
-
-
-
-
-    public static void main(String[] args) {
-
-            new MenuDView();
-
-    }
-
 }
