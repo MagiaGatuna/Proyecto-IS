@@ -64,11 +64,11 @@ public class AlumnoView extends JFrame {
 
         JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
         panel.add(lblIconoUCV);
-
+/* 
         panelContenedorMonedero = new JPanel(new BorderLayout());
     panelContenedorMonedero.setOpaque(false); 
     panel.add(panelContenedorMonedero);
-
+*/
         panel.add(Box.createHorizontalGlue());
 
         btnCerrarSesion = new JButton("CERRAR SESIÓN");
