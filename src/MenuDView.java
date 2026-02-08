@@ -116,7 +116,7 @@ public class MenuDView extends JFrame {
             Fecha(diaSemana, diaMes, MM, AA); // funcion auxiliar pa simplifica'
             MenuDiario(Nombre, Descripcion, ValNutri); // funcion auxiliar pa simplifica' x2
 
-            JPanel menusD= new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 10));
+            JPanel menusD= new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
             menusD.setOpaque(false);
             menusD.setBackground(COLOR_HEADER);
 
@@ -126,6 +126,9 @@ public class MenuDView extends JFrame {
                 JPanel tarjetaAlmuerzo = crearTarjetaEstandar("Almuerzo", "null", "null", "null");
                 menusD.add(tarjetaAlmuerzo);
 
+                JPanel tarjetaCena = crearTarjetaEstandar("Cena", "null", "null", "null");
+                menusD.add(tarjetaCena);
+
             panel.add(menusD);
 
             return panel;
@@ -134,7 +137,7 @@ public class MenuDView extends JFrame {
 
     private JPanel crearPanelInferior() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 205));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 65));
         panel.setBackground(COLOR_HEADER);
             
             btnVerTurnos= new JButton("Ver turnos");
@@ -188,7 +191,7 @@ public class MenuDView extends JFrame {
     JPanel tarjeta = new JPanel();
     tarjeta.setLayout(new BoxLayout(tarjeta, BoxLayout.Y_AXIS)); 
     tarjeta.setBackground(Color.WHITE); 
-    tarjeta.setPreferredSize(new Dimension(450, 300)); 
+    tarjeta.setPreferredSize(new Dimension(400, 300)); 
     tarjeta.setBorder(BorderFactory.createEmptyBorder(20, 5, 20, 20));
 
         JLabel lblTitulo = new JLabel(titulo);
