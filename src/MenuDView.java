@@ -21,7 +21,6 @@ public class MenuDView extends JFrame {
 
     private JButton btnVerTurnos;
     private JButton btnHome;
-    private JButton btnCerrarSesion;
 
     public MenuDView(String diaSemana, int diaMes, String MM, int AA) {
 
@@ -70,9 +69,6 @@ public class MenuDView extends JFrame {
             btnHome= new JButton("HOME");
             estilizarBoton(btnHome, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
 
-            btnCerrarSesion = new JButton("Cerrar sesion");
-            estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(150, 40));
-
             JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
 
             JLabel txtTitulo = new JLabel("MENU DEL DÍA");
@@ -91,7 +87,6 @@ public class MenuDView extends JFrame {
                 derechaNorteSuperior.setOpaque(false);
                 derechaNorteSuperior.setBorder(BorderFactory.createEmptyBorder(60, 0, 0, 0));
                 derechaNorteSuperior.add(btnHome);
-                derechaNorteSuperior.add(btnCerrarSesion);
                     panel.add(derechaNorteSuperior);
 
 
@@ -123,13 +118,13 @@ public class MenuDView extends JFrame {
             menusD.setOpaque(false);
             menusD.setBackground(COLOR_HEADER);
 
-                JPanel tarjetaDesayuno = crearTarjetaEstandar("Desayuno", "null", "null", "null");
+                JPanel tarjetaDesayuno = crearTarjetaEstandar("Desayuno", "", "", "");
                 menusD.add(tarjetaDesayuno);
 
-                JPanel tarjetaAlmuerzo = crearTarjetaEstandar("Almuerzo", "null", "null", "null");
+                JPanel tarjetaAlmuerzo = crearTarjetaEstandar("", "", "", "");
                 menusD.add(tarjetaAlmuerzo);
 
-                JPanel tarjetaCena = crearTarjetaEstandar("Cena", "null", "null", "null");
+                JPanel tarjetaCena = crearTarjetaEstandar("", "", "", "");
                 menusD.add(tarjetaCena);
 
             panel.add(menusD);
@@ -151,6 +146,9 @@ public class MenuDView extends JFrame {
 
     }
 
+    public JButton getBtnHome() {
+        return btnHome;
+    }
  // herramientas
     private ImageIcon cargarIcono(String ruta, int ancho, int alto) {
 
