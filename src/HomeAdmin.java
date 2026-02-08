@@ -89,6 +89,10 @@ btnMonedero.addActionListener(e -> {
     return boton_CostosFijos;
   }
 
+  public JButton getBtnGestorCV(){
+    return boton_CostosVariables;
+  }
+
   public static void main(String[] args) {
    
     Usuario pruebaAdmin = new Usuario("Suga", 150.0, "administrador");

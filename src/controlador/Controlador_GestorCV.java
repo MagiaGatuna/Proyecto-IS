@@ -1,19 +1,20 @@
+
 package src.controlador;
 
 import javax.swing.JOptionPane;
-import src.GestorCFView;
+import src.GestorCVView;
 import src.Landingpage;
 import src.HomeAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Controlador_GestorCF implements ActionListener {
-    private GestorCFView view;
+public class Controlador_GestorCV implements ActionListener {
+    private GestorCVView view;
     private Landingpage landingpage;  
     private HomeAdmin homeAdmin;  
 
-    public Controlador_GestorCF(GestorCFView CF, Landingpage landingpage, HomeAdmin homeAdmin) {
-        this.view = CF;
+    public Controlador_GestorCV(GestorCVView CV, Landingpage landingpage, HomeAdmin homeAdmin) {
+        this.view = CV;
         this.landingpage = landingpage;
         this.homeAdmin = homeAdmin;
         
@@ -39,6 +40,7 @@ public class Controlador_GestorCF implements ActionListener {
     }
 
     private void manejarAgregar() {
+        /* 
         String nombre = view.txtNombre.getText();
         String precio = view.txtPrecio.getText();
         
@@ -53,9 +55,11 @@ public class Controlador_GestorCF implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(view, "Por favor completa los campos");
         }
+        */
     }
 
     private void manejarCambiar() {
+        /*
         String nombre = view.txtNombre.getText();
         String precio = view.txtPrecio.getText();
         
@@ -70,23 +74,15 @@ public class Controlador_GestorCF implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(view, "Por favor completa nombre y precio para cambiar");
         }
+            */
     }
 
     private void manejarEliminar() {
+        /*
         String nombre = view.txtNombre.getText();
-        Object[] opciones = {"Sí", "No"};
-
+        
         if (!nombre.isEmpty()) {
-            int confirm = JOptionPane.showOptionDialog(
-                view,                               
-                "¿Estás seguro de que deseas eliminar este registro?", 
-                "Eliminar",                         
-                JOptionPane.YES_NO_OPTION,          
-                JOptionPane.QUESTION_MESSAGE,       
-                null,                               
-                opciones,                          
-                opciones[0]                         
-            );
+            int confirm = JOptionPane.showConfirmDialog(view, "¿Estás seguro de eliminar: " + nombre + "?", "Eliminar", JOptionPane.YES_NO_OPTION);
             if (confirm == JOptionPane.YES_OPTION) {
                 src.modelo.editarCostos.eliminarCF(nombre);
                 actualizarInterfaz();
@@ -95,11 +91,14 @@ public class Controlador_GestorCF implements ActionListener {
         } else {
             JOptionPane.showMessageDialog(view, "Por favor ingresa el nombre del costo a eliminar");
         }
+            */
     }
 
     private void actualizarInterfaz() {
+        /* 
         view.lblTotal.setText("Total: " + src.modelo.editarCostos.getCF());
-        view.txtAreaInfo.setText(src.modelo.editarCostos.actualizarTextArea());
+        view.txtAreaDetalles.setText(src.modelo.editarCostos.actualizarTextArea());
+        */
     }
 
     private void limpiarCampos() {

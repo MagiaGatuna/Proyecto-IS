@@ -31,7 +31,7 @@ public class editarCostos {
             return "Error";
         }
 
-        return String.format("$%.2f", sumaTotal);
+        return String.format("%.2f  Bs", sumaTotal);
     }
 
     public static String actualizarTextArea() {
@@ -50,7 +50,7 @@ public class editarCostos {
                         
                         double costo = cf.getDouble("costo"); 
 
-                        sb.append(String.format("- %-15s   $ %.2f\n", nombre, costo));
+                        sb.append(String.format("- %-15s  %.2f Bs \n", nombre, costo));
                     }
                 }else{
                     sb.append("(No existen costos fijos registrados)");

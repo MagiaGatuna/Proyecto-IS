@@ -14,10 +14,11 @@ public class GestorCVView extends JFrame {
     private final Color COLOR_NEGRO = Color.BLACK;
     private final Color COLOR_GRIS_OSCURO = Color.decode("#333333"); 
 
-    public JButton btnHome, btnCerrarSesion;
+    public JButton btnHome;
     public JButton btnAgregar, btnCambiar, btnEliminar;
     public JTextField txtNombre, txtPrecio;
     public JTextArea txtAreaDetalles;
+    public JLabel lblTotal;
 
     public GestorCVView(){
         iniciarVentana();
@@ -60,11 +61,9 @@ public class GestorCVView extends JFrame {
 
         btnHome = new JButton("HOME");
         estilizarBoton(btnHome, COLOR_AZUL_REY, new Dimension(140, 30));
-        btnCerrarSesion = new JButton("Cerrar Sesión");
-        estilizarBoton(btnCerrarSesion, COLOR_CERRAR, new Dimension(140, 30));
+
 
         derecha.add(btnHome);
-        derecha.add(btnCerrarSesion);
 
         panel.add(izquierda);
         panel.add(Box.createHorizontalGlue()); 
@@ -151,7 +150,7 @@ public class GestorCVView extends JFrame {
         panelCuerpo.add(panelDatos, BorderLayout.CENTER);
         panel.add(panelCuerpo, BorderLayout.CENTER);
 
-        JLabel lblTotal = new JLabel("Total: ");
+        lblTotal = new JLabel("Total: ");
         estilizarMensaje(lblTotal, COLOR_NEGRO, 20);
         panel.add(lblTotal, BorderLayout.SOUTH);
 

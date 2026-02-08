@@ -19,7 +19,7 @@ public class GestorCFView extends JFrame {
     public JButton btnHome;
     public JButton btnAgregar, btnCambiar, btnEliminar;
     public JTextField txtNombre, txtPrecio;
-    // Nueva área de texto
+    
     public JTextArea txtAreaInfo;
     public JLabel lblTotal;
 

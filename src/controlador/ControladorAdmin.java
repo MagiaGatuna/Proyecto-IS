@@ -2,6 +2,7 @@ package src.controlador;
 
 import src.Landingpage;
 import src.GestorCFView;
+import src.GestorCVView;
 import src.HomeAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,7 @@ public class ControladorAdmin implements ActionListener {
         if (this.homeAdmin != null) {
             this.homeAdmin.getHome2().addActionListener(this);
             this.homeAdmin.getBtnGestorCF().addActionListener(this);
+            this.homeAdmin.getBtnGestorCV().addActionListener(this);
         }
     }
     
@@ -34,6 +36,10 @@ public class ControladorAdmin implements ActionListener {
         if (source == homeAdmin.getBtnGestorCF()) {
             abrirGestorCF();
         }
+
+        if (source == homeAdmin.getBtnGestorCV()) {
+            abrirGestorCV();
+        }
         
     }
 
@@ -43,6 +49,15 @@ public class ControladorAdmin implements ActionListener {
         new Controlador_GestorCF(vistaCF, landingpage, homeAdmin);
         
         vistaCF.setVisible(true);
+        homeAdmin.setVisible(false);
+    }
+
+    private void abrirGestorCV(){ 
+        GestorCVView vistaCV = new GestorCVView();
+        
+        new Controlador_GestorCV(vistaCV, landingpage, homeAdmin);
+        
+        vistaCV.setVisible(true);
         homeAdmin.setVisible(false);
     }
     
