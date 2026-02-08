@@ -21,7 +21,6 @@ public class Controlador_GestorCF implements ActionListener {
         this.view.btnCambiar.addActionListener(this);
         this.view.btnEliminar.addActionListener(this);
         this.view.btnHome.addActionListener(this);
-        this.view.btnCerrarSesion.addActionListener(this);
         actualizarInterfaz();
     }
 
@@ -35,9 +34,6 @@ public class Controlador_GestorCF implements ActionListener {
             manejarCambiar();
         } else if (e.getSource() == view.btnHome) {
             homeAdmin.setVisible(true);
-            view.dispose();
-        } else if (e.getSource() == view.btnCerrarSesion) {
-            landingpage.setVisible(true);
             view.dispose();
         }
     }

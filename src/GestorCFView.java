@@ -16,7 +16,7 @@ public class GestorCFView extends JFrame {
     private final Color COLOR_NEGRO = Color.BLACK;
     private final Color COLOR_GRIS_OSCURO = Color.decode("#333333"); 
 
-    public JButton btnHome, btnCerrarSesion;
+    public JButton btnHome;
     public JButton btnAgregar, btnCambiar, btnEliminar;
     public JTextField txtNombre, txtPrecio;
     // Nueva área de texto
@@ -58,11 +58,8 @@ public class GestorCFView extends JFrame {
         derecha.setOpaque(false);
         btnHome = new JButton("HOME");
         estilizarBoton(btnHome, COLOR_AZUL_REY, new Dimension(140, 30));
-        btnCerrarSesion = new JButton("Cerrar Sesión");
-        estilizarBoton(btnCerrarSesion, COLOR_CERRAR, new Dimension(140, 30));
 
         derecha.add(btnHome);
-        derecha.add(btnCerrarSesion);
         panel.add(izquierda);
         panel.add(Box.createHorizontalGlue()); 
         panel.add(derecha);

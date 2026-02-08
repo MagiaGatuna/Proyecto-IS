@@ -47,6 +47,7 @@ public class Controlador_inicioS implements ActionListener{
             
             if((Rol.equals("Administrador"))){
                 HomeAdmin admin = new HomeAdmin(usuarioLogueado);
+                new ControladorAdmin(inicio,admin);
                 admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 admin.setResizable(false);
                 admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
