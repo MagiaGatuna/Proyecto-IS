@@ -10,7 +10,6 @@ public class GestorCVView extends JFrame {
     private final Color COLOR_FONDO_BLANCO = Color.WHITE;
     private final Color COLOR_FONDO_GRIS = Color.decode("#D9D9D9");
     private final Color COLOR_AZUL_REY = Color.decode("#0086A3");    
-    private final Color COLOR_CERRAR = Color.decode("#5CB49B"); 
     private final Color COLOR_NEGRO = Color.BLACK;
     private final Color COLOR_GRIS_OSCURO = Color.decode("#333333"); 
 
@@ -19,6 +18,8 @@ public class GestorCVView extends JFrame {
     public JTextField txtNombre, txtPrecio;
     public JTextArea txtAreaDetalles;
     public JLabel lblTotal;
+    
+    public JTable tabla; 
 
     public GestorCVView(){
         iniciarVentana();
@@ -62,7 +63,6 @@ public class GestorCVView extends JFrame {
         btnHome = new JButton("HOME");
         estilizarBoton(btnHome, COLOR_AZUL_REY, new Dimension(140, 30));
 
-
         derecha.add(btnHome);
 
         panel.add(izquierda);
@@ -82,12 +82,10 @@ public class GestorCVView extends JFrame {
         gbc.insets = new Insets(0, 10, 0, 10);
         gbc.weighty = 1.0;
 
-        // LADO IZQUIERDO: Más ancho (weightx = 0.7)
         gbc.gridx = 0;
         gbc.weightx = 0.7; 
         panelCentral.add(crearCajaIzquierdaFormulario(), gbc);
 
-        // LADO DERECHO: Más estrecho (weightx = 0.3)
         gbc.gridx = 1;
         gbc.weightx = 0.3;
         panelCentral.add(crearCajaDerechaTabla(), gbc);
@@ -108,13 +106,14 @@ public class GestorCVView extends JFrame {
 
         txtAreaDetalles = new JTextArea("");
         txtAreaDetalles.setEditable(false);
+        txtAreaDetalles.setFont(new Font("Monospaced", Font.PLAIN, 14)); 
         txtAreaDetalles.setBackground(new Color(245, 245, 245));
         txtAreaDetalles.setLineWrap(true);
         txtAreaDetalles.setWrapStyleWord(true);
         
         JScrollPane scrollArea = new JScrollPane(txtAreaDetalles);
-        scrollArea.setPreferredSize(new Dimension(250, 0));
-        scrollArea.setBorder(BorderFactory.createTitledBorder(new LineBorder(Color.GRAY), ""));
+        scrollArea.setPreferredSize(new Dimension(300, 0)); 
+        scrollArea.setBorder(BorderFactory.createTitledBorder(new LineBorder(Color.GRAY), "Detalles del Menú"));
         
         panelCuerpo.add(scrollArea, BorderLayout.WEST);
 
@@ -122,13 +121,13 @@ public class GestorCVView extends JFrame {
         panelDatos.setLayout(new BoxLayout(panelDatos, BoxLayout.Y_AXIS)); 
         panelDatos.setBackground(COLOR_FONDO_BLANCO);
 
-        panelDatos.add(crearLabelCampo("Nombre:"));
+        panelDatos.add(crearLabelCampo("Nombre del Item:"));
         txtNombre = new JTextField();
         estilizarInput(txtNombre);
         panelDatos.add(txtNombre);
         panelDatos.add(Box.createVerticalStrut(15)); 
 
-        panelDatos.add(crearLabelCampo("Precio:"));
+        panelDatos.add(crearLabelCampo("Costo (Bs):"));
         txtPrecio = new JTextField();
         estilizarInput(txtPrecio);
         panelDatos.add(txtPrecio);
@@ -150,7 +149,7 @@ public class GestorCVView extends JFrame {
         panelCuerpo.add(panelDatos, BorderLayout.CENTER);
         panel.add(panelCuerpo, BorderLayout.CENTER);
 
-        lblTotal = new JLabel("Total: ");
+        lblTotal = new JLabel("Total Seleccionado: 0.00 Bs");
         estilizarMensaje(lblTotal, COLOR_NEGRO, 20);
         panel.add(lblTotal, BorderLayout.SOUTH);
 
@@ -165,14 +164,21 @@ public class GestorCVView extends JFrame {
                 new EmptyBorder(10, 10, 10, 10)
         ));
 
-        String[] columnas = {"Menu", "CV"};
-        Object[][] datos = {
-                {"Desayuno", "0.0"},
-                {"Almuerzo", "0.0"}
+        String[] columnas = {"Menu", "CV Total"};
+        Object[][] datos = {};
+
+        DefaultTableModel model = new DefaultTableModel(datos, columnas) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; 
+            }
         };
 
-        JTable tabla = new JTable(datos, columnas);
-        tabla.setRowHeight(25);
+        tabla = new JTable(model);
+        tabla.setRowHeight(30);
+        tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tabla.getTableHeader().setReorderingAllowed(false);
+        
         tabla.getTableHeader().setBackground(COLOR_AZUL_REY);
         tabla.getTableHeader().setForeground(Color.WHITE);
         tabla.getTableHeader().setFont(new Font("Arial", Font.BOLD, 14));
@@ -193,6 +199,7 @@ public class GestorCVView extends JFrame {
         boton.setBorderPainted(false);
         boton.setMaximumSize(dimension);
         boton.setPreferredSize(dimension);
+        boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         boton.setAlignmentX(Component.LEFT_ALIGNMENT); 
     }
     
@@ -200,6 +207,7 @@ public class GestorCVView extends JFrame {
         txt.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30)); 
         txt.setAlignmentX(Component.LEFT_ALIGNMENT);
         txt.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        txt.setFont(new Font("Arial", Font.PLAIN, 14));
     }
 
     private JLabel crearLabelCampo(String texto){
@@ -219,9 +227,5 @@ public class GestorCVView extends JFrame {
         if (icono.getImageLoadStatus() == java.awt.MediaTracker.ERRORED) return null; 
         Image imgEscalada = icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         return new ImageIcon(imgEscalada);
-    }
-
-    public static void main(String[] args){
-        SwingUtilities.invokeLater(() -> new GestorCVView());
     }
 }

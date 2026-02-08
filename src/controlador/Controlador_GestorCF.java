@@ -99,7 +99,7 @@ public class Controlador_GestorCF implements ActionListener {
 
     private void actualizarInterfaz() {
         view.lblTotal.setText("Total: " + src.modelo.editarCostos.getCF());
-        view.txtAreaInfo.setText(src.modelo.editarCostos.actualizarTextArea());
+        view.txtAreaInfo.setText(src.modelo.editarCostos.actualizarTextAreaCF());
     }
 
     private void limpiarCampos() {
