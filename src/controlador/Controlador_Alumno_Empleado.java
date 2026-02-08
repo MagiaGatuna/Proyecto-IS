@@ -4,6 +4,7 @@ import src.Landingpage;
 import src.AlumnoView;
 import src.EmpleadoView;
 import src.MenuSemanal;
+import src.MenuDView;
 import src.Monedero;
 
 import java.awt.event.ActionEvent;
@@ -17,11 +18,13 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     private EmpleadoView empleado;
     private MenuSemanal menu_semanal;
     private JPanel monedero;
+    private MenuDView menu_d;
 
-   public Controlador_Alumno_Empleado(Landingpage inicio, AlumnoView alumno, EmpleadoView empleado, MenuSemanal menu_semanal, JPanel monedero) {
+   public Controlador_Alumno_Empleado(Landingpage inicio, AlumnoView alumno, EmpleadoView empleado, MenuSemanal menu_semanal, JPanel monedero, MenuDView menu_d) {
     this.inicio = inicio;
     this.menu_semanal = menu_semanal;
     this.alumno = alumno;
+    this.menu_d=menu_d;
     this.empleado = empleado;
     this.monedero = monedero;
 
@@ -68,6 +71,12 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         } else if (empleado != null && e.getSource() == empleado.getMenuS()) {
             mostrarMenu(empleado);
         }
+
+        if (alumno != null && e.getSource() == alumno.getMenuD()) {
+            mostrarMenu2(alumno);
+        } else if (empleado != null && e.getSource() == empleado.getMenuD()) {
+            mostrarMenu2(empleado);
+        }
     }
 
     private void volverAInicio(JFrame vistaActual) {
@@ -81,6 +90,10 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         menu_semanal.setVisible(true);
         vistaActual.setVisible(false);
     }
-
+    private void mostrarMenu2(JFrame vistaActual) {
+        menu_d.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        menu_d.setVisible(true);
+        vistaActual.setVisible(false);
+    }
 } 
 

@@ -46,7 +46,7 @@ public class Controlador_MenuSemanal implements ActionListener{
 
 for (String d : diasSemana) {
     JButton btn = this.menu.getboton_dia(d);
-    if (btn != null) { // <--- EL IF VA AQUÍ
+    if (btn != null) { 
         btn.addActionListener(this);
     }
 }

@@ -7,6 +7,7 @@ import src.HomeAdmin;
 import src.AlumnoView;
 import src.EmpleadoView;
 import src.MenuSemanal;
+import src.MenuDView;
 import src.modelo.Usuario;
 import src.modelo.validadorInicioS;
 import src.util.LimpiarFormulariosUtil;
@@ -57,10 +58,12 @@ public class Controlador_inicioS implements ActionListener{
             if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
                 EmpleadoView empleado= new EmpleadoView(usuarioLogueado);
                 MenuSemanal menu_s_e= new MenuSemanal();
+                MenuDView menu_d= new MenuDView();
                 JPanel monederoTemp = new JPanel();
                 monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
-                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e,monederoTemp);
+                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e,monederoTemp,menu_d);
                 new Controlador_MenuSemanal(null, empleado, menu_s_e);
+                new Controlador_MenuD(null, empleado, menu_d);
 
                 empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 empleado.setResizable(false);
@@ -73,10 +76,12 @@ public class Controlador_inicioS implements ActionListener{
             if((Rol.equals("Estudiante"))){
                 AlumnoView alumno= new AlumnoView(usuarioLogueado);
                 MenuSemanal menu_s= new MenuSemanal();
+                MenuDView menu_d= new MenuDView();
                 JPanel monederoTemp = new JPanel();
                 monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
-                new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, monederoTemp);
+                new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, monederoTemp,menu_d);
                 new Controlador_MenuSemanal(alumno, null, menu_s);
+                new Controlador_MenuD(alumno, null, menu_d);
 
                 alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 alumno.setResizable(false);
