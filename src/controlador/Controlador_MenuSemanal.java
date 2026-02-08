@@ -6,6 +6,7 @@ import src.MenuSemanal;
 import src.EmpleadoView;
 
 import src.modelo.validadorInicioS;
+import src.modelo.Menus_lista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,7 @@ public class Controlador_MenuSemanal implements ActionListener{
 
     private int hora;
     private String dia;
+    private String dia_seleccionado;
     private String pinta;
 
     public Controlador_MenuSemanal(AlumnoView alumno,EmpleadoView empleado,MenuSemanal menu){
@@ -30,6 +32,15 @@ public class Controlador_MenuSemanal implements ActionListener{
 
         hora= Calcular_dia.gethora();
         dia= Calcular_dia.getdia();
+
+        if(dia.equals("SATURDAY") || dia.equals("SUNDAY")){
+            dia_seleccionado="MONDAY";
+        }else{
+            dia_seleccionado=dia;
+        }
+            Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),dia_seleccionado,"DESAYUNO");
+            Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"),dia_seleccionado,"ALMUERZO");
+            Menus_lista.mostrarMenu(menu.get_texto("cena"), menu.getaforo("cena"),dia_seleccionado,"CENA");
 
       String[] diasSemana = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
 
@@ -80,24 +91,39 @@ if (this.menu.getvolver() != null) {
         }
         
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario
-        pinta = "MONDAY";
-
+            pinta = "MONDAY";
+            dia_seleccionado="MONDAY";
         }
         if(e.getSource()==menu.getboton_dia("TUESDAY")){//Aqui va un && con el JSON del tipo de usuario
             pinta = "TUESDAY";
-            
+            dia_seleccionado="TUESDAY";
         }
         if(e.getSource()==menu.getboton_dia("WEDNESDAY")){//Aqui va un && con el JSON del tipo de usuario
              pinta = "WEDNESDAY";
-
+            dia_seleccionado="WEDNESDAY";
         }
         if(e.getSource()==menu.getboton_dia("THURSDAY")){//Aqui va un && con el JSON del tipo de usuario
              pinta = "THURSDAY";
-            
+            dia_seleccionado="THURSDAY";
         }
         if(e.getSource()==menu.getboton_dia("FRIDAY")){//Aqui va un && con el JSON del tipo de usuario
              pinta = "FRIDAY";
-            
+            dia_seleccionado="FRIDAY";
+        }
+
+        
+
+        if(dia_seleccionado != null && dia_seleccionado != "SUNDAY" && dia_seleccionado != "SATURDAY"){
+            //get_texto y getaforo
+
+            Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),dia_seleccionado,"DESAYUNO");
+            Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"),dia_seleccionado,"ALMUERZO");
+            Menus_lista.mostrarMenu(menu.get_texto("cena"), menu.getaforo("cena"),dia_seleccionado,"CENA");
+        }else if(dia_seleccionado.equals("SUNDAY")|| dia_seleccionado.equals("SATURDAY")){
+           
+            Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),"MONDAY","DESAYUNO");
+            Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"),"MONDAY","ALMUERZO");
+            Menus_lista.mostrarMenu(menu.get_texto("cena"), menu.getaforo("cena"),"MONDAY","CENA");
         }
 
         pintarboton(pinta);
@@ -135,6 +161,6 @@ public void pintarboton(String hoy) {
         }
     }
     
-    //get_texto y getaforo
+    
 
 }

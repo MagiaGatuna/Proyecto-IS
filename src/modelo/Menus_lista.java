@@ -45,15 +45,17 @@ public class Menus_lista {
         
         for(int i=0; i < listaMenus.length();i++){
             JSONObject menu = listaMenus.getJSONObject(i);
-            if(menu.getString("dia").equalsIgnoreCase(dia) && menu.getString("turno").equalsIgnoreCase(turno)){
-                construir_frase.append("---------♠ Menu ♠---------").append("\n");
-                construir_frase.append("Comida: ").append(menu.getString("comida")).append("\n");
-                construir_frase.append("Valor Nutricional: ").append(menu.getString("valorNutricional")).append("\n");
-                construir_frase.append("Precio: ").append(menu.getInt("precio")).append(" Bs \n");
+            if(menu.getString("dia").equals(dia) && menu.getString("turno").equals(turno)){
+                
+                construir_frase.append("                      ---------♠ Menu ♠---------").append("\n").append("\n");
+                construir_frase.append("     Comida: ").append(menu.getString("comida")).append("\n").append("\n");
+                construir_frase.append("     Valor Nutricional: ").append(menu.getString("valorNutricional")).append("\n").append("\n");
+                construir_frase.append("     Precio: ").append(menu.getInt("precio")).append(" Bs \n");
 
                 aforo.setText("Reservas actuales: " + menu.getInt("reservas_actual") + " / " + menu.getInt("aforo_max"));
 
                 hay_menu=true;
+
                 break;
             }
         }

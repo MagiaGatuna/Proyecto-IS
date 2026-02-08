@@ -28,5 +28,35 @@
     "dia_turno":"MONDAY_CENA",
     "reservas_actual":125,
     "aforo_max":400
+},
+{
+    "dia":"FRIDAY",
+    "turno":"CENA",
+    "comida":"Cachito de jamon",
+    "valorNutricional":"235 Kcal",
+    "precio":534,
+    "dia_turno":"FRIDAY_CENA",
+    "reservas_actual":15,
+    "aforo_max":40
+},
+{
+    "dia":"TUESDAY",
+    "turno":"ALMUERZO",
+    "comida":"Pasticho",
+    "valorNutricional":"300 Kcal",
+    "precio":664,
+    "dia_turno":"TUESDAY_ALMUERZO",
+    "reservas_actual":1000,
+    "aforo_max":1500
+},
+{
+    "dia":"WEDNESDAY",
+    "turno":"DESAYUNO",
+    "comida":"Avena y cambur",
+    "valorNutricional":"245 Kcal",
+    "precio":464,
+    "dia_turno":"WEDNESDAY_DESAYUNO",
+    "reservas_actual":54,
+    "aforo_max":120
 }
 ]

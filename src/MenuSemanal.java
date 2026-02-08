@@ -198,10 +198,11 @@ public class MenuSemanal extends JFrame{
         desayuno.setBounds(68,290,390,430);
 
         Font fuente2 = new Font ("Arial", Font.BOLD,16);
+        Font fuente3 = new Font ("Arial", Font.BOLD,14);
         aforo_d= new JLabel("Reservas Actuales: ");
-        aforo_d.setFont(fuente2);
+        aforo_d.setFont(fuente3);
         aforo_d.setForeground(new Color(0,0,0));
-        aforo_d.setBounds(20,380,200,30);
+        aforo_d.setBounds(20,380,240,30);
         desayuno.add(aforo_d);
 
         texto_desayuno= new JTextArea();
@@ -231,6 +232,7 @@ public class MenuSemanal extends JFrame{
     }
     public void panel_almuerzo(int pantalla){
         Font fuente1 = new Font ("Arial", Font.BOLD,16);
+        Font fuente3 = new Font ("Arial", Font.BOLD,14);
 
         turno_t=new JLabel("Turno de la Tarde: 12m a 3pm");
         turno_t.setFont(fuente1);
@@ -245,9 +247,9 @@ public class MenuSemanal extends JFrame{
 
         Font fuente2 = new Font ("Arial", Font.BOLD,16);
         aforo_a= new JLabel("Reservas Actuales: ");
-        aforo_a.setFont(fuente2);
+        aforo_a.setFont(fuente3);
         aforo_a.setForeground(new Color(0,0,0));
-        aforo_a.setBounds(20,380,200,30);
+        aforo_a.setBounds(20,380,240,30);
         almuerzo.add(aforo_a);
 
         texto_almuerzo= new JTextArea();
@@ -277,6 +279,7 @@ public class MenuSemanal extends JFrame{
     }
     public void panel_cena(int pantalla){
         Font fuente1 = new Font ("Arial", Font.BOLD,16);
+        Font fuente3 = new Font ("Arial", Font.BOLD,14);
 
         turno_n=new JLabel("Turno de la Noche: 6pm a 9pm");
         turno_n.setFont(fuente1);
@@ -291,9 +294,9 @@ public class MenuSemanal extends JFrame{
 
         Font fuente2 = new Font ("Arial", Font.BOLD,16);
         aforo_c= new JLabel("Reservas Actuales: ");
-        aforo_c.setFont(fuente2);
+        aforo_c.setFont(fuente3);
         aforo_c.setForeground(new Color(0,0,0));
-        aforo_c.setBounds(20,380,200,30);
+        aforo_c.setBounds(20,380,240,30);
         cena.add(aforo_c);
 
         texto_cena= new JTextArea();
