@@ -13,6 +13,8 @@ public class HomeAdmin extends JFrame {
   JButton boton_reporte;
   JButton boton_Inventario;
   JButton boton_Consumos;
+  JButton boton_CostosFijos;
+  JButton boton_CostosVariables;
   JLabel labela;
   private Usuario userActivo;
    public HomeAdmin(Usuario u){
@@ -47,8 +49,10 @@ public class HomeAdmin extends JFrame {
 // Sección Inventario
     add(Diseño_interfaz.Creador_iconos("res/suministros.png", (espacio * 2) + (espacio/2) - 60, yIconos + 15, 120, 120));
     add(Diseño_interfaz.Creador_Botones("INVENTARIO", (espacio * 2) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
-    add(Diseño_interfaz.Creador_Botones("COSTOS FIJOS", (espacio * 2) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul));
-     add(Diseño_interfaz.Creador_Botones("COSTOS VARIABLES", (espacio * 2) + (espacio/2) - 90, yBotones + 100, 180, 40, Diseño_interfaz.colorazul));
+    boton_CostosFijos = Diseño_interfaz.Creador_Botones("COSTOS FIJOS", (espacio * 2) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul);
+    add(boton_CostosFijos);
+    boton_CostosVariables = Diseño_interfaz.Creador_Botones("COSTOS VARIABLES", (espacio * 2) + (espacio/2) - 90, yBotones + 100, 180, 40, Diseño_interfaz.colorazul);
+    add(boton_CostosVariables);
 
 // Sección Consumos
     add(Diseño_interfaz.Creador_iconos("res/comida.png", (espacio * 3) + (espacio/2) - 60, yIconos + 15, 120, 120));
@@ -79,6 +83,14 @@ btnMonedero.addActionListener(e -> {
   public void cierra(){
     this.setVisible(false);
     this.dispose();
+  }
+
+  public JButton getBtnGestorCF(){
+    return boton_CostosFijos;
+  }
+
+  public JButton getBtnGestorCV(){
+    return boton_CostosVariables;
   }
 
   public static void main(String[] args) {

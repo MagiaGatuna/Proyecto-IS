@@ -1,0 +1,26 @@
+[
+    {
+        "detalles_costos": {},
+        "dia_turno": "MONDAY_DESAYUNO"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "MONDAY_ALMUERZO"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "MONDAY_CENA"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "FRIDAY_CENA"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "TUESDAY_ALMUERZO"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "WEDNESDAY_DESAYUNO"
+    }
+]

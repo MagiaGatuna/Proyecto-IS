@@ -4,6 +4,7 @@ import src.Landingpage;
 import src.AlumnoView;
 import src.EmpleadoView;
 import src.MenuSemanal;
+import src.MenuDView;
 import src.Monedero;
 
 import java.awt.event.ActionEvent;
@@ -17,11 +18,13 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     private EmpleadoView empleado;
     private MenuSemanal menu_semanal;
     private JPanel monedero;
+    private MenuDView menu_d;
 
-   public Controlador_Alumno_Empleado(Landingpage inicio, AlumnoView alumno, EmpleadoView empleado, MenuSemanal menu_semanal, JPanel monedero) {
+   public Controlador_Alumno_Empleado(Landingpage inicio, AlumnoView alumno, EmpleadoView empleado, MenuSemanal menu_semanal, JPanel monedero, MenuDView menu_d) {
     this.inicio = inicio;
     this.menu_semanal = menu_semanal;
     this.alumno = alumno;
+    this.menu_d=menu_d;
     this.empleado = empleado;
     this.monedero = monedero;
 
