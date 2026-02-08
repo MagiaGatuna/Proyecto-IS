@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GestorCFView",
+            "request": "launch",
+            "mainClass": "src.GestorCFView",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
+            "name": "GestorCVView",
+            "request": "launch",
+            "mainClass": "src.GestorCVView",
+            "projectName": "Proyecto-IS_c1f479ce"
+        },
+        {
+            "type": "java",
             "name": "InicioSesion",
             "request": "launch",
             "mainClass": "src.InicioSesion"

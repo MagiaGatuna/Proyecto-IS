@@ -28,11 +28,6 @@ public class GestorCFView extends JFrame {
         add(crearPanelSuperior(), BorderLayout.NORTH);
         add(crearPanelCentral(), BorderLayout.CENTER);
         setVisible(true);
-        configurarListeners();
-        String textArea= editarCostos.actualizarTextArea();
-        String CF = editarCostos.getCF();
-        lblTotal.setText("Total: " + CF);
-        txtAreaInfo.setText(textArea);
     }
 
     private void iniciarVentana(){
@@ -171,57 +166,6 @@ public class GestorCFView extends JFrame {
         mensaje.setFont(new Font("Arial", Font.BOLD, size));
     }
 
-    private void configurarListeners(){
-        btnAgregar.addActionListener(e -> {
-            String nombre = txtNombre.getText();
-            String precio = txtPrecio.getText();
-            
-            if(!nombre.isEmpty() && !precio.isEmpty()){
-                editarCostos.agregarCF(nombre, Double.parseDouble(precio));
-                String textArea= editarCostos.actualizarTextArea();
-                String CF = editarCostos.getCF();
-                lblTotal.setText("Total: " + CF);
-                txtAreaInfo.setText(textArea);
-                txtNombre.setText("");
-                txtPrecio.setText("");
-            }else{
-                JOptionPane.showMessageDialog(this, "Por favor completa los campos");
-            }
-        });
-
-        btnCambiar.addActionListener(e -> {
-            String nombre = txtNombre.getText();
-            String precio = txtPrecio.getText();
-            
-            if (!nombre.isEmpty() && !precio.isEmpty()) {
-                editarCostos.editarCF(nombre, Double.parseDouble(precio));
-                String textArea= editarCostos.actualizarTextArea();
-                String CF = editarCostos.getCF();
-                lblTotal.setText("Total: " + CF);
-                txtAreaInfo.setText(textArea);
-                txtNombre.setText("");
-                txtPrecio.setText("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Por favor completa los campos");
-            }
-        });
-
-        btnEliminar.addActionListener(e -> {
-            String nombre = txtNombre.getText();
-            
-            if (!nombre.isEmpty()) {
-                editarCostos.eliminarCF(nombre);
-                String textArea= editarCostos.actualizarTextArea();
-                String CF = editarCostos.getCF();
-                lblTotal.setText("Total: " + CF);
-                txtAreaInfo.setText(textArea);
-                txtNombre.setText("");
-                txtPrecio.setText("");
-            } else {
-                JOptionPane.showMessageDialog(this, "Por favor ingresa el nombre del costo fijo a eliminar");
-            }
-        });
-    }
 
     public static void main(String[] args){
         SwingUtilities.invokeLater(() -> new GestorCFView());

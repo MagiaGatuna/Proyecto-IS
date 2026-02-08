@@ -166,11 +166,10 @@ public class GestorCVView extends JFrame {
                 new EmptyBorder(10, 10, 10, 10)
         ));
 
-        // ACTUALIZACIÓN DE COLUMNAS: Solo "Menu" y "CV"
         String[] columnas = {"Menu", "CV"};
         Object[][] datos = {
-                {"Desayuno", "CV-001"},
-                {"Almuerzo", "CV-002"}
+                {"Desayuno", "0.0"},
+                {"Almuerzo", "0.0"}
         };
 
         JTable tabla = new JTable(datos, columnas);
