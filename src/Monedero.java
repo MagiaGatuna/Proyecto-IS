@@ -68,6 +68,7 @@ public class Monedero extends JPanel {
         
     }
     public static void main(String[] args) {
+        /* 
         JFrame f = new JFrame();
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     f.setLayout(new GridBagLayout()); 
@@ -79,5 +80,6 @@ public class Monedero extends JPanel {
     f.setSize(500, 400);
     f.setLocationRelativeTo(null);
     f.setVisible(true);
+*/
     }
 }

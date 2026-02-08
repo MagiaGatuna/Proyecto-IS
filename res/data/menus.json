@@ -1,0 +1,32 @@
+[
+{
+    "dia":"MONDAY",
+    "turno":"DESAYUNO",
+    "comida":"Arepa con huevo frito",
+    "valorNutricional":"349 Kcal",
+    "precio":764,
+    "dia_turno":"MONDAY_DESAYUNO",
+    "reservas_actual":54,
+    "aforo_max":500
+},
+{
+    "dia":"MONDAY",
+    "turno":"ALMUERZO",
+    "comida":"Arroz con pollo",
+    "valorNutricional":"417 Kcal",
+    "precio":1146,
+    "dia_turno":"MONDAY_ALMUERZO",
+    "reservas_actual":325,
+    "aforo_max":1500
+},
+{
+    "dia":"MONDAY",
+    "turno":"CENA",
+    "comida":"Empanada de carne mechada",
+    "valorNutricional":"285 Kcal",
+    "precio":764,
+    "dia_turno":"MONDAY_CENA",
+    "reservas_actual":125,
+    "aforo_max":400
+}
+]
