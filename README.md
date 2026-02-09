@@ -26,17 +26,7 @@
 
     Metodos donde se hace uso:  getdia()  } utiliza "LocalDate.getDayOfWeek().toString" 
                                 para extraer el dia de la semana en ingles, por ejemplo "MONDAY".
-                                Tambien se llevo a cabo su uso para preparar un algoritmo que 
-                                detecta la fecha actual y la traduce al hispanohablante.
                                 gethora() } utiliza getHour() y getMinute(), bajo la formula de
                                 (hora*60)+minutos con la finalidad de obtener la hora actual de
                                 la maquina en minutos, de forma que se tenga un control del tiempo
                                 en un formato uniforme y facil de utilizar por los controladores.
-                                Tambien se llevo a cabo su uso para preparar un algoritmo que 
-                                detecta la fecha actual y la traduce al hispanohablante.
-                                getDiaMesNumero() } utiliza LocalDate.getDayOfMonth() para recibir 
-                                un entero.
-                                getMes() } utiliza LocalDate.getMoth().ToString() para obtener el 
-                                mes actual en ingles y luego se hace uso de esto para traducir
-                                la fecha actual al hispanohablente.
-                                getAnio() } utiliza LocalDate.getYear() para recibir un entero.

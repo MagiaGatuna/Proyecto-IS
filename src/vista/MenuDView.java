@@ -12,6 +12,10 @@ public class MenuDView extends JFrame {
     String Descripcion;
     int ValNutri;
 
+    private JLabel lblNombreDes, lblDescDes, lblValDes;
+    private JLabel lblNombreAlm, lblDescAlm, lblValAlm;
+    private JLabel lblNombreCen, lblDescCen, lblValCen;
+
     private final Color COLOR_FONDO = Color.WHITE;
     private final Color COLOR_HEADER = Color.decode("#D9D9D9");
     private final Color COLOR_BOTON_PRINCIPAL = Color.decode("#0086A3");
@@ -30,6 +34,8 @@ public class MenuDView extends JFrame {
         this.AA = AA;
 
         iniciarVentana();
+
+        inicializarLabels();
 
         JPanel panelNorte = crearPanelSuperior();
         JPanel panelSur = crearPanelCentral();
@@ -58,6 +64,40 @@ public class MenuDView extends JFrame {
         setLayout(new BorderLayout(10, 10));
 
     }
+
+    private void inicializarLabels() {
+        lblNombreDes = new JLabel("No disponible");
+        lblDescDes = new JLabel("...");
+        lblValDes = new JLabel("");
+        
+        lblNombreAlm = new JLabel("No disponible");
+        lblDescAlm = new JLabel("...");
+        lblValAlm = new JLabel("");
+        
+        lblNombreCen = new JLabel("No disponible");
+        lblDescCen = new JLabel("...");
+        lblValCen = new JLabel("");
+    }
+
+    public void setMenuDesayuno(String nombre, String desc, String valor) {
+        lblNombreDes.setText("Comida: " + nombre);
+        lblDescDes.setText("<html><body style='width: 200px'>Desc: " + desc + "</body></html>");
+        lblValDes.setText("Valor Nutricional: " + valor);
+    }
+
+    public void setMenuAlmuerzo(String nombre, String desc, String valor) {
+        lblNombreAlm.setText("Comida: " + nombre);
+        lblDescAlm.setText("<html><body style='width: 200px'>Desc: " + desc + "</body></html>");
+        lblValAlm.setText("Valor Nutricional: " + valor);
+    }
+
+    public void setMenuCena(String nombre, String desc, String valor) {
+        lblNombreCen.setText("Comida: " + nombre);
+        lblDescCen.setText("<html><body style='width: 200px'>Desc: " + desc + "</body></html>");
+        lblValCen.setText("Valor Nutricional: " + valor);
+    }
+
+    public String getDiaSemana() { return diaSemana; }
 
     private JPanel crearPanelSuperior() {
 
@@ -118,14 +158,9 @@ public class MenuDView extends JFrame {
             menusD.setOpaque(false);
             menusD.setBackground(COLOR_HEADER);
 
-                JPanel tarjetaDesayuno = crearTarjetaEstandar("Desayuno", "", "", "");
-                menusD.add(tarjetaDesayuno);
-
-                JPanel tarjetaAlmuerzo = crearTarjetaEstandar("", "", "", "");
-                menusD.add(tarjetaAlmuerzo);
-
-                JPanel tarjetaCena = crearTarjetaEstandar("", "", "", "");
-                menusD.add(tarjetaCena);
+                menusD.add(crearTarjetaEstandar("Desayuno", lblNombreDes, lblDescDes, lblValDes));
+                menusD.add(crearTarjetaEstandar("Almuerzo", lblNombreAlm, lblDescAlm, lblValAlm));
+                menusD.add(crearTarjetaEstandar("Cena", lblNombreCen, lblDescCen, lblValCen));
 
             panel.add(menusD);
 
@@ -188,38 +223,34 @@ public class MenuDView extends JFrame {
         mensaje.setFont(new Font("Arial", Font.BOLD, size));
     }
 
-    private JPanel crearTarjetaEstandar(String titulo, String nombre, String descripcion, String valor) {
-    JPanel tarjeta = new JPanel();
-    tarjeta.setLayout(new BoxLayout(tarjeta, BoxLayout.Y_AXIS)); 
-    tarjeta.setBackground(Color.WHITE); 
-    tarjeta.setPreferredSize(new Dimension(400, 300)); 
-    tarjeta.setBorder(BorderFactory.createEmptyBorder(20, 5, 20, 20));
+    private JPanel crearTarjetaEstandar(String titulo, JLabel lblNom, JLabel lblDesc, JLabel lblVal) {
+        JPanel tarjeta = new JPanel();
+        tarjeta.setLayout(new BoxLayout(tarjeta, BoxLayout.Y_AXIS)); 
+        tarjeta.setBackground(Color.WHITE); 
+        tarjeta.setPreferredSize(new Dimension(400, 300)); 
+        tarjeta.setBorder(BorderFactory.createEmptyBorder(20, 5, 20, 20));
 
         JLabel lblTitulo = new JLabel(titulo);
         lblTitulo.setForeground(COLOR_COMIDA_TITULO); 
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
         lblTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
         tarjeta.add(lblTitulo);
-        tarjeta.add(Box.createRigidArea(new Dimension(0, 10))); 
-
-        JLabel Nombre = new JLabel("Nombre: " + nombre);
-        Nombre.setAlignmentX(Component.LEFT_ALIGNMENT);
-        estilizarMensaje(Nombre, COLOR_TEXTO_TITULO, 16);
-        tarjeta.add(Nombre);
-        tarjeta.add(Box.createRigidArea(new Dimension(0, 40)));
         
-        JLabel Descripcion= new JLabel("<html><body style='width: 200px'> Descripción: " + descripcion + "</body></html>");
-        Descripcion.setAlignmentX(Component.LEFT_ALIGNMENT);
-        estilizarMensaje(Descripcion, COLOR_TEXTO_TITULO, 16);
-        tarjeta.add(Descripcion);
-        tarjeta.add(Box.createRigidArea(new Dimension(0, 40)));
+        estilizarMensaje(lblNom, COLOR_TEXTO_TITULO, 16);
+        lblNom.setAlignmentX(Component.LEFT_ALIGNMENT);
+        tarjeta.add(lblNom);
+        tarjeta.add(Box.createRigidArea(new Dimension(0, 20)));
+        
+        estilizarMensaje(lblDesc, COLOR_TEXTO_TITULO, 16);
+        lblDesc.setAlignmentX(Component.LEFT_ALIGNMENT);
+        tarjeta.add(lblDesc);
+        tarjeta.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        JLabel valorNutricional= new JLabel("Valor Nutricional: %" + ValNutri);
-        valorNutricional.setAlignmentX(Component.LEFT_ALIGNMENT);
-        estilizarMensaje(valorNutricional, COLOR_TEXTO_TITULO, 16);
-        tarjeta.add(valorNutricional);
+        estilizarMensaje(lblVal, COLOR_TEXTO_TITULO, 16);
+        lblVal.setAlignmentX(Component.LEFT_ALIGNMENT);
+        tarjeta.add(lblVal);
 
         return tarjeta;
-}
+    }
 
 }

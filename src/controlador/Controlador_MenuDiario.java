@@ -8,6 +8,8 @@ import src.modelo.validadorInicioS;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import src.modelo.Menus_lista; 
+import org.json.JSONObject; 
 
 
 public class Controlador_MenuDiario implements ActionListener {
@@ -25,9 +27,59 @@ public class Controlador_MenuDiario implements ActionListener {
         if (this.menu.getBtnHome() != null) {
             this.menu.getBtnHome().addActionListener(this);
         }
-        
+        cargarInformacionMenu();
         this.menu.setVisible(false);
 }
+
+    private void cargarInformacionMenu() {
+        String diaEspanol = menu.getDiaSemana(); 
+
+        if (diaEspanol.equalsIgnoreCase("Sabado") || diaEspanol.equalsIgnoreCase("Domingo")) {
+        JOptionPane.showMessageDialog(menu, 
+            "Estimado usuario: Es fin de semana y nuestro comedor está fuera de servicio.", 
+            "Servicio Cerrado", 
+            JOptionPane.INFORMATION_MESSAGE);}
+
+        String diaIngles = traducirDiaAlIngles(diaEspanol);
+
+        actualizarTurno(diaIngles, "DESAYUNO");
+        actualizarTurno(diaIngles, "ALMUERZO");
+        actualizarTurno(diaIngles, "CENA");
+    }
+
+    private void actualizarTurno(String dia, String turno) {
+        JSONObject datos = Menus_lista.getMenuData(dia, turno);
+
+        if (datos != null) {
+            String comida = datos.getString("comida");
+            String nutri = datos.getString("valorNutricional");
+            String desc = datos.getString("descripcion"); 
+
+
+            if (turno.equals("DESAYUNO")) {
+                menu.setMenuDesayuno(comida, desc, nutri);
+            } else if (turno.equals("ALMUERZO")) {
+                menu.setMenuAlmuerzo(comida, desc, nutri);
+            } else if (turno.equals("CENA")) {
+                menu.setMenuCena(comida, desc, nutri);
+            }
+        } else {
+             if (turno.equals("DESAYUNO")) menu.setMenuDesayuno("No hay servicio", "-", "-");
+        }
+    }
+
+    private String traducirDiaAlIngles(String diaEs) {
+        switch (diaEs) {
+            case "Lunes": return "MONDAY";
+            case "Martes": return "TUESDAY";
+            case "Miercoles": return "WEDNESDAY";
+            case "Jueves": return "THURSDAY";
+            case "Viernes": return "FRIDAY";
+            case "Sabado": return "SATURDAY";
+            case "Domingo": return "SUNDAY";
+            default: return "MONDAY"; 
+        }
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
