@@ -1,9 +1,9 @@
 package src.controlador;
 
-import src.Landingpage;
-import src.GestorCFView;
-import src.GestorCVView;
-import src.HomeAdmin;
+import src.vista.Landingpage;
+import src.vista.GestorCFView;
+import src.vista.GestorCVView;
+import src.vista.HomeAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;

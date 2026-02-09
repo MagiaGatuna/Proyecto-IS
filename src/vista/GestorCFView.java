@@ -1,4 +1,4 @@
-package src;
+package src.vista;
 
 import src.modelo.editarCostos;
 
@@ -27,6 +27,7 @@ public class GestorCFView extends JFrame {
         iniciarVentana();
         add(crearPanelSuperior(), BorderLayout.NORTH);
         add(crearPanelCentral(), BorderLayout.CENTER);
+        setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
         setVisible(true);
     }
 

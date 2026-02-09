@@ -1,7 +1,7 @@
 package src.util;
-import src.InicioSesion;
-import src.HomeAdmin;
-import src.Monedero;
+import src.vista.InicioSesion;
+import src.vista.HomeAdmin;
+import src.vista.Monedero;
 import src.modelo.Usuario;
 import javax.swing.*; 
 import java.awt.*;

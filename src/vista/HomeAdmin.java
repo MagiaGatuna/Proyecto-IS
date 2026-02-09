@@ -1,4 +1,4 @@
-package src;
+package src.vista;
 import javax.swing.*;
 import src.util.BotonUtil;
 import java.awt.*;
@@ -33,6 +33,7 @@ public class HomeAdmin extends JFrame {
     barraSuperior.setLayout(null);
     add(barraSuperior);//agregamos a la venatana principal
 //creamos el boton para regresar al inicio
+setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
     boton_cerrarsesion = Diseño_interfaz.Creador_Botones("CERRAR SESION", anchoP - 220, 35, 180, 45, Diseño_interfaz.colorazul);
     BotonUtil.darEstiloBoton(boton_cerrarsesion, 170, 40);
     //boton_cerrarsesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarInicioSesion());

@@ -1,4 +1,4 @@
-package src;
+package src.vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -31,7 +31,7 @@ public class GestorCVView extends JFrame {
     private void iniciarVentana(){
         setTitle("Gestion CV");
         try {
-            setIconImage(new ImageIcon("res/LogoUCV.png").getImage());
+            setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
         } catch (Exception e) { System.out.println("Logo no encontrado"); }
 
         setExtendedState(JFrame.MAXIMIZED_BOTH);

@@ -1,4 +1,4 @@
-package src;
+package src.vista;
 import javax.swing.*;
 import java.awt.*;
 import src.util.BotonUtil;

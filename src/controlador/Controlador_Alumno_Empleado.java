@@ -1,11 +1,11 @@
 package src.controlador;
 
-import src.Landingpage;
-import src.AlumnoView;
-import src.EmpleadoView;
-import src.MenuSemanal;
-import src.MenuDView;
-import src.Monedero;
+import src.vista.Landingpage;
+import src.vista.AlumnoView;
+import src.vista.EmpleadoView;
+import src.vista.MenuSemanal;
+import src.vista.MenuDView;
+import src.vista.Monedero;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
