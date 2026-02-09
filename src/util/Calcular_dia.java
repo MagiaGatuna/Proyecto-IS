@@ -24,4 +24,19 @@ public static int gethora(){ //Aqui se maneja el calculo de la hora, lo hace en 
     return resultado;
 }
 
+public static int getDiaMesNumero(){
+        LocalDate dia = LocalDate.now();
+        return dia.getDayOfMonth();
+    }
+
+    public static String getMes(){
+        LocalDate dia = LocalDate.now();
+        return dia.getMonth().toString();
+    }
+
+    public static int getAnio(){
+        LocalDate dia = LocalDate.now();
+        return dia.getYear();
+    }
+
 }

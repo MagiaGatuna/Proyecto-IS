@@ -6,7 +6,8 @@ import java.awt.*;
 
 public class MenuDView extends JFrame {
 
-    String diaSemana, diaMes, MM, AA;
+    String diaSemana, MM;
+    int diaMes, AA;
     String Nombre;
     String Descripcion;
     int ValNutri;
@@ -21,7 +22,12 @@ public class MenuDView extends JFrame {
     private JButton btnVerTurnos;
     private JButton btnHome;
 
-    public MenuDView() {
+    public MenuDView(String diaSemana, int diaMes, String MM, int AA) {
+
+        this.diaSemana = diaSemana;
+        this.diaMes = diaMes;
+        this.MM = MM;
+        this.AA = AA;
 
         iniciarVentana();
 
@@ -41,7 +47,7 @@ public class MenuDView extends JFrame {
 
         setTitle("MenuDView");
         try {
-            setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
+            setIconImage(new ImageIcon("res/LogoUCV.png").getImage());
         } catch (Exception e) { System.out.println("Logo no encontrado"); }
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -62,7 +68,6 @@ public class MenuDView extends JFrame {
 
             btnHome= new JButton("HOME");
             estilizarBoton(btnHome, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
-
 
             JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
 
@@ -102,25 +107,25 @@ public class MenuDView extends JFrame {
                 panel.add(mensajeMD);
             panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            JLabel mensajeFecha= new JLabel(diaSemana + diaMes + "de" + MM + AA);
+            JLabel mensajeFecha= new JLabel(diaSemana + " " +  diaMes + " de " + MM + " " + AA);
             estilizarMensaje(mensajeFecha, COLOR_TEXTO_TITULO, 45);
             mensajeFecha.setAlignmentX(Component.CENTER_ALIGNMENT);
             mensajeFecha.setHorizontalAlignment(SwingConstants.CENTER); 
                 panel.add(mensajeFecha);
             panel.add(Box.createRigidArea(new Dimension(0, 15)));
 
-            Fecha(diaSemana, diaMes, MM, AA); // funcion auxiliar pa simplifica'
-            MenuDiario(Nombre, Descripcion, ValNutri); // funcion auxiliar pa simplifica' x2
-
-            JPanel menusD= new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 10));
+            JPanel menusD= new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
             menusD.setOpaque(false);
             menusD.setBackground(COLOR_HEADER);
 
-                JPanel tarjetaDesayuno = crearTarjetaEstandar("Desayuno", "null", "null", "null");
+                JPanel tarjetaDesayuno = crearTarjetaEstandar("Desayuno", "", "", "");
                 menusD.add(tarjetaDesayuno);
 
-                JPanel tarjetaAlmuerzo = crearTarjetaEstandar("Almuerzo", "null", "null", "null");
+                JPanel tarjetaAlmuerzo = crearTarjetaEstandar("", "", "", "");
                 menusD.add(tarjetaAlmuerzo);
+
+                JPanel tarjetaCena = crearTarjetaEstandar("", "", "", "");
+                menusD.add(tarjetaCena);
 
             panel.add(menusD);
 
@@ -130,7 +135,7 @@ public class MenuDView extends JFrame {
 
     private JPanel crearPanelInferior() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 205));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 65));
         panel.setBackground(COLOR_HEADER);
             
             btnVerTurnos= new JButton("Ver turnos");
@@ -141,6 +146,9 @@ public class MenuDView extends JFrame {
 
     }
 
+    public JButton getBtnHome() {
+        return btnHome;
+    }
  // herramientas
     private ImageIcon cargarIcono(String ruta, int ancho, int alto) {
 
@@ -184,7 +192,7 @@ public class MenuDView extends JFrame {
     JPanel tarjeta = new JPanel();
     tarjeta.setLayout(new BoxLayout(tarjeta, BoxLayout.Y_AXIS)); 
     tarjeta.setBackground(Color.WHITE); 
-    tarjeta.setPreferredSize(new Dimension(450, 300)); 
+    tarjeta.setPreferredSize(new Dimension(400, 300)); 
     tarjeta.setBorder(BorderFactory.createEmptyBorder(20, 5, 20, 20));
 
         JLabel lblTitulo = new JLabel(titulo);
@@ -213,37 +221,5 @@ public class MenuDView extends JFrame {
 
         return tarjeta;
 }
-
-
-    public void Fecha(String diaSemana, String diaMes, String MM, String AA){
-
-        // extrae fecha de la base de datos y modifica una variable ya creada
-
-        // Posiblemente tambien traudctor de fecha de base de datos a un lenguaje mas casual para el jlabel
-
-    }
-
-    public void MenuDiario(String Nombre, String Descripcion, int ValNutri){
-
-
-
-        // extrae menu en base a la fecha y modifica valores importantes de la base de datos
-
-
-
-    }
-
-    public JButton getHome(){
-        return btnHome;
-    }
-
-
-
-
-    public static void main(String[] args) {
-
-            new MenuDView();
-
-    }
 
 }
