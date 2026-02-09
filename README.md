@@ -42,7 +42,7 @@
         - validadorRegistro.java
 
     Con la finalidad de preservar la siguiente afirmacion en archivos .json:
-        - baseDeDatosUCV.json : Simular informacion recibida por la UCV para poder registrar como administradores solamente usuarios permitidos. Utiliza la siguiente estructura:
+    - baseDeDatosUCV.json : Simular informacion recibida por la UCV para poder registrar como administradores solamente usuarios permitidos. Utiliza la siguiente estructura:
         ```json
             [
                 {
@@ -52,7 +52,7 @@
             ]
         ```    
 
-        - costosFijos.json : Guardar los CF agregados por los admininistradores. Utiliza la siguiente estructura:
+    - costosFijos.json : Guardar los CF agregados por los admininistradores. Utiliza la siguiente estructura:
         ```json
             [
                 {
@@ -62,7 +62,7 @@
             ] 
         ``` 
 
-        - costosVariables.json : Guardar los CV agregados por los admininistradores. Organizandolos por cada uno de los menus existentes. Utiliza la siguiente estructura:
+    - costosVariables.json : Guardar los CV agregados por los admininistradores. Organizandolos por cada uno de los menus existentes. Utiliza la siguiente estructura:
         ```json
             [
                 {
@@ -76,7 +76,7 @@
             ]
         ```
 
-        - menus.json : Guardar informacion de los menus actuales en el sistema. Utiliza la siguiente estructura:
+    - menus.json : Guardar informacion de los menus actuales en el sistema. Utiliza la siguiente estructura:
         ```json
         [
             {
@@ -92,7 +92,7 @@
         ]
         ```
 
-        - usuarios.json :  Guardar informacion de los usuarios registrados en el sistema que permite el funcionamoento correcto del iniciar sesion. Utiliza la siguiente estructura:
+    - usuarios.json :  Guardar informacion de los usuarios registrados en el sistema que permite el funcionamoento correcto del iniciar sesion. Utiliza la siguiente estructura:
         ```json
             [
                 {
