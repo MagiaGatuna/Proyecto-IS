@@ -403,5 +403,16 @@ public class MenuSemanal extends JFrame{
     m_semanal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     m_semanal.setVisible(true);
     }
+
+    public JButton getBtnRes1() {
+        return reservar_a;
+    }
+
+    public JButton getBtnRes2() {
+        return reservar_c;
+    }
+    public JButton getBtnRes3() {
+        return reservar_d;
+    }
     
 }

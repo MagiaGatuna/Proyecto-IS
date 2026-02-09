@@ -39,16 +39,18 @@ setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
     barraSuperior.add(boton_cerrarsesion); // Se agrega a la barra
 // Sección Menú
     add(Diseño_interfaz.Creador_iconos("res/Menu.png", (espacio * 0) + (espacio/2) - 75, yIconos, 150, 130));
-    add(Diseño_interfaz.Creador_Botones("EDITAR MENÚ SEMANAL", (espacio * 0) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
-    
-    add(Diseño_interfaz.Creador_Botones("EDITAR TURNOS", (espacio * 0) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul));
-// Sección Reportes
+    boton_Menu= Diseño_interfaz.Creador_Botones("EDITAR MENÚ SEMANAL", (espacio * 0) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul);
+    add(boton_Menu);
+    boton_Turnos=(Diseño_interfaz.Creador_Botones("EDITAR TURNOS", (espacio * 0) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul));
+    add(boton_Turnos);
+    // Sección Reportes
     add(Diseño_interfaz.Creador_iconos("res/estadistica.png", (espacio * 1) + (espacio/2) - 60, yIconos + 15, 120, 120));
-    add(Diseño_interfaz.Creador_Botones("REPORTE", (espacio * 1) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
-
+    boton_reporte=(Diseño_interfaz.Creador_Botones("REPORTE", (espacio * 1) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
+    add(boton_reporte);
 // Sección Inventario
     add(Diseño_interfaz.Creador_iconos("res/suministros.png", (espacio * 2) + (espacio/2) - 60, yIconos + 15, 120, 120));
-    add(Diseño_interfaz.Creador_Botones("INVENTARIO", (espacio * 2) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
+    boton_Inventario=(Diseño_interfaz.Creador_Botones("INVENTARIO", (espacio * 2) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
+    add(boton_Inventario);
     boton_CostosFijos = Diseño_interfaz.Creador_Botones("COSTOS FIJOS", (espacio * 2) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul);
     add(boton_CostosFijos);
     boton_CostosVariables = Diseño_interfaz.Creador_Botones("COSTOS VARIABLES", (espacio * 2) + (espacio/2) - 90, yBotones + 100, 180, 40, Diseño_interfaz.colorazul);
@@ -56,8 +58,9 @@ setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
 
 // Sección Consumos
     add(Diseño_interfaz.Creador_iconos("res/comida.png", (espacio * 3) + (espacio/2) - 60, yIconos + 15, 120, 120));
-    add(Diseño_interfaz.Creador_Botones("CONSUMOS", (espacio * 3) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
-//creamos el saludo de bienvenida
+    boton_Consumos=(Diseño_interfaz.Creador_Botones("CONSUMOS", (espacio * 3) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
+    add(boton_Consumos);
+    //creamos el saludo de bienvenida
 labela=new JLabel("¡Bienvenido administrador  "+ userActivo.getNombre()+ "!");//creamos el objeto
 labela.setFont(new Font("Arial", Font.BOLD, 30)); //Por diseño ajustamos la funte de la letra
 labela.setHorizontalAlignment(SwingConstants.CENTER);// nos aseguramos de alinearla
@@ -83,6 +86,27 @@ barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120,
 
   public JButton getBtnGestorCV(){
     return boton_CostosVariables;
+  }
+
+  // sin funcion aun
+  public JButton getBtnMenu(){
+    return boton_Menu;
+  }
+
+  public JButton getBtnTurnos(){
+    return boton_Turnos;
+  }
+
+  public JButton getBtnReporte(){
+    return boton_reporte;
+  }
+
+  public JButton getBtnInventario(){
+    return boton_Inventario;
+  }
+
+  public JButton getBtnConsumos(){
+    return boton_Consumos;
   }
 
   public static void main(String[] args) {
