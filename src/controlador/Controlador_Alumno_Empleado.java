@@ -75,11 +75,13 @@ public class Controlador_Alumno_Empleado implements ActionListener{
             mostrarMenu(empleado);
         }
 
-        if (alumno != null && e.getSource() == alumno.getMenuD()) {
-            mostrarMenu2(alumno);
-        } else if (empleado != null && e.getSource() == empleado.getMenuD()) {
-            mostrarMenu2(empleado);
-        }
+        if (e.getSource() == alumno.getMenuD()) {
+                alumno.setVisible(false);
+                new Controlador_MenuDiario(alumno, null, null);
+            }else if (e.getSource() == empleado.getMenuD()) {
+                empleado.setVisible(false); 
+                new Controlador_MenuDiario(null, empleado, null);
+            }
     }
 
     private void volverAInicio(JFrame vistaActual) {
@@ -100,10 +102,8 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         menu_semanal.setVisible(true);
         vistaActual.setVisible(false);
     }
-    private void mostrarMenu2(JFrame vistaActual) {
-        menu_d.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        menu_d.setVisible(true);
-        vistaActual.setVisible(false);
-    }
+
+    
+
 } 
 
