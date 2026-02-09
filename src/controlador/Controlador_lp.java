@@ -1,8 +1,8 @@
 package src.controlador;
 
-import src.Landingpage;
-import src.Registro;
-import src.InicioSesion;
+import src.vista.Landingpage;
+import src.vista.Registro;
+import src.vista.InicioSesion;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

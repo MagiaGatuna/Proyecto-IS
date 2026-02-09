@@ -1,9 +1,9 @@
 package src.controlador;
 
 import src.util.Calcular_dia;
-import src.AlumnoView;
-import src.MenuDView;
-import src.EmpleadoView;
+import src.vista.AlumnoView;
+import src.vista.MenuDView;
+import src.vista.EmpleadoView;
 
 import src.modelo.validadorInicioS;
 import src.modelo.Menus_lista;

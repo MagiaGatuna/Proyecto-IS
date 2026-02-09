@@ -1,13 +1,13 @@
 package src.controlador;
 
-import src.Landingpage;
-import src.Registro;
-import src.InicioSesion;
-import src.HomeAdmin;
-import src.AlumnoView;
-import src.EmpleadoView;
-import src.MenuSemanal;
-import src.MenuDView;
+import src.vista.Landingpage;
+import src.vista.Registro;
+import src.vista.InicioSesion;
+import src.vista.HomeAdmin;
+import src.vista.AlumnoView;
+import src.vista.EmpleadoView;
+import src.vista.MenuSemanal;
+import src.vista.MenuDView;
 import src.modelo.Usuario;
 import src.modelo.validadorInicioS;
 import src.util.LimpiarFormulariosUtil;

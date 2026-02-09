@@ -1,10 +1,10 @@
-package src;
+package src.vista;
 import javax.swing.*;
-import src.util.BotonUtil;
 import java.awt.*;
 import src.util.Conectar_ventanas;
+import src.util.BotonUtil;
 import src.modelo.Usuario;
-public class AlumnoView extends JFrame {
+public class EmpleadoView extends JFrame {
 
 
     private final Color COLOR_FONDO = Color.WHITE;
@@ -19,15 +19,16 @@ public class AlumnoView extends JFrame {
     private JButton btnVerMenuSemanal;
     private JButton btnVerConsumos;
     private JButton btnCerrarSesion;
-    private Usuario userLogueado; 
+    private JButton btnMonedero;
+    private Usuario userLogueado;
     private JPanel panelContenedorMonedero;
 
-    public AlumnoView(Usuario u) {
-        
+    public EmpleadoView(Usuario pr2) {
+        this.userLogueado = pr2;
         iniciarVentana();
-        this.userLogueado = u;
+        
         JPanel panelNorte = crearPanelSuperior();
-        JPanel panelCentro = crearPanelCentral(u.getNombre());
+        JPanel panelCentro = crearPanelCentral(pr2.getNombre());
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
@@ -36,7 +37,7 @@ public class AlumnoView extends JFrame {
     }
 
     private void iniciarVentana() {
-        setTitle("AlumnoView");
+        setTitle("EmpleadoView");
         try {
             ImageIcon icon = new ImageIcon("res/logoSistemaComedor.png");
             if (icon.getImageLoadStatus() == MediaTracker.COMPLETE) {
@@ -55,33 +56,39 @@ public class AlumnoView extends JFrame {
         getContentPane().setBackground(COLOR_FONDO);
         setLayout(new BorderLayout(10, 10));
     }
-    
+
     private JPanel crearPanelSuperior() {
-        
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
         panel.setBackground(COLOR_HEADER);
 
-        
         JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
         panel.add(lblIconoUCV);
-
-        
+        /* 
+        panelContenedorMonedero = new JPanel(new BorderLayout());
+        panelContenedorMonedero.setOpaque(false); 
+        panel.add(panelContenedorMonedero);
+        */
+       
         panel.add(Box.createHorizontalGlue());
 
-        JButton btnMonedero = new JButton("MONEDERO");
+        JPanel contenedorBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 20));
+        contenedorBotones.setOpaque(false);
+        btnMonedero = new JButton("MONEDERO");
         estilizarBoton(btnMonedero, Color.BLUE, new Dimension(130, 40)); 
         btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
         panel.add(btnMonedero);
-
-        
-        panel.add(Box.createHorizontalStrut(10));
-
-        
         btnCerrarSesion = new JButton("CERRAR SESIÓN");
         estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
-        panel.add(btnCerrarSesion);
+        BotonUtil.darEstiloBoton(btnCerrarSesion, 170, 40);
+        
+        JPanel wrapperBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        wrapperBoton.setOpaque(false);
+        wrapperBoton.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 50));
+        wrapperBoton.add(btnCerrarSesion);
+        
+        panel.add(wrapperBoton);
 
         return panel;
     }
@@ -94,7 +101,7 @@ public class AlumnoView extends JFrame {
 
         panel.add(Box.createVerticalStrut(5));
 
-        JLabel lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A ESTUDIANTE<br>" + username+ "!</center></html>");
+        JLabel lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A EMPLEADO/A<br>" + username + "!</center></html>");
         lblBienvenida.setFont(new Font("Arial", Font.BOLD, 50));
         lblBienvenida.setForeground(COLOR_TEXTO_AZUL);
         lblBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -120,8 +127,8 @@ public class AlumnoView extends JFrame {
 
         btnVerMenu = new JButton("VER MENÚ");
         estilizarBoton(btnVerMenu, COLOR_BOTON_PRINCIPAL, new Dimension(200, 40));
-        BotonUtil.darEstiloBoton(btnVerMenu, 200, 40);          
-        bloqueMenu.add(btnVerMenu); 
+        BotonUtil.darEstiloBoton(btnVerMenu, 200, 40);
+        bloqueMenu.add(btnVerMenu);
 
         btnVerMenuDiario = new JButton("MENÚ DIARIO");
         btnVerMenuDiario.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -182,20 +189,22 @@ public class AlumnoView extends JFrame {
     public JButton getinicio(){
         return btnCerrarSesion;
     }
-    public JButton getMenuS(){
+     public JButton getMenuS(){
         return btnVerMenuSemanal;
     }
     public JButton getMenuD(){
         return btnVerMenuDiario;
     }
-   public JPanel getPanelMonedero() {
+    public JPanel getPanelMonedero() {
     return panelContenedorMonedero;
 }
     public static void main(String[] args) {
-           Usuario pruebaEstudiante = new Usuario("Jeon Jung-kook", 50.0, "estudiante");
-           AlumnoView vista = new AlumnoView(pruebaEstudiante);
-         vista.setVisible(true);
+            Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
+
+     EmpleadoView vista = new EmpleadoView(pruebaEstudiante);
     
-        vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+    vista.setVisible(true);
+    
+    vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 }

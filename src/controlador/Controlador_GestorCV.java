@@ -2,9 +2,9 @@ package src.controlador;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import src.GestorCVView;
-import src.Landingpage;
-import src.HomeAdmin;
+import src.vista.GestorCVView;
+import src.vista.Landingpage;
+import src.vista.HomeAdmin;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

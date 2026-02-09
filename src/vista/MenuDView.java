@@ -1,4 +1,4 @@
-package src;
+package src.vista;
 import javax.swing.*;
 import java.awt.*;
 
@@ -41,7 +41,7 @@ public class MenuDView extends JFrame {
 
         setTitle("MenuDView");
         try {
-            setIconImage(new ImageIcon("res/LogoUCV.png").getImage());
+            setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
         } catch (Exception e) { System.out.println("Logo no encontrado"); }
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();

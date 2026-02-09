@@ -4,6 +4,9 @@ import src.controlador.Controlador_reg;
 import src.controlador.Controlador_inicioS;
 import src.controlador.Controlador_lp;
 import javax.swing.*;
+import src.vista.Landingpage;
+import src.vista.Registro;
+import src.vista.InicioSesion;
 
 public class Main{
     public static void main(String[] args){
