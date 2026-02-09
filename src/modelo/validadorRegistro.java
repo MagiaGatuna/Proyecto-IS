@@ -95,7 +95,7 @@ public class validadorRegistro {
 
                 if(rol.getSelectedItem().toString().equals("Administrador")) {
                     try{
-                        Path rutaAdmins = Paths.get("res/data/administradores.json").toAbsolutePath();
+                        Path rutaAdmins = Paths.get("res/data/BaseDeDatosUCV.json").toAbsolutePath();
                         if (!Files.exists(rutaAdmins)) {
                             problemas.append("- No existe el archivo de administradores autorizados\n\n");
                         }
@@ -107,7 +107,9 @@ public class validadorRegistro {
                         for (int i=0; i<listaAdmins.length(); i++) {
                             JSONObject admin = listaAdmins.getJSONObject(i);
                             if (admin.getString("cedula").trim().replaceAll("[^0-9]", "").equals(cedula.getText().trim().replaceAll("[^0-9]", ""))){
-                                autorizado = true;
+                                if(admin.getString("rol").trim().equals("Administrador")) {
+                                    autorizado = true;
+                                }
                                 break;
                             }
                         }

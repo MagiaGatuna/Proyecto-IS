@@ -1,0 +1,14 @@
+[
+    {
+        "cedula": "1234",
+        "rol": "Administrador"
+    },
+    {
+        "cedula": "12548736",
+        "rol": "Estudiante"
+    },
+    {
+        "cedula": "22222222",
+        "rol": "Trabajador"
+    }
+]
