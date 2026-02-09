@@ -1,5 +1,7 @@
 package src.controlador;
 
+import src.vista.*;
+import src.util.LimpiarFormulariosUtil;
 import src.vista.Landingpage;
 import src.vista.AlumnoView;
 import src.vista.EmpleadoView;
@@ -19,22 +21,23 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     private MenuSemanal menu_semanal;
     private JPanel monedero;
     private MenuDView menu_d;
+    private InicioSesion inicio_sesion;
 
-   public Controlador_Alumno_Empleado(Landingpage inicio, AlumnoView alumno, EmpleadoView empleado, MenuSemanal menu_semanal, JPanel monedero, MenuDView menu_d) {
+   public Controlador_Alumno_Empleado(Landingpage inicio, AlumnoView alumno, EmpleadoView empleado, MenuSemanal menu_semanal, JPanel monedero, MenuDView menu_d,InicioSesion inicio_sesion) {
     this.inicio = inicio;
     this.menu_semanal = menu_semanal;
     this.alumno = alumno;
     this.menu_d=menu_d;
     this.empleado = empleado;
     this.monedero = monedero;
-
-    // Asignar listeners a Alumno
+    this.inicio_sesion = inicio_sesion;
+    
     if (this.alumno != null) {
         this.alumno.getinicio().addActionListener(this);
         this.alumno.getMenuS().addActionListener(this);
         this.alumno.getMenuD().addActionListener(this);
         
-        // Inyectar monedero en Alumno
+       
         if (monedero != null && alumno.getPanelMonedero() != null) {
             alumno.getPanelMonedero().add(monedero);
             alumno.getPanelMonedero().revalidate();
@@ -42,13 +45,13 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         }
     }
 
-    // Asignar listeners a Empleado
+    
     if (this.empleado != null) {
         this.empleado.getinicio().addActionListener(this);
         this.empleado.getMenuS().addActionListener(this);
         this.empleado.getMenuD().addActionListener(this);
         
-        // Inyectar monedero en Empleado (Bloque separado del de alumno)
+        
         if (monedero != null && empleado.getPanelMonedero() != null) {
             empleado.getPanelMonedero().add(monedero);
             empleado.getPanelMonedero().revalidate();
@@ -58,7 +61,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
 }
 @Override
     public void actionPerformed(ActionEvent e) {
-        // Lógica para volver al Inicio (Cerrar Sesión)
+       
         if (alumno != null && e.getSource() == alumno.getinicio()) {
             volverAInicio(alumno);
         } else if (empleado != null && e.getSource() == empleado.getinicio()) {
@@ -80,9 +83,16 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     }
 
     private void volverAInicio(JFrame vistaActual) {
+
+        if (inicio_sesion != null) {
+            LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
+        }
+        
         inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
         inicio.setVisible(true);
         vistaActual.setVisible(false);
+        vistaActual.dispose();
+       
     }
 
     private void mostrarMenu(JFrame vistaActual) {

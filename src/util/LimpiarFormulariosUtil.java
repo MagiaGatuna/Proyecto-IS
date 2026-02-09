@@ -36,7 +36,7 @@ public class LimpiarFormulariosUtil {
     
     // Reset de Contraseña
     txtPassword.setText("Contraseña");
-    txtPassword.setEchoChar((char) 0); // Para que se vea el texto y no los puntos
+    txtPassword.setEchoChar((char) 0); 
     txtPassword.setForeground(Color.GRAY);
 }
 }

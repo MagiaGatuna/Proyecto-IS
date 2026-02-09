@@ -2,7 +2,6 @@ package src.vista;
 import javax.swing.*;
 import src.util.BotonUtil;
 import java.awt.*;
-import src.util.Conectar_ventanas;
 import src.util.Diseño_interfaz;
 import src.modelo.Usuario;
 
@@ -67,14 +66,6 @@ add(labela);//lo agreagamos a la ventana principal
 //creamos el logo
 barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120, 120)); // Se agrega a la barra, no al JFrame
 //creamos las imagenes por diseño
-//seccion de el monedero 
-JButton btnMonedero = Diseño_interfaz.Creador_Botones("MONEDERO", anchoP - 360, 35, 120, 45, Color.BLUE);
-barraSuperior.add(btnMonedero); 
-
-btnMonedero.addActionListener(e -> {
-    Conectar_ventanas.getInstancia().desplegarMonedero(this, userActivo);
-});
-
 
   }
 
