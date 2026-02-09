@@ -10,6 +10,7 @@ import src.vista.MenuSemanal;
 import src.vista.MenuDView;
 import src.modelo.Usuario;
 import src.modelo.validadorInicioS;
+import src.util.Calcular_dia;
 import src.util.LimpiarFormulariosUtil;
 
 import java.awt.event.ActionEvent;
@@ -52,17 +53,35 @@ public class Controlador_inicioS implements ActionListener{
                 admin.setVisible(true);
                 inicio_sesion.setVisible(false);
                 inicio_sesion.dispose();
+
             }
+            // Fecha traducida para logica del MenuD
+            String diaSemana = Calcular_dia.getdia();
+                int diaMes = Calcular_dia.getDiaMesNumero();
+                String MM = Calcular_dia.getMes();
+                int AA = Calcular_dia.getAnio();
+                String[] diasSemanaINGLES = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"};
+                String[] diasSemanaESPANOL = {"Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"};
+                String[] MesINGLES = {"JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"};
+                String[] MesESPANOL = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"};
+
+                for(int i= 0; i < diasSemanaINGLES.length; i++){
+                    if (diasSemanaINGLES[i].equals(diaSemana)) {diaSemana= diasSemanaESPANOL[i]; break;}
+                }
+                for(int i= 0; i < MesINGLES.length; i++){
+                    if (MesINGLES[i].equals(MM)) {MM= MesESPANOL[i]; break;}
+                }
+                // Fin de la logica extra
 
             if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
                 EmpleadoView empleado= new EmpleadoView(usuarioLogueado);
                 MenuSemanal menu_s_e= new MenuSemanal();
-                MenuDView menu_d= new MenuDView();
+                MenuDView menu_d= new MenuDView(diaSemana, diaMes, MM, AA);
                 JPanel monederoTemp = new JPanel();
                 monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
                 new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e,monederoTemp,menu_d,inicio_sesion);
                 new Controlador_MenuSemanal(null, empleado, menu_s_e);
-                new Controlador_MenuD(null, empleado, menu_d);
+                new Controlador_MenuDiario(null, empleado, menu_d);
 
                 empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 empleado.setResizable(false);
@@ -75,12 +94,12 @@ public class Controlador_inicioS implements ActionListener{
             if((Rol.equals("Estudiante"))){
                 AlumnoView alumno= new AlumnoView(usuarioLogueado);
                 MenuSemanal menu_s= new MenuSemanal();
-                MenuDView menu_d= new MenuDView();
+                MenuDView menu_d= new MenuDView(diaSemana, diaMes, MM, AA);
                 JPanel monederoTemp = new JPanel();
                 monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
                 new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, monederoTemp,menu_d,inicio_sesion);
                 new Controlador_MenuSemanal(alumno, null, menu_s);
-                new Controlador_MenuD(alumno, null, menu_d);
+                new Controlador_MenuDiario(alumno, null, menu_d);
 
                 alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 alumno.setResizable(false);

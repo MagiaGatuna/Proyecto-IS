@@ -69,5 +69,19 @@ public class Menus_lista {
    
     }
 
+    public static JSONObject getMenuData(String dia, String turno) {
+    cargarDatosMenu(); 
+    
+    for (int i = 0; i < listaMenus.length(); i++) {
+        JSONObject menu = listaMenus.getJSONObject(i);
+        // Compara ignorando mayus/minus por seguridad
+        if (menu.getString("dia").equalsIgnoreCase(dia) && 
+            menu.getString("turno").equalsIgnoreCase(turno)) {
+            return menu;
+        }
+    }
+    return null; 
+}
+
 
 }

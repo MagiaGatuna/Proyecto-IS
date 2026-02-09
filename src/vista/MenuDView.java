@@ -6,10 +6,15 @@ import java.awt.*;
 
 public class MenuDView extends JFrame {
 
-    String diaSemana, diaMes, MM, AA;
+    String diaSemana, MM;
+    int diaMes, AA;
     String Nombre;
     String Descripcion;
     int ValNutri;
+
+    private JLabel lblNombreDes, lblDescDes, lblValDes;
+    private JLabel lblNombreAlm, lblDescAlm, lblValAlm;
+    private JLabel lblNombreCen, lblDescCen, lblValCen;
 
     private final Color COLOR_FONDO = Color.WHITE;
     private final Color COLOR_HEADER = Color.decode("#D9D9D9");
@@ -21,9 +26,16 @@ public class MenuDView extends JFrame {
     private JButton btnVerTurnos;
     private JButton btnHome;
 
-    public MenuDView() {
+    public MenuDView(String diaSemana, int diaMes, String MM, int AA) {
+
+        this.diaSemana = diaSemana;
+        this.diaMes = diaMes;
+        this.MM = MM;
+        this.AA = AA;
 
         iniciarVentana();
+
+        inicializarLabels();
 
         JPanel panelNorte = crearPanelSuperior();
         JPanel panelSur = crearPanelCentral();
@@ -41,7 +53,7 @@ public class MenuDView extends JFrame {
 
         setTitle("MenuDView");
         try {
-            setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
+            setIconImage(new ImageIcon("res/LogoUCV.png").getImage());
         } catch (Exception e) { System.out.println("Logo no encontrado"); }
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -53,6 +65,40 @@ public class MenuDView extends JFrame {
 
     }
 
+    private void inicializarLabels() {
+        lblNombreDes = new JLabel("No disponible");
+        lblDescDes = new JLabel("...");
+        lblValDes = new JLabel("");
+        
+        lblNombreAlm = new JLabel("No disponible");
+        lblDescAlm = new JLabel("...");
+        lblValAlm = new JLabel("");
+        
+        lblNombreCen = new JLabel("No disponible");
+        lblDescCen = new JLabel("...");
+        lblValCen = new JLabel("");
+    }
+
+    public void setMenuDesayuno(String nombre, String desc, String valor) {
+        lblNombreDes.setText("Comida: " + nombre);
+        lblDescDes.setText("<html><body style='width: 200px'>Desc: " + desc + "</body></html>");
+        lblValDes.setText("Valor Nutricional: " + valor);
+    }
+
+    public void setMenuAlmuerzo(String nombre, String desc, String valor) {
+        lblNombreAlm.setText("Comida: " + nombre);
+        lblDescAlm.setText("<html><body style='width: 200px'>Desc: " + desc + "</body></html>");
+        lblValAlm.setText("Valor Nutricional: " + valor);
+    }
+
+    public void setMenuCena(String nombre, String desc, String valor) {
+        lblNombreCen.setText("Comida: " + nombre);
+        lblDescCen.setText("<html><body style='width: 200px'>Desc: " + desc + "</body></html>");
+        lblValCen.setText("Valor Nutricional: " + valor);
+    }
+
+    public String getDiaSemana() { return diaSemana; }
+
     private JPanel crearPanelSuperior() {
 
         JPanel panel = new JPanel();
@@ -62,7 +108,6 @@ public class MenuDView extends JFrame {
 
             btnHome= new JButton("HOME");
             estilizarBoton(btnHome, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
-
 
             JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
 
@@ -102,25 +147,20 @@ public class MenuDView extends JFrame {
                 panel.add(mensajeMD);
             panel.add(Box.createRigidArea(new Dimension(0, 10)));
 
-            JLabel mensajeFecha= new JLabel(diaSemana + diaMes + "de" + MM + AA);
+            JLabel mensajeFecha= new JLabel(diaSemana + " " +  diaMes + " de " + MM + " " + AA);
             estilizarMensaje(mensajeFecha, COLOR_TEXTO_TITULO, 45);
             mensajeFecha.setAlignmentX(Component.CENTER_ALIGNMENT);
             mensajeFecha.setHorizontalAlignment(SwingConstants.CENTER); 
                 panel.add(mensajeFecha);
             panel.add(Box.createRigidArea(new Dimension(0, 15)));
 
-            Fecha(diaSemana, diaMes, MM, AA); // funcion auxiliar pa simplifica'
-            MenuDiario(Nombre, Descripcion, ValNutri); // funcion auxiliar pa simplifica' x2
-
-            JPanel menusD= new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 10));
+            JPanel menusD= new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
             menusD.setOpaque(false);
             menusD.setBackground(COLOR_HEADER);
 
-                JPanel tarjetaDesayuno = crearTarjetaEstandar("Desayuno", "null", "null", "null");
-                menusD.add(tarjetaDesayuno);
-
-                JPanel tarjetaAlmuerzo = crearTarjetaEstandar("Almuerzo", "null", "null", "null");
-                menusD.add(tarjetaAlmuerzo);
+                menusD.add(crearTarjetaEstandar("Desayuno", lblNombreDes, lblDescDes, lblValDes));
+                menusD.add(crearTarjetaEstandar("Almuerzo", lblNombreAlm, lblDescAlm, lblValAlm));
+                menusD.add(crearTarjetaEstandar("Cena", lblNombreCen, lblDescCen, lblValCen));
 
             panel.add(menusD);
 
@@ -130,7 +170,7 @@ public class MenuDView extends JFrame {
 
     private JPanel crearPanelInferior() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 205));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 65));
         panel.setBackground(COLOR_HEADER);
             
             btnVerTurnos= new JButton("Ver turnos");
@@ -141,6 +181,9 @@ public class MenuDView extends JFrame {
 
     }
 
+    public JButton getBtnHome() {
+        return btnHome;
+    }
  // herramientas
     private ImageIcon cargarIcono(String ruta, int ancho, int alto) {
 
@@ -180,70 +223,34 @@ public class MenuDView extends JFrame {
         mensaje.setFont(new Font("Arial", Font.BOLD, size));
     }
 
-    private JPanel crearTarjetaEstandar(String titulo, String nombre, String descripcion, String valor) {
-    JPanel tarjeta = new JPanel();
-    tarjeta.setLayout(new BoxLayout(tarjeta, BoxLayout.Y_AXIS)); 
-    tarjeta.setBackground(Color.WHITE); 
-    tarjeta.setPreferredSize(new Dimension(450, 300)); 
-    tarjeta.setBorder(BorderFactory.createEmptyBorder(20, 5, 20, 20));
+    private JPanel crearTarjetaEstandar(String titulo, JLabel lblNom, JLabel lblDesc, JLabel lblVal) {
+        JPanel tarjeta = new JPanel();
+        tarjeta.setLayout(new BoxLayout(tarjeta, BoxLayout.Y_AXIS)); 
+        tarjeta.setBackground(Color.WHITE); 
+        tarjeta.setPreferredSize(new Dimension(400, 300)); 
+        tarjeta.setBorder(BorderFactory.createEmptyBorder(20, 5, 20, 20));
 
         JLabel lblTitulo = new JLabel(titulo);
         lblTitulo.setForeground(COLOR_COMIDA_TITULO); 
         lblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
         lblTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
         tarjeta.add(lblTitulo);
-        tarjeta.add(Box.createRigidArea(new Dimension(0, 10))); 
-
-        JLabel Nombre = new JLabel("Nombre: " + nombre);
-        Nombre.setAlignmentX(Component.LEFT_ALIGNMENT);
-        estilizarMensaje(Nombre, COLOR_TEXTO_TITULO, 16);
-        tarjeta.add(Nombre);
-        tarjeta.add(Box.createRigidArea(new Dimension(0, 40)));
         
-        JLabel Descripcion= new JLabel("<html><body style='width: 200px'> Descripción: " + descripcion + "</body></html>");
-        Descripcion.setAlignmentX(Component.LEFT_ALIGNMENT);
-        estilizarMensaje(Descripcion, COLOR_TEXTO_TITULO, 16);
-        tarjeta.add(Descripcion);
-        tarjeta.add(Box.createRigidArea(new Dimension(0, 40)));
+        estilizarMensaje(lblNom, COLOR_TEXTO_TITULO, 16);
+        lblNom.setAlignmentX(Component.LEFT_ALIGNMENT);
+        tarjeta.add(lblNom);
+        tarjeta.add(Box.createRigidArea(new Dimension(0, 20)));
+        
+        estilizarMensaje(lblDesc, COLOR_TEXTO_TITULO, 16);
+        lblDesc.setAlignmentX(Component.LEFT_ALIGNMENT);
+        tarjeta.add(lblDesc);
+        tarjeta.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        JLabel valorNutricional= new JLabel("Valor Nutricional: %" + ValNutri);
-        valorNutricional.setAlignmentX(Component.LEFT_ALIGNMENT);
-        estilizarMensaje(valorNutricional, COLOR_TEXTO_TITULO, 16);
-        tarjeta.add(valorNutricional);
+        estilizarMensaje(lblVal, COLOR_TEXTO_TITULO, 16);
+        lblVal.setAlignmentX(Component.LEFT_ALIGNMENT);
+        tarjeta.add(lblVal);
 
         return tarjeta;
-}
-
-
-    public void Fecha(String diaSemana, String diaMes, String MM, String AA){
-
-        // extrae fecha de la base de datos y modifica una variable ya creada
-
-        // Posiblemente tambien traudctor de fecha de base de datos a un lenguaje mas casual para el jlabel
-
-    }
-
-    public void MenuDiario(String Nombre, String Descripcion, int ValNutri){
-
-
-
-        // extrae menu en base a la fecha y modifica valores importantes de la base de datos
-
-
-
-    }
-
-    public JButton getHome(){
-        return btnHome;
-    }
-
-
-
-
-    public static void main(String[] args) {
-
-            new MenuDView();
-
     }
 
 }
