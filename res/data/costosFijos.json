@@ -1,14 +1,4 @@
-[
-    {
-        "costo": 100,
-        "nombre": "servicios"
-    },
-    {
-        "costo": 300,
-        "nombre": "eded"
-    },
-    {
-        "costo": 34,
-        "nombre": "23"
-    }
-]
+[{
+    "costo": 100,
+    "nombre": "servicios"
+}]

@@ -162,7 +162,6 @@ public class MenuDView extends JFrame {
                 menusD.add(crearTarjetaEstandar("Almuerzo", lblNombreAlm, lblDescAlm, lblValAlm));
                 menusD.add(crearTarjetaEstandar("Cena", lblNombreCen, lblDescCen, lblValCen));
 
-
             panel.add(menusD);
 
             return panel;

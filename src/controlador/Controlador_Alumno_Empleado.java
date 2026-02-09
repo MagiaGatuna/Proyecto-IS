@@ -2,12 +2,6 @@ package src.controlador;
 
 import src.vista.*;
 import src.util.LimpiarFormulariosUtil;
-import src.vista.Landingpage;
-import src.vista.AlumnoView;
-import src.vista.EmpleadoView;
-import src.vista.MenuSemanal;
-import src.vista.MenuDView;
-import src.vista.Monedero;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -76,11 +70,9 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         }
 
         if (e.getSource() == alumno.getMenuD()) {
-                alumno.setVisible(false);
-                new Controlador_MenuDiario(alumno, null, null);
+            mostrarMenu2(alumno);
             }else if (e.getSource() == empleado.getMenuD()) {
-                empleado.setVisible(false); 
-                new Controlador_MenuDiario(null, empleado, null);
+            mostrarMenu2(empleado);
             }
     }
 
@@ -100,6 +92,12 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     private void mostrarMenu(JFrame vistaActual) {
         menu_semanal.setExtendedState(JFrame.MAXIMIZED_BOTH);
         menu_semanal.setVisible(true);
+        vistaActual.setVisible(false);
+    }
+
+    private void mostrarMenu2(JFrame vistaActual) {
+        menu_d.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        menu_d.setVisible(true);
         vistaActual.setVisible(false);
     }
 
