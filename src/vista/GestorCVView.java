@@ -113,7 +113,7 @@ public class GestorCVView extends JFrame {
         
         JScrollPane scrollArea = new JScrollPane(txtAreaDetalles);
         scrollArea.setPreferredSize(new Dimension(300, 0)); 
-        scrollArea.setBorder(BorderFactory.createTitledBorder(new LineBorder(Color.GRAY), "Detalles del Menú"));
+        scrollArea.setBorder(BorderFactory.createTitledBorder(new LineBorder(Color.GRAY), ""));
         
         panelCuerpo.add(scrollArea, BorderLayout.WEST);
 
