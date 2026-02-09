@@ -63,8 +63,7 @@ if (this.menu.getvolver() != null) {
     public void actionPerformed(ActionEvent e){
         Rol = validadorInicioS.getRol();
        
-        if(e.getSource()==menu.getvolver() ){//Aqui va un && con el JSON del tipo de usuario
-            
+        if(e.getSource()==menu.getvolver() ){
             if((Rol.equals("Estudiante"))){
                 if(this.alumno != null){
             alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -114,8 +113,6 @@ if (this.menu.getvolver() != null) {
         
 
         if(dia_seleccionado != null && dia_seleccionado != "SUNDAY" && dia_seleccionado != "SATURDAY"){
-            //get_texto y getaforo
-
             Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),dia_seleccionado,"DESAYUNO");
             Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"),dia_seleccionado,"ALMUERZO");
             Menus_lista.mostrarMenu(menu.get_texto("cena"), menu.getaforo("cena"),dia_seleccionado,"CENA");
@@ -135,18 +132,15 @@ public void pintarboton(String hoy) {
     // Ponemos todos en blanco, pero validando que existan
     for (String d : diasArr) {
         JButton b = menu.getboton_dia(d);
-        if (b != null) { // <--- OTRO IF AQUÍ
+        if (b != null) {
             b.setBackground(new Color(255, 255, 255));
         }
     }
 
-    // Pintamos el día actual (hoy)
+    // Pintamos el día actual 
     JButton btnHoy = menu.getboton_dia(hoy);
-    if (btnHoy != null) { // <--- EL IF MÁS IMPORTANTE
+    if (btnHoy != null) { 
         btnHoy.setBackground(new Color(180, 236, 227));
-    } else {
-        // Si hoy es SÁBADO (SATURDAY) o DOMINGO, el programa no se rompe
-        System.out.println("Hoy es fin de semana o el nombre no coincide: " + hoy);
     }
 }
     public void desactivar_botones(int minutos){

@@ -24,6 +24,7 @@ public class Controlador_inicioS implements ActionListener{
     String Rol="";
 
     public Controlador_inicioS(Landingpage inicio, Registro ventanaRegistro, InicioSesion inicio_sesion){
+        LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
         this.inicio=inicio;
         this.ventanaRegistro=ventanaRegistro;
         this.inicio_sesion=inicio_sesion;
@@ -37,10 +38,7 @@ public class Controlador_inicioS implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e){
-        System.out.println("Se presionó un botón: " + e.getActionCommand());
         if(e.getSource() == inicio_sesion.getAdmin()){
-    // Pasamos los objetos JTextField y JPasswordField directamente como pide tu validador
-        System.out.println("Botón de Login detectado correctamente");
     if (validadorInicioS.validarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña())){
         Rol = validadorInicioS.getRol();
         Usuario usuarioLogueado = validadorInicioS.getUsuarioActual();
@@ -62,7 +60,7 @@ public class Controlador_inicioS implements ActionListener{
                 MenuDView menu_d= new MenuDView();
                 JPanel monederoTemp = new JPanel();
                 monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
-                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e,monederoTemp,menu_d);
+                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e,monederoTemp,menu_d,inicio_sesion);
                 new Controlador_MenuSemanal(null, empleado, menu_s_e);
                 new Controlador_MenuD(null, empleado, menu_d);
 
@@ -80,7 +78,7 @@ public class Controlador_inicioS implements ActionListener{
                 MenuDView menu_d= new MenuDView();
                 JPanel monederoTemp = new JPanel();
                 monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
-                new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, monederoTemp,menu_d);
+                new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, monederoTemp,menu_d,inicio_sesion);
                 new Controlador_MenuSemanal(alumno, null, menu_s);
                 new Controlador_MenuD(alumno, null, menu_d);
 
@@ -104,12 +102,13 @@ public class Controlador_inicioS implements ActionListener{
         }
 
         if(e.getSource()==inicio_sesion.getHome()){
-            LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
+             LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
             inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
             inicio.setResizable(false);
             inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             inicio.setVisible(true);
             inicio_sesion.setVisible(false);
+            
         }
     }
 }

@@ -2,7 +2,7 @@ package src.util;
 import src.modelo.Usuario;
 public class Calcular {
    
-    public static double CCB = 5.0; 
+    public static double CCB = 5.0; //esto es un ejemplo todavia no esta definido
 
     public static double calcularPrecio(Usuario u) {
         String rol = u.getRol().toLowerCase();

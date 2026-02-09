@@ -27,7 +27,7 @@ public class Controlador_reg implements ActionListener{
 
             @Override
             public void mouseClicked(MouseEvent ev){
-            
+            LimpiarFormulariosUtil.limpiarRegistro(ventanaRegistro.getTxtNombres(),ventanaRegistro.getTxtApellidos(),ventanaRegistro.getTxtCedula(),ventanaRegistro.getTxtCorreo(),ventanaRegistro.getComboCedula(),ventanaRegistro.getComboSexo(),ventanaRegistro.getComboRol(),ventanaRegistro.getTxtPassword(),ventanaRegistro.getTxtConfirmPassword());
             inicio_sesion.setExtendedState(JFrame.MAXIMIZED_BOTH);
             inicio_sesion.setResizable(false);
             inicio_sesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,6 +47,7 @@ public class Controlador_reg implements ActionListener{
 
         if(e.getSource()==ventanaRegistro.getAceptar()){
 
+
             if (validadorRegistro.validarRegistro(ventanaRegistro.getTxtNombres(),
                                                     ventanaRegistro.getTxtApellidos(),
                                                     ventanaRegistro.getTxtCedula(),
@@ -60,7 +61,7 @@ public class Controlador_reg implements ActionListener{
                     "Éxito",
                     JOptionPane.INFORMATION_MESSAGE);
                     LimpiarFormulariosUtil.limpiarRegistro(ventanaRegistro.getTxtNombres(),ventanaRegistro.getTxtApellidos(),ventanaRegistro.getTxtCedula(),ventanaRegistro.getTxtCorreo(),ventanaRegistro.getComboCedula(),ventanaRegistro.getComboSexo(),ventanaRegistro.getComboRol(),ventanaRegistro.getTxtPassword(),ventanaRegistro.getTxtConfirmPassword());
-                
+                     LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
                 inicio_sesion.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 inicio_sesion.setResizable(false);
                 inicio_sesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

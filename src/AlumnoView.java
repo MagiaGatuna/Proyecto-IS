@@ -57,36 +57,31 @@ public class AlumnoView extends JFrame {
     }
     
     private JPanel crearPanelSuperior() {
+        
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
         panel.setBackground(COLOR_HEADER);
 
+        
         JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
         panel.add(lblIconoUCV);
-/* 
-        panelContenedorMonedero = new JPanel(new BorderLayout());
-    panelContenedorMonedero.setOpaque(false); 
-    panel.add(panelContenedorMonedero);
-*/
+
+        
         panel.add(Box.createHorizontalGlue());
 
-        btnCerrarSesion = new JButton("CERRAR SESIÓN");
-        estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
-  panel.add(Box.createHorizontalGlue());
-        JPanel contenedorBotones = new JPanel(new FlowLayout(FlowLayout.RIGHT, 15, 20));
-    contenedorBotones.setOpaque(false);
         JButton btnMonedero = new JButton("MONEDERO");
         estilizarBoton(btnMonedero, Color.BLUE, new Dimension(130, 40)); 
         btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
-    panel.add(btnMonedero);
+        panel.add(btnMonedero);
+
         
-        JPanel wrapperBoton = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-        wrapperBoton.setOpaque(false);
-        wrapperBoton.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 50));
-        wrapperBoton.add(btnCerrarSesion);
+        panel.add(Box.createHorizontalStrut(10));
+
         
-        panel.add(wrapperBoton);
+        btnCerrarSesion = new JButton("CERRAR SESIÓN");
+        estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
+        panel.add(btnCerrarSesion);
 
         return panel;
     }
