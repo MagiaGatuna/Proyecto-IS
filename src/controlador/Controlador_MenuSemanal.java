@@ -57,6 +57,10 @@ if (this.menu.getvolver() != null) {
         pintarboton(dia); 
         desactivar_botones(hora);
 
+    avisoProximamente(this.menu.getBtnRes1());
+    avisoProximamente(this.menu.getBtnRes2());
+    avisoProximamente(this.menu.getBtnRes3());
+
     }
 
     @Override
@@ -154,6 +158,17 @@ public void pintarboton(String hoy) {
             menu.getreservas("cena").setEnabled(false);
         }
     }
+
+    private void avisoProximamente(JButton boton) {
+            if (boton != null) {
+                boton.addActionListener(e -> {
+                    JOptionPane.showMessageDialog(null, 
+                        "Esta funcionalidad estará disponible en la próxima actualización.", 
+                        "En construcción", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                });
+            }
+        }
     
     
 

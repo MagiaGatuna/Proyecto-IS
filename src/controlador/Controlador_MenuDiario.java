@@ -26,10 +26,22 @@ public class Controlador_MenuDiario implements ActionListener {
 
         if (this.menu.getBtnHome() != null) {
             this.menu.getBtnHome().addActionListener(this);
+            avisoProximamente(this.menu.getBtnVTurnos());
         }
         cargarInformacionMenu();
         this.menu.setVisible(false);
 }
+
+    private void avisoProximamente(JButton boton) {
+            if (boton != null) {
+                boton.addActionListener(e -> {
+                    JOptionPane.showMessageDialog(null, 
+                        "Esta funcionalidad estará disponible en la próxima actualización.", 
+                        "En construcción", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                });
+            }
+        }
 
     private void cargarInformacionMenu() {
         String diaEspanol = menu.getDiaSemana(); 

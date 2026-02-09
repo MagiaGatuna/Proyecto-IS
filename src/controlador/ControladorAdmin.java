@@ -21,9 +21,24 @@ public class ControladorAdmin implements ActionListener {
             this.homeAdmin.getHome2().addActionListener(this);
             this.homeAdmin.getBtnGestorCF().addActionListener(this);
             this.homeAdmin.getBtnGestorCV().addActionListener(this);
+            avisoProximamente(this.homeAdmin.getBtnTurnos());
+            avisoProximamente(this.homeAdmin.getBtnReporte());
+            avisoProximamente(this.homeAdmin.getBtnMenu());
+            avisoProximamente(this.homeAdmin.getBtnInventario());
+            avisoProximamente(this.homeAdmin.getBtnConsumos());
         }
     }
     
+    private void avisoProximamente(JButton boton) {
+            if (boton != null) {
+                boton.addActionListener(e -> {
+                    JOptionPane.showMessageDialog(null, 
+                        "Esta funcionalidad estará disponible en la próxima actualización.", 
+                        "En construcción", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                });
+            }
+        }
 
     @Override
     public void actionPerformed(ActionEvent e) {

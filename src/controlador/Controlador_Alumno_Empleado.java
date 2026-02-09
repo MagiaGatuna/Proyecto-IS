@@ -25,11 +25,12 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     this.empleado = empleado;
     this.monedero = monedero;
     this.inicio_sesion = inicio_sesion;
-    
+
     if (this.alumno != null) {
         this.alumno.getinicio().addActionListener(this);
         this.alumno.getMenuS().addActionListener(this);
         this.alumno.getMenuD().addActionListener(this);
+        avisoProximamente(this.alumno.getBtnConsumos());
         
        
         if (monedero != null && alumno.getPanelMonedero() != null) {
@@ -44,6 +45,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         this.empleado.getinicio().addActionListener(this);
         this.empleado.getMenuS().addActionListener(this);
         this.empleado.getMenuD().addActionListener(this);
+        avisoProximamente(this.empleado.getBtnConsumos());
         
         
         if (monedero != null && empleado.getPanelMonedero() != null) {
@@ -52,7 +54,20 @@ public class Controlador_Alumno_Empleado implements ActionListener{
             empleado.getPanelMonedero().repaint();
         }
     }
+
+
 }
+    private void avisoProximamente(JButton boton) {
+            if (boton != null) {
+                boton.addActionListener(e -> {
+                    JOptionPane.showMessageDialog(null, 
+                        "Esta funcionalidad estará disponible en la próxima actualización.", 
+                        "En construcción", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                });
+            }
+        }
+
 @Override
     public void actionPerformed(ActionEvent e) {
        

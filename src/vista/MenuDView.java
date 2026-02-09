@@ -184,6 +184,11 @@ public class MenuDView extends JFrame {
     public JButton getBtnHome() {
         return btnHome;
     }
+
+    public JButton getBtnVTurnos() {
+        return btnVerTurnos;
+    }
+
  // herramientas
     private ImageIcon cargarIcono(String ruta, int ancho, int alto) {
 

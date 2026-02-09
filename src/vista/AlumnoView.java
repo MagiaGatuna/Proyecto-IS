@@ -188,6 +188,9 @@ public class AlumnoView extends JFrame {
     public JButton getMenuD(){
         return btnVerMenuDiario;
     }
+    public JButton getBtnConsumos(){
+        return btnVerConsumos;
+    }
    public JPanel getPanelMonedero() {
     return panelContenedorMonedero;
 }
