@@ -21,8 +21,7 @@ public class validadorRegistro {
         StringBuilder errores = new StringBuilder();
         StringBuilder problemas = new StringBuilder();
 
-        
-        // Validar nombres
+
         if(ValidarUtil.campoEstaVacio(nombres, "Nombres")){
             errores.append("- El campo Nombres es obligatorio\n");
         }
@@ -135,6 +134,7 @@ public class validadorRegistro {
                     nuevoUsuario.put("sexo", sexo.getSelectedItem().toString());
                     nuevoUsuario.put("contraseña", password2);
                     nuevoUsuario.put("rol", rol.getSelectedItem().toString());
+                    nuevoUsuario.put("saldo", 0.00);
                     listaUsuarios.put(nuevoUsuario);
 
                     Files.write(rutaUsuarios, listaUsuarios.toString(4).getBytes(StandardCharsets.UTF_8));

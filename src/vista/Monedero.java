@@ -4,6 +4,8 @@ import java.awt.*;
 import src.util.Calcular;
 import src.util.Diseño_interfaz;
 import src.modelo.Usuario;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Monedero extends JPanel {
  //declaramos los elementos a utilizar 
@@ -23,7 +25,19 @@ public class Monedero extends JPanel {
 
 //creamos el boton para recargar 
       boton_recargar=Diseño_interfaz.Creador_Botones("Recargar",75, 135, 150, 35,Color.BLUE);
+      boton_recargar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, 
+                    "Esta funcionalidad estará disponible en la próxima actualización.", 
+                    "En construcción", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
       add(boton_recargar);
+
+
+
 //creamos el inico de el diseño conla palabra monedor virtual
       label_monedero=new JLabel("Monedero Virtual");//creamos objeto e ingresamos el texto
       label_monedero.setFont(new Font("Arial", Font.BOLD, 20));//por diseño definifmos el tipo de fuente,color y tamaño de la letra

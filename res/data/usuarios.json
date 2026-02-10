@@ -5,7 +5,8 @@
         "sexo": "femenino",
         "rol": "Estudiante",
         "nombres": "Corina",
-        "contraseña": "123"
+        "contraseña": "123",
+        "saldo" : 999999.99
     },
     {
         "apellidos": "Moros",
@@ -13,7 +14,8 @@
         "sexo": "Femenino",
         "rol": "Estudiante",
         "nombres": "Elena",
-        "contraseña": "123456"
+        "contraseña": "123456",
+        "saldo" : 100000.50
     },
     {
         "apellidos": "Vanrouge",
@@ -21,7 +23,8 @@
         "sexo": "Masculino",
         "rol": "Trabajador",
         "nombres": "Lilia",
-        "contraseña": "1234567"
+        "contraseña": "1234567",
+        "saldo" : 5.25
     },
     {
         "apellidos": "A",
@@ -29,7 +32,8 @@
         "sexo": "Femenino",
         "rol": "Estudiante",
         "nombres": "Alexandra",
-        "contraseña": "123"
+        "contraseña": "123",
+        "saldo" : 209.00
     },
     {
         "apellidos": "Matheus",

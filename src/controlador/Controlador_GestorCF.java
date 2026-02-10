@@ -68,7 +68,7 @@ public class Controlador_GestorCF implements ActionListener {
                 JOptionPane.showMessageDialog(view, "El precio debe ser un número válido");
             }
         } else {
-            JOptionPane.showMessageDialog(view, "Por favor completa nombre y precio para cambiar");
+            JOptionPane.showMessageDialog(view, "Por favor completa los campos");
         }
     }
 

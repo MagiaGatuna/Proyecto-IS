@@ -86,14 +86,15 @@
         ```json
         [
             {
-                "dia":"MONDAY",
-                "turno":"DESAYUNO",
-                "comida":"Arepa con huevo frito",
-                "valorNutricional":"349 Kcal",
-                "precio":764,
-                "dia_turno":"MONDAY_DESAYUNO",
-                "reservas_actual":54,
-                "aforo_max":500
+                "dia": "MONDAY",
+                "turno": "DESAYUNO",
+                "comida": "Arepa con huevo frito",
+                "descripcion": "Deliciosa arepa dorada rellena con huevo frito recién hecho.",
+                "valorNutricional": "349 Kcal",
+                "precio": 764,
+                "dia_turno": "MONDAY_DESAYUNO",
+                "reservas_actual": 54,
+                "aforo_max": 500
             }
         ]
         ```
@@ -107,7 +108,8 @@
                     "sexo": "femenino",
                     "rol": "Estudiante",
                     "nombres": "Corina",
-                    "contraseña": "123"
+                    "contraseña": "123",
+                    "saldo" : 999999.99
                 }
             ]
         ```     
