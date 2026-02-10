@@ -84,9 +84,9 @@ public class Controlador_Alumno_Empleado implements ActionListener{
             mostrarMenu(empleado);
         }
 
-        if (e.getSource() == alumno.getMenuD()) {
+        if (alumno != null && e.getSource() == alumno.getMenuD()) {
             mostrarMenu2(alumno);
-            }else if (e.getSource() == empleado.getMenuD()) {
+            }else if (empleado != null && e.getSource() == empleado.getMenuD()) {
             mostrarMenu2(empleado);
             }
     }
