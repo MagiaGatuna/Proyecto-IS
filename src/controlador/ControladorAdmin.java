@@ -4,18 +4,23 @@ import src.vista.Landingpage;
 import src.vista.GestorCFView;
 import src.vista.GestorCVView;
 import src.vista.HomeAdmin;
+import src.vista.InicioSesion;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import src.util.LimpiarFormulariosUtil;
 
 public class ControladorAdmin implements ActionListener {
     
     private Landingpage landingpage;  
-    private HomeAdmin homeAdmin;      
+    private HomeAdmin homeAdmin;  
+    private InicioSesion inicio_sesion;    
     
-    public ControladorAdmin(Landingpage landingpage, HomeAdmin homeAdmin) {
+    public ControladorAdmin(Landingpage landingpage, HomeAdmin homeAdmin,InicioSesion inicio_sesion) {
         this.landingpage = landingpage;
         this.homeAdmin = homeAdmin;
+        this.inicio_sesion = inicio_sesion;
         
         if (this.homeAdmin != null) {
             this.homeAdmin.getHome2().addActionListener(this);
@@ -77,6 +82,9 @@ public class ControladorAdmin implements ActionListener {
     }
     
     private void cerrarSesion() {
+        if (inicio_sesion != null) {
+            LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
+        }
         homeAdmin.setVisible(false);
         homeAdmin.dispose();  
         
