@@ -133,7 +133,7 @@ public class Registro extends JFrame {
         etiquetaRol.setBounds(290, 290, 540, 20);
         tarjeta.add(etiquetaRol);
 
-        String[] opcionesRol = {"", "Estudiante", "Docente", "Trabajador", "Administrador"};
+        String[] opcionesRol = {"", "Estudiante", "Trabajador", "Administrador"};
         comboRol = new JComboBox<>(opcionesRol);
         comboRol.setBounds(335, 285, 120, 30);
         comboRol.setBackground(Color.WHITE);
