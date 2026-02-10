@@ -26,7 +26,9 @@ public class Controlador_MenuDiario implements ActionListener {
 
         if (this.menu.getBtnHome() != null) {
             this.menu.getBtnHome().addActionListener(this);
-            avisoProximamente(this.menu.getBtnVTurnos());
+            avisoProximamente(this.menu.getBtnReservarA());
+            avisoProximamente(this.menu.getBtnReservarB());
+            avisoProximamente(this.menu.getBtnReservarC());
         }
         cargarInformacionMenu();
         this.menu.setVisible(false);
