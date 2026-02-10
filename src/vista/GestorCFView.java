@@ -102,13 +102,13 @@ public class GestorCFView extends JFrame {
         panelDatos.setLayout(new BoxLayout(panelDatos, BoxLayout.Y_AXIS)); 
         panelDatos.setBackground(COLOR_FONDO_BLANCO);
 
-        panelDatos.add(crearLabelCampo("Nombre del Producto:"));
+        panelDatos.add(crearLabelCampo("Nombre del Item:"));
         txtNombre = new JTextField();
         estilizarInput(txtNombre);
         panelDatos.add(txtNombre);
         panelDatos.add(Box.createVerticalStrut(15)); 
 
-        panelDatos.add(crearLabelCampo("Precio:"));
+        panelDatos.add(crearLabelCampo("Costo (Bs):"));
         txtPrecio = new JTextField();
         estilizarInput(txtPrecio);
         panelDatos.add(txtPrecio);
