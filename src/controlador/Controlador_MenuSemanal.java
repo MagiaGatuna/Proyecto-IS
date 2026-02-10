@@ -148,6 +148,11 @@ public void pintarboton(String hoy) {
     }
 }
     public void desactivar_botones(int minutos){
+        /* 
+        //Esta funcionalidad de desactivar la posibilida de reserva,
+        // segun el dia y hora actual, será realizado en proximos Sprints,
+        //pero se muestra un pequeño adelanto comentado, debido a que ello no entra en
+        el sprint actual
         if(minutos>=420){
             menu.getreservas("desayuno").setEnabled(false);
         }
@@ -157,6 +162,11 @@ public void pintarboton(String hoy) {
         if(minutos>=1080){
             menu.getreservas("cena").setEnabled(false);
         }
+        */
+
+        menu.getreservas("desayuno").setEnabled(false);
+        menu.getreservas("almuerzo").setEnabled(false);
+        menu.getreservas("cena").setEnabled(false);
     }
 
     private void avisoProximamente(JButton boton) {
