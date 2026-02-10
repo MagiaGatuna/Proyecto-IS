@@ -19,11 +19,12 @@ public class MenuDView extends JFrame {
     private final Color COLOR_FONDO = Color.WHITE;
     private final Color COLOR_HEADER = Color.decode("#D9D9D9");
     private final Color COLOR_BOTON_PRINCIPAL = Color.decode("#0086A3");
-    private final Color COLOR_BOTON_CERRAR = Color.decode("#5CB49B");
     private final Color COLOR_TEXTO_TITULO = Color.decode("#000000");
     private final Color COLOR_COMIDA_TITULO = Color.decode("#0B879D");
 
-    private JButton btnVerTurnos;
+    private JButton btnReservarA;
+    private JButton btnReservarB;
+    private JButton btnReservarC;
     private JButton btnHome;
 
     public MenuDView(String diaSemana, int diaMes, String MM, int AA) {
@@ -173,9 +174,21 @@ public class MenuDView extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 65));
         panel.setBackground(COLOR_HEADER);
             
-            btnVerTurnos= new JButton("Ver turnos");
-            estilizarBoton(btnVerTurnos, COLOR_BOTON_CERRAR, new Dimension(150, 40));
-            panel.add(btnVerTurnos);
+            btnReservarA= new JButton("Reserva");
+            estilizarBoton(btnReservarA, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
+            panel.add(btnReservarA);
+
+            panel.add(Box.createRigidArea(new Dimension(250, 0)));
+
+            btnReservarB= new JButton("Reserva");
+            estilizarBoton(btnReservarB, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
+            panel.add(btnReservarB);
+
+            panel.add(Box.createRigidArea(new Dimension(250, 0)));
+
+            btnReservarC= new JButton("Reserva");
+            estilizarBoton(btnReservarC, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
+            panel.add(btnReservarC);
 
         return panel;
 
@@ -185,8 +198,16 @@ public class MenuDView extends JFrame {
         return btnHome;
     }
 
-    public JButton getBtnVTurnos() {
-        return btnVerTurnos;
+    public JButton getBtnReservarA() {
+        return btnReservarA;
+    }
+
+    public JButton getBtnReservarB() {
+        return btnReservarB;
+    }
+
+    public JButton getBtnReservarC() {
+        return btnReservarC;
     }
 
  // herramientas
