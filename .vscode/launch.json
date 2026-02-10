@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Monedero",
+            "request": "launch",
+            "mainClass": "src.vista.Monedero",
+            "projectName": "Proyecto-IS_c92007d4"
+        },
+        {
+            "type": "java",
             "name": "HomeAdmin",
             "request": "launch",
             "mainClass": "src.vista.HomeAdmin",
