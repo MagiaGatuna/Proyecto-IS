@@ -194,6 +194,11 @@ public class AlumnoView extends JFrame {
    public JPanel getPanelMonedero() {
     return panelContenedorMonedero;
 }
+
+    public JButton getmenu() {
+        return btnVerMenu;
+    }
+    
     public static void main(String[] args) {
            Usuario pruebaEstudiante = new Usuario("Jeon Jung-kook", 50.0, "estudiante");
            AlumnoView vista = new AlumnoView(pruebaEstudiante);

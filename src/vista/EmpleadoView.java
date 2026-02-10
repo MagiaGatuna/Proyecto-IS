@@ -193,7 +193,14 @@ public class EmpleadoView extends JFrame {
     }
     public JPanel getPanelMonedero() {
     return panelContenedorMonedero;
+
 }
+
+    public JButton getmenu() {
+        return btnVerMenu;
+    }
+
+
     public static void main(String[] args) {
             Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
 

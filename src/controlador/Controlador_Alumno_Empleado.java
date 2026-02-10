@@ -31,6 +31,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         this.alumno.getMenuS().addActionListener(this);
         this.alumno.getMenuD().addActionListener(this);
         avisoProximamente(this.alumno.getBtnConsumos());
+        avisoProximamente(this.alumno.getmenu());
         
        
         if (monedero != null && alumno.getPanelMonedero() != null) {
@@ -46,6 +47,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         this.empleado.getMenuS().addActionListener(this);
         this.empleado.getMenuD().addActionListener(this);
         avisoProximamente(this.empleado.getBtnConsumos());
+        avisoProximamente(this.empleado.getmenu());
         
         
         if (monedero != null && empleado.getPanelMonedero() != null) {
