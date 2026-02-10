@@ -95,9 +95,9 @@ public class InicioSesion extends JFrame {
     Panel1.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",190, 20, 120, 120));
     
 //creamos el boton que redirecciona a el inicio de sesion
-    boton_InicioSesion=Diseño_interfaz.Creador_Botones("INICIAR SESION",150, 340, 200, 45,Diseño_interfaz.colorazul);
+    boton_InicioSesion=Diseño_interfaz.Creador_Botones("INICIAR SESIÓN",150, 340, 200, 45,Diseño_interfaz.colorazul);
     BotonUtil.darEstiloBoton(boton_InicioSesion, 200, 45);
-    boton_InicioSesion=Diseño_interfaz.Creador_Botones("INICIAR SESION",150, 340, 200, 45,Diseño_interfaz.colorazul);
+    boton_InicioSesion=Diseño_interfaz.Creador_Botones("INICIAR SESIÓN",150, 340, 200, 45,Diseño_interfaz.colorazul);
     Panel1.add(boton_InicioSesion);
 
 //creamos el boton que nos permite redireccionar a el registro.

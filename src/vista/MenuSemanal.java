@@ -101,7 +101,7 @@ public class MenuSemanal extends JFrame{
         barra_s.addSeparator();
         barra_s.add(titulo_universidad);
 
-        volverHome= new JButton("Volver a Home");
+        volverHome= new JButton("VOLVER"); 
         volverHome.setBackground(new Color(14,9,137));
         volverHome.setPreferredSize(new Dimension(150,45));
         volverHome.setForeground(new Color(255,255,255));
@@ -145,7 +145,7 @@ public class MenuSemanal extends JFrame{
         martes.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
         darEstiloBoton(martes, 250, 30);
 
-        miercoles= new JButton("Miercoles");
+        miercoles= new JButton("Miércoles");
         miercoles.setBackground(new Color(255,255,255));
         miercoles.setPreferredSize(new Dimension(150,45));
         miercoles.setForeground(new Color(0,0,0));

@@ -57,7 +57,7 @@ public class GestorCFView extends JFrame {
 
         JPanel derecha = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
         derecha.setOpaque(false);
-        btnHome = new JButton("HOME");
+        btnHome = new JButton("VOLVER");
         estilizarBoton(btnHome, COLOR_AZUL_REY, new Dimension(140, 30));
 
         derecha.add(btnHome);

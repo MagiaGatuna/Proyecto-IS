@@ -107,12 +107,12 @@ public class MenuDView extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 30, 10));
         panel.setBackground(COLOR_FONDO);
 
-            btnHome= new JButton("HOME");
+            btnHome= new JButton("VOLVER");
             estilizarBoton(btnHome, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
 
             JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
 
-            JLabel txtTitulo = new JLabel("MENU DEL DÍA");
+            JLabel txtTitulo = new JLabel("MENÚ DEL DÍA");
             estilizarMensaje(txtTitulo, COLOR_TEXTO_TITULO, 40);
 
 
