@@ -2,7 +2,8 @@ package src.vista;
 import javax.swing.*;
 import java.awt.*;
 import src.util.Conectar_ventanas;
-import src.util.BotonUtil;
+import src.util.Diseño_interfaz;
+
 import src.modelo.Usuario;
 public class EmpleadoView extends JFrame {
 
@@ -19,7 +20,6 @@ public class EmpleadoView extends JFrame {
     private JButton btnVerMenuSemanal;
     private JButton btnVerConsumos;
     private JButton btnCerrarSesion;
-    private JButton btnMonedero;
     private Usuario userLogueado;
     private JPanel panelContenedorMonedero;
 
@@ -70,8 +70,7 @@ public class EmpleadoView extends JFrame {
         
         panel.add(Box.createHorizontalGlue());
 
-        JButton btnMonedero = new JButton("MONEDERO");
-        estilizarBoton(btnMonedero, Color.BLUE, new Dimension(130, 40)); 
+        JButton btnMonedero =Diseño_interfaz.Creador_Botones("MONEDERO", EXIT_ON_CLOSE, ERROR,130, 40,Color.BLUE);
         btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
         panel.add(btnMonedero);
 
@@ -79,8 +78,7 @@ public class EmpleadoView extends JFrame {
         panel.add(Box.createHorizontalStrut(10));
 
         
-        btnCerrarSesion = new JButton("CERRAR SESIÓN");
-        estilizarBoton(btnCerrarSesion, COLOR_BOTON_CERRAR, new Dimension(170, 40));
+        btnCerrarSesion =Diseño_interfaz.Creador_Botones("CERRAR SESIÓN", EXIT_ON_CLOSE, ERROR,170, 40,COLOR_BOTON_CERRAR); 
         panel.add(btnCerrarSesion);
 
         return panel;
@@ -118,9 +116,7 @@ public class EmpleadoView extends JFrame {
         bloqueMenu.add(lblIconoMenu);
         bloqueMenu.add(Box.createVerticalStrut(10));
 
-        btnVerMenu = new JButton("VER MENÚ");
-        estilizarBoton(btnVerMenu, COLOR_BOTON_PRINCIPAL, new Dimension(200, 40));
-        BotonUtil.darEstiloBoton(btnVerMenu, 200, 40);
+        btnVerMenu = Diseño_interfaz.Creador_Botones("VER MENÚ", EXIT_ON_CLOSE, ERROR,200, 40,COLOR_BOTON_PRINCIPAL); new JButton("VER MENÚ");
         bloqueMenu.add(btnVerMenu);
 
         btnVerMenuDiario = new JButton("MENÚ DIARIO");
@@ -144,9 +140,7 @@ public class EmpleadoView extends JFrame {
         bloqueConsumos.add(lblIconoConsumo);
         bloqueConsumos.add(Box.createVerticalStrut(10));
 
-        btnVerConsumos = new JButton("CONSUMOS");
-        estilizarBoton(btnVerConsumos, COLOR_BOTON_PRINCIPAL, new Dimension(200, 40));
-        BotonUtil.darEstiloBoton(btnVerConsumos, 200, 40);
+        btnVerConsumos = Diseño_interfaz.Creador_Botones("CONSUMOS", EXIT_ON_CLOSE, ERROR,200, 40,COLOR_BOTON_PRINCIPAL);
         bloqueConsumos.add(btnVerConsumos);
 
 
@@ -169,14 +163,6 @@ public class EmpleadoView extends JFrame {
         }
         Image imgEscalada = icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         return new ImageIcon(imgEscalada);
-    }
-
-    private void estilizarBoton(JButton boton, Color colorFondo, Dimension dimension) {
-        boton.setBackground(colorFondo);
-        boton.setForeground(Color.WHITE);
-        boton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        boton.setMaximumSize(dimension);
-        boton.setPreferredSize(dimension); 
     }
 
     public JButton getinicio(){

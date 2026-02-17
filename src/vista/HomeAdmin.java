@@ -114,7 +114,9 @@ barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120,
     Usuario pruebaAdmin = new Usuario("Suga", 150.0, "administrador");
     
     HomeAdmin frame = new HomeAdmin(pruebaAdmin);
-    frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+    frame.setSize(1200, 800); 
+    frame.setLocationRelativeTo(null);
+    frame.setVisible(true);
     frame.setVisible(true);
     
 }

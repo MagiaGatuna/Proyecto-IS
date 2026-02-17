@@ -1,7 +1,7 @@
 package src.vista;
 import javax.swing.*;
 import java.awt.*;
-import src.util.BotonUtil;
+import src.util.Diseño_interfaz;
 import src.util.PasswordYPlaceholderUtil;
 
 
@@ -44,13 +44,8 @@ public class Registro extends JFrame {
 
         JPanel panelNorte = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
         panelNorte.setOpaque(false);
-        btnHome = new JButton("HOME");
-        btnHome.setBackground(new Color(0x0E0989));
-        btnHome.setForeground(Color.WHITE);
+        btnHome = Diseño_interfaz.Creador_Botones("HOME", EXIT_ON_CLOSE, ERROR,77, 30,new Color(0x0E0989));
         btnHome.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-        btnHome.setFocusPainted(false);
-        btnHome.setBorderPainted(false);
-        BotonUtil.darEstiloBoton(btnHome,77,30);
         panelNorte.add(btnHome);
         add(panelNorte, BorderLayout.NORTH);
 
@@ -141,14 +136,8 @@ public class Registro extends JFrame {
         comboRol.setEditable(false);
     
 
-        btnAceptar = new JButton("ACEPTAR REGISTRO");
-        btnAceptar.setBounds(130, 400, 300, 40);
-        btnAceptar.setBackground(new Color(0x4F4C96));
-        btnAceptar.setForeground(Color.WHITE);
-        btnAceptar.setFocusPainted(false);
-        btnAceptar.setBorderPainted(false);
+        btnAceptar =Diseño_interfaz.Creador_Botones("ACEPTAR REGISTRO", 130, 400, 300, 40,new Color(0x4F4C96));
         btnAceptar.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-        BotonUtil.darEstiloBoton(btnAceptar,300,40);
         tarjeta.add(btnAceptar);
 
         

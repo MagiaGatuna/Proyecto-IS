@@ -2,38 +2,38 @@
     {
         "apellidos": "Matheus",
         "cedula": "123",
+        "saldo": 999999.99,
         "sexo": "femenino",
         "rol": "Estudiante",
         "nombres": "Corina",
-        "contraseña": "123",
-        "saldo" : 999999.99
+        "contraseña": "123"
     },
     {
         "apellidos": "Moros",
         "cedula": "12548736",
+        "saldo": 100000.5,
         "sexo": "Femenino",
         "rol": "Estudiante",
         "nombres": "Elena",
-        "contraseña": "123456",
-        "saldo" : 100000.50
+        "contraseña": "123456"
     },
     {
         "apellidos": "Vanrouge",
         "cedula": "22222222",
+        "saldo": 5.25,
         "sexo": "Masculino",
         "rol": "Trabajador",
         "nombres": "Lilia",
-        "contraseña": "1234567",
-        "saldo" : 5.25
+        "contraseña": "1234567"
     },
     {
         "apellidos": "A",
         "cedula": "15151515",
+        "saldo": 209,
         "sexo": "Femenino",
         "rol": "Estudiante",
         "nombres": "Alexandra",
-        "contraseña": "123",
-        "saldo" : 209.00
+        "contraseña": "123"
     },
     {
         "apellidos": "Matheus",

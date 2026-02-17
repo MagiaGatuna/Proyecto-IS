@@ -2,7 +2,6 @@ package src.util;
 
 import javax.swing.*; 
 import java.awt.*;
-
 public class Diseño_interfaz {
 
 public static final Color colorazul=new Color(60, 60, 140);
@@ -15,6 +14,13 @@ public static JButton Creador_Botones(String texto, int x, int y, int ancho, int
     nuevo_boton.setBackground(fondo);//Por diseño,aqui agregariamos el color azul
     nuevo_boton.setForeground(Color.WHITE);//Para legibilidad, agregamos color blanco a las letras de el boton
     nuevo_boton.setFocusable(false);
+    //unficamos la antigua estilizar boton 
+    Dimension dim = new Dimension(ancho, alto);
+    nuevo_boton.setAlignmentX(Component.CENTER_ALIGNMENT);
+    nuevo_boton.setMaximumSize(dim);
+    nuevo_boton.setPreferredSize(dim); 
+    //con el fin de que al crear un boton tenga estos efectos
+    BotonUtil.darEstiloBoton(nuevo_boton,ancho,alto);
     return nuevo_boton;//retornamos el nuevo diseño
 }
 

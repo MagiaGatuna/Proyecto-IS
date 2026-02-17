@@ -1,10 +1,11 @@
 package src.vista;
 
-import src.modelo.editarCostos;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+
+import src.util.Diseño_interfaz;
+
 import java.awt.*;
 
 public class GestorCFView extends JFrame {
@@ -12,7 +13,6 @@ public class GestorCFView extends JFrame {
     private final Color COLOR_FONDO_BLANCO = Color.WHITE;
     private final Color COLOR_FONDO_GRIS = Color.decode("#D9D9D9");
     private final Color COLOR_AZUL_REY = Color.decode("#0086A3");    
-    private final Color COLOR_CERRAR = Color.decode("#5CB49B"); 
     private final Color COLOR_NEGRO = Color.BLACK;
     private final Color COLOR_GRIS_OSCURO = Color.decode("#333333"); 
 
@@ -57,9 +57,7 @@ public class GestorCFView extends JFrame {
 
         JPanel derecha = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
         derecha.setOpaque(false);
-        btnHome = new JButton("VOLVER");
-        estilizarBoton(btnHome, COLOR_AZUL_REY, new Dimension(140, 30));
-
+        btnHome = Diseño_interfaz.Creador_Botones("VOLVER", EXIT_ON_CLOSE, ERROR,140, 40,COLOR_AZUL_REY);
         derecha.add(btnHome);
         panel.add(izquierda);
         panel.add(Box.createHorizontalGlue()); 
@@ -114,14 +112,9 @@ public class GestorCFView extends JFrame {
         panelDatos.add(txtPrecio);
         panelDatos.add(Box.createVerticalStrut(30)); 
 
-        btnAgregar = new JButton("Agregar");
-        estilizarBoton(btnAgregar, COLOR_GRIS_OSCURO, new Dimension(220, 35));
-        
-        btnCambiar = new JButton("Cambiar");
-        estilizarBoton(btnCambiar, COLOR_GRIS_OSCURO, new Dimension(220, 35));
-        btnEliminar = new JButton("Eliminar");
-        estilizarBoton(btnEliminar, COLOR_GRIS_OSCURO, new Dimension(220, 35));
-
+        btnAgregar = Diseño_interfaz.Creador_Botones("Agregar", EXIT_ON_CLOSE, ERROR,220, 35,COLOR_GRIS_OSCURO);
+        btnCambiar =Diseño_interfaz.Creador_Botones("Cambiar", EXIT_ON_CLOSE, ERROR,220, 35,COLOR_GRIS_OSCURO); 
+        btnEliminar =Diseño_interfaz.Creador_Botones("Eliminar", EXIT_ON_CLOSE, ERROR,220, 35,COLOR_GRIS_OSCURO);
         panelDatos.add(btnAgregar);
         panelDatos.add(Box.createVerticalStrut(10));
         panelDatos.add(btnCambiar);
@@ -137,15 +130,7 @@ public class GestorCFView extends JFrame {
         return panel;
     }
 
-    private void estilizarBoton(JButton boton, Color colorFondo, Dimension dimension) {
-        boton.setBackground(colorFondo);
-        boton.setForeground(Color.WHITE);
-        boton.setFont(new Font("Arial", Font.BOLD, 14));
-        boton.setMaximumSize(dimension);
-        boton.setPreferredSize(dimension);
-        boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        boton.setAlignmentX(Component.LEFT_ALIGNMENT); 
-    }
+   
     
     private void estilizarInput(JTextField txt) {
         txt.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30)); 
