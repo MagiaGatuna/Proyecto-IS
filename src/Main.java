@@ -23,7 +23,7 @@ public class Main{
 
 
         inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        inicio.setResizable(false);
+        //inicio.setResizable(false);
         inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         inicio.setVisible(true);
     }
