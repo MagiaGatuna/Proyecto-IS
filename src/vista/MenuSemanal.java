@@ -1,4 +1,5 @@
 package src.vista;
+import src.util.Diseño_interfaz;
 import javax.swing.*;
 import java.awt.*;
 
@@ -49,34 +50,7 @@ public class MenuSemanal extends JFrame{
 
     }
 
-    private void darEstiloBoton(JButton boton, int ancho, int alto) {
-        
-    Color colorOriginal = boton.getBackground();
-    Color colorHover = colorOriginal.brighter(); 
-    
-    Dimension dimension = new Dimension(ancho, alto);
-    boton.setPreferredSize(dimension);
-    boton.setMinimumSize(dimension);
-    boton.setMaximumSize(dimension);
 
-    boton.setFocusPainted(false);
-    boton.setBorderPainted(false); 
-    boton.setContentAreaFilled(true);
-
-    boton.addMouseListener(new java.awt.event.MouseAdapter() {
-        @Override
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            boton.setBackground(colorHover);
-            boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        }
-
-        @Override
-        public void mouseExited(java.awt.event.MouseEvent evt) {
-            boton.setBackground(colorOriginal);
-            boton.setBorder(BorderFactory.createLineBorder(Color.WHITE, 1));
-        }
-    });
-}
 
     public void barra_superior(int pantalla){
         
@@ -101,12 +75,8 @@ public class MenuSemanal extends JFrame{
         barra_s.addSeparator();
         barra_s.add(titulo_universidad);
 
-        volverHome= new JButton("VOLVER"); 
-        volverHome.setBackground(new Color(14,9,137));
-        volverHome.setPreferredSize(new Dimension(150,45));
-        volverHome.setForeground(new Color(255,255,255));
+        volverHome = Diseño_interfaz.Creador_Botones("VOLVER", 0, 0, 150, 30, new Color(14, 9, 137));
         volverHome.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        darEstiloBoton(volverHome, 150, 30);
         
         barra_s.add(Box.createHorizontalGlue());
         barra_s.add(volverHome);
@@ -131,40 +101,26 @@ public class MenuSemanal extends JFrame{
         barra_d.setBackground(new Color(92,180,155));
         barra_d.setBorderPainted(false);
 
-        lunes= new JButton("Lunes");
-        lunes.setBackground(new Color(255,255,255));
-        lunes.setPreferredSize(new Dimension(150,45));
-        lunes.setForeground(new Color(0,0,0));
+        lunes = Diseño_interfaz.Creador_Botones("Lunes", 0, 0, 250, 30, Color.WHITE);
+        lunes.setForeground(Color.BLACK);
         lunes.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        darEstiloBoton(lunes, 250, 30);
 
-        martes= new JButton("Martes");
-        martes.setBackground(new Color(255,255,255));
-        martes.setPreferredSize(new Dimension(150,45));
-        martes.setForeground(new Color(0,0,0));
+        martes= Diseño_interfaz.Creador_Botones("Martes", 0, 0, 250, 30, Color.WHITE);
+        martes.setForeground(Color.BLACK);
         martes.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        darEstiloBoton(martes, 250, 30);
 
-        miercoles= new JButton("Miércoles");
-        miercoles.setBackground(new Color(255,255,255));
-        miercoles.setPreferredSize(new Dimension(150,45));
-        miercoles.setForeground(new Color(0,0,0));
+        miercoles= Diseño_interfaz.Creador_Botones("Miércoles", 0, 0, 250, 30, Color.WHITE);
+        miercoles.setForeground(Color.BLACK);
         miercoles.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        darEstiloBoton(miercoles, 250, 30);
 
-        jueves= new JButton("Jueves");
-        jueves.setBackground(new Color(255,255,255));
-        jueves.setPreferredSize(new Dimension(150,45));
-        jueves.setForeground(new Color(0,0,0));
+        jueves= Diseño_interfaz.Creador_Botones("Jueves", 0, 0, 250, 30, Color.WHITE);
+        jueves.setForeground(Color.BLACK);
         jueves.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        darEstiloBoton(jueves, 250, 30);
 
-        viernes= new JButton("Viernes");
-        viernes.setBackground(new Color(255,255,255));
-        viernes.setPreferredSize(new Dimension(150,45));
-        viernes.setForeground(new Color(0,0,0));
+        viernes= Diseño_interfaz.Creador_Botones("Viernes", 0, 0, 250, 30, Color.WHITE);
+        viernes.setForeground(Color.BLACK);
         viernes.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        darEstiloBoton(viernes, 250, 30);
+        
 
         barra_d.addSeparator();
         barra_d.addSeparator();
@@ -217,13 +173,7 @@ public class MenuSemanal extends JFrame{
     
         desayuno.add(barra_desplazar);
 
-        reservar_d= new JButton("RESERVAR");
-        reservar_d.setBackground(new Color(255,255,255));
-        reservar_d.setPreferredSize(new Dimension(100,40));
-        reservar_d.setForeground(new Color(0,0,0));
-        reservar_d.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-        reservar_d.setBounds(280,380,100,40);
-        darEstiloBoton(reservar_d, 100, 40);
+        reservar_d= Diseño_interfaz.Creador_Botones("RESERVAR", 280, 380, 100, 40, Color.WHITE);
         
         desayuno.add(reservar_d);
 
@@ -264,13 +214,8 @@ public class MenuSemanal extends JFrame{
     
         almuerzo.add(barra_desplazar2);
 
-        reservar_a= new JButton(" RESERVAR ");
-        reservar_a.setBackground(new Color(255,255,255));
-        reservar_a.setPreferredSize(new Dimension(100,40));
-        reservar_a.setForeground(new Color(0,0,0));
-        reservar_a.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-        reservar_a.setBounds(280,380,100,40);
-        darEstiloBoton(reservar_a, 100, 40);
+        reservar_a= Diseño_interfaz.Creador_Botones("RESERVAR", 280, 380, 100, 40, Color.WHITE);
+        
         
         almuerzo.add(reservar_a);
 
@@ -311,13 +256,7 @@ public class MenuSemanal extends JFrame{
     
         cena.add(barra_desplazar3);
 
-        reservar_c= new JButton(" RESERVAR ");
-        reservar_c.setBackground(new Color(255,255,255));
-        reservar_c.setPreferredSize(new Dimension(100,40));
-        reservar_c.setForeground(new Color(0,0,0));
-        reservar_c.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-        reservar_c.setBounds(280,380,100,40);
-        darEstiloBoton(reservar_c, 100, 40);
+        reservar_c= Diseño_interfaz.Creador_Botones("RESERVAR", 280, 380, 100, 40, Color.WHITE);
         
         cena.add(reservar_c);
 
