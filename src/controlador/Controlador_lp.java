@@ -34,7 +34,6 @@ public class Controlador_lp implements ActionListener{
 
             
             ventanaRegistro.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            ventanaRegistro.setResizable(false);
             ventanaRegistro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             ventanaRegistro.setVisible(true);
             inicio.setVisible(false);
@@ -43,7 +42,6 @@ public class Controlador_lp implements ActionListener{
         if(e.getSource()==inicio.getInicio()){
 
             inicio_sesion.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            inicio_sesion.setResizable(false);
             inicio_sesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             inicio_sesion.setVisible(true);
             inicio.setVisible(false);
