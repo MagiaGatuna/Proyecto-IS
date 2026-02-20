@@ -92,7 +92,7 @@ public class validadorRegistro {
                     }
                 }
 
-                if(rol.getSelectedItem().toString().equals("Administrador")) {
+            
                     try{
                         Path rutaAdmins = Paths.get("res/data/BaseDeDatosUCV.json").toAbsolutePath();
                         if (!Files.exists(rutaAdmins)) {
@@ -102,25 +102,29 @@ public class validadorRegistro {
                         String contenidoAdmins = new String(Files.readAllBytes(rutaAdmins), StandardCharsets.UTF_8);
                         JSONArray listaAdmins = new JSONArray(contenidoAdmins);
                         boolean autorizado = false;
-                        
+                        boolean rolValido = true;
+
                         for (int i=0; i<listaAdmins.length(); i++) {
                             JSONObject admin = listaAdmins.getJSONObject(i);
                             if (admin.getString("cedula").trim().replaceAll("[^0-9]", "").equals(cedula.getText().trim().replaceAll("[^0-9]", ""))){
-                                if(admin.getString("rol").trim().equals("Administrador")) {
+                                if(admin.getString("rol").trim().equals(rol.getSelectedItem().toString().trim())) {
                                     autorizado = true;
+                                    break;
                                 }
+                                problemas.append("- El usuario a registrar no pertenece a ese rol\n");
+                                rolValido = false;
                                 break;
                             }
                         }
 
-                        if (!autorizado) {
-                            problemas.append("- El usuario a registrar no está en la lista de administradores permitidos\n");
+                        if (!autorizado && rolValido) {
+                            problemas.append("- El usuario a registrar no está en la lista de usuarios permitidos\n");
                         }
 
                     }catch(IOException e){
-                        problemas.append("- Error al leer la base de datos de los administradores\n");
+                        problemas.append("- Error al leer la base de datos ucv\n");
                     }
-                }
+            
 
                 if(problemas.length()>0){
                     JOptionPane.showMessageDialog(null, "¡Lo sentimos! no se pudo registrar el usuario:\n\n" + problemas.toString(),
@@ -144,8 +148,9 @@ public class validadorRegistro {
                 problemas.append("-  Error al guardar los datos del usuario\n");
                 return false;
             }
+    
         }
     }
-}
+}    
 
     
