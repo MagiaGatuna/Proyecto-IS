@@ -130,8 +130,9 @@ public class Controlador_GestorCostos implements ActionListener {
                     String cv = src.modelo.editarCostos.getCV(idMenuTecnico); 
                     String CCB = src.modelo.MermayCCB.getCCB(idMenuTecnico);
                     String merma = src.modelo.MermayCCB.getMerma(idMenuTecnico);
+                    String aforo = String.valueOf(src.modelo.MermayCCB.getAforo(idMenuTecnico));
                     
-                    modelo.addRow(new Object[]{nombreParaUsuario, cv, "1", merma, CCB});
+                    modelo.addRow(new Object[]{nombreParaUsuario, cv, aforo, merma, CCB});
                 }
             }
         } catch (Exception e) {

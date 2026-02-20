@@ -15,6 +15,35 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MermayCCB {
+
+    public static int getAforo(String ID_MENU) {
+        Path rutaMenus = Paths.get("res/data/menus.json").toAbsolutePath();
+        boolean encontrado = false;
+
+        try {
+            if (Files.exists(rutaMenus)) {
+                String contenido = new String(Files.readAllBytes(rutaMenus), StandardCharsets.UTF_8);
+                if (!contenido.trim().isEmpty()) {
+                    JSONArray lista = new JSONArray(contenido);
+
+                    for (int i = 0; i < lista.length(); i++) {
+                        JSONObject item = lista.getJSONObject(i);
+                        
+                        if (item.getString("dia_turno").equals(ID_MENU)) {
+                            encontrado = true;
+                            return item.getInt("aforo_max");
+                        }
+                    }
+                }
+            }
+        } catch (IOException | JSONException e) {
+            return -1;
+        }
+
+        if (!encontrado) return -2;
+        return -3;
+    }
+
     public static String getCCB(String ID_MENU) {
         String cvStr = src.modelo.editarCostos.getCV(ID_MENU);
         String cfStr = src.modelo.editarCostos.getCF();
@@ -27,7 +56,7 @@ public class MermayCCB {
         double CV = Double.parseDouble(cvStr.replace("Bs", "").trim());
         double CF = Double.parseDouble(cfStr.replace("Bs", "").trim());
 
-        int NB = 1; 
+        int NB = getAforo(ID_MENU); 
         double Merma = getMerma(ID_MENU).replace("%", "").trim().equals("No encontrado") ? 0.0 :
                         Double.parseDouble(getMerma(ID_MENU).replace("%", "").trim()) / 100.0;
         double CBB = ((CV+CF)/NB)*(1+Merma);
