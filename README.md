@@ -129,5 +129,23 @@ Sprint 1: https://github.com/MagiaGatuna/Proyecto-IS/tree/132924707575e91f80ab7d
         - validadorRegistro.java
     con la finalidad de gestionar la lectura y escritura de los archivos JSON
 
+* "java.awt.image" de la cual se importo el siguiente:
+    - java.awt.image.BufferedImage: representa la imagen en cuestion en memoria
+
+    La librería ha sido utilizada en las siguientes clases de Util:
+        - ReconocimientoFacialUtil.java
+    con la finalidad de representar las imagenes correspondientes del ReconocimientoFacial
+
+
+* "javax.imageio" de la cual se importo el siguiente:
+    - javax.imageio.ImageIO: lectura de imágenes desde archivo (read(File)).
+
+    La librería ha sido utilizada en las siguientes clases de Util:
+        - ReconocimientoFacialUtil.java
+    con la finalidad de leer y cargar las imagenes del ReconocimientoFacial
+
+
+
+
 
 
