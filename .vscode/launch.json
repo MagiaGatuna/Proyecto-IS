@@ -3,6 +3,20 @@
 "configurations": [
     {
         "type": "java",
+        "name": "HomeAdmin",
+        "request": "launch",
+        "mainClass": "src.vista.HomeAdmin",
+        "projectName": "Proyecto-IS_c1f479ce"
+    },
+    {
+        "type": "java",
+        "name": "GestorCFView",
+        "request": "launch",
+        "mainClass": "src.vista.GestorCFView",
+        "projectName": "Proyecto-IS_c1f479ce"
+    },
+    {
+        "type": "java",
         "name": "MenuSemanal",
         "request": "launch",
         "mainClass": "src.vista.MenuSemanal",

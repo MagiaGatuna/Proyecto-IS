@@ -1,0 +1,26 @@
+[
+    {
+        "merma": 20,
+        "dia_turno": "MONDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "MONDAY_ALMUERZO"
+    },
+    {
+        "merma": 20,
+        "dia_turno": "MONDAY_CENA"
+    },
+    {
+        "merma": 50,
+        "dia_turno": "FRIDAY_CENA"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "TUESDAY_ALMUERZO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "WEDNESDAY_DESAYUNO"
+    }
+]

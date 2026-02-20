@@ -12,11 +12,10 @@ public class HomeAdmin extends JFrame {
   JButton boton_reporte;
   JButton boton_Inventario;
   JButton boton_Consumos;
-  JButton boton_CostosFijos;
-  JButton boton_CostosVariables;
+  JButton boton_Costos;
   JLabel labela;
   private Usuario userActivo;
-   public HomeAdmin(Usuario u){
+  public HomeAdmin(Usuario u){
     this.userActivo = u;
     setLayout(null);
      //centrammos la barra
@@ -51,10 +50,8 @@ setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
     add(Diseño_interfaz.Creador_iconos("res/suministros.png", (espacio * 2) + (espacio/2) - 60, yIconos + 15, 120, 120));
     boton_Inventario=(Diseño_interfaz.Creador_Botones("INVENTARIO", (espacio * 2) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
     add(boton_Inventario);
-    boton_CostosFijos = Diseño_interfaz.Creador_Botones("COSTOS FIJOS", (espacio * 2) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul);
-    add(boton_CostosFijos);
-    boton_CostosVariables = Diseño_interfaz.Creador_Botones("COSTOS VARIABLES", (espacio * 2) + (espacio/2) - 90, yBotones + 100, 180, 40, Diseño_interfaz.colorazul);
-    add(boton_CostosVariables);
+    boton_Costos = Diseño_interfaz.Creador_Botones("COSTOS", (espacio * 2) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul);
+    add(boton_Costos);
 
 // Sección Consumos
     add(Diseño_interfaz.Creador_iconos("res/comida.png", (espacio * 3) + (espacio/2) - 60, yIconos + 15, 120, 120));
@@ -80,13 +77,6 @@ barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120,
     this.dispose();
   }
 
-  public JButton getBtnGestorCF(){
-    return boton_CostosFijos;
-  }
-
-  public JButton getBtnGestorCV(){
-    return boton_CostosVariables;
-  }
 
   // sin funcion aun
   public JButton getBtnMenu(){
@@ -107,6 +97,10 @@ barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120,
 
   public JButton getBtnConsumos(){
     return boton_Consumos;
+  }
+
+  public JButton getBtnCostos(){
+    return boton_Costos;
   }
 
   public static void main(String[] args) {
