@@ -1,0 +1,122 @@
+package src.vista;
+import javax.swing.*;
+import java.awt.*;
+
+import src.util.BotonUtil; 
+
+public class Reconocimiento_facial extends JFrame{
+
+private JLabel titulo;
+private JLabel instruccion1;
+private JLabel instruccion2;
+private JButton cerrar;
+private JButton subir_foto;
+private JTextField cedula;
+private JToolBar barra;
+
+public Reconocimiento_facial(){
+    setLayout(null);
+    int pantalla= Toolkit.getDefaultToolkit().getScreenSize().width;
+    int alto= Toolkit.getDefaultToolkit().getScreenSize().height;
+    this.getContentPane().setBackground(new Color(255,255,255));
+
+    setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
+
+    barrasuperior(pantalla);
+    fondo_panel(pantalla, alto);
+}
+
+public void barrasuperior(int pantalla){
+
+barra= new JToolBar ();
+barra.setBounds(0,0,pantalla,100);
+barra.setBackground(new Color(255,255,255));
+barra.setBorderPainted(false);
+
+ImageIcon icono2= new ImageIcon ("res/LogoUCV.png");
+Image tam_ima= icono2.getImage().getScaledInstance(90,90,Image.SCALE_SMOOTH);
+JLabel logoucv= new JLabel(new ImageIcon(tam_ima));
+logoucv.setBounds(10,5,60,60);
+
+
+barra.add(logoucv);
+barra.addSeparator();
+
+cerrar= new JButton ("Volver");
+cerrar.setBackground(new Color(14,9,137));
+cerrar.setPreferredSize(new Dimension(150,45));
+cerrar.setForeground(new Color(255,255,255));
+cerrar.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+BotonUtil.darEstiloBoton(cerrar, 150, 30);
+
+barra.add(Box.createHorizontalGlue());
+barra.addSeparator();
+barra.add(cerrar);
+barra.addSeparator();
+barra.addSeparator();
+
+add(barra);
+}
+
+public void fondo_panel(int pantalla, int alto){
+    Font fuente_1= new Font (Font.SANS_SERIF, Font.BOLD, 25);
+    Font fuente_2= new Font (Font.SANS_SERIF, Font.BOLD, 16);
+
+    JLayeredPane panel_capas= new JLayeredPane();
+    panel_capas.setBounds(0,0,pantalla,alto);
+    
+    ImageIcon fondo_icon= new ImageIcon ("res/fondo_reconocimiento.jpg");
+    Image tam_fondo= fondo_icon.getImage().getScaledInstance(pantalla,alto,Image.SCALE_SMOOTH);
+    JLabel fondo= new JLabel(new ImageIcon(tam_fondo));
+    fondo.setBounds(0,0,pantalla,alto);
+    fondo.setOpaque(true);
+
+    JPanel panel_transparente= new JPanel();
+    panel_transparente.setLayout(null);
+    panel_transparente.setBounds(((pantalla-800)/2),((alto-200)/4),800,540);
+    panel_transparente.setBackground(new Color(255,255,255,210));
+
+    titulo= new JLabel("Bienvenido al Sistema de Reconocimiento Facial");
+    titulo.setBounds(100,50,760,60);
+    titulo.setFont(fuente_1);
+    titulo.setForeground(new Color(25,25,112));
+
+    instruccion1= new JLabel("Ingrese la cédula del consumidor a verificar: ");
+    instruccion1.setBounds(200,270,760,30);
+    instruccion1.setFont(fuente_2);
+    instruccion1.setForeground(new Color(0,0,0));
+
+    cedula= new JTextField();
+    cedula.setBounds(190,300,400,50);
+    cedula.setFont(fuente_2);
+    cedula.setBackground(new Color(92,180,155));
+
+    subir_foto= new JButton("SUBIR FOTO");
+    subir_foto.setBounds(315,400,150,30);
+    subir_foto.setBackground(new Color(14,9,137));
+    subir_foto.setPreferredSize(new Dimension(150,30));
+    subir_foto.setForeground(new Color(255,255,255));
+    subir_foto.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+    BotonUtil.darEstiloBoton(subir_foto, 150, 30);
+
+    ImageIcon icono3= new ImageIcon ("res/logoSistemaComedor.png");
+    Image tam_icon= icono3.getImage().getScaledInstance(140,140,Image.SCALE_SMOOTH);
+    JLabel logo= new JLabel(new ImageIcon(tam_icon));
+    logo.setBounds(300,120,140,140);
+
+    panel_transparente.add(titulo);
+    panel_transparente.add(instruccion1);
+    panel_transparente.add(cedula);
+    panel_transparente.add(subir_foto);
+    panel_transparente.add(logo);
+
+    panel_capas.add(fondo,JLayeredPane.DEFAULT_LAYER);
+    panel_capas.add(panel_transparente,JLayeredPane.PALETTE_LAYER);
+    add(panel_capas);
+}
+
+public JButton getCerrar(){
+    return cerrar;
+}
+
+}
