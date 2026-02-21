@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "RecargaView",
+            "request": "launch",
+            "mainClass": "src.vista.RecargaView",
+            "projectName": "Comedor_final_final_f747f023"
+        },
+        {
+            "type": "java",
             "name": "HomeAdmin",
             "request": "launch",
             "mainClass": "src.vista.HomeAdmin",
