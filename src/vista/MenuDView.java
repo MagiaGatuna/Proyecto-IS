@@ -1,6 +1,7 @@
 package src.vista;
 import javax.swing.*;
 import java.awt.*;
+import src.util.Diseño_interfaz;
 
 
 
@@ -54,7 +55,7 @@ public class MenuDView extends JFrame {
 
         setTitle("MenuDView");
         try {
-            setIconImage(new ImageIcon("res/LogoUCV.png").getImage());
+            setIconImage(new ImageIcon("res/LogoSistemaComedor.png").getImage());
         } catch (Exception e) { System.out.println("Logo no encontrado"); }
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -107,8 +108,8 @@ public class MenuDView extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 30, 10));
         panel.setBackground(COLOR_FONDO);
 
-            btnHome= new JButton("VOLVER");
-            estilizarBoton(btnHome, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
+            btnHome = Diseño_interfaz.Creador_Botones("VOLVER", EXIT_ON_CLOSE, ERROR,150, 40,new Color(0x0E0989));
+        
 
             JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
 
@@ -174,20 +175,18 @@ public class MenuDView extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 65));
         panel.setBackground(COLOR_HEADER);
             
-            btnReservarA= new JButton("Reserva");
-            estilizarBoton(btnReservarA, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
+            btnReservarA= Diseño_interfaz.Creador_Botones("RESERVAR", EXIT_ON_CLOSE, ERROR,150, 40,COLOR_BOTON_PRINCIPAL);
             panel.add(btnReservarA);
+            
 
             panel.add(Box.createRigidArea(new Dimension(250, 0)));
 
-            btnReservarB= new JButton("Reserva");
-            estilizarBoton(btnReservarB, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
+            btnReservarB= Diseño_interfaz.Creador_Botones("RESERVAR", EXIT_ON_CLOSE, ERROR,150, 40,COLOR_BOTON_PRINCIPAL);
             panel.add(btnReservarB);
 
             panel.add(Box.createRigidArea(new Dimension(250, 0)));
 
-            btnReservarC= new JButton("Reserva");
-            estilizarBoton(btnReservarC, COLOR_BOTON_PRINCIPAL, new Dimension(150, 40));
+            btnReservarC= Diseño_interfaz.Creador_Botones("RESERVAR", EXIT_ON_CLOSE, ERROR,150, 40,COLOR_BOTON_PRINCIPAL);
             panel.add(btnReservarC);
 
         return panel;
@@ -228,19 +227,6 @@ public class MenuDView extends JFrame {
 
     }
 
-    private void estilizarBoton(JButton boton, Color colorFondo, Dimension dimension) {
-
-        boton.setBackground(colorFondo);
-
-        boton.setForeground(Color.WHITE);
-
-        boton.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-        boton.setMaximumSize(dimension);
-
-        boton.setPreferredSize(dimension);
-
-    }
 
     private void estilizarMensaje(JLabel mensaje, Color colorFuente, int size){
 

@@ -3,19 +3,19 @@ package src.controlador;
 import javax.swing.JOptionPane;
 import src.vista.GestorCFView;
 import src.vista.Landingpage;
-import src.vista.HomeAdmin;
+import src.vista.GestorCostosView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controlador_GestorCF implements ActionListener {
     private GestorCFView view;
     private Landingpage landingpage;  
-    private HomeAdmin homeAdmin;  
+    private GestorCostosView gestorCostosView;  
 
-    public Controlador_GestorCF(GestorCFView CF, Landingpage landingpage, HomeAdmin homeAdmin) {
+    public Controlador_GestorCF(GestorCFView CF, Landingpage landingpage, GestorCostosView gestorCostosView) {
         this.view = CF;
         this.landingpage = landingpage;
-        this.homeAdmin = homeAdmin;
+        this.gestorCostosView = gestorCostosView;
         
         this.view.btnAgregar.addActionListener(this);
         this.view.btnCambiar.addActionListener(this);
@@ -33,7 +33,7 @@ public class Controlador_GestorCF implements ActionListener {
         } else if(e.getSource() == view.btnCambiar) {
             manejarCambiar();
         } else if (e.getSource() == view.btnHome) {
-            homeAdmin.setVisible(true);
+            gestorCostosView.setVisible(true);
             view.dispose();
         }
     }

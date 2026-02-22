@@ -5,11 +5,15 @@ import java.awt.*;
 public class Diseño_interfaz {
 
 public static final Color colorazul=new Color(60, 60, 140);
+public static final Color colorazulOscuro=new Color(14, 9, 137);
 public static final Color turquesa=new Color(158, 200, 185);
+public static final Color turquesaOscuro=new Color(92,180,155);
 
 //factorizamos los elementos mas comunes
 public static JButton Creador_Botones(String texto, int x, int y, int ancho, int alto, Color fondo){
     JButton nuevo_boton = new JButton(texto);//creamos un objeto para el boton
+
+
     nuevo_boton.setBounds(x, y,ancho, alto);//colocamos las coordenadas de el nuevo objeto
     nuevo_boton.setBackground(fondo);//Por diseño,aqui agregariamos el color azul
     nuevo_boton.setForeground(Color.WHITE);//Para legibilidad, agregamos color blanco a las letras de el boton

@@ -188,12 +188,12 @@ public class EmpleadoView extends JFrame {
 
 
     public static void main(String[] args) {
-            Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
+    //         Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
 
-     EmpleadoView vista = new EmpleadoView(pruebaEstudiante);
+    //  EmpleadoView vista = new EmpleadoView(pruebaEstudiante);
     
-    vista.setVisible(true);
+    // vista.setVisible(true);
     
-    vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+    // vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 }

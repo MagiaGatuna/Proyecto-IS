@@ -6,7 +6,12 @@ public class BotonUtil {
     public static void darEstiloBoton(JButton boton, int ancho, int alto){
         
         Color colorOriginal = boton.getBackground();
-        Color colorHover = colorOriginal.brighter(); 
+        Color colorHover;
+            if(colorOriginal.equals(Color.WHITE)){
+                colorHover = colorOriginal.darker(); 
+            }else{
+                colorHover = colorOriginal.brighter();
+            }
         
         Dimension dimension = new Dimension(ancho, alto);
         boton.setPreferredSize(dimension);

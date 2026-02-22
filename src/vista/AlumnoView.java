@@ -186,10 +186,10 @@ public class AlumnoView extends JFrame {
     }
     
     public static void main(String[] args) {
-           Usuario pruebaEstudiante = new Usuario("Jeon Jung-kook", 50.0, "estudiante");
-           AlumnoView vista = new AlumnoView(pruebaEstudiante);
-         vista.setVisible(true);
+        //    Usuario pruebaEstudiante = new Usuario("Jeon Jung-kook", 50.0, "estudiante");
+        //    AlumnoView vista = new AlumnoView(pruebaEstudiante);
+        //  vista.setVisible(true);
     
-        vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
+        // vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 }

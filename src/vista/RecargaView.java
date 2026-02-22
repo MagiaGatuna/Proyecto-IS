@@ -9,12 +9,14 @@ import src.util.PasswordYPlaceholderUtil;
 public class RecargaView extends JFrame {
     private JTextField Referencia;
     private JTextField cedulaField;
+    private JTextField montoField;
     private JPanel PanelRecarga;
     JButton boton_verificar;
     JButton boton_volver;
     private Image imagenFondo;
     private JComboBox<String> combo_Cedula;
      private JComboBox<String> combo_Banco;
+     
     public RecargaView() {
 
    try {
@@ -69,33 +71,39 @@ public class RecargaView extends JFrame {
     JLabel titulo = new JLabel("RECARGA DE SALDO", SwingConstants.CENTER);
     titulo.setFont(new Font("Arial", Font.BOLD, 24));
     titulo.setForeground(Color.WHITE);
-    titulo.setBounds(0, 30, 500, 40);
+    titulo.setBounds(0, 110, 500, 40);
     PanelRecarga.add(titulo);
 
     // Referencia
     Referencia = new JTextField();
-    Referencia.setBounds(100, 120, 300, 40);
+    Referencia.setBounds(100, 160, 300, 40);
     PasswordYPlaceholderUtil.configurarPlaceholder(Referencia, "Número de referencia");
     PanelRecarga.add(Referencia);
 
     // Cédula
     cedulaField = new JTextField();
-    cedulaField.setBounds(100, 190, 300, 40);
+    cedulaField.setBounds(100, 215, 300, 40);
     PasswordYPlaceholderUtil.configurarPlaceholder(cedulaField, "Cédula del usuario");
     PanelRecarga.add(cedulaField);
 
+    //Monto 
+    montoField= new JTextField();
+    montoField.setBounds(100, 325, 300, 40);
+    PasswordYPlaceholderUtil.configurarPlaceholder(montoField, "Monto a recargar");
+    PanelRecarga.add(montoField);
+
     //  Verificar
-    boton_verificar =Diseño_interfaz.Creador_Botones("VERIFICAR PAGO", 100, 370, 300, 50,Color.BLUE); 
+    boton_verificar =Diseño_interfaz.Creador_Botones("VERIFICAR PAGO",100, 395, 300, 50,Color.BLUE); 
     PanelRecarga.add(boton_verificar);
 
     //  Volver 
-   /*  boton_volver = Diseño_interfaz.Creador_Botones("VOLVER", 100, 400, 300, 40,Color.blue);
-    PanelRecarga.add(boton_volver); */
+     boton_volver = Diseño_interfaz.Creador_Botones("VOLVER",190, 475, 120, 35,Color.blue);
+    PanelRecarga.add(boton_volver); 
 
     //Tipo de cedula
     String[] opcionesCedula = {"V-", "E-", "P-"};
         combo_Cedula = new JComboBox<>(opcionesCedula);
-        combo_Cedula.setBounds(55, 190, 45, 40);
+        combo_Cedula.setBounds(100, 215, 300, 40);
         combo_Cedula.setBackground(Color.WHITE);
         PanelRecarga.add(combo_Cedula);
         combo_Cedula.setEditable(false);
@@ -104,20 +112,23 @@ public class RecargaView extends JFrame {
     //tipo de banco
     String[] opcionesBanco = {"Banesco", "Venezuela", "Mercantil"};
         combo_Banco = new JComboBox<>(opcionesBanco);
-        combo_Banco.setBounds(100, 260, 300, 40);
+        combo_Banco.setBounds(100, 270, 300, 40);
         combo_Banco.setBackground(Color.WHITE);
         PanelRecarga.add(combo_Banco);
        combo_Banco.setEditable(false);
 
-    //falta Jpanel con icono de usuario 
-    //Falata que tango el label con el saldo
-   // Que sea transparente 
-
-    
+    //logito propio de la app
+     ImageIcon icono3= new ImageIcon ("res/logoSistemaComedor.png");
+    Image tam_icon= icono3.getImage().getScaledInstance(90,90,Image.SCALE_SMOOTH);
+    JLabel logo= new JLabel(new ImageIcon(tam_icon));
+    logo.setBounds(205, 15, 90, 90);
+    PanelRecarga.add(logo);
  this.add(PanelRecarga);
+ //loguito de la app en vez de la tacita de java 
+ setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
 }
     
-    @Override
+    @Override //para expandir la imagen y pintarla en el JframeS
     public void paint(Graphics g) {
         if (imagenFondo != null) {
             g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
@@ -125,6 +136,23 @@ public class RecargaView extends JFrame {
     
         super.paint(g);
     }
+    //getters
+    public JButton GetVolver(){
+        return boton_volver;
+    }
+    public JButton GetVerificar(){
+        return boton_verificar;
+    }
+    public JTextField cedula(){
+        return cedulaField;
+    }
+     public JTextField Monto(){
+        return montoField;
+     }
+     public JTextField referencia(){
+        return Referencia;
+     }
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new RecargaView().setVisible(true));

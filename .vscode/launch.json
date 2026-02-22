@@ -1,108 +1,137 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "type": "java",
-            "name": "RecargaView",
-            "request": "launch",
-            "mainClass": "src.vista.RecargaView",
-            "projectName": "Comedor_final_final_f747f023"
-        },
-        {
-            "type": "java",
-            "name": "HomeAdmin",
-            "request": "launch",
-            "mainClass": "src.vista.HomeAdmin",
-            "projectName": "Comedor_final_final_f747f023"
-        },
-        {
-            "type": "java",
-            "name": "Monedero",
-            "request": "launch",
-            "mainClass": "src.vista.Monedero",
-            "projectName": "Proyecto-IS_c92007d4"
-        },
-        {
-            "type": "java",
-            "name": "HomeAdmin",
-            "request": "launch",
-            "mainClass": "src.vista.HomeAdmin",
-            "projectName": "Proyecto-IS_c92007d4"
-        },
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "Main",
-            "projectName": "Proyecto-IS_bf4b1e30"
-        },
-        {
-            "type": "java",
-            "name": "GestorCFView",
-            "request": "launch",
-            "mainClass": "src.GestorCFView",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "GestorCVView",
-            "request": "launch",
-            "mainClass": "src.GestorCVView",
-            "projectName": "Proyecto-IS_c1f479ce"
-        },
-        {
-            "type": "java",
-            "name": "InicioSesion",
-            "request": "launch",
-            "mainClass": "src.InicioSesion"
-        },
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "src.Main"
-        },
-        {
-            "type": "java",
-            "name": "Monedero",
-            "request": "launch",
-            "mainClass": "src.Monedero"
-        },
-        {
-            "type": "java",
-            "name": "AlumnoView",
-            "request": "launch",
-            "mainClass": "src.AlumnoView"
-        },
-        {
-            "type": "java",
-            "name": "EmpleadoView",
-            "request": "launch",
-            "mainClass": "src.EmpleadoView"
-        },
-        {
-            "type": "java",
-            "name": "HomeAdmin",
-            "request": "launch",
-            "mainClass": "src.HomeAdmin"
-        },
-        {
-            "type": "java",
-            "name": "Registro",
-            "request": "launch",
-            "mainClass": "src.Registro"
-        },
-        {
-            "type": "java",
-            "name": "Landingpage",
-            "request": "launch",
-            "mainClass": "src.Landingpage"
-        },
-        {
-            "type": "java",
-            "name": "MenuSemanal",
-            "request": "launch",
-            "mainClass": "src.MenuSemanal"
-        }
-    ]
+"version": "0.2.0",
+"configurations": [
+    {
+        "type": "java",
+        "name": "HomeAdmin",
+        "request": "launch",
+        "mainClass": "src.vista.HomeAdmin",
+        "projectName": "Proyecto-IS_c1f479ce"
+    },
+    {
+        "type": "java",
+        "name": "GestorCFView",
+        "request": "launch",
+        "mainClass": "src.vista.GestorCFView",
+        "projectName": "Proyecto-IS_c1f479ce"
+    },
+    {
+        "type": "java",
+        "name": "MenuSemanal",
+        "request": "launch",
+        "mainClass": "src.vista.MenuSemanal",
+        "projectName": "Proyecto-IS_c1f479ce"
+    },
+    {
+        "type": "java",
+        "name": "HomeAdmin",
+        "request": "launch",
+        "mainClass": "src.vista.HomeAdmin",
+        "projectName": "Comedor_final_final_f747f023",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "Monedero",
+        "request": "launch",
+        "mainClass": "src.vista.Monedero",
+        "projectName": "Proyecto-IS_c92007d4",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "HomeAdmin (Proyecto-IS)",
+        "request": "launch",
+        "mainClass": "src.vista.HomeAdmin",
+        "projectName": "Proyecto-IS_c92007d4",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "Main",
+        "request": "launch",
+        "mainClass": "Main",
+        "projectName": "Proyecto-IS_bf4b1e30",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "GestorCFView",
+        "request": "launch",
+        "mainClass": "src.GestorCFView",
+        "projectName": "Proyecto-IS_c1f479ce",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "GestorCVView",
+        "request": "launch",
+        "mainClass": "src.GestorCVView",
+        "projectName": "Proyecto-IS_c1f479ce",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "InicioSesion",
+        "request": "launch",
+        "mainClass": "src.InicioSesion",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "Main (src)",
+        "request": "launch",
+        "mainClass": "src.Main",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "Monedero (src)",
+        "request": "launch",
+        "mainClass": "src.Monedero",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "AlumnoView",
+        "request": "launch",
+        "mainClass": "src.AlumnoView",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "EmpleadoView",
+        "request": "launch",
+        "mainClass": "src.EmpleadoView",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "HomeAdmin (src)",
+        "request": "launch",
+        "mainClass": "src.HomeAdmin",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "Registro",
+        "request": "launch",
+        "mainClass": "src.Registro",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "Landingpage",
+        "request": "launch",
+        "mainClass": "src.Landingpage",
+        "console": "internalConsole"
+    },
+    {
+        "type": "java",
+        "name": "MenuSemanal",
+        "request": "launch",
+        "mainClass": "src.MenuSemanal",
+        "console": "internalConsole"
+    }
+]
 }

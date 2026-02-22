@@ -15,6 +15,7 @@ private JToolBar barra;
 protected JButton inicio_sesion;
 protected JButton registro;
 private JButton acerca;
+private JButton reconocimiento;
 private JPanel barrita;
 
 public Landingpage(){
@@ -81,6 +82,14 @@ registro.setForeground(new Color(255,255,255));
 registro.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
 BotonUtil.darEstiloBoton(registro, 150, 30);
 
+reconocimiento =new JButton ("Reconocimiento facial");
+reconocimiento.setBackground(new Color(92,180,155));
+reconocimiento.setPreferredSize(new Dimension(50,45));
+reconocimiento.setFont(fuente2_1);
+reconocimiento.setForeground(new Color(0,0,0));
+reconocimiento.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+BotonUtil.darEstiloBoton(reconocimiento, 250, 30);
+
 acerca= new JButton ("Acerca de");
 acerca.setBackground(new Color(14,9,137));
 acerca.setPreferredSize(new Dimension(150,45));
@@ -93,6 +102,8 @@ barra.add(Box.createHorizontalGlue());
 barra.add(inicio_sesion);
 barra.addSeparator();
 barra.add(registro);
+barra.addSeparator();
+barra.add(reconocimiento);
 barra.addSeparator();
 barra.add(acerca);
 barra.addSeparator();
@@ -163,6 +174,10 @@ return inicio_sesion;
 public JButton getAcercade(){
 
 return acerca;
+}
+public JButton getReconocimiento(){
+
+return reconocimiento;
 }
 
 public static void main (String args[]){

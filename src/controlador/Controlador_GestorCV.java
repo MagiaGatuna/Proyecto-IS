@@ -4,17 +4,17 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import src.vista.GestorCVView;
 import src.vista.Landingpage;
-import src.vista.HomeAdmin;
+import src.vista.GestorCostosView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Controlador_GestorCV implements ActionListener {
     private GestorCVView view;
-    private HomeAdmin homeAdmin;  
+    private GestorCostosView gestorCostosView;  
 
-    public Controlador_GestorCV(GestorCVView CV, Landingpage landingpage, HomeAdmin homeAdmin) {
+    public Controlador_GestorCV(GestorCVView CV, Landingpage landingpage, GestorCostosView gestorCostosView) {
         this.view = CV;
-        this.homeAdmin = homeAdmin;
+        this.gestorCostosView = gestorCostosView;
     
         src.modelo.editarCostos.actualizarJSON_CV();
 
@@ -41,7 +41,7 @@ public class Controlador_GestorCV implements ActionListener {
         } else if(e.getSource() == view.btnCambiar) {
             manejarCambiar();
         } else if (e.getSource() == view.btnHome) {
-            homeAdmin.setVisible(true);
+            gestorCostosView.setVisible(true);
             view.dispose();
         }
     }

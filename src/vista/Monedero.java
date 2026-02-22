@@ -26,14 +26,32 @@ public class Monedero extends JPanel {
 //creamos el boton para recargar 
       boton_recargar=Diseño_interfaz.Creador_Botones("Recargar",75, 135, 150, 35,Color.BLUE);
       boton_recargar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, 
-                    "Esta funcionalidad estará disponible en la próxima actualización.", 
-                    "En construcción", 
-                    JOptionPane.INFORMATION_MESSAGE);
-            }
-        });
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Creamos la vista de recarga
+        src.vista.RecargaView vistaRecarga = new src.vista.RecargaView();
+
+        Window ventanaTop = SwingUtilities.getWindowAncestor(Monedero.this);
+        
+        AlumnoView vAlumno = null;
+        EmpleadoView vEmpleado = null;
+
+        // Identificamos qué tipo de ventana es para pasarla correctamente
+        if (ventanaTop instanceof AlumnoView) {
+            vAlumno = (AlumnoView) ventanaTop;
+        } else if (ventanaTop instanceof EmpleadoView) {
+            vEmpleado = (EmpleadoView) ventanaTop;
+        }
+
+        //Llamamos al controlador
+        new src.controlador.Controlador_Recarga(vAlumno, vEmpleado, Monedero.this, vistaRecarga);
+        
+        //Ocultamos la ventana principal mientras recargamos
+        if (ventanaTop != null) {
+            ventanaTop.setVisible(false);
+        }
+    }
+});
       add(boton_recargar);
 
 
@@ -78,9 +96,14 @@ public class Monedero extends JPanel {
     // Línea divisora muy tenue
     g2.setColor(new Color(240, 240, 240));
     g2.drawLine(20, 110, getWidth() - 20, 110);
-
+   
         
     }
+
+    public void actualizarSaldoVisual() {
+    this.label_saldoactual.setText("Saldo actual: " + cliente.getSaldo());
+    this.repaint(); // Refresca el dibujo del panel
+}
     public static void main(String[] args) {
         /* 
         JFrame f = new JFrame();

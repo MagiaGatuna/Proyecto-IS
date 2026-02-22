@@ -91,7 +91,7 @@ public static Usuario getUsuarioActual() {
     if (indiceUsuarioEncontrado != -1) {
         JSONObject datos = listaUsuarios.getJSONObject(indiceUsuarioEncontrado);
         
-        
+        String cedula = datos.getString("cedula");
         String nombreReal = datos.getString("nombres");
         
         double saldoReal = datos.has("saldo") ? datos.getDouble("saldo") : 0.0;
@@ -99,7 +99,7 @@ public static Usuario getUsuarioActual() {
         return new Usuario(
             nombreReal, 
             saldoReal,
-            datos.getString("rol")
+            datos.getString("rol"),cedula
         );
     }
     return null;

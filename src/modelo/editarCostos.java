@@ -176,28 +176,42 @@ public class editarCostos {
             JSONArray jsonMenus = new JSONArray(new String(Files.readAllBytes(rutaMenus), StandardCharsets.UTF_8));
             JSONArray jsonCV = Files.exists(rutaCV) ? new JSONArray(new String(Files.readAllBytes(rutaCV), StandardCharsets.UTF_8)) : new JSONArray();
 
+            Set<String> idsEnMenus = new HashSet<>();
+            for (int i = 0; i < jsonMenus.length(); i++) {
+                idsEnMenus.add(jsonMenus.getJSONObject(i).getString("dia_turno"));
+            }
+
             Set<String> idsExistentes = new HashSet<>();
-            for (int i=0; i < jsonCV.length(); i++) {
+            for (int i = 0; i < jsonCV.length(); i++) {
                 idsExistentes.add(jsonCV.getJSONObject(i).getString("dia_turno"));
             }
 
             boolean huboCambios = false;
-            for (int i=0; i < jsonMenus.length(); i++) {
-                String idMenu = jsonMenus.getJSONObject(i).getString("dia_turno");
 
+            for (int i = 0; i < jsonMenus.length(); i++) {
+                String idMenu = jsonMenus.getJSONObject(i).getString("dia_turno");
                 if (!idsExistentes.contains(idMenu)) {
                     JSONObject nuevoCosto = new JSONObject();
                     nuevoCosto.put("dia_turno", idMenu);
                     nuevoCosto.put("detalles_costos", new JSONObject());
-
                     jsonCV.put(nuevoCosto);
                     idsExistentes.add(idMenu);
                     huboCambios = true;
                 }
             }
 
+            JSONArray jsonCVFiltrado = new JSONArray();
+            for (int i = 0; i < jsonCV.length(); i++) {
+                JSONObject item = jsonCV.getJSONObject(i);
+                if (idsEnMenus.contains(item.getString("dia_turno"))) {
+                    jsonCVFiltrado.put(item);
+                } else {
+                    huboCambios = true;
+                }
+            }
+
             if (huboCambios) {
-                Files.write(rutaCV, jsonCV.toString(4).getBytes(StandardCharsets.UTF_8));
+                Files.write(rutaCV, jsonCVFiltrado.toString(4).getBytes(StandardCharsets.UTF_8));
             }
 
         } catch (Exception e) {
