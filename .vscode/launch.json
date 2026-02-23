@@ -3,6 +3,13 @@
 "configurations": [
     {
         "type": "java",
+        "name": "Monedero",
+        "request": "launch",
+        "mainClass": "src.vista.Monedero",
+        "projectName": "Comedor_final_final_f747f023"
+    },
+    {
+        "type": "java",
         "name": "MenuSemanal",
         "request": "launch",
         "mainClass": "src.vista.MenuSemanal",
