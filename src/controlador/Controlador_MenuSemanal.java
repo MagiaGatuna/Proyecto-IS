@@ -2,6 +2,7 @@ package src.controlador;
 
 import src.util.Calcular_dia;
 import src.vista.AlumnoView;
+import src.vista.HomeAdmin;
 import src.vista.MenuSemanal;
 import src.vista.EmpleadoView;
 
@@ -19,19 +20,34 @@ public class Controlador_MenuSemanal implements ActionListener{
     private EmpleadoView empleado;
     private MenuSemanal menu;
     private String Rol="";
+    private HomeAdmin admin;
 
     private int hora;
     private String dia;
     private String dia_seleccionado;
     private String pinta;
 
-    public Controlador_MenuSemanal(AlumnoView alumno,EmpleadoView empleado,MenuSemanal menu){
+    public Controlador_MenuSemanal(AlumnoView alumno,EmpleadoView empleado, HomeAdmin admin ,MenuSemanal menu){
         this.alumno= alumno;
         this.empleado= empleado;
         this.menu= menu;
+        this.admin=admin;
 
         hora= Calcular_dia.gethora();
         dia= Calcular_dia.getdia();
+
+        menu.getEditar().addActionListener(this);
+        menu.getNoEditar().addActionListener(this);
+
+        Rol = validadorInicioS.getRol();
+
+        if(Rol.equals("Administrador")){
+            menu.getEditar().setVisible(true);
+            menu.getNoEditar().setVisible(false);
+        }else{
+            menu.getEditar().setVisible(false);
+            menu.getNoEditar().setVisible(false);
+        }
 
         if(dia.equals("SATURDAY") || dia.equals("SUNDAY")){
             dia_seleccionado="MONDAY";
@@ -40,7 +56,6 @@ public class Controlador_MenuSemanal implements ActionListener{
         }
             Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),dia_seleccionado,"DESAYUNO");
             Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"),dia_seleccionado,"ALMUERZO");
-            Menus_lista.mostrarMenu(menu.get_texto("cena"), menu.getaforo("cena"),dia_seleccionado,"CENA");
 
       String[] diasSemana = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
 
@@ -58,7 +73,7 @@ if (this.menu.getvolver() != null) {
         desactivar_botones(hora);
 
     avisoProximamente(this.menu.getBtnRes1());
-    avisoProximamente(this.menu.getBtnRes2());
+    
     avisoProximamente(this.menu.getBtnRes3());
 
     }
@@ -92,6 +107,24 @@ if (this.menu.getvolver() != null) {
             menu.dispose();
             }
         }
+
+        if(e.getSource()==menu.getvolver() && (Rol.equals("Administrador"))){//Aqui va un && con el JSON del tipo de usuario
+            if(this.admin != null){
+            admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            admin.setResizable(false);
+            admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            admin.setVisible(true);
+            menu.setVisible(false);
+            menu.dispose();
+            }
+        }
+
+        if((e.getSource()==menu.getEditar())&&(Rol.equals("Administrador"))){
+            menu.editar_paneles();
+        }
+        if((e.getSource()==menu.getNoEditar())&&(Rol.equals("Administrador"))){
+            menu.dejar_editar();
+        }
         
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario
             pinta = "MONDAY";
@@ -119,12 +152,10 @@ if (this.menu.getvolver() != null) {
         if(dia_seleccionado != null && dia_seleccionado != "SUNDAY" && dia_seleccionado != "SATURDAY"){
             Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),dia_seleccionado,"DESAYUNO");
             Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"),dia_seleccionado,"ALMUERZO");
-            Menus_lista.mostrarMenu(menu.get_texto("cena"), menu.getaforo("cena"),dia_seleccionado,"CENA");
         }else if(dia_seleccionado.equals("SUNDAY")|| dia_seleccionado.equals("SATURDAY")){
            
             Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),"MONDAY","DESAYUNO");
             Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"),"MONDAY","ALMUERZO");
-            Menus_lista.mostrarMenu(menu.get_texto("cena"), menu.getaforo("cena"),"MONDAY","CENA");
         }
 
         pintarboton(pinta);
@@ -159,14 +190,11 @@ public void pintarboton(String hoy) {
         if(minutos>=720){
             menu.getreservas("almuerzo").setEnabled(false);
         }
-        if(minutos>=1080){
-            menu.getreservas("cena").setEnabled(false);
-        }
+       
         */
 
         menu.getreservas("desayuno").setEnabled(false);
         menu.getreservas("almuerzo").setEnabled(false);
-        menu.getreservas("cena").setEnabled(false);
     }
 
     private void avisoProximamente(JButton boton) {

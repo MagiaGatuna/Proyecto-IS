@@ -12,13 +12,15 @@ public class MenuSemanal extends JFrame{
     private JButton volverHome;
     private JButton reservar_d;
     private JButton reservar_a;
-    private JButton reservar_c;
+    private JButton editar;
+    private JButton dejar_editar;
+    //private JButton reservar_c;
 
     private JLabel titulo_universidad;
     private JLabel titulo_pagina;
     private JLabel aforo_d;
     private JLabel aforo_a;
-    private JLabel aforo_c;
+    //private JLabel aforo_c;
     private JLabel turno_m;
     private JLabel turno_t;
     private JLabel turno_n;
@@ -27,12 +29,27 @@ public class MenuSemanal extends JFrame{
     private JPanel almuerzo;
     private JPanel cena;
 
+    private JScrollPane barra_desplazar;
+    private JScrollPane barra_desplazar2;
+
     private JTextArea texto_desayuno;
     private JTextArea texto_almuerzo;
-    private JTextArea texto_cena;
+    //private JTextArea texto_cena;
 
     private JToolBar barra_s;
     private JToolBar barra_d;
+
+    private JTextField comida_d;
+    private JTextField descripcion_d;
+    private JTextField valor_nutricional_d;
+    private JTextField aforo_max_d;
+    private JButton sin_menu_d;
+
+    private JTextField comida_a;
+    private JTextField descripcion_a;
+    private JTextField valor_nutricional_a;
+    private JTextField aforo_max_a;
+    private JButton sin_menu_a;
 
 
     public MenuSemanal(){
@@ -47,6 +64,7 @@ public class MenuSemanal extends JFrame{
         panel_desayuno(pantalla);
         panel_almuerzo(pantalla);
         panel_cena(pantalla);
+        crear_campos_editar();
 
     }
 
@@ -77,10 +95,25 @@ public class MenuSemanal extends JFrame{
 
         volverHome = Diseño_interfaz.Creador_Botones("VOLVER", 0, 0, 150, 30, new Color(14, 9, 137));
         volverHome.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+
+    
+        editar = Diseño_interfaz.Creador_Botones("EDITAR", 0, 0, 150, 30, new Color(92, 180, 155));
+        editar.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+
+        dejar_editar = Diseño_interfaz.Creador_Botones("TERMINAR EDICIÓN", 0, 0, 190, 30, new Color(14, 9, 137));
+        dejar_editar.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
         
+
         barra_s.add(Box.createHorizontalGlue());
         barra_s.add(volverHome);
         barra_s.addSeparator();
+        barra_s.add(editar);
+        barra_s.addSeparator();
+        barra_s.add(dejar_editar);
+        barra_s.addSeparator();
+
+        dejar_editar.setVisible(false);
+        editar.setVisible(false);
 
         add(barra_s);
 
@@ -168,7 +201,7 @@ public class MenuSemanal extends JFrame{
         texto_desayuno.setBackground(new Color(255,255,255));
         texto_desayuno.setEditable(false);
 
-        JScrollPane barra_desplazar= new JScrollPane(texto_desayuno);
+        barra_desplazar= new JScrollPane(texto_desayuno);
         barra_desplazar.setBounds(20,40,350,300);
     
         desayuno.add(barra_desplazar);
@@ -209,7 +242,7 @@ public class MenuSemanal extends JFrame{
         texto_almuerzo.setBackground(new Color(255,255,255));
         texto_almuerzo.setEditable(false);
 
-        JScrollPane barra_desplazar2= new JScrollPane(texto_almuerzo);
+        barra_desplazar2= new JScrollPane(texto_almuerzo);
         barra_desplazar2.setBounds(20,40,350,300);
     
         almuerzo.add(barra_desplazar2);
@@ -237,35 +270,166 @@ public class MenuSemanal extends JFrame{
         cena.setBackground(new Color(92,180,155));
         cena.setBounds(920,290,390,430);
 
-        Font fuente2 = new Font ("Arial", Font.BOLD,16);
-        aforo_c= new JLabel("Reservas Actuales: ");
-        aforo_c.setFont(fuente3);
-        aforo_c.setForeground(new Color(0,0,0));
-        aforo_c.setBounds(20,380,240,30);
-        cena.add(aforo_c);
+        ImageIcon iconofuera= new ImageIcon ("res/fuera_servicio.jpg");
+        Image tam_fuera_s= iconofuera.getImage().getScaledInstance(350,380,Image.SCALE_SMOOTH);
+        JLabel fuera_servicio= new JLabel(new ImageIcon(tam_fuera_s));
+        fuera_servicio.setBounds(20,20,350,380);
 
-        texto_cena= new JTextArea();
-        texto_cena.setText("no hay menu");
-        texto_cena.setFont(fuente2);
-        texto_cena.setForeground(new Color(0,0,0));
-        texto_cena.setBackground(new Color(255,255,255));
-        texto_cena.setEditable(false);
-
-        JScrollPane barra_desplazar3= new JScrollPane(texto_cena);
-        barra_desplazar3.setBounds(20,40,350,300);
-    
-        cena.add(barra_desplazar3);
-
-        reservar_c= Diseño_interfaz.Creador_Botones("RESERVAR", 280, 380, 100, 40, Color.WHITE);
-        
-        cena.add(reservar_c);
-
+        cena.add(fuera_servicio);
         add(cena);
 
     }
 
+    public void crear_campos_editar(){
+        comida_d= new JTextField();
+        comida_d.setBounds(20,20,280,50);
+        comida_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        comida_d.setBackground(new Color(255,255,255));
+
+        descripcion_d=new JTextField();
+        descripcion_d.setBounds(20,90,280,50);
+        descripcion_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        descripcion_d.setBackground(new Color(255,255,255));
+
+        valor_nutricional_d=new JTextField();
+        valor_nutricional_d.setBounds(20,160,280,50);
+        valor_nutricional_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        valor_nutricional_d.setBackground(new Color(255,255,255));
+
+        aforo_max_d=new JTextField();
+        aforo_max_d.setBounds(20,240,280,50);
+        aforo_max_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        aforo_max_d.setBackground(new Color(255,255,255));
+
+        sin_menu_d= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 380, 120, 30, Color.WHITE);
+        sin_menu_d.setForeground(Color.BLACK);
+        sin_menu_d.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+
+
+        comida_a= new JTextField();
+        comida_a.setBounds(20,20,280,50);
+        comida_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        comida_a.setBackground(new Color(255,255,255));
+
+        descripcion_a=new JTextField();
+        descripcion_a.setBounds(20,90,280,50);
+        descripcion_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        descripcion_a.setBackground(new Color(255,255,255));
+
+        valor_nutricional_a=new JTextField();
+        valor_nutricional_a.setBounds(20,160,280,50);
+        valor_nutricional_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        valor_nutricional_a.setBackground(new Color(255,255,255));
+
+        aforo_max_a=new JTextField();
+        aforo_max_a.setBounds(20,240,280,50);
+        aforo_max_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
+        aforo_max_a.setBackground(new Color(255,255,255));
+
+        sin_menu_a= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 380, 120, 30, Color.WHITE);
+        sin_menu_a.setForeground(Color.BLACK);
+        sin_menu_a.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+
+
+        almuerzo.add(sin_menu_a);
+        almuerzo.add(aforo_max_a);
+        almuerzo.add(valor_nutricional_a);
+        almuerzo.add(descripcion_a);
+        almuerzo.add(comida_a);
+
+        desayuno.add(sin_menu_d);
+        desayuno.add(aforo_max_d);
+        desayuno.add(valor_nutricional_d);
+        desayuno.add(descripcion_d);
+        desayuno.add(comida_d);
+
+       sin_menu_d.setVisible(false);
+       aforo_max_d.setVisible(false);
+       valor_nutricional_d.setVisible(false);
+       descripcion_d.setVisible(false);
+       comida_d.setVisible(false);
+
+       sin_menu_a.setVisible(false);
+       aforo_max_a.setVisible(false);
+       valor_nutricional_a.setVisible(false);
+       descripcion_a.setVisible(false);
+       comida_a.setVisible(false);
+    }
+
     public JButton getvolver(){
         return volverHome;
+    }
+    public JButton getEditar(){
+        return editar;
+    }
+    public JButton getNoEditar(){
+        return dejar_editar;
+    }
+
+    public void editar_paneles(){
+
+        aforo_a.setVisible(false);
+        barra_desplazar2.setVisible(false);
+    
+        aforo_d.setVisible(false);
+        barra_desplazar.setVisible(false);
+
+        editar.setVisible(false);
+        dejar_editar.setVisible(true);
+        
+        reservar_d.setVisible(false);
+        reservar_a.setVisible(false);
+
+
+       sin_menu_d.setVisible(true);
+       aforo_max_d.setVisible(true);
+       valor_nutricional_d.setVisible(true);
+       descripcion_d.setVisible(true);
+       comida_d.setVisible(true);
+
+       sin_menu_a.setVisible(true);
+       aforo_max_a.setVisible(true);
+       valor_nutricional_a.setVisible(true);
+       descripcion_a.setVisible(true);
+       comida_a.setVisible(true);
+
+    }
+
+    public void dejar_editar(){
+
+        aforo_a.setVisible(true);
+        barra_desplazar2.setVisible(true);
+    
+        aforo_d.setVisible(true);
+        barra_desplazar.setVisible(true);
+
+        editar.setVisible(true);
+        dejar_editar.setVisible(false);
+        //hasta aqui el panel queda como antes
+
+        reservar_d.setVisible(true);
+        reservar_a.setVisible(true);
+
+    
+       sin_menu_d.setVisible(false);
+       aforo_max_d.setVisible(false);
+       aforo_max_d.setText("");
+       valor_nutricional_d.setVisible(false);
+       valor_nutricional_d.setText("");
+       descripcion_d.setVisible(false);
+       descripcion_d.setText("");
+       comida_d.setVisible(false);
+       comida_d.setText("");
+
+       sin_menu_a.setVisible(false);
+       aforo_max_a.setVisible(false);
+       aforo_max_a.setText("");
+       valor_nutricional_a.setVisible(false);
+       valor_nutricional_a.setText("");
+       descripcion_a.setVisible(false);
+       descripcion_a.setText("");
+       comida_a.setVisible(false);
+       comida_a.setText("");
     }
 
     public JButton getreservas(String indicador){
@@ -275,9 +439,7 @@ public class MenuSemanal extends JFrame{
         if(indicador=="almuerzo"){
             return reservar_a;
         }
-        if(indicador=="cena"){
-            return reservar_c;
-        }
+        
         return null;
     }
 
@@ -288,9 +450,7 @@ public class MenuSemanal extends JFrame{
         if(id=="almuerzo"){
             return aforo_a;
         }
-        if(id=="cena"){
-            return aforo_c;
-        }
+        
         return null;
     }
 
@@ -301,9 +461,7 @@ public class MenuSemanal extends JFrame{
         if(id=="almuerzo"){
             return texto_almuerzo;
         }
-        if(id=="cena"){
-            return texto_cena;
-        }
+        
         return null;
     }
 
@@ -347,9 +505,6 @@ public class MenuSemanal extends JFrame{
         return reservar_a;
     }
 
-    public JButton getBtnRes2() {
-        return reservar_c;
-    }
     public JButton getBtnRes3() {
         return reservar_d;
     }

@@ -4,6 +4,7 @@ import src.vista.Landingpage;
 import src.vista.GestorCFView;
 import src.vista.GestorCVView;
 import src.vista.GestorCostosView;
+import src.vista.MenuSemanal;
 import src.vista.HomeAdmin;
 import src.vista.InicioSesion;
 
@@ -19,18 +20,20 @@ public class ControladorAdmin implements ActionListener {
     private InicioSesion inicio_sesion;   
     private GestorCFView gestorCFView;
     private GestorCVView gestorCVView; 
+    private MenuSemanal menu;
     
-    public ControladorAdmin(Landingpage landingpage, HomeAdmin homeAdmin,InicioSesion inicio_sesion) {
+    public ControladorAdmin(Landingpage landingpage, HomeAdmin homeAdmin,InicioSesion inicio_sesion, MenuSemanal menu) {
         this.landingpage = landingpage;
         this.homeAdmin = homeAdmin;
         this.inicio_sesion = inicio_sesion;
+        this.menu=menu;
         
         if (this.homeAdmin != null) {
             this.homeAdmin.getHome2().addActionListener(this);
             this.homeAdmin.getBtnCostos().addActionListener(this);
+            this.homeAdmin.getBtnMenu().addActionListener(this);
             avisoProximamente(this.homeAdmin.getBtnTurnos());
             avisoProximamente(this.homeAdmin.getBtnReporte());
-            avisoProximamente(this.homeAdmin.getBtnMenu());
             avisoProximamente(this.homeAdmin.getBtnInventario());
             avisoProximamente(this.homeAdmin.getBtnConsumos());
         }
@@ -56,6 +59,11 @@ public class ControladorAdmin implements ActionListener {
         }
         if (source == homeAdmin.getBtnCostos()) {
             abrirGestorCostos();
+        }
+        if(source == homeAdmin.getBtnMenu()){
+        menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        menu.setVisible(true);
+        homeAdmin.setVisible(false);
         }
         
     }

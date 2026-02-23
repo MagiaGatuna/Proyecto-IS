@@ -10,5 +10,9 @@
     {
         "cedula": "22222222",
         "rol": "Trabajador"
+    },
+    {
+        "cedula": "123",
+        "rol": "Estudiante"
     }
 ]

@@ -51,8 +51,9 @@ public class Menus_lista {
                 construir_frase.append("     Comida: ").append(menu.getString("comida")).append("\n").append("\n");
                 construir_frase.append("     Valor Nutricional: ").append(menu.getString("valorNutricional")).append("\n").append("\n");
                 construir_frase.append("     Precio: ").append(menu.getInt("precio")).append(" Bs \n");
-
+                if(aforo != null){
                 aforo.setText("Reservas actuales: " + menu.getInt("reservas_actual") + " / " + menu.getInt("aforo_max"));
+                }
 
                 hay_menu=true;
 
@@ -61,7 +62,7 @@ public class Menus_lista {
         }
 
         if(hay_menu == false){
-            texto_menu.setText("  No hay menú programado para este turno  ");
+             texto_menu.setText("  No hay menú programado para este turno  ");
              aforo.setText(" Reservas actuales: 0/0 ");
         }else{
            texto_menu.setText(construir_frase.toString()); 

@@ -44,16 +44,7 @@ public class Controlador_inicioS implements ActionListener{
         Rol = validadorInicioS.getRol();
         Usuario usuarioLogueado = validadorInicioS.getUsuarioActual();
             
-            if((Rol.equals("Administrador"))){
-                HomeAdmin admin = new HomeAdmin(usuarioLogueado);
-                new ControladorAdmin(inicio,admin,inicio_sesion);
-                admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                admin.setVisible(true);
-                inicio_sesion.setVisible(false);
-                inicio_sesion.dispose();
-
-            }
+            
             // Fecha traducida para logica del MenuD
             String diaSemana = Calcular_dia.getdia();
                 int diaMes = Calcular_dia.getDiaMesNumero();
@@ -72,20 +63,37 @@ public class Controlador_inicioS implements ActionListener{
                 }
                 // Fin de la logica extra
 
+                if((Rol.equals("Administrador"))){
+                HomeAdmin admin = new HomeAdmin(usuarioLogueado);
+                MenuSemanal menu_s_a= new MenuSemanal();
+                new ControladorAdmin(inicio,admin,inicio_sesion,menu_s_a);
+                new Controlador_MenuSemanal(null, null,admin, menu_s_a);
+                
+
+                admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                admin.setVisible(true);
+
+                inicio_sesion.setVisible(false);
+                inicio_sesion.dispose();
+
+            }
+
             if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
                 EmpleadoView empleado= new EmpleadoView(usuarioLogueado);
                 MenuSemanal menu_s_e= new MenuSemanal();
                 MenuDView menu_d= new MenuDView(diaSemana, diaMes, MM, AA);
                 JPanel monederoTemp = new JPanel();
                 monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
-                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e,monederoTemp,menu_d,inicio_sesion);
-                new Controlador_MenuSemanal(null, empleado, menu_s_e);
+                new Controlador_Alumno_Empleado(inicio, null, empleado, menu_s_e, monederoTemp, menu_d, inicio_sesion);
+                new Controlador_MenuSemanal(null, empleado, null,menu_s_e);
                 new Controlador_MenuDiario(null, empleado, menu_d);
 
                 empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 empleado.setResizable(false);
                 empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 empleado.setVisible(true);
+
                 inicio_sesion.setVisible(false);
                 inicio_sesion.dispose();
             }
@@ -97,7 +105,7 @@ public class Controlador_inicioS implements ActionListener{
                 JPanel monederoTemp = new JPanel();
                 monederoTemp.add(new JLabel("Saldo Actual: $" + usuarioLogueado.getSaldo()));
                 new Controlador_Alumno_Empleado(inicio, alumno, null, menu_s, monederoTemp,menu_d,inicio_sesion);
-                new Controlador_MenuSemanal(alumno, null, menu_s);
+                new Controlador_MenuSemanal(alumno, null,null, menu_s);
                 new Controlador_MenuDiario(alumno, null, menu_d);
 
                 alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
