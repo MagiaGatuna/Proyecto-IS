@@ -58,7 +58,12 @@ setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
     boton_Consumos=(Diseño_interfaz.Creador_Botones("CONSUMOS", (espacio * 3) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
     add(boton_Consumos);
     //creamos el saludo de bienvenida
-labela=new JLabel("¡Bienvenido administrador  "+ userActivo.getNombre()+ "!");//creamos el objeto
+    if(userActivo.getSexo().equals("Femenino")){
+      labela=new JLabel("¡Bienvenida administradora "+ userActivo.getNombre()+ "!");//creamos el objeto
+    }else{
+      labela=new JLabel("¡Bienvenido administrador "+ userActivo.getNombre()+ "!");//creamos el objeto
+    }
+
 labela.setFont(new Font("Arial", Font.BOLD, 30)); //Por diseño ajustamos la funte de la letra
 labela.setHorizontalAlignment(SwingConstants.CENTER);// nos aseguramos de alinearla
 labela.setBounds(0, 120,anchoP, 100);//Por diseño, colocam0so estas coordenadas

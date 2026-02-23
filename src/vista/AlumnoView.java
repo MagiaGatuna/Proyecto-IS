@@ -27,7 +27,7 @@ public class AlumnoView extends JFrame {
         iniciarVentana();
         this.userLogueado = u;
         JPanel panelNorte = crearPanelSuperior();
-        JPanel panelCentro = crearPanelCentral(u.getNombre());
+        JPanel panelCentro = crearPanelCentral(u.getNombre(),u.getSexo());
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
@@ -84,7 +84,7 @@ public class AlumnoView extends JFrame {
         return panel;
     }
 
-    private JPanel crearPanelCentral(String username) {
+    private JPanel crearPanelCentral(String username, String sexo) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -92,7 +92,15 @@ public class AlumnoView extends JFrame {
 
         panel.add(Box.createVerticalStrut(5));
 
-        JLabel lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A ESTUDIANTE<br>" + username+ "!</center></html>");
+        JLabel lblBienvenida = new JLabel();
+        if(sexo.equalsIgnoreCase("Femenino")){
+            lblBienvenida = new JLabel("<html><center>¡BIENVENIDA ESTUDIANTE<br>" + username+ "!</center></html>");
+        }else if(sexo.equalsIgnoreCase("Masculino")){
+            lblBienvenida = new JLabel("<html><center>¡BIENVENIDO ESTUDIANTE<br>" + username+ "!</center></html>");
+        }else{
+            lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A ESTUDIANTE<br>" + username+ "!</center></html>");
+        }
+        
         lblBienvenida.setFont(new Font("Arial", Font.BOLD, 50));
         lblBienvenida.setForeground(COLOR_TEXTO_AZUL);
         lblBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);
