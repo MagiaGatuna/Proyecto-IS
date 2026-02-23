@@ -123,8 +123,8 @@ public class InicioSesion extends JFrame {
  public JButton getRegistro(){
     return boton_Registro;
  }
-Usuario pruebaAdmin = new Usuario("Admin Valentina", 0.0, "empleado");
- HomeAdmin redirecadmin= new HomeAdmin(pruebaAdmin);
+//Usuario pruebaAdmin = new Usuario("Admin Valentina", 0.0, "empleado");
+ //HomeAdmin redirecadmin= new HomeAdmin(pruebaAdmin);
 
 public JButton getAdmin() { 
     return boton_InicioSesion; 
