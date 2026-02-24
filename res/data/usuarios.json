@@ -13,7 +13,7 @@
         "cedula": "12548736",
         "saldo": 100000.5,
         "sexo": "Femenino",
-        "rol": "Estudiante",
+        "rol": "Empleado",
         "nombres": "Elena",
         "contraseña": "123456"
     },
@@ -22,7 +22,7 @@
         "cedula": "22222222",
         "saldo": 5.25,
         "sexo": "Masculino",
-        "rol": "Trabajador",
+        "rol": "Profesor",
         "nombres": "Lilia",
         "contraseña": "1234567"
     },
@@ -38,7 +38,7 @@
     {
         "apellidos": "Matheus",
         "cedula": "1234",
-        "sexo": "Masculino",
+        "sexo": "Masculino",U
         "rol": "Administrador",
         "nombres": "Cristian",
         "contraseña": "1234"

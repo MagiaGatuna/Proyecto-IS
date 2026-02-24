@@ -79,7 +79,7 @@ public class Controlador_inicioS implements ActionListener{
 
             }
 
-            if((Rol.equals("Trabajador")||Rol.equals("Docente"))){
+            if((Rol.equals("Profesor")||Rol.equals("Empleado"))){
                 EmpleadoView empleado= new EmpleadoView(usuarioLogueado);
                 MenuSemanal menu_s_e= new MenuSemanal();
                 MenuDView menu_d= new MenuDView(diaSemana, diaMes, MM, AA);

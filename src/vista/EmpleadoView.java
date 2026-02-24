@@ -28,7 +28,7 @@ public class EmpleadoView extends JFrame {
         iniciarVentana();
         
         JPanel panelNorte = crearPanelSuperior();
-        JPanel panelCentro = crearPanelCentral(pr2.getNombre());
+        JPanel panelCentro = crearPanelCentral(pr2.getNombre(), pr2.getSexo(), pr2.getRol());
 
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
@@ -58,7 +58,7 @@ public class EmpleadoView extends JFrame {
     }
 
     private JPanel crearPanelSuperior() {
-       JPanel panel = new JPanel();
+        JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
         panel.setBackground(COLOR_HEADER);
@@ -84,7 +84,7 @@ public class EmpleadoView extends JFrame {
         return panel;
     }
 
-    private JPanel crearPanelCentral(String username) {
+    private JPanel crearPanelCentral(String username, String sexo, String rol) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
@@ -92,7 +92,21 @@ public class EmpleadoView extends JFrame {
 
         panel.add(Box.createVerticalStrut(5));
 
-        JLabel lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A EMPLEADO/A<br>" + username + "!</center></html>");
+        JLabel lblBienvenida = new JLabel();
+        if(sexo.equalsIgnoreCase("Femenino")){
+            if(rol.equalsIgnoreCase("Empleado")){
+                lblBienvenida = new JLabel("<html><center>¡BIENVENIDA " + "EMPLEADA" + "<br>" + username+ "!</center></html>");
+            }else{
+                lblBienvenida = new JLabel("<html><center>¡BIENVENIDA " + "PROFESORA" + "<br>" + username+ "!</center></html>");
+            }
+            
+        }else if(sexo.equalsIgnoreCase("Masculino")){
+            lblBienvenida = new JLabel("<html><center>¡BIENVENIDO " + rol.toUpperCase() + "<br>" + username+ "!</center></html>");
+        }else{
+            lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A " + rol.toUpperCase() + "<br>" + username+ "!</center></html>");
+        }
+
+    
         lblBienvenida.setFont(new Font("Arial", Font.BOLD, 50));
         lblBienvenida.setForeground(COLOR_TEXTO_AZUL);
         lblBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);

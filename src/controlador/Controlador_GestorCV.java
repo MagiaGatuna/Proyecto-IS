@@ -153,9 +153,9 @@ public class Controlador_GestorCV implements ActionListener {
                 org.json.JSONArray jsonMenus = new org.json.JSONArray(contenido);
 
                 for (int i = 0; i < jsonMenus.length(); i++) {
-                    String idMenuTecnico = jsonMenus.getJSONObject(i).getString("dia_turno");
-                    String nombreParaUsuario = formatearIDParaUsuario(idMenuTecnico);
-                    String costoTotal = src.modelo.editarCostos.getCV(idMenuTecnico); 
+                    String idMenu = jsonMenus.getJSONObject(i).getString("dia_turno");
+                    String nombreParaUsuario = formatearIDParaUsuario(idMenu);
+                    String costoTotal = src.modelo.editarCostos.getCV(idMenu); 
                     
                     modelo.addRow(new Object[]{nombreParaUsuario, costoTotal});
                 }
