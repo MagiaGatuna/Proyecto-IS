@@ -57,4 +57,29 @@ public class ReservaDAO {
             JOptionPane.showMessageDialog(null, "Error al eliminar reserva: " + e.getMessage());
         }
     }
+
+    public static void guardar(Reserva reserva) {
+    try {
+        JSONArray lista;
+        if (Files.exists(RUTA)) {
+            String contenido = new String(Files.readAllBytes(RUTA), StandardCharsets.UTF_8);
+            lista = new JSONArray(contenido);
+        } else {
+            lista = new JSONArray();
+        }
+
+        JSONObject nueva = new JSONObject();
+        nueva.put("cedula", reserva.getCedula());
+        nueva.put("dia_turno", reserva.getDiaTurno());
+        lista.put(nueva);
+
+        Files.write(RUTA, lista.toString(4).getBytes(StandardCharsets.UTF_8));
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(null, "Error al guardar reserva: " + e.getMessage());
+    }
+}
+
+// ejemplo de hacer funcionar a guardar reserva
+//Reserva nuevaReserva = new Reserva(cedula, dia_turno);
+//ReservaDAO.guardar(nuevaReserva);
 }
