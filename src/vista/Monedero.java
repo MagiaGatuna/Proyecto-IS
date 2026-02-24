@@ -1,7 +1,7 @@
 package src.vista;
 import javax.swing.*;
 import java.awt.*;
-import src.util.Calcular;
+import src.util.MostrarDescuento;
 import src.util.Diseño_interfaz;
 import src.modelo.Usuario;
 import java.awt.event.ActionEvent;
