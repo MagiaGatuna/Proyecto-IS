@@ -7,7 +7,7 @@ import src.util.BotonUtil;
 import src.util.PasswordYPlaceholderUtil;
 import src.util.Conectar_ventanas;
 import src.util.Diseño_interfaz;
-import src.modelo.Usuario;
+//import src.modelo.Usuario;
 //inicio de sesion
 public class InicioSesion extends JFrame { 
     //declacion de elementos a usar

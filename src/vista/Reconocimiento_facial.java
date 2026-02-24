@@ -1,6 +1,7 @@
 package src.vista;
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 
 import src.util.BotonUtil; 
 
@@ -13,6 +14,7 @@ private JButton cerrar;
 private JButton subir_foto;
 private JTextField cedula;
 private JToolBar barra;
+private JFileChooser fileChooser;
 
 public Reconocimiento_facial(){
     setLayout(null);
@@ -113,6 +115,30 @@ public void fondo_panel(int pantalla, int alto){
     panel_capas.add(fondo,JLayeredPane.DEFAULT_LAYER);
     panel_capas.add(panel_transparente,JLayeredPane.PALETTE_LAYER);
     add(panel_capas);
+
+
+
+    
+}
+public File seleccionarArchivo() {
+    if (fileChooser == null) {
+        fileChooser = new JFileChooser();
+        fileChooser.setFileFilter(new javax.swing.filechooser.FileNameExtensionFilter("Imágenes", "jpg", "jpeg", "png"));
+    }
+    int result = fileChooser.showOpenDialog(this);
+    if (result == JFileChooser.APPROVE_OPTION) {
+        return fileChooser.getSelectedFile();
+    }
+    return null;
+}
+
+
+public JTextField getTxtCedula() {
+    return cedula;
+}
+
+public JButton getBtnSubirFoto() {
+    return subir_foto;
 }
 
 public JButton getCerrar(){

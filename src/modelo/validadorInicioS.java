@@ -93,13 +93,14 @@ public static Usuario getUsuarioActual() {
         
         String cedula = datos.getString("cedula");
         String nombreReal = datos.getString("nombres");
+        String sexo = datos.getString("sexo");
         
         double saldoReal = datos.has("saldo") ? datos.getDouble("saldo") : 0.0;
         
         return new Usuario(
             nombreReal, 
             saldoReal,
-            datos.getString("rol"),cedula
+            datos.getString("rol"),cedula, sexo
         );
     }
     return null;

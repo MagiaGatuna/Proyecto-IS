@@ -4,7 +4,7 @@ import src.modelo.Usuario;
 import src.modelo.validadorInicioS;
 import src.modelo.Validador_recarga;
 import src.modelo.GestionSaldo;
-import src.util.LimpiarFormulariosUtil;
+//import src.util.LimpiarFormulariosUtil;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -66,7 +66,7 @@ public class Controlador_Recarga implements ActionListener {
                     vista_recarga.dispose();
                 }
          }
-        if (Rol.equals("Empleado")){
+        if (Rol.equals("Trabajador")||Rol.equals("Profesor")){
         if (this.vista_empleado != null) {
                     vista_empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     vista_empleado.setResizable(false);
