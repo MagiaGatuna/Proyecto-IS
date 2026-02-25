@@ -393,11 +393,11 @@ public class MenuSemanal extends JFrame{
         sin_menu_a.setForeground(Color.BLACK);
         sin_menu_a.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
 
-        aceptar_d= Diseño_interfaz.Creador_Botones("Aceptar Edición", 90, 382, 120, 30, Color.WHITE);
+        aceptar_d= Diseño_interfaz.Creador_Botones("Aceptar Edición", 40, 382, 170, 30, Color.WHITE);
         aceptar_d.setForeground(Color.BLACK);
         aceptar_d.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
 
-        aceptar_a= Diseño_interfaz.Creador_Botones("Aceptar Edición", 90, 382, 120, 30, Color.WHITE);
+        aceptar_a= Diseño_interfaz.Creador_Botones("Aceptar Edición", 40, 382, 170, 30, Color.WHITE);
         aceptar_a.setForeground(Color.BLACK);
         aceptar_a.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
 
@@ -652,6 +652,35 @@ public class MenuSemanal extends JFrame{
         }
 
         return "";
+    }
+    public void setTexto(String turno,String campo) {
+        
+        if(turno.equals("Desayuno") && campo.equals("Comida")){
+            comida_d.setText("");;
+        }
+        if(turno.equals("Desayuno") && campo.equals("Descripcion")){
+            descripcion_d.setText("");;
+        }
+        if(turno.equals("Desayuno") && campo.equals("Valor_nutricional")){
+            valor_nutricional_d.setText("");;
+        }
+        if(turno.equals("Desayuno") && campo.equals("Aforo")){
+            aforo_max_d.setText("");;
+        }
+
+        if(turno.equals("Almuerzo") && campo.equals("Comida")){
+            comida_a.setText("");;
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Descripcion")){
+            descripcion_a.setText("");;
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Valor_nutricional")){
+            valor_nutricional_a.setText("");;
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Aforo")){
+            aforo_max_a.setText("");;
+        }
+
     }
     
     public static void main (String args[]){

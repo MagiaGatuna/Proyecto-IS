@@ -29,7 +29,7 @@ this.getContentPane().setBackground(new Color(255,255,255));
 ImageIcon icono3= new ImageIcon ("res/comedorfoto.jpeg");
 Image comedor_inicio= icono3.getImage().getScaledInstance(1140,360,Image.SCALE_SMOOTH);
 JLabel imagen_central= new JLabel(new ImageIcon(comedor_inicio));
-imagen_central.setBounds(110,320,1140,360);
+imagen_central.setBounds(110,300,1140,360);
 setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
 add(imagen_central);
 
@@ -126,13 +126,13 @@ titulo.setFont(fuente1);
 Font fuente3= new Font ("Arial", Font.PLAIN, 20);
 
 titulo.setHorizontalAlignment(SwingConstants.CENTER);
-titulo.setBounds(0,150,pantalla,90);
+titulo.setBounds(0,130,pantalla,90);
 titulo.setForeground(new Color(25,25,112));
 
 texto.setOpaque(false);
 texto.setBackground(new Color(0,0,0,0));
 texto.setFont(fuente3);
-texto.setBounds(110,240, 700, 300);
+texto.setBounds(110,220, 700, 300);
 texto.setForeground(new Color(0,0,0));
 
 add(titulo);
@@ -150,7 +150,7 @@ barrita= new JPanel();
 
 barrita.setLayout(null);
 barrita.setBackground(new Color(92,180,155));
-barrita.setBounds(0,alto-70,pantalla,50);
+barrita.setBounds(0,alto-100,pantalla,80);
 
 barrita.add(instagram_logo);
 

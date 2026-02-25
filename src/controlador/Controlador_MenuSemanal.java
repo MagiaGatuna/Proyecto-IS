@@ -38,12 +38,17 @@ public class Controlador_MenuSemanal implements ActionListener{
 
         menu.getEditar().addActionListener(this);
         menu.getNoEditar().addActionListener(this);
+        menu.getAceptar("Desayuno").addActionListener(this);
+        menu.getAceptar("Almuerzo").addActionListener(this);
+        menu.getDefecto("Desayuno").addActionListener(this);
+        menu.getDefecto("Almuerzo").addActionListener(this);
 
         Rol = validadorInicioS.getRol();
 
         if(Rol.equals("Administrador")){
             menu.getEditar().setVisible(true);
             menu.getNoEditar().setVisible(false);
+            
         }else{
             menu.getEditar().setVisible(false);
             menu.getNoEditar().setVisible(false);
@@ -147,7 +152,98 @@ if (this.menu.getvolver() != null) {
             dia_seleccionado="FRIDAY";
         }
 
+        if(e.getSource()==menu.getAceptar("Desayuno")){
+            StringBuilder errores= new StringBuilder();
+            if(menu.getTexto("Desayuno","Comida").isEmpty()){
+                errores.append("- El campo de comida es obligatorio\n");
+            }
+            if(menu.getTexto("Desayuno","Descripcion").isEmpty()){
+                 errores.append("- El campo de Descripción es obligatorio\n");
+            }
+            if(menu.getTexto("Desayuno","Valor_nutricional").isEmpty()){
+                 errores.append("- El campo de Valor nutricional es obligatorio\n");
+            }
+            if(menu.getTexto("Desayuno","Aforo").isEmpty()){
+                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
+            }
+
+            if(errores.length()>0){
+                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
+                return;
+            }
+
+                Menus_lista.actualizarMenu(dia_seleccionado, "DESAYUNO", menu.getTexto("Desayuno","Comida"), menu.getTexto("Desayuno","Descripcion"),menu.getTexto("Desayuno","Valor_nutricional"), menu.getTexto("Desayuno","Aforo"));
+                vaciar_campos("Desayuno");
         
+        }
+        if(e.getSource()==menu.getAceptar("Almuerzo")){
+        
+        StringBuilder errores= new StringBuilder();
+            if(menu.getTexto("Almuerzo","Comida").isEmpty()){
+                errores.append("- El campo de comida es obligatorio\n");
+            }
+            if(menu.getTexto("Almuerzo","Descripcion").isEmpty()){
+                 errores.append("- El campo de Descripción es obligatorio\n");
+            }
+            if(menu.getTexto("Almuerzo","Valor_nutricional").isEmpty()){
+                 errores.append("- El campo de Valor nutricional es obligatorio\n");
+            }
+            if(menu.getTexto("Almuerzo","Aforo").isEmpty()){
+                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
+            }
+
+            if(errores.length()>0){
+                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
+                return;
+            }
+
+        Menus_lista.actualizarMenu(dia_seleccionado, "ALMUERZO", menu.getTexto("Almuerzo","Comida"), menu.getTexto("Almuerzo","Descripcion"),menu.getTexto("Almuerzo","Valor_nutricional"), menu.getTexto("Almuerzo","Aforo"));
+        vaciar_campos("Almuerzo");
+        }
+        if(e.getSource()==menu.getDefecto("Desayuno")){
+        
+        StringBuilder errores= new StringBuilder();
+            if(menu.getTexto("Desayuno","Comida").isEmpty()){
+                errores.append("- El campo de comida es obligatorio\n");
+            }
+            if(menu.getTexto("Desayuno","Descripcion").isEmpty()){
+                 errores.append("- El campo de Descripción es obligatorio\n");
+            }
+            if(menu.getTexto("Desayuno","Valor_nutricional").isEmpty()){
+                 errores.append("- El campo de Valor nutricional es obligatorio\n");
+            }
+            if(menu.getTexto("Desayuno","Aforo").isEmpty()){
+                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
+            }
+
+            if(errores.length()>0){
+                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
+                return;
+            }
+        Menus_lista.actualizarMenu(dia_seleccionado, "DESAYUNO", "Lo sentimos, no hay menu para este turno", " ","0", "0");
+        vaciar_campos("Desayuno");
+        }
+        if(e.getSource()==menu.getDefecto("Almuerzo")){
+            StringBuilder errores= new StringBuilder();
+            if(menu.getTexto("Almuerzo","Comida").isEmpty()){
+                errores.append("- El campo de comida es obligatorio\n");
+            }
+            if(menu.getTexto("Almuerzo","Descripcion").isEmpty()){
+                 errores.append("- El campo de Descripción es obligatorio\n");
+            }
+            if(menu.getTexto("Almuerzo","Valor_nutricional").isEmpty()){
+                 errores.append("- El campo de Valor nutricional es obligatorio\n");
+            }
+            if(menu.getTexto("Almuerzo","Aforo").isEmpty()){
+                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
+            }
+            if(errores.length()>0){
+                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
+                return;
+            }
+        Menus_lista.actualizarMenu(dia_seleccionado, "ALMUERZO", "Lo sentimos, no hay menu para este turno", " ","0", "0");
+        vaciar_campos("Almuerzo");
+        }
 
         if(dia_seleccionado != null && dia_seleccionado != "SUNDAY" && dia_seleccionado != "SATURDAY"){
             Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),dia_seleccionado,"DESAYUNO");
@@ -161,6 +257,22 @@ if (this.menu.getvolver() != null) {
         pintarboton(pinta);
         menu.repaint();
     }
+
+public void vaciar_campos(String turno){
+    if(turno.equals("Desayuno")){
+        menu.setTexto("Desayuno","Comida");
+        menu.setTexto("Desayuno","Descripcion");
+        menu.setTexto("Desayuno","Valor_nutricional");
+        menu.setTexto("Desayuno","Aforo");
+    }else{
+        menu.setTexto("Almuerzo","Comida");
+        menu.setTexto("Almuerzo","Descripcion");
+        menu.setTexto("Almuerzo","Valor_nutricional");
+        menu.setTexto("Almuerzo","Aforo");
+    }
+    
+}
+
 public void pintarboton(String hoy) {
     String[] diasArr = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
 
