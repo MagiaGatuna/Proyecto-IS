@@ -9,8 +9,9 @@ public class AlumnoView extends JFrame {
 
     private final Color COLOR_FONDO = Color.WHITE;
     private final Color COLOR_HEADER = Color.decode("#D9D9D9");
-    private final Color COLOR_BOTON_PRINCIPAL = Color.decode("#0086A3");
-    private final Color COLOR_BOTON_CERRAR = Color.decode("#625FBA");
+    private final Color COLOR_BOTON_PRINCIPAL = Diseño_interfaz.colorazul;
+    private final Color COLOR_BOTON_SECUNDARIO = Diseño_interfaz.turquesaOscuro;
+    private final Color COLOR_BOTON_CERRAR = Diseño_interfaz.colorazulOscuro;
     private final Color COLOR_TEXTO_AZUL = Color.decode("#050082");
 
 
@@ -70,7 +71,8 @@ public class AlumnoView extends JFrame {
         
         panel.add(Box.createHorizontalGlue());
 
-        JButton btnMonedero =Diseño_interfaz.Creador_Botones("MONEDERO", EXIT_ON_CLOSE, ERROR,130, 40,COLOR_BOTON_CERRAR); 
+        JButton btnMonedero =Diseño_interfaz.Creador_Botones("MONEDERO", EXIT_ON_CLOSE, ERROR,130, 40,COLOR_BOTON_SECUNDARIO); 
+        btnMonedero.setForeground(Color.BLACK);
         btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
         panel.add(btnMonedero);
 
@@ -124,17 +126,20 @@ public class AlumnoView extends JFrame {
         bloqueMenu.add(lblIconoMenu);
         bloqueMenu.add(Box.createVerticalStrut(10));
 
-        btnVerMenu =Diseño_interfaz.Creador_Botones("VER MENÚ", EXIT_ON_CLOSE, ERROR,200, 40,COLOR_BOTON_CERRAR);      
+        btnVerMenu = Diseño_interfaz.Creador_Botones("VER MENÚ", EXIT_ON_CLOSE, ERROR, 200, 40, COLOR_BOTON_PRINCIPAL);      
+        for(java.awt.event.MouseListener ml : btnVerMenu.getMouseListeners()) {
+            btnVerMenu.removeMouseListener(ml);
+        }
         bloqueMenu.add(btnVerMenu); 
+        bloqueMenu.add(Box.createVerticalStrut(10)); // separación
 
-        btnVerMenuDiario = new JButton("MENÚ DIARIO");
-        btnVerMenuDiario.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnVerMenuDiario.setMaximumSize(new Dimension(120, 40));
+        btnVerMenuDiario = Diseño_interfaz.Creador_Botones("VER MENÚ DIARIO", EXIT_ON_CLOSE, ERROR, 160, 40, COLOR_BOTON_SECUNDARIO);
+        btnVerMenuDiario.setForeground(Color.BLACK);
         bloqueMenu.add(btnVerMenuDiario);
+        bloqueMenu.add(Box.createVerticalStrut(10)); // separación
 
-        btnVerMenuSemanal = new JButton("MENÚ SEMANAL");
-        btnVerMenuSemanal.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnVerMenuSemanal.setMaximumSize(new Dimension(120, 40));
+        btnVerMenuSemanal = Diseño_interfaz.Creador_Botones("VER MENÚ SEMANAL", EXIT_ON_CLOSE, ERROR, 160, 40, COLOR_BOTON_SECUNDARIO);
+        btnVerMenuSemanal.setForeground(Color.BLACK);
         bloqueMenu.add(btnVerMenuSemanal);
 
 
@@ -149,6 +154,10 @@ public class AlumnoView extends JFrame {
         bloqueConsumos.add(Box.createVerticalStrut(10));
 
         btnVerConsumos =Diseño_interfaz.Creador_Botones("COMSUMOS", EXIT_ON_CLOSE, ERROR,200, 40,COLOR_BOTON_PRINCIPAL);
+        for(java.awt.event.MouseListener ml : btnVerConsumos.getMouseListeners()) {
+            btnVerConsumos.removeMouseListener(ml);
+        }
+        btnVerConsumos.setForeground(Color.WHITE);
         bloqueConsumos.add(btnVerConsumos);
 
 
