@@ -178,6 +178,7 @@ public void pintarboton(String hoy) {
         btnHoy.setBackground(new Color(180, 236, 227));
     }
 }
+
     public void desactivar_botones(int minutos){
         /* 
         //Esta funcionalidad de desactivar la posibilida de reserva,

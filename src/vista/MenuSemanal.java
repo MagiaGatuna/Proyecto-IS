@@ -54,12 +54,14 @@ public class MenuSemanal extends JFrame{
     private JTextField valor_nutricional_d;
     private JTextField aforo_max_d;
     private JButton sin_menu_d;
+    private JButton aceptar_d;
 
     private JTextField comida_a;
     private JTextField descripcion_a;
     private JTextField valor_nutricional_a;
     private JTextField aforo_max_a;
     private JButton sin_menu_a;
+     private JButton aceptar_a;
 
 
     public MenuSemanal(){
@@ -188,20 +190,20 @@ public class MenuSemanal extends JFrame{
         turno_m=new JLabel("Turno de la Mañana: 7am a 10 am");
         turno_m.setFont(fuente1);
         turno_m.setForeground(new Color(25,25,112));
-        turno_m.setBounds(120,260,300,26);
+        turno_m.setBounds(120,240,300,26);
         add(turno_m);
 
         desayuno= new JPanel();
         desayuno.setLayout(null);
         desayuno.setBackground(new Color(92,180,155));
-        desayuno.setBounds(68,290,390,430);
+        desayuno.setBounds(68,270,390,430);
 
         Font fuente2 = new Font ("Arial", Font.BOLD,16);
         Font fuente3 = new Font ("Arial", Font.BOLD,14);
         aforo_d= new JLabel("Reservas Actuales: ");
         aforo_d.setFont(fuente3);
         aforo_d.setForeground(new Color(0,0,0));
-        aforo_d.setBounds(20,380,240,30);
+        aforo_d.setBounds(20,350,240,30);
         desayuno.add(aforo_d);
 
         texto_desayuno= new JTextArea();
@@ -230,19 +232,19 @@ public class MenuSemanal extends JFrame{
         turno_t=new JLabel("Turno de la Tarde: 12m a 3pm");
         turno_t.setFont(fuente1);
         turno_t.setForeground(new Color(25,25,112));
-        turno_t.setBounds(566,260,300,26);
+        turno_t.setBounds(566,240,300,26);
         add(turno_t);
 
         almuerzo= new JPanel();
         almuerzo.setLayout(null);
         almuerzo.setBackground(new Color(92,180,155));
-        almuerzo.setBounds(495,290,390,430);
+        almuerzo.setBounds(495,270,390,430);
 
         Font fuente2 = new Font ("Arial", Font.BOLD,16);
         aforo_a= new JLabel("Reservas Actuales: ");
         aforo_a.setFont(fuente3);
         aforo_a.setForeground(new Color(0,0,0));
-        aforo_a.setBounds(20,380,240,30);
+        aforo_a.setBounds(20,350,240,30);
         almuerzo.add(aforo_a);
 
         texto_almuerzo= new JTextArea();
@@ -272,13 +274,13 @@ public class MenuSemanal extends JFrame{
         turno_n=new JLabel("Turno de la Noche: 6pm a 9pm");
         turno_n.setFont(fuente1);
         turno_n.setForeground(new Color(25,25,112));
-        turno_n.setBounds(980,260,300,26);
+        turno_n.setBounds(980,240,300,26);
         add(turno_n);
 
         cena= new JPanel();
         cena.setLayout(null);
         cena.setBackground(new Color(92,180,155));
-        cena.setBounds(920,290,390,430);
+        cena.setBounds(920,270,390,430);
 
         ImageIcon iconofuera= new ImageIcon ("res/fuera_servicio.jpg");
         Image tam_fuera_s= iconofuera.getImage().getScaledInstance(350,380,Image.SCALE_SMOOTH);
@@ -362,7 +364,7 @@ public class MenuSemanal extends JFrame{
         aforo_max_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         aforo_max_d.setBackground(new Color(255,255,255));
 
-        sin_menu_d= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 386, 120, 30, Color.WHITE);
+        sin_menu_d= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 382, 120, 30, Color.WHITE);
         sin_menu_d.setForeground(Color.BLACK);
         sin_menu_d.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
 
@@ -387,9 +389,17 @@ public class MenuSemanal extends JFrame{
         aforo_max_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         aforo_max_a.setBackground(new Color(255,255,255));
 
-        sin_menu_a= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 386, 120, 30, Color.WHITE);
+        sin_menu_a= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 382, 120, 30, Color.WHITE);
         sin_menu_a.setForeground(Color.BLACK);
         sin_menu_a.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+
+        aceptar_d= Diseño_interfaz.Creador_Botones("Aceptar Edición", 90, 382, 120, 30, Color.WHITE);
+        aceptar_d.setForeground(Color.BLACK);
+        aceptar_d.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+
+        aceptar_a= Diseño_interfaz.Creador_Botones("Aceptar Edición", 90, 382, 120, 30, Color.WHITE);
+        aceptar_a.setForeground(Color.BLACK);
+        aceptar_a.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
 
 
         almuerzo.add(sin_menu_a);
@@ -397,24 +407,28 @@ public class MenuSemanal extends JFrame{
         almuerzo.add(valor_nutricional_a);
         almuerzo.add(descripcion_a);
         almuerzo.add(comida_a);
+        almuerzo.add(aceptar_a);
 
         desayuno.add(sin_menu_d);
         desayuno.add(aforo_max_d);
         desayuno.add(valor_nutricional_d);
         desayuno.add(descripcion_d);
         desayuno.add(comida_d);
+        desayuno.add(aceptar_d);
 
        sin_menu_d.setVisible(false);
        aforo_max_d.setVisible(false);
        valor_nutricional_d.setVisible(false);
        descripcion_d.setVisible(false);
        comida_d.setVisible(false);
+       aceptar_d.setVisible(false);
 
        sin_menu_a.setVisible(false);
        aforo_max_a.setVisible(false);
        valor_nutricional_a.setVisible(false);
        descripcion_a.setVisible(false);
        comida_a.setVisible(false);
+       aceptar_a.setVisible(false);
 
         comida_de.setVisible(false);
         descripcion_de.setVisible(false);
@@ -451,6 +465,8 @@ public class MenuSemanal extends JFrame{
         reservar_d.setVisible(false);
         reservar_a.setVisible(false);
 
+        aceptar_d.setVisible(true);
+        aceptar_a.setVisible(true);
 
        sin_menu_d.setVisible(true);
        aforo_max_d.setVisible(true);
@@ -490,7 +506,9 @@ public class MenuSemanal extends JFrame{
         reservar_d.setVisible(true);
         reservar_a.setVisible(true);
 
-    
+        aceptar_d.setVisible(false);
+        aceptar_a.setVisible(false);
+
        sin_menu_d.setVisible(false);
        aforo_max_d.setVisible(false);
        aforo_max_d.setText("");
@@ -583,11 +601,22 @@ public class MenuSemanal extends JFrame{
         
     }
 
-    public JButton getAceptar(String turno){
+    public JButton getDefecto(String turno){
         if(turno.equals("Desayuno")){
             return sin_menu_d;
         }else if(turno.equals("Almuerzo")){
             return sin_menu_a;
+        }else{
+            return null;
+        }
+
+    }
+
+    public JButton getAceptar(String turno){
+        if(turno.equals("Desayuno")){
+            return aceptar_d;
+        }else if(turno.equals("Almuerzo")){
+            return aceptar_a;
         }else{
             return null;
         }
