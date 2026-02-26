@@ -38,6 +38,7 @@
     {
         "apellidos": "Matheus",
         "cedula": "1234",
+        "saldo": 3999999.6,
         "sexo": "Masculino",
         "rol": "Administrador",
         "nombres": "Cristian",
