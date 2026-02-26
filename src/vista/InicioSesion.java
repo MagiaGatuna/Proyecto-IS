@@ -80,7 +80,7 @@ public class InicioSesion extends JFrame {
     cedula_id.setBounds(125, 210, 250, 40);//colocamos las coordenadas de el objeto
     Panel1.add(cedula_id);//Por diseño lo agregamos a el contenedor
     PasswordYPlaceholderUtil.configurarPlaceholder(cedula_id, "Cédula de identidad"); 
-    cedula_id.requestFocusInWindow();
+    //cedula_id.requestFocusInWindow();
 
 //creamos el campo donde el usuario ingresa su contraseña
     contraseña= new JPasswordField();//creamos el objeto

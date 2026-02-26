@@ -113,6 +113,7 @@ public class GestorCVView extends JFrame {
         btnCambiar = Diseño_interfaz.Creador_Botones("Cambiar", EXIT_ON_CLOSE, ERROR, 200, 35, Color.DARK_GRAY); 
         btnEliminar = Diseño_interfaz.Creador_Botones("Eliminar", EXIT_ON_CLOSE, ERROR, 200, 35, Color.DARK_GRAY);
 
+        btnAgregar.setAlignmentX(Component.LEFT_ALIGNMENT); 
         btnCambiar.setAlignmentX(Component.LEFT_ALIGNMENT);
         btnEliminar.setAlignmentX(Component.LEFT_ALIGNMENT);
         JPanel panelDatos = new JPanel();
