@@ -39,4 +39,23 @@ public static int getDiaMesNumero(){
         return dia.getYear();
     }
 
+public static int getIndiceDia(String dia_consultar){
+    if(dia_consultar.equals("MONDAY")){
+        return 1;
+    }else if(dia_consultar.equals("TUESDAY")){
+        return 2;
+    }else if(dia_consultar.equals("WEDNESDAY")){
+        return 3;
+    }else if(dia_consultar.equals("THURSDAY")){
+        return 4;
+    }else if(dia_consultar.equals("FRIDAY")){
+        return 5;
+    }
+    else{
+        return 0;
+    }
+
 }
+
+}
+

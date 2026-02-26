@@ -551,6 +551,11 @@ public class MenuSemanal extends JFrame{
         return null;
     }
 
+    public void ocultaradmin(){
+        reservar_d.setVisible(false);
+        reservar_a.setVisible(false);
+    }
+
     public JLabel getaforo(String id){
         if(id=="desayuno"){
             return aforo_d;

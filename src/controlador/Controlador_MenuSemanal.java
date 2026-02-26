@@ -48,6 +48,9 @@ public class Controlador_MenuSemanal implements ActionListener{
         if(Rol.equals("Administrador")){
             menu.getEditar().setVisible(true);
             menu.getNoEditar().setVisible(false);
+            menu.getAceptar("Desayuno").setVisible(false);
+            menu.getAceptar("Almuerzo").setVisible(false);
+            menu.ocultaradmin();
             
         }else{
             menu.getEditar().setVisible(false);
@@ -134,22 +137,52 @@ if (this.menu.getvolver() != null) {
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario
             pinta = "MONDAY";
             dia_seleccionado="MONDAY";
+            desactivar_botones(hora);
+            if(Rol.equals("Administrador")){
+            menu.getAceptar("Desayuno").setVisible(false);
+            menu.getAceptar("Almuerzo").setVisible(false);
+            menu.ocultaradmin();
+            }
         }
         if(e.getSource()==menu.getboton_dia("TUESDAY")){//Aqui va un && con el JSON del tipo de usuario
             pinta = "TUESDAY";
             dia_seleccionado="TUESDAY";
+            desactivar_botones(hora);
+            if(Rol.equals("Administrador")){
+            menu.getAceptar("Desayuno").setVisible(false);
+            menu.getAceptar("Almuerzo").setVisible(false);
+            menu.ocultaradmin();
+            }
         }
         if(e.getSource()==menu.getboton_dia("WEDNESDAY")){//Aqui va un && con el JSON del tipo de usuario
              pinta = "WEDNESDAY";
             dia_seleccionado="WEDNESDAY";
+            desactivar_botones(hora);
+            if(Rol.equals("Administrador")){
+            menu.getAceptar("Desayuno").setVisible(false);
+            menu.getAceptar("Almuerzo").setVisible(false);
+            menu.ocultaradmin();
+            }
         }
         if(e.getSource()==menu.getboton_dia("THURSDAY")){//Aqui va un && con el JSON del tipo de usuario
              pinta = "THURSDAY";
             dia_seleccionado="THURSDAY";
+            desactivar_botones(hora);
+            if(Rol.equals("Administrador")){
+            menu.getAceptar("Desayuno").setVisible(false);
+            menu.getAceptar("Almuerzo").setVisible(false);
+            menu.ocultaradmin();
+            }
         }
         if(e.getSource()==menu.getboton_dia("FRIDAY")){//Aqui va un && con el JSON del tipo de usuario
              pinta = "FRIDAY";
             dia_seleccionado="FRIDAY";
+            desactivar_botones(hora);
+            if(Rol.equals("Administrador")){
+            menu.getAceptar("Desayuno").setVisible(false);
+            menu.getAceptar("Almuerzo").setVisible(false);
+            menu.ocultaradmin();
+            }
         }
 
         if(e.getSource()==menu.getAceptar("Desayuno")){
@@ -165,6 +198,10 @@ if (this.menu.getvolver() != null) {
             }
             if(menu.getTexto("Desayuno","Aforo").isEmpty()){
                  errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
+            }
+            if(!confirmar_num(menu.getTexto("Desayuno","Aforo"))){
+                 errores.append("- El campo de la cantidad de bandejas solo puede ser rellenado con un número entero positivo o cero\n");
+
             }
 
             if(errores.length()>0){
@@ -191,6 +228,10 @@ if (this.menu.getvolver() != null) {
             if(menu.getTexto("Almuerzo","Aforo").isEmpty()){
                  errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
             }
+            if(!confirmar_num(menu.getTexto("Desayuno","Aforo"))){
+                 errores.append("- El campo de la cantidad de bandejas solo puede ser rellenado con un número entero positivo o cero\n");
+
+            }
 
             if(errores.length()>0){
                 JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
@@ -202,45 +243,10 @@ if (this.menu.getvolver() != null) {
         }
         if(e.getSource()==menu.getDefecto("Desayuno")){
         
-        StringBuilder errores= new StringBuilder();
-            if(menu.getTexto("Desayuno","Comida").isEmpty()){
-                errores.append("- El campo de comida es obligatorio\n");
-            }
-            if(menu.getTexto("Desayuno","Descripcion").isEmpty()){
-                 errores.append("- El campo de Descripción es obligatorio\n");
-            }
-            if(menu.getTexto("Desayuno","Valor_nutricional").isEmpty()){
-                 errores.append("- El campo de Valor nutricional es obligatorio\n");
-            }
-            if(menu.getTexto("Desayuno","Aforo").isEmpty()){
-                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
-            }
-
-            if(errores.length()>0){
-                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
-                return;
-            }
         Menus_lista.actualizarMenu(dia_seleccionado, "DESAYUNO", "Lo sentimos, no hay menu para este turno", " ","0", "0");
         vaciar_campos("Desayuno");
         }
         if(e.getSource()==menu.getDefecto("Almuerzo")){
-            StringBuilder errores= new StringBuilder();
-            if(menu.getTexto("Almuerzo","Comida").isEmpty()){
-                errores.append("- El campo de comida es obligatorio\n");
-            }
-            if(menu.getTexto("Almuerzo","Descripcion").isEmpty()){
-                 errores.append("- El campo de Descripción es obligatorio\n");
-            }
-            if(menu.getTexto("Almuerzo","Valor_nutricional").isEmpty()){
-                 errores.append("- El campo de Valor nutricional es obligatorio\n");
-            }
-            if(menu.getTexto("Almuerzo","Aforo").isEmpty()){
-                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
-            }
-            if(errores.length()>0){
-                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
-                return;
-            }
         Menus_lista.actualizarMenu(dia_seleccionado, "ALMUERZO", "Lo sentimos, no hay menu para este turno", " ","0", "0");
         vaciar_campos("Almuerzo");
         }
@@ -273,6 +279,17 @@ public void vaciar_campos(String turno){
     
 }
 
+public boolean confirmar_num(String numero){
+
+    try{
+        int valor_parseado= Integer.parseInt(numero.trim());
+        return valor_parseado>0;
+    }catch(NumberFormatException e){
+        return false;
+    }
+
+}
+
 public void pintarboton(String hoy) {
     String[] diasArr = {"MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY"};
 
@@ -292,22 +309,38 @@ public void pintarboton(String hoy) {
 }
 
     public void desactivar_botones(int minutos){
-        /* 
-        //Esta funcionalidad de desactivar la posibilida de reserva,
-        // segun el dia y hora actual, será realizado en proximos Sprints,
-        //pero se muestra un pequeño adelanto comentado, debido a que ello no entra en
-        el sprint actual
-        if(minutos>=420){
-            menu.getreservas("desayuno").setEnabled(false);
-        }
-        if(minutos>=720){
-            menu.getreservas("almuerzo").setEnabled(false);
-        }
-       
-        */
 
+        if(Rol.equals("Administrador")){
+            menu.getAceptar("Desayuno").setVisible(false);
+            menu.getAceptar("Almuerzo").setVisible(false);
+            return;
+        }
+
+        int indice_hoy= Calcular_dia.getIndiceDia(dia);
+        int indice_seleccion= Calcular_dia.getIndiceDia(dia_seleccionado);
+
+        if(indice_hoy==5 && (indice_seleccion==1 || indice_seleccion==0)){
+             menu.getreservas("desayuno").setEnabled(true);
+             menu.getreservas("almuerzo").setEnabled(true);
+             menu.getreservas("desayuno").setForeground(new Color(0,0,0));
+             menu.getreservas("almuerzo").setForeground(new Color(0,0,0));
+        }else if(indice_hoy>indice_seleccion){
         menu.getreservas("desayuno").setEnabled(false);
         menu.getreservas("almuerzo").setEnabled(false);
+        }else if(indice_hoy==indice_seleccion){
+            if(minutos>=420){
+                menu.getreservas("desayuno").setEnabled(false);
+            }
+            if(minutos>=720){
+                menu.getreservas("almuerzo").setEnabled(false);
+            }
+        }else if(indice_hoy<indice_seleccion){
+        menu.getreservas("desayuno").setEnabled(true);
+        menu.getreservas("almuerzo").setEnabled(true);
+        menu.getreservas("desayuno").setForeground(new Color(0,0,0));
+        menu.getreservas("almuerzo").setForeground(new Color(0,0,0));
+        }
+
     }
 
     private void avisoProximamente(JButton boton) {
