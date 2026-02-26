@@ -31,7 +31,7 @@ public class Main{
        
         //inicio.setResizable(false);
         inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         inicio.setResizable(true);
+        inicio.setResizable(true);
         inicio.setVisible(true);
         
     }

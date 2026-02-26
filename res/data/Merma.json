@@ -22,5 +22,21 @@
     {
         "merma": 0,
         "dia_turno": "WEDNESDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "THURSDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "THURSDAY_ALMUERZO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "TUESDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "WEDNESDAY_ALMUERZO"
     }
 ]

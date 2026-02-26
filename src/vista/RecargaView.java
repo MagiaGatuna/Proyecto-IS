@@ -62,6 +62,7 @@ public class RecargaView extends JFrame {
             g2.fillRoundRect(0, 0, getWidth(), getHeight(), 50, 50);//coordenadas de el panel 
             g2.dispose();
         }
+    
     };
     PanelRecarga.setLayout(null);//yo decido donde ponerlo 
     PanelRecarga.setOpaque(false);//para que se vea atraves de e; panel 
@@ -75,22 +76,22 @@ public class RecargaView extends JFrame {
     PanelRecarga.add(titulo);
 
     // Referencia
-    Referencia = new JTextField();
+    Referencia = new JTextField("Número de referencia");
     Referencia.setBounds(100, 160, 300, 40);
-    PasswordYPlaceholderUtil.configurarPlaceholder(Referencia, "Número de referencia");
     PanelRecarga.add(Referencia);
-
+    PasswordYPlaceholderUtil.configurarPlaceholder(Referencia, "Número de referencia");
     // Cédula
-    cedulaField = new JTextField();
+    cedulaField = new JTextField("Cédula del usuario");
     cedulaField.setBounds(100, 215, 300, 40);
-    PasswordYPlaceholderUtil.configurarPlaceholder(cedulaField, "Cédula del usuario");
     PanelRecarga.add(cedulaField);
-
+    PasswordYPlaceholderUtil.configurarPlaceholder(cedulaField, "Cédula del usuario");
     //Monto 
-    montoField= new JTextField();
+    montoField= new JTextField("Monto a recargar");
     montoField.setBounds(100, 325, 300, 40);
-    PasswordYPlaceholderUtil.configurarPlaceholder(montoField, "Monto a recargar");
     PanelRecarga.add(montoField);
+    PasswordYPlaceholderUtil.configurarPlaceholder(montoField, "Monto a recargar");
+    
+    
 
     //  Verificar
     boton_verificar =Diseño_interfaz.Creador_Botones("VERIFICAR PAGO",100, 395, 300, 50,Color.BLUE); 
@@ -126,6 +127,10 @@ public class RecargaView extends JFrame {
  this.add(PanelRecarga);
  //loguito de la app en vez de la tacita de java 
  setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
+
+    this.getContentPane().setFocusable(true);
+    this.getContentPane().requestFocusInWindow();
+
 }
     
     @Override //para expandir la imagen y pintarla en el JframeS
@@ -153,6 +158,8 @@ public class RecargaView extends JFrame {
         return Referencia;
      }
 
+
+    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new RecargaView().setVisible(true));

@@ -22,5 +22,21 @@
     {
         "detalles_costos": {},
         "dia_turno": "WEDNESDAY_DESAYUNO"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "THURSDAY_DESAYUNO"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "THURSDAY_ALMUERZO"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "TUESDAY_DESAYUNO"
+    },
+    {
+        "detalles_costos": {},
+        "dia_turno": "WEDNESDAY_ALMUERZO"
     }
 ]
