@@ -80,7 +80,7 @@ public class InicioSesion extends JFrame {
     cedula_id.setBounds(125, 210, 250, 40);//colocamos las coordenadas de el objeto
     Panel1.add(cedula_id);//Por diseño lo agregamos a el contenedor
     PasswordYPlaceholderUtil.configurarPlaceholder(cedula_id, "Cédula de identidad"); 
-    cedula_id.requestFocusInWindow();
+    //cedula_id.requestFocusInWindow();
 
 //creamos el campo donde el usuario ingresa su contraseña
     contraseña= new JPasswordField();//creamos el objeto
@@ -109,12 +109,14 @@ public class InicioSesion extends JFrame {
     //boton_Registro.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarRegistro());
 
 //creamos el boton que nos redirecciona el inicio
-    boton_Home=Diseño_interfaz.Creador_Botones("Home",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
+    boton_Home=Diseño_interfaz.Creador_Botones("HOME",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
     BotonUtil.darEstiloBoton(boton_Home, 80, 30);
     add(boton_Home);//lo añadimos a la ventana principal
 
     this.getContentPane().setFocusable(true);
     this.getContentPane().requestFocusInWindow();
+    setSize(anchoP, altoP);
+    setExtendedState(JFrame.MAXIMIZED_BOTH);
  }
 
  public JButton getHome(){

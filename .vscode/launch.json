@@ -3,6 +3,13 @@
 "configurations": [
     {
         "type": "java",
+        "name": "InicioSesion",
+        "request": "launch",
+        "mainClass": "src.vista.InicioSesion",
+        "projectName": "Proyecto-IS_c1f479ce"
+    },
+    {
+        "type": "java",
         "name": "Monedero",
         "request": "launch",
         "mainClass": "src.vista.Monedero",

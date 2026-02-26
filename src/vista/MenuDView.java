@@ -19,7 +19,7 @@ public class MenuDView extends JFrame {
 
     private final Color COLOR_FONDO = Color.WHITE;
     private final Color COLOR_HEADER = Color.decode("#D9D9D9");
-    private final Color COLOR_BOTON_PRINCIPAL = Color.decode("#0086A3");
+    private final Color COLOR_BOTON_PRINCIPAL = Diseño_interfaz.colorazul;
     private final Color COLOR_TEXTO_TITULO = Color.decode("#000000");
     private final Color COLOR_COMIDA_TITULO = Color.decode("#0B879D");
 

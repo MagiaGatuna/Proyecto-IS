@@ -1,68 +1,102 @@
 [
     {
-        "dia": "MONDAY",
-        "turno": "DESAYUNO",
-        "comida": "Arepa con huevo frito",
         "descripcion": "Deliciosa arepa dorada rellena con huevo frito recién hecho.",
-        "valorNutricional": "349 Kcal",
-        "precio": 764,
         "dia_turno": "MONDAY_DESAYUNO",
-        "reservas_actual": 54,
-        "aforo_max": 500
-    },
-    {
-        "dia": "MONDAY",
-        "turno": "ALMUERZO",
-        "comida": "Arroz con pollo",
-        "descripcion": "Clásico arroz con pollo sazonado con vegetales frescos.",
-        "valorNutricional": "417 Kcal",
-        "precio": 1146,
-        "dia_turno": "MONDAY_ALMUERZO",
-        "reservas_actual": 325,
-        "aforo_max": 1500
-    },
-    {
-        "dia": "MONDAY",
-        "turno": "CENA",
-        "comida": "Empanada de carne mechada",
-        "descripcion": "Empanada crujiente de maíz rellena de jugosa carne mechada.",
-        "valorNutricional": "285 Kcal",
-        "precio": 764,
-        "dia_turno": "MONDAY_CENA",
-        "reservas_actual": 125,
-        "aforo_max": 400
-    },
-    {
-        "dia": "FRIDAY",
-        "turno": "CENA",
-        "comida": "Cachito de jamon",
-        "descripcion": "Suave pan horneado relleno de jamón de primera calidad.",
-        "valorNutricional": "235 Kcal",
-        "precio": 534,
-        "dia_turno": "FRIDAY_CENA",
-        "reservas_actual": 15,
-        "aforo_max": 40
-    },
-    {
-        "dia": "TUESDAY",
-        "turno": "ALMUERZO",
-        "comida": "Pasticho",
-        "descripcion": "Capas de pasta intercaladas con carne, salsa bechamel y queso.",
-        "valorNutricional": "300 Kcal",
-        "precio": 664,
-        "dia_turno": "TUESDAY_ALMUERZO",
-        "reservas_actual": 1000,
-        "aforo_max": 1500
-    },
-    {
-        "dia": "WEDNESDAY",
+        "aforo_max": 500,
+        "comida": "Arepa con huevo frito",
         "turno": "DESAYUNO",
-        "comida": "Avena y cambur",
-        "descripcion": "Bebida de avena caliente acompañada de una porción de cambur.",
-        "valorNutricional": "245 Kcal",
-        "precio": 464,
-        "dia_turno": "WEDNESDAY_DESAYUNO",
         "reservas_actual": 54,
-        "aforo_max": 120
+        "dia": "MONDAY",
+        "valorNutricional": "349 Kcal"
+    },
+    {
+        "descripcion": "Clásico arroz con pollo sazonado con vegetales frescos.",
+        "dia_turno": "MONDAY_ALMUERZO",
+        "aforo_max": 1500,
+        "comida": "Arroz con pollo",
+        "turno": "ALMUERZO",
+        "reservas_actual": 325,
+        "dia": "MONDAY",
+        "valorNutricional": "417 Kcal"
+    },
+    {
+        "descripcion": "Empanada crujiente de maíz rellena de jugosa carne mechada.",
+        "dia_turno": "MONDAY_CENA",
+        "aforo_max": 400,
+        "comida": "Empanada de carne mechada",
+        "turno": "CENA",
+        "reservas_actual": 125,
+        "dia": "MONDAY",
+        "valorNutricional": "285 Kcal"
+    },
+    {
+        "descripcion": "Suave pan horneado relleno de jamón de primera calidad.",
+        "dia_turno": "FRIDAY_CENA",
+        "aforo_max": 40,
+        "comida": "Cachito de jamon",
+        "turno": "CENA",
+        "reservas_actual": 15,
+        "dia": "FRIDAY",
+        "valorNutricional": "235 Kcal"
+    },
+    {
+        "descripcion": "Capas de pasta intercaladas con carne, salsa bechamel y queso.",
+        "dia_turno": "TUESDAY_ALMUERZO",
+        "aforo_max": 1500,
+        "comida": "Pasticho",
+        "turno": "ALMUERZO",
+        "reservas_actual": 1000,
+        "dia": "TUESDAY",
+        "valorNutricional": "300 Kcal"
+    },
+    {
+        "descripcion": "Bebida de avena caliente acompañada de una porción de cambur.",
+        "dia_turno": "WEDNESDAY_DESAYUNO",
+        "aforo_max": 120,
+        "comida": "Avena y cambur",
+        "turno": "DESAYUNO",
+        "reservas_actual": 54,
+        "dia": "WEDNESDAY",
+        "valorNutricional": "245 Kcal"
+    },
+    {
+        "descripcion": " ",
+        "dia_turno": "THURSDAY_DESAYUNO",
+        "aforo_max": 0,
+        "comida": "Lo sentimos, no hay menu para este turno",
+        "turno": "DESAYUNO",
+        "reservas_actual": 0,
+        "dia": "THURSDAY",
+        "valorNutricional": "0"
+    },
+    {
+        "descripcion": "Caliente y rica en nutrientes",
+        "dia_turno": "THURSDAY_ALMUERZO",
+        "aforo_max": 1500,
+        "comida": "Sopa de Carne",
+        "turno": "ALMUERZO",
+        "reservas_actual": 0,
+        "dia": "THURSDAY",
+        "valorNutricional": "345"
+    },
+    {
+        "descripcion": "Deliciosa avena con trozos de chocolate",
+        "dia_turno": "TUESDAY_DESAYUNO",
+        "aforo_max": 65,
+        "comida": "Avena con chocolate",
+        "turno": "DESAYUNO",
+        "reservas_actual": 0,
+        "dia": "TUESDAY",
+        "valorNutricional": "214"
+    },
+    {
+        "descripcion": "Deliciosa pasta en salsa de carne",
+        "dia_turno": "WEDNESDAY_ALMUERZO",
+        "aforo_max": 456,
+        "comida": "Pasta con carne",
+        "turno": "ALMUERZO",
+        "reservas_actual": 0,
+        "dia": "WEDNESDAY",
+        "valorNutricional": "234"
     }
 ]

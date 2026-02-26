@@ -128,7 +128,7 @@ public class Registro extends JFrame {
         etiquetaRol.setBounds(290, 290, 540, 20);
         tarjeta.add(etiquetaRol);
 
-        String[] opcionesRol = {"", "Estudiante", "Trabajador", "Administrador"};
+        String[] opcionesRol = {"", "Estudiante", "Profesor", "Empleado", "Administrador"};
         comboRol = new JComboBox<>(opcionesRol);
         comboRol.setBounds(335, 285, 120, 30);
         comboRol.setBackground(Color.WHITE);
@@ -204,6 +204,12 @@ public class Registro extends JFrame {
 
         tarjeta.add(lblLogin);
 
+        this.getContentPane().setFocusable(true);
+        this.getContentPane().requestFocusInWindow();
+
+        setSize(640, 640);
+        setLocationRelativeTo(null);
+
     }
 
     
@@ -269,7 +275,7 @@ public class Registro extends JFrame {
     
         Registro ventanaRegistro = new Registro();
         ventanaRegistro.setBounds(0, 0, 640, 640);
-        ventanaRegistro.setResizable(false);
+        //ventanaRegistro.setResizable(false);
         
         ventanaRegistro.setLocationRelativeTo(null);
         ventanaRegistro.setVisible(true);

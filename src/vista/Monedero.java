@@ -69,9 +69,10 @@ public class Monedero extends JPanel {
       label_saldoactual.setBounds(30, 55, 240, 25);//coordenadas
       add(label_saldoactual);//lo agregamos al panel
 //creamos el texto de nuestro descunto de el dia 
-      
         String porcentaje = MostrarDescuento.Descuento(this.cliente);
         label_descuento = new JLabel("Descuento por bandeja:" + porcentaje);//objeto y nombre
+
+
         label_descuento.setFont(new Font("Arial", Font.PLAIN, 13));//fuente,diseño,tamaño
         label_descuento.setForeground(Color.GRAY);//color de las letras
         label_descuento.setBounds(30, 80, 240, 20);//coordenadas

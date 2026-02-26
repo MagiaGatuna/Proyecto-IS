@@ -15,7 +15,6 @@ public class Menus_lista {
 
     private static Path rutaMenus = Paths.get("res/data/menus.json").toAbsolutePath();
     private static JSONArray listaMenus;
-    private static int indiceMenuEncontrado = -1;
 
     private static void cargarDatosMenu(){
         try{
@@ -37,8 +36,6 @@ public class Menus_lista {
     cargarDatosMenu();
 
     StringBuilder construir_frase= new StringBuilder();
-    int aforo_actual=0;
-    int aforo_max=0;
     boolean hay_menu=false;
     
     
@@ -50,7 +47,6 @@ public class Menus_lista {
                 construir_frase.append("                      ---------♠ Menú ♠---------").append("\n").append("\n");
                 construir_frase.append("     Comida: ").append(menu.getString("comida")).append("\n").append("\n");
                 construir_frase.append("     Valor Nutricional: ").append(menu.getString("valorNutricional")).append("\n").append("\n");
-                construir_frase.append("     Precio: ").append(menu.getInt("precio")).append(" Bs \n");
                 if(aforo != null){
                 aforo.setText("Reservas actuales: " + menu.getInt("reservas_actual") + " / " + menu.getInt("aforo_max"));
                 }
@@ -84,5 +80,50 @@ public class Menus_lista {
     return null; 
 }
 
+public static void actualizarMenu(String dia, String turno, String comida, String descripcion, String nutricion, String cantBandejas){
+try{
+    cargarDatosMenu();
+    boolean esta_aqui=false;
+
+    for (int i = 0; i < listaMenus.length(); i++) {
+        JSONObject menu = listaMenus.getJSONObject(i);
+        // Compara ignorando mayus/minus por seguridad
+        if (menu.getString("dia").equalsIgnoreCase(dia) && 
+            menu.getString("turno").equalsIgnoreCase(turno)) {
+            String concatenado=dia+"_"+turno;
+            menu.put("comida",comida);
+            menu.put("dia",dia);
+            menu.put("turno",turno);
+            menu.put("descripcion",descripcion);
+            menu.put("valorNutricional",nutricion);
+            menu.put("reservas_actual",0);
+            menu.put("aforo_max",Integer.parseInt(cantBandejas));
+            menu.put("dia_turno",concatenado);
+            esta_aqui=true;
+            break;
+        }
+    }
+
+    if(!esta_aqui){
+        String concatenado=dia+"_"+turno;
+        JSONObject menu_nuevo= new JSONObject();
+            menu_nuevo.put("comida",comida);
+            menu_nuevo.put("dia",dia);
+            menu_nuevo.put("turno",turno);
+            menu_nuevo.put("descripcion",descripcion);
+            menu_nuevo.put("valorNutricional",nutricion);
+            menu_nuevo.put("reservas_actual",0);
+            menu_nuevo.put("aforo_max",Integer.parseInt(cantBandejas));
+            menu_nuevo.put("dia_turno",concatenado);
+
+            listaMenus.put(menu_nuevo);
+    }
+    Files.write(rutaMenus, listaMenus.toString(4).getBytes(StandardCharsets.UTF_8));
+    JOptionPane.showMessageDialog(null,esta_aqui ? "Menú actualizado con éxito":"Menú creado con éxito");
+}catch (Exception e){
+    JOptionPane.showMessageDialog(null,"error al tratar de actualizar el JSON: "+ e.getMessage());
+}
+
+}
 
 }

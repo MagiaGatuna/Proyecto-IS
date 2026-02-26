@@ -38,6 +38,9 @@ public class GestorCVView extends JFrame {
             setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
         } catch (Exception e) { System.out.println("Logo no encontrado"); }
 
+        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize(); 
+        setSize(pantalla.width, pantalla.height);  
+
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -113,6 +116,7 @@ public class GestorCVView extends JFrame {
         btnCambiar = Diseño_interfaz.Creador_Botones("Cambiar", EXIT_ON_CLOSE, ERROR, 200, 35, Color.DARK_GRAY); 
         btnEliminar = Diseño_interfaz.Creador_Botones("Eliminar", EXIT_ON_CLOSE, ERROR, 200, 35, Color.DARK_GRAY);
 
+        btnAgregar.setAlignmentX(Component.LEFT_ALIGNMENT); 
         btnCambiar.setAlignmentX(Component.LEFT_ALIGNMENT);
         btnEliminar.setAlignmentX(Component.LEFT_ALIGNMENT);
         JPanel panelDatos = new JPanel();

@@ -10,7 +10,11 @@ public class BotonUtil {
             if(colorOriginal.equals(Color.WHITE)){
                 colorHover = colorOriginal.darker(); 
             }else{
-                colorHover = colorOriginal.brighter();
+                colorHover = new Color(
+                    Math.min(colorOriginal.getRed()   + 40, 255),
+                    Math.min(colorOriginal.getGreen() + 40, 255),
+                    Math.min(colorOriginal.getBlue()  + 40, 255)
+                );
             }
         
         Dimension dimension = new Dimension(ancho, alto);

@@ -14,16 +14,26 @@ public class MenuSemanal extends JFrame{
     private JButton reservar_a;
     private JButton editar;
     private JButton dejar_editar;
-    //private JButton reservar_c;
+    
 
     private JLabel titulo_universidad;
     private JLabel titulo_pagina;
     private JLabel aforo_d;
     private JLabel aforo_a;
-    //private JLabel aforo_c;
+    
     private JLabel turno_m;
     private JLabel turno_t;
     private JLabel turno_n;
+
+    private JLabel comida_de;
+    private JLabel descripcion_de;
+    private JLabel valor_de;
+    private JLabel aforo_de;
+
+    private JLabel comida_al;
+    private JLabel descripcion_al;
+    private JLabel valor_al;
+    private JLabel aforo_al;
 
     private JPanel desayuno;
     private JPanel almuerzo;
@@ -34,7 +44,7 @@ public class MenuSemanal extends JFrame{
 
     private JTextArea texto_desayuno;
     private JTextArea texto_almuerzo;
-    //private JTextArea texto_cena;
+    
 
     private JToolBar barra_s;
     private JToolBar barra_d;
@@ -44,17 +54,20 @@ public class MenuSemanal extends JFrame{
     private JTextField valor_nutricional_d;
     private JTextField aforo_max_d;
     private JButton sin_menu_d;
+    private JButton aceptar_d;
 
     private JTextField comida_a;
     private JTextField descripcion_a;
     private JTextField valor_nutricional_a;
     private JTextField aforo_max_a;
     private JButton sin_menu_a;
+     private JButton aceptar_a;
 
 
     public MenuSemanal(){
         setLayout(null);
         int pantalla= Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto= Toolkit.getDefaultToolkit().getScreenSize().height; 
         this.getContentPane().setBackground(new Color(255,255,255));
 
         setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
@@ -65,6 +78,9 @@ public class MenuSemanal extends JFrame{
         panel_almuerzo(pantalla);
         panel_cena(pantalla);
         crear_campos_editar();
+
+        setSize(pantalla, alto);              
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
     }
 
@@ -178,20 +194,20 @@ public class MenuSemanal extends JFrame{
         turno_m=new JLabel("Turno de la Mañana: 7am a 10 am");
         turno_m.setFont(fuente1);
         turno_m.setForeground(new Color(25,25,112));
-        turno_m.setBounds(120,260,300,26);
+        turno_m.setBounds(120,240,300,26);
         add(turno_m);
 
         desayuno= new JPanel();
         desayuno.setLayout(null);
         desayuno.setBackground(new Color(92,180,155));
-        desayuno.setBounds(68,290,390,430);
+        desayuno.setBounds(68,270,390,430);
 
         Font fuente2 = new Font ("Arial", Font.BOLD,16);
         Font fuente3 = new Font ("Arial", Font.BOLD,14);
         aforo_d= new JLabel("Reservas Actuales: ");
         aforo_d.setFont(fuente3);
         aforo_d.setForeground(new Color(0,0,0));
-        aforo_d.setBounds(20,380,240,30);
+        aforo_d.setBounds(20,350,240,30);
         desayuno.add(aforo_d);
 
         texto_desayuno= new JTextArea();
@@ -220,19 +236,19 @@ public class MenuSemanal extends JFrame{
         turno_t=new JLabel("Turno de la Tarde: 12m a 3pm");
         turno_t.setFont(fuente1);
         turno_t.setForeground(new Color(25,25,112));
-        turno_t.setBounds(566,260,300,26);
+        turno_t.setBounds(566,240,300,26);
         add(turno_t);
 
         almuerzo= new JPanel();
         almuerzo.setLayout(null);
         almuerzo.setBackground(new Color(92,180,155));
-        almuerzo.setBounds(495,290,390,430);
+        almuerzo.setBounds(495,270,390,430);
 
         Font fuente2 = new Font ("Arial", Font.BOLD,16);
         aforo_a= new JLabel("Reservas Actuales: ");
         aforo_a.setFont(fuente3);
         aforo_a.setForeground(new Color(0,0,0));
-        aforo_a.setBounds(20,380,240,30);
+        aforo_a.setBounds(20,350,240,30);
         almuerzo.add(aforo_a);
 
         texto_almuerzo= new JTextArea();
@@ -262,13 +278,13 @@ public class MenuSemanal extends JFrame{
         turno_n=new JLabel("Turno de la Noche: 6pm a 9pm");
         turno_n.setFont(fuente1);
         turno_n.setForeground(new Color(25,25,112));
-        turno_n.setBounds(980,260,300,26);
+        turno_n.setBounds(980,240,300,26);
         add(turno_n);
 
         cena= new JPanel();
         cena.setLayout(null);
         cena.setBackground(new Color(92,180,155));
-        cena.setBounds(920,290,390,430);
+        cena.setBounds(920,270,390,430);
 
         ImageIcon iconofuera= new ImageIcon ("res/fuera_servicio.jpg");
         Image tam_fuera_s= iconofuera.getImage().getScaledInstance(350,380,Image.SCALE_SMOOTH);
@@ -281,54 +297,113 @@ public class MenuSemanal extends JFrame{
     }
 
     public void crear_campos_editar(){
+        
+
+        Font fuente_label= new Font(Font.SANS_SERIF, Font.PLAIN, 12);
+        comida_de=new JLabel("Ingrese comida");
+        comida_de.setFont(fuente_label);
+        comida_de.setForeground(new Color(0,0,0));
+        comida_de.setBounds(40,20,280,20);
+        desayuno.add(comida_de);
+
+        descripcion_de=new JLabel("Ingrese descripción");
+        descripcion_de.setFont(fuente_label);
+        descripcion_de.setForeground(new Color(0,0,0));
+        descripcion_de.setBounds(40,120,280,20);
+        desayuno.add(descripcion_de);
+
+        valor_de=new JLabel("Ingrese el valor nutricional");
+        valor_de.setFont(fuente_label);
+        valor_de.setForeground(new Color(0,0,0));
+        valor_de.setBounds(40,210,280,20);
+        desayuno.add(valor_de);
+
+        aforo_de=new JLabel("Ingrese cantidad de bandejas");
+        aforo_de.setFont(fuente_label);
+        aforo_de.setForeground(new Color(0,0,0));
+        aforo_de.setBounds(40,290,280,20);
+        desayuno.add(aforo_de);
+
+        comida_al=new JLabel("Ingrese comida");
+        comida_al.setFont(fuente_label);
+        comida_al.setForeground(new Color(0,0,0));
+        comida_al.setBounds(40,20,280,20);
+        almuerzo.add(comida_al);
+
+        descripcion_al=new JLabel("Ingrese descripción");
+        descripcion_al.setFont(fuente_label);
+        descripcion_al.setForeground(new Color(0,0,0));
+        descripcion_al.setBounds(40,120,280,20);
+        almuerzo.add(descripcion_al);
+
+        valor_al=new JLabel("Ingrese el valor nutricional");
+        valor_al.setFont(fuente_label);
+        valor_al.setForeground(new Color(0,0,0));
+        valor_al.setBounds(40,210,280,20);
+        almuerzo.add(valor_al);
+
+        aforo_al=new JLabel("Ingrese cantidad de bandejas");
+        aforo_al.setFont(fuente_label);
+        aforo_al.setForeground(new Color(0,0,0));
+        aforo_al.setBounds(40,290,280,20);
+        almuerzo.add(aforo_al);
+//
         comida_d= new JTextField();
-        comida_d.setBounds(20,20,280,50);
+        comida_d.setBounds(40,60,280,50);
         comida_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         comida_d.setBackground(new Color(255,255,255));
 
         descripcion_d=new JTextField();
-        descripcion_d.setBounds(20,90,280,50);
+        descripcion_d.setBounds(40,150,280,50);
         descripcion_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         descripcion_d.setBackground(new Color(255,255,255));
 
         valor_nutricional_d=new JTextField();
-        valor_nutricional_d.setBounds(20,160,280,50);
+        valor_nutricional_d.setBounds(40,240,280,50);
         valor_nutricional_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         valor_nutricional_d.setBackground(new Color(255,255,255));
 
         aforo_max_d=new JTextField();
-        aforo_max_d.setBounds(20,240,280,50);
+        aforo_max_d.setBounds(40,320,280,50);
         aforo_max_d.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         aforo_max_d.setBackground(new Color(255,255,255));
 
-        sin_menu_d= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 380, 120, 30, Color.WHITE);
+        sin_menu_d= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 382, 120, 30, Color.WHITE);
         sin_menu_d.setForeground(Color.BLACK);
         sin_menu_d.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
 
 
         comida_a= new JTextField();
-        comida_a.setBounds(20,20,280,50);
+        comida_a.setBounds(40,60,280,50);
         comida_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         comida_a.setBackground(new Color(255,255,255));
 
         descripcion_a=new JTextField();
-        descripcion_a.setBounds(20,90,280,50);
+        descripcion_a.setBounds(40,150,280,50);
         descripcion_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         descripcion_a.setBackground(new Color(255,255,255));
 
         valor_nutricional_a=new JTextField();
-        valor_nutricional_a.setBounds(20,160,280,50);
+        valor_nutricional_a.setBounds(40,240,280,50);
         valor_nutricional_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         valor_nutricional_a.setBackground(new Color(255,255,255));
 
         aforo_max_a=new JTextField();
-        aforo_max_a.setBounds(20,240,280,50);
+        aforo_max_a.setBounds(40,320,280,50);
         aforo_max_a.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 14));
         aforo_max_a.setBackground(new Color(255,255,255));
 
-        sin_menu_a= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 380, 120, 30, Color.WHITE);
+        sin_menu_a= Diseño_interfaz.Creador_Botones("Sin Menu", 230, 382, 120, 30, Color.WHITE);
         sin_menu_a.setForeground(Color.BLACK);
         sin_menu_a.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+
+        aceptar_d= Diseño_interfaz.Creador_Botones("Aceptar Edición", 40, 382, 170, 30, Color.WHITE);
+        aceptar_d.setForeground(Color.BLACK);
+        aceptar_d.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
+
+        aceptar_a= Diseño_interfaz.Creador_Botones("Aceptar Edición", 40, 382, 170, 30, Color.WHITE);
+        aceptar_a.setForeground(Color.BLACK);
+        aceptar_a.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
 
 
         almuerzo.add(sin_menu_a);
@@ -336,24 +411,38 @@ public class MenuSemanal extends JFrame{
         almuerzo.add(valor_nutricional_a);
         almuerzo.add(descripcion_a);
         almuerzo.add(comida_a);
+        almuerzo.add(aceptar_a);
 
         desayuno.add(sin_menu_d);
         desayuno.add(aforo_max_d);
         desayuno.add(valor_nutricional_d);
         desayuno.add(descripcion_d);
         desayuno.add(comida_d);
+        desayuno.add(aceptar_d);
 
        sin_menu_d.setVisible(false);
        aforo_max_d.setVisible(false);
        valor_nutricional_d.setVisible(false);
        descripcion_d.setVisible(false);
        comida_d.setVisible(false);
+       aceptar_d.setVisible(false);
 
        sin_menu_a.setVisible(false);
        aforo_max_a.setVisible(false);
        valor_nutricional_a.setVisible(false);
        descripcion_a.setVisible(false);
        comida_a.setVisible(false);
+       aceptar_a.setVisible(false);
+
+        comida_de.setVisible(false);
+        descripcion_de.setVisible(false);
+        valor_de.setVisible(false);
+        aforo_de.setVisible(false);
+
+        comida_al.setVisible(false);
+        descripcion_al.setVisible(false);
+        valor_al.setVisible(false);
+        aforo_al.setVisible(false);
     }
 
     public JButton getvolver(){
@@ -380,6 +469,8 @@ public class MenuSemanal extends JFrame{
         reservar_d.setVisible(false);
         reservar_a.setVisible(false);
 
+        aceptar_d.setVisible(true);
+        aceptar_a.setVisible(true);
 
        sin_menu_d.setVisible(true);
        aforo_max_d.setVisible(true);
@@ -392,7 +483,16 @@ public class MenuSemanal extends JFrame{
        valor_nutricional_a.setVisible(true);
        descripcion_a.setVisible(true);
        comida_a.setVisible(true);
+       
+        comida_de.setVisible(true);
+        descripcion_de.setVisible(true);
+        valor_de.setVisible(true);
+        aforo_de.setVisible(true);
 
+        comida_al.setVisible(true);
+        descripcion_al.setVisible(true);
+        valor_al.setVisible(true);
+        aforo_al.setVisible(true);
     }
 
     public void dejar_editar(){
@@ -410,7 +510,9 @@ public class MenuSemanal extends JFrame{
         reservar_d.setVisible(true);
         reservar_a.setVisible(true);
 
-    
+        aceptar_d.setVisible(false);
+        aceptar_a.setVisible(false);
+
        sin_menu_d.setVisible(false);
        aforo_max_d.setVisible(false);
        aforo_max_d.setText("");
@@ -430,6 +532,16 @@ public class MenuSemanal extends JFrame{
        descripcion_a.setText("");
        comida_a.setVisible(false);
        comida_a.setText("");
+
+        comida_de.setVisible(false);
+        descripcion_de.setVisible(false);
+        valor_de.setVisible(false);
+        aforo_de.setVisible(false);
+
+        comida_al.setVisible(false);
+        descripcion_al.setVisible(false);
+        valor_al.setVisible(false);
+        aforo_al.setVisible(false);
     }
 
     public JButton getreservas(String indicador){
@@ -441,6 +553,11 @@ public class MenuSemanal extends JFrame{
         }
         
         return null;
+    }
+
+    public void ocultaradmin(){
+        reservar_d.setVisible(false);
+        reservar_a.setVisible(false);
     }
 
     public JLabel getaforo(String id){
@@ -492,11 +609,93 @@ public class MenuSemanal extends JFrame{
         }
         
     }
+
+    public JButton getDefecto(String turno){
+        if(turno.equals("Desayuno")){
+            return sin_menu_d;
+        }else if(turno.equals("Almuerzo")){
+            return sin_menu_a;
+        }else{
+            return null;
+        }
+
+    }
+
+    public JButton getAceptar(String turno){
+        if(turno.equals("Desayuno")){
+            return aceptar_d;
+        }else if(turno.equals("Almuerzo")){
+            return aceptar_a;
+        }else{
+            return null;
+        }
+
+    }
+
+    public String getTexto(String turno,String campo) {
+        
+        if(turno.equals("Desayuno") && campo.equals("Comida")){
+            return comida_d.getText().trim();
+        }
+        if(turno.equals("Desayuno") && campo.equals("Descripcion")){
+            return descripcion_d.getText().trim();
+        }
+        if(turno.equals("Desayuno") && campo.equals("Valor_nutricional")){
+            return valor_nutricional_d.getText().trim();
+        }
+        if(turno.equals("Desayuno") && campo.equals("Aforo")){
+            return aforo_max_d.getText().trim();
+        }
+
+        if(turno.equals("Almuerzo") && campo.equals("Comida")){
+            return comida_a.getText().trim();
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Descripcion")){
+            return descripcion_a.getText().trim();
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Valor_nutricional")){
+            return valor_nutricional_a.getText().trim();
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Aforo")){
+            return aforo_max_a.getText().trim();
+        }
+
+        return "";
+    }
+    public void setTexto(String turno,String campo) {
+        
+        if(turno.equals("Desayuno") && campo.equals("Comida")){
+            comida_d.setText("");;
+        }
+        if(turno.equals("Desayuno") && campo.equals("Descripcion")){
+            descripcion_d.setText("");;
+        }
+        if(turno.equals("Desayuno") && campo.equals("Valor_nutricional")){
+            valor_nutricional_d.setText("");;
+        }
+        if(turno.equals("Desayuno") && campo.equals("Aforo")){
+            aforo_max_d.setText("");;
+        }
+
+        if(turno.equals("Almuerzo") && campo.equals("Comida")){
+            comida_a.setText("");;
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Descripcion")){
+            descripcion_a.setText("");;
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Valor_nutricional")){
+            valor_nutricional_a.setText("");;
+        }
+        if(turno.equals("Almuerzo") && campo.equals("Aforo")){
+            aforo_max_a.setText("");;
+        }
+
+    }
     
     public static void main (String args[]){
     MenuSemanal m_semanal= new MenuSemanal();
     m_semanal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-    m_semanal.setResizable(false);
+    //m_semanal.setResizable(false);
     m_semanal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     m_semanal.setVisible(true);
     }
@@ -509,4 +708,6 @@ public class MenuSemanal extends JFrame{
         return reservar_d;
     }
     
+    
+
 }
