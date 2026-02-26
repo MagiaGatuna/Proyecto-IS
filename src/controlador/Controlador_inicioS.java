@@ -90,7 +90,7 @@ public class Controlador_inicioS implements ActionListener{
                 new Controlador_MenuDiario(null, empleado, menu_d);
 
                 empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                empleado.setResizable(false);
+                //empleado.setResizable(false);
                 empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 empleado.setVisible(true);
 
@@ -109,7 +109,7 @@ public class Controlador_inicioS implements ActionListener{
                 new Controlador_MenuDiario(alumno, null, menu_d);
 
                 alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                alumno.setResizable(false);
+                //alumno.setResizable(false);
                 alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 alumno.setVisible(true);
                 inicio_sesion.setVisible(false);
@@ -121,7 +121,7 @@ public class Controlador_inicioS implements ActionListener{
         if(e.getSource()==inicio_sesion.getRegistro()){
             LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
             ventanaRegistro.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            ventanaRegistro.setResizable(false);
+            //ventanaRegistro.setResizable(false);
             ventanaRegistro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             ventanaRegistro.setVisible(true);
             inicio_sesion.setVisible(false);
@@ -130,7 +130,7 @@ public class Controlador_inicioS implements ActionListener{
         if(e.getSource()==inicio_sesion.getHome()){
              LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
             inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            inicio.setResizable(false);
+            //inicio.setResizable(false);
             inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             inicio.setVisible(true);
             inicio_sesion.setVisible(false);
