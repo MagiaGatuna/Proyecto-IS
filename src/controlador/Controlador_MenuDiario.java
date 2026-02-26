@@ -102,7 +102,7 @@ public class Controlador_MenuDiario implements ActionListener {
             if (Rol.equals("Estudiante")) {
                 if (this.alumno != null) {
                     alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    alumno.setResizable(false);
+                    //alumno.setResizable(false);
                     alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     alumno.setVisible(true);
                     
@@ -113,7 +113,7 @@ public class Controlador_MenuDiario implements ActionListener {
             if (Rol.equals("Trabajador") || Rol.equals("Docente")) {
                 if (this.empleado != null) {
                     empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    empleado.setResizable(false);
+                    //empleado.setResizable(false);
                     empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     empleado.setVisible(true);
                     

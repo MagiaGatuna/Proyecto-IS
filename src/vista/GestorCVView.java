@@ -38,6 +38,9 @@ public class GestorCVView extends JFrame {
             setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
         } catch (Exception e) { System.out.println("Logo no encontrado"); }
 
+        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize(); 
+        setSize(pantalla.width, pantalla.height);  
+
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());

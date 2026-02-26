@@ -57,7 +57,7 @@ public class Controlador_Recarga implements ActionListener {
          if(Rol.equals("Estudiante")){
          if (this.vista_alumno != null) {
                     vista_alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    vista_alumno.setResizable(false);
+                    //vista_alumno.setResizable(false);
                     vista_alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     vista_alumno.setVisible(true);
                     
@@ -69,7 +69,7 @@ public class Controlador_Recarga implements ActionListener {
         if (Rol.equals("Trabajador")||Rol.equals("Profesor")){
         if (this.vista_empleado != null) {
                     vista_empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                    vista_empleado.setResizable(false);
+                    //vista_empleado.setResizable(false);
                     vista_empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     vista_empleado.setVisible(true);
                     

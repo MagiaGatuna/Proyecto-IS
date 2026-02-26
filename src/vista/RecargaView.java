@@ -128,6 +128,9 @@ public class RecargaView extends JFrame {
  //loguito de la app en vez de la tacita de java 
  setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
 
+    setSize(pantalla.width, pantalla.height);
+    setExtendedState(JFrame.MAXIMIZED_BOTH);
+
     this.getContentPane().setFocusable(true);
     this.getContentPane().requestFocusInWindow();
 

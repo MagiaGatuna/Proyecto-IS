@@ -67,6 +67,7 @@ public class MenuSemanal extends JFrame{
     public MenuSemanal(){
         setLayout(null);
         int pantalla= Toolkit.getDefaultToolkit().getScreenSize().width;
+        int alto= Toolkit.getDefaultToolkit().getScreenSize().height; 
         this.getContentPane().setBackground(new Color(255,255,255));
 
         setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
@@ -77,6 +78,9 @@ public class MenuSemanal extends JFrame{
         panel_almuerzo(pantalla);
         panel_cena(pantalla);
         crear_campos_editar();
+
+        setSize(pantalla, alto);              
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
     }
 
@@ -686,7 +690,7 @@ public class MenuSemanal extends JFrame{
     public static void main (String args[]){
     MenuSemanal m_semanal= new MenuSemanal();
     m_semanal.setExtendedState(JFrame.MAXIMIZED_BOTH);
-    m_semanal.setResizable(false);
+    //m_semanal.setResizable(false);
     m_semanal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     m_semanal.setVisible(true);
     }

@@ -36,6 +36,8 @@ public class GestorCostosView extends JFrame {
         } catch (Exception e) { System.out.println("Logo no encontrado"); }
         
         setTitle("Panel de gestion de costos");
+        Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
+        setSize(pantalla.width, pantalla.height); 
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
