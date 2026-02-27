@@ -1,0 +1,16 @@
+ENTRADAS: String de la forma DIA_TURNO
+PRECONDICIONES: 
+1- Preparar variable de tipo string que contenga DIA_TURNO, dia en ingles y mayúscula, turno en español y en mayuscula
+ESPECIFICACIONES:
+getMerma(): Verifica si en el JSON referente a la merma, se consigue algún valor asociado a la clave de DIA_TURNO, si lo encuentra
+retorna ese string y en caso contrario de que el dato sea inválido o no se encuentre, devuelve error o no encontrado.
+SALIDAS:
+1- true,false,false
+2- false
+3- false
+
+
+FACTOR                              CLASES DE EQUIVALENCIA                                           ENTRADAS                  SALIDAS
+DIA_TURNO conocido      DIA pertenece a[MONDAY,FRIDAY] y TURNO pertenece a[DESAYUNO,CENA]       "MONDAY_DESAYUNO"          true,false,false
+DIA fuera de rango      TURNO pertenece a[DESAYUNO,CENA] y DIA no pertenece a[MONDAY,FRIDAY]    "SATURDAY_ALMUERZO"             false
+TURNO fuera de rango    TURNO no pertenece a[DESAYUNO,CENA] y DIA pertenece a[MONDAY,FRIDAY]    "SATURDAY_ALMUERZO"             false
