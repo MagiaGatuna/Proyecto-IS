@@ -1,0 +1,15 @@
+ENTRADAS: valores de porcentaje de descuento
+PRECONDICIONES: 
+1 y 2- Preparar variable de porcentaje y variable de rol.
+ESPECIFICACIONES:
+cambiarPorcentaje(): Devuelve True en caso de que el campo de porcentaje para todos los usuarios de un tipo se haya actualizado correctamente
+Devuelve false si:
+    -Rol no pertenece a A, siendo A=[Estudiante,Profesor,Empleado]
+SALIDAS:
+1- true
+2- false
+
+
+FACTOR                              CLASES DE EQUIVALENCIA                                       ENTRADAS                  SALIDAS
+Rol reconocido                   [Estudiante,Profesor,Empleado]                                 75,"Profesor"               true
+Rol Desconocido       {Conjunto de todos los roles != [Estudiante,Profesor,Empleado]}           65,"Visitante"              false
