@@ -16,12 +16,6 @@ SALIDAS:
 3- false
 4- true
 
-String dia=;
-        String turno=;
-        String comida= ;
-        String descripcion= ;
-        String nutricion=;
-        String cantidad=;
 
 FACTOR                              CLASES DE EQUIVALENCIA                                       ENTRADAS                  SALIDAS
 campos vacíos                               ("")                                                     ""                     false
