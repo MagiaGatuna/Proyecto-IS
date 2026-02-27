@@ -1,0 +1,36 @@
+
+ENTRADAS: 
+- id (String/JTextField)
+- ref (String/JTextField)
+- monto (String/JTextField)
+- user (Objeto Usuario)
+
+PRECONDICIONES:
+1. Preparar variables a utilizar.
+2. Preparar variables a utilizar, monto no es positivo (cero o negativo).
+3. Preparar variables a utilizar, completas (correctas).
+
+ESPECIFICACIONES:
+ValidarCampos(): Devuelve True en caso de que la escritura de todos los campos 
+sean correctos y contengan los datos adecuados.
+Devuelve false si:
+- Hay algún campo en blanco.
+- Referencia no tiene 4 dígitos.
+- Monto <= 0.
+- Cédula no coincide con el usuario logueado.
+
+SALIDAS:
+1- false
+2-true
+
+
+
+FACTOR               CLASES DE EQUIVALENCIA             ENTRADAS           SALIDA
+
+Campos vacíos        campo == ""                        "4222","", "100"   false
+Monto no positivo    monto <= 0                         "4222","3456","-1" false
+Ref. Incorrecta      longitud != 4                      "4222","123","100" false
+Cédula Errónea       id != user.getCedula()             "0000","3456","100" false
+Campos correctos     Datos válidos y coincidentes       "4222","3456","500" true
+
+

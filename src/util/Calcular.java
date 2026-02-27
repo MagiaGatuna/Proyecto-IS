@@ -25,16 +25,20 @@ public class Calcular {
         }
     }
 
-    public static void cambiarPorcentaje(double NuevoPorcentaje, String rol) {
+    public static boolean cambiarPorcentaje(double NuevoPorcentaje, String rol) {
         
         if (rol.equals("estudiante")) {
             PorcentajeEstudiante = NuevoPorcentaje;
+            return true;
         } else if (rol.equals("profesor")) {
             PorcentajeProfesor = NuevoPorcentaje;
+            return true;
         } else if (rol.equals("empleado")) {
             PorcentajeEmpleado = NuevoPorcentaje;
+            return true;
         } else {
             JOptionPane.showMessageDialog(null, "Rol no reconocido");
+            return false;
         }
     }
 }

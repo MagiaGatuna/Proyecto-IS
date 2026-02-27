@@ -1,0 +1,51 @@
+ENTRADAS: Valores por parámetro los cuales son JTextField, JPasswordField y JComboBox.
+
+PRECONDICIONES:
+1- nombres vacío, resto con valor.
+2- apellidos vacío, resto con valor.
+3- correo sin @, resto con valor.
+4- correo sin punto, resto con valor.
+5- correo con punto antes del @, resto con valor.
+6- sexo no seleccionado, resto con valor.
+7- rol no seleccionado, resto con valor.
+8- contraseñas no coinciden, resto con valor.
+9- ambas contraseñas vacías, resto con valor.
+10- todos los campos vacíos.
+11- Todos los campos completas, validos y datos pertenecientes a la base de datos de la UCV.
+
+ESPECIFICACIONES:
+validarRegistro(): Devuelve true en caso de que todos los campos sean correctos
+y el usuario esté autorizado en el sistema.
+Devuelve false si:
+    - Hay algún campo en blanco.
+    - El correo no tiene formato válido (@ debe aparecer antes del último punto .)
+    - Las contraseñas no coinciden.
+    - El sexo o rol no están seleccionados.
+
+SALIDAS: 
+1-false 
+2-false 
+3-false 
+4-false 
+5-false 
+6-false 
+7-false 
+8-false 
+9-false 
+10-false 
+11-true
+
+
+
+FACTOR                         CLASES DE EQUIVALENCIA                            ENTRADAS                                                                           SALIDAS
+Nombres vacío                  ("")                                              ""                                                                                 false
+Apellidos vacío                ("")                                              ""                                                                                 false
+Correo sin @                   correo no contiene @                              "Artemis.com"                                                                      false
+Correo sin punto               correo no contiene .                              "Artemis@test"                                                                     false
+Correo con punto antes del @   indexOf("@") > lastIndexOf(".")                   "Artemis.test@com"                                                                 false
+Sexo no seleccionado           selectedIndex == 0                                ""                                                                                 false
+Rol no seleccionado            selectedIndex == 0                                ""                                                                                 false
+Contraseñas no coinciden       password != confirmPassword                       "MindSpy", "Butler"                                                                false
+Ambas contraseñas vacías       ("","")                                           "", ""                                                                             false
+Todos los campos vacíos        ("") en todos los campos                          "" en todos                                                                        false
+Registro exitoso               todos los campos válidos y cédula autorizada      "Artemis","Fowl","4444","Artemis@fowl.com","Masculino","Estudiante","MindSpy"      true
