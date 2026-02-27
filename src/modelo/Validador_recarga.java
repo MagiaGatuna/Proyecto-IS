@@ -15,22 +15,25 @@ if(ValidarUtil.campoEstaVacio(id, "Cédula de identidad")){
 errores.append("- El campo Cédula es obligatorio\n\n");
 }else if(!ValidarUtil.cedulaEsValida(id)){
 errores.append("- La cédula debe contener solo números\n");
+ 
 }
 if(ValidarUtil.campoEstaVacio(ref, "Numero de referencia")){
 errores.append("- El campo Referencia es obligatorio\n\n");
+
 }else if(!ValidarUtil.ReferenciaValida(ref)){
     errores.append("- Coloque los ultimos 4 digitos, ejem: ref=123456, usted debe colocar 3456\n\n");
+    return false;
 }
 if(ValidarUtil.campoEstaVacio(monto, "Monto a recargar")){
-errores.append("- El campo monto es obligatorio\n\n");
-}else if(!ValidarUtil.MontoValido(monto)){
-    errores.append("- El monto debe contener solo números validos\n");
+    return false; 
+} else if(!ValidarUtil.MontoValido(monto)){
+    return false;
 }
  String cedulaInput = id.getText().trim();
-if(user.getCedula().equals(cedulaInput)){
-return true;
-}
+if(!(user.getCedula().equals(cedulaInput))){
 return false;
+}
+return true;
 }
     
 }
