@@ -128,11 +128,11 @@ public class Controlador_GestorCostos implements ActionListener {
                     String idMenu = jsonMenus.getJSONObject(i).getString("dia_turno");
                     String nombreParaUsuario = formatearIDParaUsuario(idMenu);
                     String cv = src.modelo.editarCostos.getCV(idMenu); 
-                    String CCB = src.modelo.MermayCCB.getCCB(idMenu);
+                    double CCB = src.modelo.MermayCCB.getCCB(idMenu);
                     String merma = src.modelo.MermayCCB.getMerma(idMenu);
                     String aforo = String.valueOf(src.modelo.MermayCCB.getAforo(idMenu));
                     
-                    modelo.addRow(new Object[]{nombreParaUsuario, cv, aforo, merma, CCB});
+                    modelo.addRow(new Object[]{nombreParaUsuario, cv, aforo, merma, String.format("%.2f", CCB)});
                 }
             }
         } catch (Exception e) {

@@ -12,8 +12,7 @@ public class Calcular {
     public static double PorcentajeEmpleado = 90.0; //90% a 110%
 
     public static double calcularPrecio(String idMenu, String rol) {
-        double CCB = Double.parseDouble(src.modelo.MermayCCB.getCCB(idMenu));
-        
+        double CCB = src.modelo.MermayCCB.getCCB(idMenu);
         if (rol.equals("estudiante")) {
             return CCB * (PorcentajeEstudiante / 100.0); 
         } else if (rol.equals("profesor")) {

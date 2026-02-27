@@ -82,25 +82,7 @@ public class Controlador_Reconocimiento implements ActionListener {
             String turno = partes[1];
 
             JSONObject menuData = Menus_lista.getMenuData(dia, turno);
-            if (menuData == null) {
-                JOptionPane.showMessageDialog(vista, "No se encontró el menú correspondiente a la reserva.");
-                return;
-            }
-
-            double precioBase = menuData.getDouble("precio");
-
-            double factor;
-            String rol = usuario.getRol().toLowerCase();
-            if (rol.contains("estudiante")) {
-                factor = 0.3; // 30%
-            } else if (rol.contains("profesor") || rol.contains("docente")) {
-                factor = 0.8; // 80%
-            } else if (rol.contains("empleado") || rol.contains("trabajador")) {
-                factor = 1.0; // 100%
-            } else {
-                factor = 1.0;
-            }
-            double precioFinal = precioBase * factor;
+            double precioFinal = src.modelo.MermayCCB.getCCB(diaTurno);
 
 
             if (usuario.getSaldo() < precioFinal) {

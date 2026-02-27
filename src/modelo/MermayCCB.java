@@ -44,13 +44,13 @@ public class MermayCCB {
         return -3;
     }
 
-    public static String getCCB(String ID_MENU) {
+    public static double getCCB(String ID_MENU) {
         String cvStr = src.modelo.editarCostos.getCV(ID_MENU);
         String cfStr = src.modelo.editarCostos.getCF();
 
         if (cvStr.equals("No encontrado") || cvStr.startsWith("Error") ||
             cfStr.startsWith("Error")) {
-            return "Error";
+            return -1;
         }
 
         double CV = Double.parseDouble(cvStr.replace("Bs", "").trim());
@@ -60,7 +60,7 @@ public class MermayCCB {
         double Merma = getMerma(ID_MENU).replace("%", "").trim().equals("No encontrado") ? 0.0 :
                         Double.parseDouble(getMerma(ID_MENU).replace("%", "").trim()) / 100.0;
         double CBB = ((CV+CF)/NB)*(1+Merma);
-        return String.format("%.2f Bs", CBB);
+        return CBB;
     }
 
     public static void actualizarJSON_CCB() {

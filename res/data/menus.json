@@ -12,10 +12,10 @@
     {
         "descripcion": " ",
         "dia_turno": "MONDAY_ALMUERZO",
-        "aforo_max": 0,
+        "aforo_max": 10,
         "comida": "Lo sentimos, no hay menu para este turno",
         "turno": "ALMUERZO",
-        "reservas_actual": 0,
+        "reservas_actual": 1,
         "dia": "MONDAY",
         "valorNutricional": "0"
     },
@@ -99,7 +99,7 @@
         "dia": "WEDNESDAY",
         "valorNutricional": "234"
     },
-        {
+    {
         "descripcion": "Deliciosa pasta en salsa de carne",
         "dia_turno": "FRIDAY_ALMUERZO",
         "aforo_max": 456,
@@ -109,7 +109,7 @@
         "dia": "FRIDAY",
         "valorNutricional": "234"
     },
-            {
+    {
         "descripcion": "Suave pan horneado relleno de jamón de primera calidad.",
         "dia_turno": "FRIDAY_DESAYUNO",
         "aforo_max": 40,
