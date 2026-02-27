@@ -10,14 +10,14 @@
         "valorNutricional": "349 Kcal"
     },
     {
-        "descripcion": "Clásico arroz con pollo sazonado con vegetales frescos.",
+        "descripcion": " ",
         "dia_turno": "MONDAY_ALMUERZO",
-        "aforo_max": 1500,
-        "comida": "Arroz con pollo",
+        "aforo_max": 0,
+        "comida": "Lo sentimos, no hay menu para este turno",
         "turno": "ALMUERZO",
-        "reservas_actual": 325,
+        "reservas_actual": 0,
         "dia": "MONDAY",
-        "valorNutricional": "417 Kcal"
+        "valorNutricional": "0"
     },
     {
         "descripcion": "Empanada crujiente de maíz rellena de jugosa carne mechada.",
@@ -60,14 +60,14 @@
         "valorNutricional": "245 Kcal"
     },
     {
-        "descripcion": " ",
+        "descripcion": "Crujiente y rico",
         "dia_turno": "THURSDAY_DESAYUNO",
-        "aforo_max": 0,
-        "comida": "Lo sentimos, no hay menu para este turno",
+        "aforo_max": 123,
+        "comida": "Pollo y papas",
         "turno": "DESAYUNO",
         "reservas_actual": 0,
         "dia": "THURSDAY",
-        "valorNutricional": "0"
+        "valorNutricional": "254"
     },
     {
         "descripcion": "Caliente y rica en nutrientes",

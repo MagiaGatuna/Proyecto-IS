@@ -80,10 +80,34 @@ public class Menus_lista {
     return null; 
 }
 
-public static void actualizarMenu(String dia, String turno, String comida, String descripcion, String nutricion, String cantBandejas){
+public static boolean actualizarMenu(String dia, String turno, String comida, String descripcion, String nutricion, String cantBandejas){
 try{
     cargarDatosMenu();
     boolean esta_aqui=false;
+
+    StringBuilder errores= new StringBuilder();
+            if(comida.isEmpty()){
+                errores.append("- El campo de comida es obligatorio\n");
+            }
+            if(descripcion.isEmpty()){
+                 errores.append("- El campo de Descripción es obligatorio\n");
+            }
+            if(nutricion.isEmpty()){
+                 errores.append("- El campo de Valor nutricional es obligatorio\n");
+            }
+            if(cantBandejas.isEmpty()){
+                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
+            }
+            if(!confirmar_num(cantBandejas)){
+                 errores.append("- El campo de la cantidad de bandejas solo puede ser rellenado con un número entero positivo o cero\n");
+
+            }
+
+            if(errores.length()>0){
+                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
+                return false;
+            }
+
 
     for (int i = 0; i < listaMenus.length(); i++) {
         JSONObject menu = listaMenus.getJSONObject(i);
@@ -120,10 +144,23 @@ try{
     }
     Files.write(rutaMenus, listaMenus.toString(4).getBytes(StandardCharsets.UTF_8));
     JOptionPane.showMessageDialog(null,esta_aqui ? "Menú actualizado con éxito":"Menú creado con éxito");
+    return true;
 }catch (Exception e){
     JOptionPane.showMessageDialog(null,"error al tratar de actualizar el JSON: "+ e.getMessage());
+    return false;
 }
 
 }
+public static boolean confirmar_num(String numero){
+
+    try{
+        int valor_parseado= Integer.parseInt(numero.trim());
+        return valor_parseado>=0;
+    }catch(NumberFormatException e){
+        return false;
+    }
+
+}
+
 
 }
