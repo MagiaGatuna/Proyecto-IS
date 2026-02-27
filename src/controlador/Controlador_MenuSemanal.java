@@ -129,9 +129,11 @@ if (this.menu.getvolver() != null) {
 
         if((e.getSource()==menu.getEditar())&&(Rol.equals("Administrador"))){
             menu.editar_paneles();
+            menu.ocultaradmin();
         }
         if((e.getSource()==menu.getNoEditar())&&(Rol.equals("Administrador"))){
             menu.dejar_editar();
+            menu.ocultaradmin();
         }
         
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario
@@ -186,57 +188,11 @@ if (this.menu.getvolver() != null) {
         }
 
         if(e.getSource()==menu.getAceptar("Desayuno")){
-            StringBuilder errores= new StringBuilder();
-            if(menu.getTexto("Desayuno","Comida").isEmpty()){
-                errores.append("- El campo de comida es obligatorio\n");
-            }
-            if(menu.getTexto("Desayuno","Descripcion").isEmpty()){
-                 errores.append("- El campo de Descripción es obligatorio\n");
-            }
-            if(menu.getTexto("Desayuno","Valor_nutricional").isEmpty()){
-                 errores.append("- El campo de Valor nutricional es obligatorio\n");
-            }
-            if(menu.getTexto("Desayuno","Aforo").isEmpty()){
-                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
-            }
-            if(!confirmar_num(menu.getTexto("Desayuno","Aforo"))){
-                 errores.append("- El campo de la cantidad de bandejas solo puede ser rellenado con un número entero positivo o cero\n");
-
-            }
-
-            if(errores.length()>0){
-                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
-                return;
-            }
-
                 Menus_lista.actualizarMenu(dia_seleccionado, "DESAYUNO", menu.getTexto("Desayuno","Comida"), menu.getTexto("Desayuno","Descripcion"),menu.getTexto("Desayuno","Valor_nutricional"), menu.getTexto("Desayuno","Aforo"));
                 vaciar_campos("Desayuno");
         
         }
         if(e.getSource()==menu.getAceptar("Almuerzo")){
-        
-        StringBuilder errores= new StringBuilder();
-            if(menu.getTexto("Almuerzo","Comida").isEmpty()){
-                errores.append("- El campo de comida es obligatorio\n");
-            }
-            if(menu.getTexto("Almuerzo","Descripcion").isEmpty()){
-                 errores.append("- El campo de Descripción es obligatorio\n");
-            }
-            if(menu.getTexto("Almuerzo","Valor_nutricional").isEmpty()){
-                 errores.append("- El campo de Valor nutricional es obligatorio\n");
-            }
-            if(menu.getTexto("Almuerzo","Aforo").isEmpty()){
-                 errores.append("- El campo de la cantidad de bandejas es obligatorio\n");
-            }
-            if(!confirmar_num(menu.getTexto("Desayuno","Aforo"))){
-                 errores.append("- El campo de la cantidad de bandejas solo puede ser rellenado con un número entero positivo o cero\n");
-
-            }
-
-            if(errores.length()>0){
-                JOptionPane.showMessageDialog(null, "No se puedo guardar/actualizar el menu \n" + errores.toString()+"\n"+ "Campos vacíos\n");
-                return;
-            }
 
         Menus_lista.actualizarMenu(dia_seleccionado, "ALMUERZO", menu.getTexto("Almuerzo","Comida"), menu.getTexto("Almuerzo","Descripcion"),menu.getTexto("Almuerzo","Valor_nutricional"), menu.getTexto("Almuerzo","Aforo"));
         vaciar_campos("Almuerzo");
@@ -245,6 +201,7 @@ if (this.menu.getvolver() != null) {
         
         Menus_lista.actualizarMenu(dia_seleccionado, "DESAYUNO", "Lo sentimos, no hay menu para este turno", " ","0", "0");
         vaciar_campos("Desayuno");
+
         }
         if(e.getSource()==menu.getDefecto("Almuerzo")){
         Menus_lista.actualizarMenu(dia_seleccionado, "ALMUERZO", "Lo sentimos, no hay menu para este turno", " ","0", "0");
@@ -277,17 +234,6 @@ public void vaciar_campos(String turno){
         menu.setTexto("Almuerzo","Aforo");
     }
     
-}
-
-public boolean confirmar_num(String numero){
-
-    try{
-        int valor_parseado= Integer.parseInt(numero.trim());
-        return valor_parseado>0;
-    }catch(NumberFormatException e){
-        return false;
-    }
-
 }
 
 public void pintarboton(String hoy) {

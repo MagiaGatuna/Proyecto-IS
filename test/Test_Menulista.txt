@@ -1,0 +1,25 @@
+ENTRADAS: Valores por parámetro los cuales son Strings.
+PRECONDICIONES: 
+1- Preparar variables a utilizar, a excepción de 1 o 2 que se dejarán vacías.
+2- Preparar variables a utilizar, aforo no será número
+3- Preparar variables a utilizar, aforo no es positivo.
+4- Preparar variables a utilizar, completas.
+ESPECIFICACIONES:
+actualizarMenu(): Devuelve True en caso de que la escritura de todos los campos sean corrrectos y contengan los datos adecuados.
+Devuelve false si:
+    -Hay algún campo en blanco.
+    -Aforo no es un número
+    -Aforo<0
+SALIDAS:
+1- false
+2- false
+3- false
+4- true
+
+
+FACTOR                              CLASES DE EQUIVALENCIA                                       ENTRADAS                  SALIDAS
+campos vacíos                               ("")                                                     ""                     false
+Aforo no numérico             aforo pertenece a[a,b,c....,z,A,B,....,Z]                             "abcdefg"               false
+Aforo es un negativo                      (-min,0]                                                  "-12356"                false
+Campos llenos         [comidas][DESAYUNO,ALMUERZO][MONDAY,SUNDAY][0,max][0,max]             "Pizza","ALMUERZO","TUESDAY",   true
+                                                                                            "Rica pizza con queso fundido, jamón y maíz","436","-12356"        
