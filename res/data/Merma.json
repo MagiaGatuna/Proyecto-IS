@@ -38,5 +38,13 @@
     {
         "merma": 0,
         "dia_turno": "WEDNESDAY_ALMUERZO"
+    },
+    {
+    "merma": 0,
+    "dia_turno": "FRIDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "FRIDAY_ALMUERZO"
     }
 ]

@@ -1,5 +1,6 @@
 package src.controlador;
 
+import src.util.Calcular;
 import src.util.Calcular_dia;
 import src.vista.AlumnoView;
 import src.vista.HomeAdmin;
@@ -8,10 +9,16 @@ import src.vista.EmpleadoView;
 
 import src.modelo.validadorInicioS;
 import src.modelo.Menus_lista;
+import src.modelo.Reserva;
+import src.modelo.ReservaDAO;
+import src.modelo.Usuario;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import org.json.JSONObject;
+
 import java.awt.Color;
 
 public class Controlador_MenuSemanal implements ActionListener{
@@ -42,6 +49,9 @@ public class Controlador_MenuSemanal implements ActionListener{
         menu.getAceptar("Almuerzo").addActionListener(this);
         menu.getDefecto("Desayuno").addActionListener(this);
         menu.getDefecto("Almuerzo").addActionListener(this);
+        menu.getreservas("desayuno").addActionListener(this);
+        menu.getreservas("almuerzo").addActionListener(this);
+
 
         Rol = validadorInicioS.getRol();
 
@@ -80,10 +90,6 @@ if (this.menu.getvolver() != null) {
         pintarboton(dia); 
         desactivar_botones(hora);
 
-    avisoProximamente(this.menu.getBtnRes1());
-    
-    avisoProximamente(this.menu.getBtnRes3());
-
     }
 
     @Override
@@ -102,6 +108,12 @@ if (this.menu.getvolver() != null) {
                 }
             }
             
+        }
+
+        if (e.getSource() == menu.getreservas("desayuno")) {
+        realizarReserva("DESAYUNO");
+        } else if (e.getSource() == menu.getreservas("almuerzo")) {
+        realizarReserva("ALMUERZO");
         }
 
         
@@ -289,17 +301,61 @@ public void pintarboton(String hoy) {
 
     }
 
-    private void avisoProximamente(JButton boton) {
-            if (boton != null) {
-                boton.addActionListener(e -> {
-                    JOptionPane.showMessageDialog(null, 
-                        "Esta funcionalidad estará disponible en la próxima actualización.", 
-                        "En construcción", 
-                        JOptionPane.INFORMATION_MESSAGE);
-                });
-            }
+private void realizarReserva(String turno) {
+    try {
+        Usuario usuario = validadorInicioS.getUsuarioActual();
+        if (usuario == null) {
+            JOptionPane.showMessageDialog(menu, "No hay usuario logueado.");
+            return;
         }
-    
-    
 
+        String diaIngles = dia_seleccionado; // ya está en inglés (MONDAY, etc.)
+        JSONObject menuData = Menus_lista.getMenuData(diaIngles, turno);
+        if (menuData == null) {
+            JOptionPane.showMessageDialog(menu, "No hay menú disponible para este turno.");
+            return;
+        }
+
+        String idMenu = menuData.getString("dia_turno");
+        double precioFinal = 0;
+        try {
+            precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(menu, "Error al calcular el precio: " + ex.getMessage());
+            return;
+        }
+        Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula());
+        if (reservaExistente != null) {
+            JOptionPane.showMessageDialog(menu, "Ya tienes una reserva activa para: " + reservaExistente.getDiaTurno());
+            return;
+        }
+
+        int opcion = JOptionPane.showConfirmDialog(menu,
+            "¿Confirmar reserva?\n" +
+            "Menú: " + menuData.getString("comida") + "\n" +
+            "Precio final: " + precioFinal + " Bs",
+            "Confirmar reserva",
+            JOptionPane.YES_NO_OPTION);
+
+        if (opcion != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        Reserva nuevaReserva = new Reserva(usuario.getCedula(), idMenu);
+        ReservaDAO.guardar(nuevaReserva);
+
+        Menus_lista.incrementarReserva(idMenu);
+
+        // Actualizar vista
+        Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"), dia_seleccionado, "DESAYUNO");
+        Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"), dia_seleccionado, "ALMUERZO");
+
+        JOptionPane.showMessageDialog(menu, "Reserva realizada con éxito.");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(menu, "Error inesperado: " + e.getMessage());
+    }
+}
 }

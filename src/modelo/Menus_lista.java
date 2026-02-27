@@ -162,5 +162,22 @@ public static boolean confirmar_num(String numero){
 
 }
 
+public static void incrementarReserva(String diaTurno) {
+    cargarDatosMenu();
+    for (int i = 0; i < listaMenus.length(); i++) {
+        JSONObject menu = listaMenus.getJSONObject(i);
+        if (menu.getString("dia_turno").equals(diaTurno)) {
+            int actual = menu.getInt("reservas_actual");
+            menu.put("reservas_actual", actual + 1);
+            break;
+        }
+    }
+    try {
+        Files.write(rutaMenus, listaMenus.toString(4).getBytes(StandardCharsets.UTF_8));
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 
 }

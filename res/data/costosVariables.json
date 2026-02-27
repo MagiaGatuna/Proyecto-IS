@@ -38,5 +38,13 @@
     {
         "detalles_costos": {},
         "dia_turno": "WEDNESDAY_ALMUERZO"
+    },
+    {
+    "detalles_costos": {"base": 0},
+    "dia_turno": "FRIDAY_DESAYUNO"
+    },
+    {
+        "detalles_costos": {"base": 0},
+        "dia_turno": "FRIDAY_ALMUERZO"
     }
 ]

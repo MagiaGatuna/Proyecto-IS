@@ -25,7 +25,6 @@ public class MenuDView extends JFrame {
 
     private JButton btnReservarA;
     private JButton btnReservarB;
-    private JButton btnReservarC;
     private JButton btnHome;
 
     public MenuDView(String diaSemana, int diaMes, String MM, int AA) {
@@ -162,7 +161,7 @@ public class MenuDView extends JFrame {
 
                 menusD.add(crearTarjetaEstandar("Desayuno", lblNombreDes, lblDescDes, lblValDes));
                 menusD.add(crearTarjetaEstandar("Almuerzo", lblNombreAlm, lblDescAlm, lblValAlm));
-                menusD.add(crearTarjetaEstandar("Cena", lblNombreCen, lblDescCen, lblValCen));
+                menusD.add(crearTarjetaCena());
 
             panel.add(menusD);
 
@@ -175,6 +174,7 @@ public class MenuDView extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 50, 65));
         panel.setBackground(COLOR_HEADER);
             
+
             btnReservarA= Diseño_interfaz.Creador_Botones("RESERVAR", EXIT_ON_CLOSE, ERROR,150, 40,COLOR_BOTON_PRINCIPAL);
             panel.add(btnReservarA);
             
@@ -184,10 +184,7 @@ public class MenuDView extends JFrame {
             btnReservarB= Diseño_interfaz.Creador_Botones("RESERVAR", EXIT_ON_CLOSE, ERROR,150, 40,COLOR_BOTON_PRINCIPAL);
             panel.add(btnReservarB);
 
-            panel.add(Box.createRigidArea(new Dimension(250, 0)));
-
-            btnReservarC= Diseño_interfaz.Creador_Botones("RESERVAR", EXIT_ON_CLOSE, ERROR,150, 40,COLOR_BOTON_PRINCIPAL);
-            panel.add(btnReservarC);
+            panel.add(Box.createRigidArea(new Dimension(655, 0)));
 
         return panel;
 
@@ -205,9 +202,6 @@ public class MenuDView extends JFrame {
         return btnReservarB;
     }
 
-    public JButton getBtnReservarC() {
-        return btnReservarC;
-    }
 
  // herramientas
     private ImageIcon cargarIcono(String ruta, int ancho, int alto) {
@@ -264,5 +258,36 @@ public class MenuDView extends JFrame {
 
         return tarjeta;
     }
+
+    public void deshabilitarBoton(String turno) {
+    if (turno.equals("DESAYUNO") && btnReservarA != null) {
+        btnReservarA.setEnabled(false);
+        btnReservarA.setBackground(Color.GRAY);
+    } else if (turno.equals("ALMUERZO") && btnReservarB != null) {
+        btnReservarB.setEnabled(false);
+        btnReservarB.setBackground(Color.GRAY);
+    }
+}
+
+private JPanel crearTarjetaCena() {
+    JPanel tarjeta = new JPanel(new BorderLayout());
+    tarjeta.setBackground(Color.WHITE);
+    tarjeta.setPreferredSize(new Dimension(400, 300));
+    tarjeta.setBorder(BorderFactory.createEmptyBorder(20, 5, 20, 20));
+
+    ImageIcon icono = new ImageIcon("res/fuera_servicio.jpg");
+    if (icono.getImageLoadStatus() == MediaTracker.COMPLETE) {
+        Image imagen = icono.getImage().getScaledInstance(350, 200, Image.SCALE_SMOOTH);
+        JLabel imagenLabel = new JLabel(new ImageIcon(imagen));
+        imagenLabel.setHorizontalAlignment(JLabel.CENTER);
+        tarjeta.add(imagenLabel, BorderLayout.NORTH);
+    } else {
+        JLabel mensaje = new JLabel("Servicio no disponible");
+        mensaje.setHorizontalAlignment(JLabel.CENTER);
+        tarjeta.add(mensaje, BorderLayout.NORTH);
+    }
+
+    return tarjeta;
+}
 
 }

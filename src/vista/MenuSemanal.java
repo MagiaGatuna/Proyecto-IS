@@ -545,13 +545,12 @@ public class MenuSemanal extends JFrame{
     }
 
     public JButton getreservas(String indicador){
-        if(indicador=="desayuno"){
+        if("desayuno".equals(indicador)){
             return reservar_d;
         }
-        if(indicador=="almuerzo"){
+        if("almuerzo".equals(indicador)){
             return reservar_a;
         }
-        
         return null;
     }
 

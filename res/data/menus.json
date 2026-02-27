@@ -98,5 +98,25 @@
         "reservas_actual": 0,
         "dia": "WEDNESDAY",
         "valorNutricional": "234"
+    },
+        {
+        "descripcion": "Deliciosa pasta en salsa de carne",
+        "dia_turno": "FRIDAY_ALMUERZO",
+        "aforo_max": 456,
+        "comida": "Pasta con carne",
+        "turno": "ALMUERZO",
+        "reservas_actual": 0,
+        "dia": "FRIDAY",
+        "valorNutricional": "234"
+    },
+            {
+        "descripcion": "Suave pan horneado relleno de jamón de primera calidad.",
+        "dia_turno": "FRIDAY_DESAYUNO",
+        "aforo_max": 40,
+        "comida": "Cachito de jamon",
+        "turno": "DESAYUNO",
+        "reservas_actual": 15,
+        "dia": "FRIDAY",
+        "valorNutricional": "235 Kcal"
     }
 ]

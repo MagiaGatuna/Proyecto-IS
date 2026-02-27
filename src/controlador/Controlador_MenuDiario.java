@@ -4,11 +4,17 @@ import src.vista.AlumnoView;
 import src.vista.EmpleadoView;
 import src.vista.MenuDView;
 import src.modelo.validadorInicioS;
+import src.util.Calcular;
+import src.util.Calcular_dia;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import src.modelo.Menus_lista; 
+import src.modelo.Menus_lista;
+import src.modelo.Reserva;
+import src.modelo.ReservaDAO;
+import src.modelo.Usuario;
+
 import org.json.JSONObject; 
 
 
@@ -26,24 +32,35 @@ public class Controlador_MenuDiario implements ActionListener {
 
         if (this.menu.getBtnHome() != null) {
             this.menu.getBtnHome().addActionListener(this);
-            avisoProximamente(this.menu.getBtnReservarA());
-            avisoProximamente(this.menu.getBtnReservarB());
-            avisoProximamente(this.menu.getBtnReservarC());
-        }
-        cargarInformacionMenu();
-        this.menu.setVisible(false);
-}
-
-    private void avisoProximamente(JButton boton) {
-            if (boton != null) {
-                boton.addActionListener(e -> {
-                    JOptionPane.showMessageDialog(null, 
-                        "Esta funcionalidad estará disponible en la próxima actualización.", 
-                        "En construcción", 
-                        JOptionPane.INFORMATION_MESSAGE);
-                });
+            if (menu.getBtnReservarA() != null) { // desayuno
+                menu.getBtnReservarA().addActionListener(this);
+            }
+            if (menu.getBtnReservarB() != null) { // almuerzo
+                menu.getBtnReservarB().addActionListener(this);
             }
         }
+        cargarInformacionMenu();
+
+        int horaActual = Calcular_dia.gethora();
+        String diaActual = Calcular_dia.getdia(); 
+
+
+        if (diaActual.equals("SATURDAY") || diaActual.equals("SUNDAY")) {
+            menu.deshabilitarBoton("DESAYUNO");
+            menu.deshabilitarBoton("ALMUERZO");
+         } else {
+            if (horaActual >= 600) {
+                menu.deshabilitarBoton("DESAYUNO");
+            }
+
+            if (horaActual >= 900) {
+                menu.deshabilitarBoton("ALMUERZO");
+            }
+         }
+            this.menu.setVisible(false);
+    }
+
+
 
     private void cargarInformacionMenu() {
         String diaEspanol = menu.getDiaSemana(); 
@@ -121,6 +138,57 @@ public class Controlador_MenuDiario implements ActionListener {
                     menu.dispose();
                 }
             }
+
         }
+        if (e.getSource() == menu.getBtnReservarA()) {
+            realizarReserva("DESAYUNO");
+        } else if (e.getSource() == menu.getBtnReservarB()) {
+            realizarReserva("ALMUERZO");
+}
     }
+
+    private void realizarReserva(String turno) {
+    Usuario usuario = validadorInicioS.getUsuarioActual();
+    if (usuario == null) {
+        JOptionPane.showMessageDialog(menu, "No hay usuario logueado.");
+        return;
+    }
+    String diaEspanol = menu.getDiaSemana();
+    String diaIngles = traducirDiaAlIngles(diaEspanol);
+    JSONObject menuData = Menus_lista.getMenuData(diaIngles, turno);
+    if (menuData == null) {
+        JOptionPane.showMessageDialog(menu, "No hay menú disponible para este turno.");
+        return;
+    }
+
+
+
+    String idMenu = menuData.getString("dia_turno");
+    double precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
+
+    Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula());
+    if (reservaExistente != null) {
+        JOptionPane.showMessageDialog(menu, "Ya tienes una reserva activa para: " + reservaExistente.getDiaTurno());
+        return;
+    }
+
+    int opcion = JOptionPane.showConfirmDialog(menu,
+        "¿Confirmar reserva?\n" +
+        "Menú: " + menuData.getString("comida") + "\n" +
+        "Precio final: " + precioFinal + " Bs",
+        "Confirmar reserva",
+        JOptionPane.YES_NO_OPTION);
+
+    if (opcion != JOptionPane.YES_OPTION) {
+        return;
+    }
+
+    String diaTurno = idMenu;
+    Reserva nuevaReserva = new Reserva(usuario.getCedula(), diaTurno);
+    ReservaDAO.guardar(nuevaReserva);
+    Menus_lista.incrementarReserva(idMenu);
+    actualizarTurno(diaIngles, turno); 
+
+    JOptionPane.showMessageDialog(menu, "Reserva realizada con éxito.");
+}
 }
