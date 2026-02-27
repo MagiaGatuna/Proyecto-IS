@@ -1,0 +1,36 @@
+ENTRADAS: Valores por parámetro los cuales son un JTextField y un JPasswordField
+PRECONDICIONES:
+
+1- Cédula vacía, contraseña con valor
+2- Cédula con caracteres inválidos, contraseña con valor
+3- Cédula válida, contraseña vacía
+4- Cédula válida, usuario no registrado
+5- Ambos campos vacíos
+6- Cédula y contraseña correctas y registradas
+7- Cédula registrada, contraseña no registrada
+
+ESPECIFICACIONES: 
+validarInicioSesion(): Devuelve true si la cédula y contraseña coinciden con un usuario registrado. 
+Devuelve false si:
+    - Hay algún campo en blanco
+    - La cédula contiene caracteres no numéricos
+    - El usuario no esta registrado
+    - La contraseña no coincide con la registrada
+
+SALIDAS: 
+1-false 
+2-false 
+3-false 
+4-false 
+5-false 
+6-true
+7-false
+
+FACTOR                      CLASES DE EQUIVALENCIA                                              ENTRADAS            SALIDAS
+Cédula vacía                ("")                                                                ""                  false
+Cédula inválida             cédula pertenece a [a-z,A-Z,@#$%...]                                "12@AB#"            false
+Contraseña vacía            ("")                                                                ""                  false
+Usuario no registrado       cédula [0,max) no existe en JSON                                    "99999999"          false
+Ambos vacíos                ("","")                                                             "", ""              false
+Inicio exitoso              cédula y contraseña válidas y registradas                           "4444", "MindSpy"   true
+Inicio incorrecta           cédula  válida y registrada, contraseña valida y no registrada      "4444", "MindSpy"   true
