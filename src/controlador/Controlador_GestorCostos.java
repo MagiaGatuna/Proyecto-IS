@@ -132,6 +132,7 @@ public class Controlador_GestorCostos implements ActionListener {
                     String merma = src.modelo.MermayCCB.getMerma(idMenu);
                     String aforo = String.valueOf(src.modelo.MermayCCB.getAforo(idMenu));
                     
+                    if(aforo.equals("0")) continue;
                     modelo.addRow(new Object[]{nombreParaUsuario, cv, aforo, merma, String.format("%.2f", CCB)});
                 }
             }
