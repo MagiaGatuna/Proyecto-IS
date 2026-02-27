@@ -109,12 +109,14 @@ public class InicioSesion extends JFrame {
     //boton_Registro.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarRegistro());
 
 //creamos el boton que nos redirecciona el inicio
-    boton_Home=Diseño_interfaz.Creador_Botones("Home",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
+    boton_Home=Diseño_interfaz.Creador_Botones("HOME",anchoP-120, 30, 80, 30,Diseño_interfaz.colorazul);
     BotonUtil.darEstiloBoton(boton_Home, 80, 30);
     add(boton_Home);//lo añadimos a la ventana principal
 
     this.getContentPane().setFocusable(true);
     this.getContentPane().requestFocusInWindow();
+    setSize(anchoP, altoP);
+    setExtendedState(JFrame.MAXIMIZED_BOTH);
  }
 
  public JButton getHome(){

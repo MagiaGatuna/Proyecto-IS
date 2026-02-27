@@ -29,7 +29,7 @@ public class Controlador_reg implements ActionListener{
             public void mouseClicked(MouseEvent ev){
             LimpiarFormulariosUtil.limpiarRegistro(ventanaRegistro.getTxtNombres(),ventanaRegistro.getTxtApellidos(),ventanaRegistro.getTxtCedula(),ventanaRegistro.getTxtCorreo(),ventanaRegistro.getComboCedula(),ventanaRegistro.getComboSexo(),ventanaRegistro.getComboRol(),ventanaRegistro.getTxtPassword(),ventanaRegistro.getTxtConfirmPassword());
             inicio_sesion.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            inicio_sesion.setResizable(false);
+            //inicio_sesion.setResizable(false);
             inicio_sesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             inicio_sesion.setVisible(true);
             ventanaRegistro.setVisible(false);
@@ -63,7 +63,7 @@ public class Controlador_reg implements ActionListener{
                     LimpiarFormulariosUtil.limpiarRegistro(ventanaRegistro.getTxtNombres(),ventanaRegistro.getTxtApellidos(),ventanaRegistro.getTxtCedula(),ventanaRegistro.getTxtCorreo(),ventanaRegistro.getComboCedula(),ventanaRegistro.getComboSexo(),ventanaRegistro.getComboRol(),ventanaRegistro.getTxtPassword(),ventanaRegistro.getTxtConfirmPassword());
                      LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
                 inicio_sesion.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                inicio_sesion.setResizable(false);
+                //inicio_sesion.setResizable(false);
                 inicio_sesion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 inicio_sesion.setVisible(true);
                 ventanaRegistro.setVisible(false);
@@ -73,7 +73,7 @@ public class Controlador_reg implements ActionListener{
         if(e.getSource()==ventanaRegistro.getHome()){
             LimpiarFormulariosUtil.limpiarRegistro(ventanaRegistro.getTxtNombres(),ventanaRegistro.getTxtApellidos(),ventanaRegistro.getTxtCedula(),ventanaRegistro.getTxtCorreo(),ventanaRegistro.getComboCedula(),ventanaRegistro.getComboSexo(),ventanaRegistro.getComboRol(),ventanaRegistro.getTxtPassword(),ventanaRegistro.getTxtConfirmPassword());
             inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            inicio.setResizable(false);
+            //inicio.setResizable(false);
             inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             inicio.setVisible(true);
             ventanaRegistro.setVisible(false);

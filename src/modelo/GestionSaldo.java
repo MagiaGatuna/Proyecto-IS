@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import javax.swing.JTextField;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +27,7 @@ public class GestionSaldo {
             
             // Buscamos coincidencia con el usuario que tiene la sesión iniciada
             if (user.getString("cedula").equals(cedulaUsuario)) {
+                if(montoRecarga<=0){return false;}
                 double saldoActual = user.optDouble("saldo", 0.0);
                 user.put("saldo", saldoActual + montoRecarga); // Sumamos el nuevo monto
                 

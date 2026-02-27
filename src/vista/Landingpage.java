@@ -25,6 +25,7 @@ int pantalla= Toolkit.getDefaultToolkit().getScreenSize().width;
 int alto= Toolkit.getDefaultToolkit().getScreenSize().height;
 this.getContentPane().setBackground(new Color(255,255,255));
 
+
 //Seccion referente a la imagen central del comedor
 ImageIcon icono3= new ImageIcon ("res/comedorfoto.jpeg");
 Image comedor_inicio= icono3.getImage().getScaledInstance(1140,360,Image.SCALE_SMOOTH);
@@ -37,6 +38,11 @@ add(imagen_central);
 barrasuperior(pantalla);
 barrainferior(alto,pantalla);
 mediopantalla(pantalla);
+
+    setSize(pantalla, alto);
+    setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+
 
 }
 
@@ -182,8 +188,9 @@ return reconocimiento;
 
 public static void main (String args[]){
 Landingpage inicio= new Landingpage();
+
 inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
-inicio.setResizable(false);
+//inicio.setResizable(false);
 inicio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 inicio.setVisible(true);
 }

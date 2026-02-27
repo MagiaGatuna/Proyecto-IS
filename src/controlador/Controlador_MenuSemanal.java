@@ -94,7 +94,7 @@ if (this.menu.getvolver() != null) {
             if((Rol.equals("Estudiante"))){
                 if(this.alumno != null){
             alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            alumno.setResizable(false);
+            //alumno.setResizable(false);
             alumno.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             alumno.setVisible(true);
             menu.setVisible(false);
@@ -107,8 +107,8 @@ if (this.menu.getvolver() != null) {
         
         if(e.getSource()==menu.getvolver() && (Rol.equals("Trabajador")||Rol.equals("Docente"))){//Aqui va un && con el JSON del tipo de usuario
             if(this.empleado != null){
-            empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            empleado.setResizable(false);
+        empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            //empleado.setResizable(false);
             empleado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             empleado.setVisible(true);
             menu.setVisible(false);
@@ -119,7 +119,7 @@ if (this.menu.getvolver() != null) {
         if(e.getSource()==menu.getvolver() && (Rol.equals("Administrador"))){//Aqui va un && con el JSON del tipo de usuario
             if(this.admin != null){
             admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
-            admin.setResizable(false);
+            //admin.setResizable(false);
             admin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             admin.setVisible(true);
             menu.setVisible(false);

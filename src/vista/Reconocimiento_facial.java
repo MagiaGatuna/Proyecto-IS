@@ -26,6 +26,8 @@ public Reconocimiento_facial(){
 
     barrasuperior(pantalla);
     fondo_panel(pantalla, alto);
+    setSize(pantalla, alto);            
+    setExtendedState(JFrame.MAXIMIZED_BOTH);
 }
 
 public void barrasuperior(int pantalla){
@@ -44,7 +46,7 @@ logoucv.setBounds(10,5,60,60);
 barra.add(logoucv);
 barra.addSeparator();
 
-cerrar= new JButton ("Volver");
+cerrar= new JButton ("HOME");
 cerrar.setBackground(new Color(14,9,137));
 cerrar.setPreferredSize(new Dimension(150,45));
 cerrar.setForeground(new Color(255,255,255));
