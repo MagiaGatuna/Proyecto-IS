@@ -98,5 +98,25 @@
         "reservas_actual": 0,
         "dia": "WEDNESDAY",
         "valorNutricional": "234"
+    },
+    {
+        "descripcion": " ",
+        "dia_turno": "FRIDAY_ALMUERZO",
+        "aforo_max": 0,
+        "comida": "Lo sentimos, no hay menu para este turno",
+        "turno": "ALMUERZO",
+        "reservas_actual": 0,
+        "dia": "FRIDAY",
+        "valorNutricional": "0"
+    },
+    {
+        "descripcion": " ",
+        "dia_turno": "FRIDAY_DESAYUNO",
+        "aforo_max": 0,
+        "comida": "Lo sentimos, no hay menu para este turno",
+        "turno": "DESAYUNO",
+        "reservas_actual": 0,
+        "dia": "FRIDAY",
+        "valorNutricional": "0"
     }
 ]
