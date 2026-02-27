@@ -10,14 +10,14 @@
         "valorNutricional": "349 Kcal"
     },
     {
-        "descripcion": " ",
+        "descripcion": "Rico pollo con una ensalada reconfortante",
         "dia_turno": "MONDAY_ALMUERZO",
-        "aforo_max": 0,
-        "comida": "Lo sentimos, no hay menu para este turno",
+        "aforo_max": 1006,
+        "comida": "Ensalada César y pollo",
         "turno": "ALMUERZO",
         "reservas_actual": 0,
         "dia": "MONDAY",
-        "valorNutricional": "0"
+        "valorNutricional": "236"
     },
     {
         "descripcion": "Empanada crujiente de maíz rellena de jugosa carne mechada.",
@@ -99,7 +99,7 @@
         "dia": "WEDNESDAY",
         "valorNutricional": "234"
     },
-        {
+    {
         "descripcion": "Deliciosa pasta en salsa de carne",
         "dia_turno": "FRIDAY_ALMUERZO",
         "aforo_max": 456,
@@ -109,7 +109,7 @@
         "dia": "FRIDAY",
         "valorNutricional": "234"
     },
-            {
+    {
         "descripcion": "Suave pan horneado relleno de jamón de primera calidad.",
         "dia_turno": "FRIDAY_DESAYUNO",
         "aforo_max": 40,
