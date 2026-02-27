@@ -37,16 +37,10 @@ public class ValidarUtil {
     }
 }
     public static boolean ReferenciaValida(JTextField ref){
-        if (ref.getText().trim().length() > 4 || ref.getText().trim().length() < 4) {
-        JOptionPane.showMessageDialog(null, "Error: El número de referencia es demasiado largo, por favor colocar los ultimos 4 digitos.");
-        return false;
-       
-    }
-     if(ref.getText().trim().length() == 4){
+        if(ref.getText().trim().length()==4){
             return true;
         }
-    
-    return true;
+        return false;
     }
 
 }
