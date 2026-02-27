@@ -10,7 +10,7 @@ public class CalcularTest {
 
     void testProfesor(){
      double NuevoPorcentaje=75;
-     String rol="Profesor";
+     String rol="profesor";
      boolean resultado= Calcular.cambiarPorcentaje(NuevoPorcentaje,rol);
      assertTrue(resultado,"Debe mostrar true si se actualizó correctamente el porcentaje");
     }

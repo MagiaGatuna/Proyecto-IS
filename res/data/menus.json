@@ -10,14 +10,14 @@
         "valorNutricional": "349 Kcal"
     },
     {
-        "descripcion": " ",
+        "descripcion": "Rico pollo con una ensalada reconfortante",
         "dia_turno": "MONDAY_ALMUERZO",
-        "aforo_max": 10,
-        "comida": "Lo sentimos, no hay menu para este turno",
+        "aforo_max": 11006,
+        "comida": "Ensalada César y pollo",
         "turno": "ALMUERZO",
         "reservas_actual": 1,
         "dia": "MONDAY",
-        "valorNutricional": "0"
+        "valorNutricional": "236"
     },
     {
         "descripcion": "Empanada crujiente de maíz rellena de jugosa carne mechada.",
