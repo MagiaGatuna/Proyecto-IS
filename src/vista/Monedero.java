@@ -100,11 +100,17 @@ public class Monedero extends JPanel {
         
     }
 
-    public void actualizarSaldoVisual() {
-    this.label_saldoactual.setText("Saldo actual: " + cliente.getSaldo());
-    this.repaint(); // Refresca el dibujo del panel
-}
-    public static void main(String[] args) {
+public void actualizarSaldoVisual(double nuevoSaldo) {
+   
+    this.cliente.setSaldo(nuevoSaldo);
+    
+   
+    this.label_saldoactual.setText("Saldo actual: " + nuevoSaldo);
+    
+    // Forzamos el redibujado de la interfaz
+    this.revalidate();
+    this.repaint();
+}    public static void main(String[] args) {
         /* 
         JFrame f = new JFrame();
     f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
