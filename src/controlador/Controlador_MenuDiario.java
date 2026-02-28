@@ -39,6 +39,19 @@ public class Controlador_MenuDiario implements ActionListener {
                 menu.getBtnReservarB().addActionListener(this);
             }
         }
+        this.menu.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentShown(java.awt.event.ComponentEvent e) {
+                String diaEspanol = menu.getDiaSemana();
+                if (diaEspanol.equalsIgnoreCase("Sabado") || diaEspanol.equalsIgnoreCase("Domingo")) {
+                    JOptionPane.showMessageDialog(menu, 
+                        "Estimado usuario: Es fin de semana y nuestro comedor está fuera de servicio.", 
+                        "Servicio Cerrado", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+        
         cargarInformacionMenu();
 
         int horaActual = Calcular_dia.gethora();
@@ -64,13 +77,6 @@ public class Controlador_MenuDiario implements ActionListener {
 
     private void cargarInformacionMenu() {
         String diaEspanol = menu.getDiaSemana(); 
-
-        if (diaEspanol.equalsIgnoreCase("Sabado") || diaEspanol.equalsIgnoreCase("Domingo")) {
-        JOptionPane.showMessageDialog(menu, 
-            "Estimado usuario: Es fin de semana y nuestro comedor está fuera de servicio.", 
-            "Servicio Cerrado", 
-            JOptionPane.INFORMATION_MESSAGE);}
-
         String diaIngles = traducirDiaAlIngles(diaEspanol);
 
         actualizarTurno(diaIngles, "DESAYUNO");
