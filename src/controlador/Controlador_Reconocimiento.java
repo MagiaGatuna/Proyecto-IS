@@ -63,8 +63,18 @@ public class Controlador_Reconocimiento implements ActionListener {
                 return;
             }
 
+            String V_Dia = Calcular_dia.getdia();
+            String V_Turno = Calcular_dia.getTurno();
+            String idMenu = "";
 
-            Reserva reserva = ReservaDAO.buscarPorCedula(cedula);
+            if(V_Turno==""){
+                JOptionPane.showMessageDialog(vista, "Lamentamos informar que el comedor no ofrece servicio en este horario");
+                return;
+            }else{
+                idMenu = V_Dia + "_" + V_Turno;
+            }
+
+            Reserva reserva = ReservaDAO.buscarPorCedula(cedula, idMenu);
             if (reserva == null) {
                 JOptionPane.showMessageDialog(vista, "No tienes una reserva activa.");
                 return;
@@ -114,7 +124,7 @@ public class Controlador_Reconocimiento implements ActionListener {
             double nuevoSaldo = usuario.getSaldo() - precioFinal;
             if (UsuarioDAO.actualizarSaldo(cedula, nuevoSaldo)) {
                 
-                ReservaDAO.eliminarPorCedula(cedula);
+                ReservaDAO.eliminarPorCedula(cedula, idMenu);
                 
                 JOptionPane.showMessageDialog(vista,
                     "¡Cobro Exitoso y Comida Entregada!\n" +
@@ -131,7 +141,7 @@ public class Controlador_Reconocimiento implements ActionListener {
     }
 
     private void cancelarPorExpiracion(String cedula, String diaTurno, String mensaje) {
-        ReservaDAO.eliminarPorCedula(cedula);
+        ReservaDAO.eliminarPorCedula(cedula, diaTurno);
         Menus_lista.decrementarReserva(diaTurno);
         JOptionPane.showMessageDialog(vista, mensaje, "Reserva Expirada", JOptionPane.WARNING_MESSAGE);
     }

@@ -24,6 +24,18 @@ public static int gethora(){ //Aqui se maneja el calculo de la hora, lo hace en 
     return resultado;
 }
 
+public static String getTurno(){
+    int Vhora = gethora();
+    if(Vhora>=420 && Vhora<600){
+        return "DESAYUNO";
+    }else{if(Vhora>=720 && Vhora<900){
+        return "ALMUERZO";
+    }else{
+        return "";
+    }
+}
+}
+
 public static int getDiaMesNumero(){
         LocalDate dia = LocalDate.now();
         return dia.getDayOfMonth();

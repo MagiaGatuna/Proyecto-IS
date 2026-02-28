@@ -42,6 +42,7 @@ public class Controlador_MenuSemanal implements ActionListener{
         this.admin=admin;
 
         hora= Calcular_dia.gethora();
+        
         dia= Calcular_dia.getdia();
 
         menu.getEditar().addActionListener(this);
@@ -339,7 +340,7 @@ private void realizarReserva(String turno) {
                 return;
             }
             
-            Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula());
+            Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula(), idMenu);
             if (reservaExistente != null) {
                 JOptionPane.showMessageDialog(menu, "Ya tienes una reserva activa para: " + reservaExistente.getDiaTurno());
                 return;

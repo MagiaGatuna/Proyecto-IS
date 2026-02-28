@@ -185,7 +185,7 @@ private void realizarReserva(String turno) {
         String idMenu = menuData.getString("dia_turno");
         double precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
 
-        Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula());
+        Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula(), idMenu);
         if (reservaExistente != null) {
             JOptionPane.showMessageDialog(menu, "Ya tienes una reserva activa para: " + reservaExistente.getDiaTurno());
             return;

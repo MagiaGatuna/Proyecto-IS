@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class ReservaDAO {
     private static final Path RUTA = Paths.get("res/data/reservas.json").toAbsolutePath();
 
-    public static Reserva buscarPorCedula(String cedula) {
+    public static Reserva buscarPorCedula(String cedula, String diaTurno) {
         try {
             if (!Files.exists(RUTA)) {
                 return null;
@@ -24,7 +24,7 @@ public class ReservaDAO {
             JSONArray lista = new JSONArray(contenido);
             for (int i = 0; i < lista.length(); i++) {
                 JSONObject obj = lista.getJSONObject(i);
-                if (obj.getString("cedula").equals(cedula)) {
+                if (obj.getString("cedula").equals(cedula) && obj.getString("dia_turno").equals(diaTurno)) {
                     return new Reserva(cedula, obj.getString("dia_turno"));
                 }
             }
@@ -35,7 +35,7 @@ public class ReservaDAO {
     }
 
 
-    public static void eliminarPorCedula(String cedula) {
+    public static void eliminarPorCedula(String cedula, String idMenu) {
         try {
             if (!Files.exists(RUTA)) {
                 return;
@@ -45,7 +45,7 @@ public class ReservaDAO {
             JSONArray nuevaLista = new JSONArray();
             for (int i = 0; i < lista.length(); i++) {
                 JSONObject obj = lista.getJSONObject(i);
-                if (!obj.getString("cedula").equals(cedula)) {
+                if (!obj.getString("cedula").equals(cedula)||!obj.getString("dia_turno").equals(idMenu)) {
                     nuevaLista.put(obj);
                 }
             }

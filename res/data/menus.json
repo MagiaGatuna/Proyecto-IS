@@ -15,7 +15,7 @@
         "aforo_max": 11006,
         "comida": "Ensalada César y pollo",
         "turno": "ALMUERZO",
-        "reservas_actual": 2,
+        "reservas_actual": 5,
         "dia": "MONDAY",
         "valorNutricional": "236"
     },
@@ -45,7 +45,7 @@
         "aforo_max": 1500,
         "comida": "Pasticho",
         "turno": "ALMUERZO",
-        "reservas_actual": 1000,
+        "reservas_actual": 1001,
         "dia": "TUESDAY",
         "valorNutricional": "300 Kcal"
     },
@@ -85,7 +85,7 @@
         "aforo_max": 65,
         "comida": "Avena con chocolate",
         "turno": "DESAYUNO",
-        "reservas_actual": 0,
+        "reservas_actual": 3,
         "dia": "TUESDAY",
         "valorNutricional": "214"
     },
