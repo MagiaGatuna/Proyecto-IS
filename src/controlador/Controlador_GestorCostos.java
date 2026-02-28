@@ -10,7 +10,7 @@ import src.vista.GestorCFView;
 import src.vista.GestorCVView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+//
 public class Controlador_GestorCostos implements ActionListener {
     private GestorCostosView view;
     private Landingpage landingpage;  
