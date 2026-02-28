@@ -5,7 +5,7 @@
         "aforo_max": 500,
         "comida": "Arepa con huevo frito",
         "turno": "DESAYUNO",
-        "reservas_actual": 54,
+        "reservas_actual": 56,
         "dia": "MONDAY",
         "valorNutricional": "349 Kcal"
     },
@@ -15,7 +15,7 @@
         "aforo_max": 11006,
         "comida": "Ensalada César y pollo",
         "turno": "ALMUERZO",
-        "reservas_actual": 1,
+        "reservas_actual": 2,
         "dia": "MONDAY",
         "valorNutricional": "236"
     },

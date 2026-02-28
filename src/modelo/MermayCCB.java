@@ -44,7 +44,7 @@ public class MermayCCB {
         return -3;
     }
 
-    public static double getCCB(String ID_MENU) {
+public static double getCCB(String ID_MENU) {
         String cvStr = src.modelo.editarCostos.getCV(ID_MENU);
         String cfStr = src.modelo.editarCostos.getCF();
 
@@ -53,12 +53,22 @@ public class MermayCCB {
             return -1;
         }
 
-        double CV = Double.parseDouble(cvStr.replace("Bs", "").trim());
-        double CF = Double.parseDouble(cfStr.replace("Bs", "").trim());
+
+        double CV = Double.parseDouble(cvStr.replace("Bs", "").replace(",", ".").trim());
+        double CF = Double.parseDouble(cfStr.replace("Bs", "").replace(",", ".").trim());
 
         int NB = getAforo(ID_MENU); 
-        double Merma = getMerma(ID_MENU).replace("%", "").trim().equals("No encontrado") ? 0.0 :
-                        Double.parseDouble(getMerma(ID_MENU).replace("%", "").trim()) / 100.0;
+        
+
+        String mermaStr = getMerma(ID_MENU).replace("%", "").trim();
+        double Merma = mermaStr.equals("No encontrado") ? 0.0 :
+                        Double.parseDouble(mermaStr.replace(",", ".")) / 100.0;
+                        
+
+        if (NB <= 0) {
+            return 0.0; 
+        }
+        
         double CBB = ((CV+CF)/NB)*(1+Merma);
         return CBB;
     }

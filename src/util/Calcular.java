@@ -13,11 +13,11 @@ public class Calcular {
 
     public static double calcularPrecio(String idMenu, String rol) {
         double CCB = src.modelo.MermayCCB.getCCB(idMenu);
-        if (rol.equals("estudiante")) {
+        if (rol.equalsIgnoreCase("estudiante")) {
             return CCB * (PorcentajeEstudiante / 100.0); 
-        } else if (rol.equals("profesor")) {
+        } else if (rol.equalsIgnoreCase("profesor")) {
             return CCB * (PorcentajeProfesor / 100.0); 
-        } else if (rol.equals("empleado")) {
+        } else if (rol.equalsIgnoreCase("empleado")) {
             return CCB * (PorcentajeEmpleado / 100.0); 
         } else {
             return CCB; 
