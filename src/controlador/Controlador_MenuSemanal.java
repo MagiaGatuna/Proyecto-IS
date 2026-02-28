@@ -12,6 +12,7 @@ import src.modelo.Menus_lista;
 import src.modelo.Reserva;
 import src.modelo.ReservaDAO;
 import src.modelo.Usuario;
+import src.modelo.UsuarioDAO;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -302,60 +303,76 @@ public void pintarboton(String hoy) {
     }
 
 private void realizarReserva(String turno) {
-    try {
-        Usuario usuario = validadorInicioS.getUsuarioActual();
-        if (usuario == null) {
-            JOptionPane.showMessageDialog(menu, "No hay usuario logueado.");
-            return;
-        }
-
-        String diaIngles = dia_seleccionado; // ya está en inglés (MONDAY, etc.)
-        JSONObject menuData = Menus_lista.getMenuData(diaIngles, turno);
-        if (menuData == null) {
-            JOptionPane.showMessageDialog(menu, "No hay menú disponible para este turno.");
-            return;
-        }
-
-        String idMenu = menuData.getString("dia_turno");
-        double precioFinal = 0;
         try {
-            precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(menu, "Error al calcular el precio: " + ex.getMessage());
-            return;
+            Usuario usuario = validadorInicioS.getUsuarioActual();
+            if (usuario == null) {
+                JOptionPane.showMessageDialog(menu, "No hay usuario logueado.");
+                return;
+            }
+
+            String diaIngles = dia_seleccionado; 
+            JSONObject menuData = Menus_lista.getMenuData(diaIngles, turno);
+            if (menuData == null) {
+                JOptionPane.showMessageDialog(menu, "No hay menú disponible para este turno.");
+                return;
+            }
+
+            if (!menuData.has("comida") || menuData.getString("comida").trim().isEmpty() || menuData.getString("comida").equals("Lo sentimos, no hay menu para este turno")) {
+                JOptionPane.showMessageDialog(menu, "Este menú aún no está disponible para reservas.");
+                return;
+            }
+
+            int aforoMax = menuData.optInt("aforo_max", 0);
+            int reservasActuales = menuData.optInt("reservas_actual", 0);
+            if (reservasActuales >= aforoMax && aforoMax > 0) {
+                JOptionPane.showMessageDialog(menu, "¡Lo sentimos! El aforo máximo para este menú ya está lleno.");
+                return;
+            }
+
+            String idMenu = menuData.getString("dia_turno");
+            double precioFinal = 0;
+            try {
+                precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                JOptionPane.showMessageDialog(menu, "Error al calcular el precio: " + ex.getMessage());
+                return;
+            }
+            
+            Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula());
+            if (reservaExistente != null) {
+                JOptionPane.showMessageDialog(menu, "Ya tienes una reserva activa para: " + reservaExistente.getDiaTurno());
+                return;
+            }
+            if (usuario.getSaldo() < precioFinal) {
+                JOptionPane.showMessageDialog(menu, String.format("Saldo insuficiente.\nSu saldo es: %.2f Bs\nCosto del menú: %.2f Bs.", usuario.getSaldo(), precioFinal));
+                return;
+            }
+
+            int opcion = JOptionPane.showConfirmDialog(menu,
+                "¿Confirmar reserva?\n" +
+                "Menú: " + menuData.getString("comida") + "\n" +
+                "Precio final: " + precioFinal + " Bs\n" +
+                "Saldo restante: " + (usuario.getSaldo() - precioFinal) + " Bs",
+                "Confirmar reserva",
+                JOptionPane.YES_NO_OPTION);
+
+            if (opcion == JOptionPane.YES_OPTION) {
+
+                    Reserva nuevaReserva = new Reserva(usuario.getCedula(), idMenu);
+                    ReservaDAO.guardar(nuevaReserva);
+
+                    Menus_lista.incrementarReserva(idMenu);
+                    Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"), dia_seleccionado, "DESAYUNO");
+                    Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"), dia_seleccionado, "ALMUERZO");
+
+                    JOptionPane.showMessageDialog(menu, "¡Reserva realizada con éxito!");
+                
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(menu, "Error inesperado: " + e.getMessage());
         }
-        Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula());
-        if (reservaExistente != null) {
-            JOptionPane.showMessageDialog(menu, "Ya tienes una reserva activa para: " + reservaExistente.getDiaTurno());
-            return;
-        }
-
-        int opcion = JOptionPane.showConfirmDialog(menu,
-            "¿Confirmar reserva?\n" +
-            "Menú: " + menuData.getString("comida") + "\n" +
-            "Precio final: " + precioFinal + " Bs",
-            "Confirmar reserva",
-            JOptionPane.YES_NO_OPTION);
-
-        if (opcion != JOptionPane.YES_OPTION) {
-            return;
-        }
-
-        Reserva nuevaReserva = new Reserva(usuario.getCedula(), idMenu);
-        ReservaDAO.guardar(nuevaReserva);
-
-        Menus_lista.incrementarReserva(idMenu);
-
-        // Actualizar vista
-        Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"), dia_seleccionado, "DESAYUNO");
-        Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"), dia_seleccionado, "ALMUERZO");
-
-        JOptionPane.showMessageDialog(menu, "Reserva realizada con éxito.");
-
-    } catch (Exception e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(menu, "Error inesperado: " + e.getMessage());
     }
-}
 }

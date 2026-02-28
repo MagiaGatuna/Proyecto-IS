@@ -14,6 +14,7 @@ import src.modelo.Menus_lista;
 import src.modelo.Reserva;
 import src.modelo.ReservaDAO;
 import src.modelo.Usuario;
+import src.modelo.UsuarioDAO;
 
 import org.json.JSONObject; 
 
@@ -39,6 +40,19 @@ public class Controlador_MenuDiario implements ActionListener {
                 menu.getBtnReservarB().addActionListener(this);
             }
         }
+        this.menu.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentShown(java.awt.event.ComponentEvent e) {
+                String diaEspanol = menu.getDiaSemana();
+                if (diaEspanol.equalsIgnoreCase("Sabado") || diaEspanol.equalsIgnoreCase("Domingo")) {
+                    JOptionPane.showMessageDialog(menu, 
+                        "Estimado usuario: Es fin de semana y nuestro comedor está fuera de servicio.", 
+                        "Servicio Cerrado", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+
         cargarInformacionMenu();
 
         int horaActual = Calcular_dia.gethora();
@@ -64,13 +78,6 @@ public class Controlador_MenuDiario implements ActionListener {
 
     private void cargarInformacionMenu() {
         String diaEspanol = menu.getDiaSemana(); 
-
-        if (diaEspanol.equalsIgnoreCase("Sabado") || diaEspanol.equalsIgnoreCase("Domingo")) {
-        JOptionPane.showMessageDialog(menu, 
-            "Estimado usuario: Es fin de semana y nuestro comedor está fuera de servicio.", 
-            "Servicio Cerrado", 
-            JOptionPane.INFORMATION_MESSAGE);}
-
         String diaIngles = traducirDiaAlIngles(diaEspanol);
 
         actualizarTurno(diaIngles, "DESAYUNO");
@@ -147,48 +154,64 @@ public class Controlador_MenuDiario implements ActionListener {
 }
     }
 
-    private void realizarReserva(String turno) {
-    Usuario usuario = validadorInicioS.getUsuarioActual();
-    if (usuario == null) {
-        JOptionPane.showMessageDialog(menu, "No hay usuario logueado.");
-        return;
+private void realizarReserva(String turno) {
+        Usuario usuario = validadorInicioS.getUsuarioActual();
+        if (usuario == null) {
+            JOptionPane.showMessageDialog(menu, "No hay usuario logueado.");
+            return;
+        }
+        
+        String diaEspanol = menu.getDiaSemana();
+        String diaIngles = traducirDiaAlIngles(diaEspanol);
+        JSONObject menuData = Menus_lista.getMenuData(diaIngles, turno);
+        
+        if (menuData == null) {
+            JOptionPane.showMessageDialog(menu, "No hay menú disponible para este turno.");
+            return;
+        }
+
+        if (!menuData.has("comida") || menuData.getString("comida").trim().isEmpty() || menuData.getString("comida").equals("Lo sentimos, no hay menu para este turno")) {
+            JOptionPane.showMessageDialog(menu, "Este menú aún no está disponible para reservas.");
+            return;
+        }
+
+        int aforoMax = menuData.optInt("aforo_max", 0);
+        int reservasActuales = menuData.optInt("reservas_actual", 0);
+        if (reservasActuales >= aforoMax && aforoMax > 0) {
+            JOptionPane.showMessageDialog(menu, "¡Lo sentimos! El aforo máximo para este menú ya está lleno.");
+            return;
+        }
+
+        String idMenu = menuData.getString("dia_turno");
+        double precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
+
+        Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula());
+        if (reservaExistente != null) {
+            JOptionPane.showMessageDialog(menu, "Ya tienes una reserva activa para: " + reservaExistente.getDiaTurno());
+            return;
+        }
+        if (usuario.getSaldo() < precioFinal) {
+            JOptionPane.showMessageDialog(menu, String.format("Saldo insuficiente.\nSu saldo es: %.2f Bs\nCosto del menú: %.2f Bs.", usuario.getSaldo(), precioFinal));
+            return;
+        }
+
+        int opcion = JOptionPane.showConfirmDialog(menu,
+            "¿Confirmar reserva?\n" +
+            "Menú: " + menuData.getString("comida") + "\n" +
+            "Precio final: " + precioFinal + " Bs\n" +
+            "Saldo restante: " + (usuario.getSaldo() - precioFinal) + " Bs",
+            "Confirmar reserva",
+            JOptionPane.YES_NO_OPTION);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+                
+                Reserva nuevaReserva = new Reserva(usuario.getCedula(), idMenu);
+                ReservaDAO.guardar(nuevaReserva);
+                Menus_lista.incrementarReserva(idMenu);
+                actualizarTurno(diaIngles, turno); 
+                JOptionPane.showMessageDialog(menu, "¡Reserva realizada con éxito!");
+            
+        
     }
-    String diaEspanol = menu.getDiaSemana();
-    String diaIngles = traducirDiaAlIngles(diaEspanol);
-    JSONObject menuData = Menus_lista.getMenuData(diaIngles, turno);
-    if (menuData == null) {
-        JOptionPane.showMessageDialog(menu, "No hay menú disponible para este turno.");
-        return;
-    }
-
-
-
-    String idMenu = menuData.getString("dia_turno");
-    double precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
-
-    Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula());
-    if (reservaExistente != null) {
-        JOptionPane.showMessageDialog(menu, "Ya tienes una reserva activa para: " + reservaExistente.getDiaTurno());
-        return;
-    }
-
-    int opcion = JOptionPane.showConfirmDialog(menu,
-        "¿Confirmar reserva?\n" +
-        "Menú: " + menuData.getString("comida") + "\n" +
-        "Precio final: " + precioFinal + " Bs",
-        "Confirmar reserva",
-        JOptionPane.YES_NO_OPTION);
-
-    if (opcion != JOptionPane.YES_OPTION) {
-        return;
-    }
-
-    String diaTurno = idMenu;
-    Reserva nuevaReserva = new Reserva(usuario.getCedula(), diaTurno);
-    ReservaDAO.guardar(nuevaReserva);
-    Menus_lista.incrementarReserva(idMenu);
-    actualizarTurno(diaIngles, turno); 
-
-    JOptionPane.showMessageDialog(menu, "Reserva realizada con éxito.");
 }
 }

@@ -96,7 +96,7 @@ public class GestorCostosView extends JFrame {
         pnlMerma.add(txtMermaPorcentaje);
         pnlMerma.add(btnActualizarMerma);
 
-        // 2. Bloque de Costo Fijo (Centro)
+
         JPanel pnlCF = new JPanel(new FlowLayout(FlowLayout.CENTER));
         pnlCF.setOpaque(false);
         JLabel lblCF = new JLabel("TOTAL DE COSTOS FIJOS (CF): ");
