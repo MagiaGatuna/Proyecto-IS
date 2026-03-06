@@ -89,6 +89,7 @@ public class MenuSemanal extends JFrame{
     public void barra_superior(int pantalla){
         
         Font fuente2_1= new Font ("SANS_SERIF", Font.PLAIN, 16);
+        Font fuente2_2= new Font ("SANS_SERIF", Font.BOLD, 20);
         titulo_universidad= new JLabel("Sistema Comedor Universitario");
 
         barra_s= new JToolBar ();
@@ -97,7 +98,7 @@ public class MenuSemanal extends JFrame{
         barra_s.setBorderPainted(false);
 
         titulo_universidad.setBounds(200,10,200,30);
-        titulo_universidad.setFont(fuente2_1);
+        titulo_universidad.setFont(fuente2_2);
 
         ImageIcon icono2= new ImageIcon ("res/LogoUCV.png");
         Image tam_ima= icono2.getImage().getScaledInstance(90,90,Image.SCALE_SMOOTH);

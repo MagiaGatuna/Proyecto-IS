@@ -53,6 +53,7 @@ mediopantalla(pantalla);
 private void barrasuperior(int pantalla){
 
 Font fuente2_1= new Font ("SANS_SERIF", Font.PLAIN, 16);
+Font fuente2_2= new Font ("SANS_SERIF", Font.BOLD, 20);
 
 label1= new JLabel("Sistema Comedor Universitario");
 
@@ -66,7 +67,7 @@ Image tam_ima= icono2.getImage().getScaledInstance(90,90,Image.SCALE_SMOOTH);
 JLabel logoucv= new JLabel(new ImageIcon(tam_ima));
 logoucv.setBounds(10,5,60,60);
 label1.setBounds(200,10,200,30);
-label1.setFont(fuente2_1);
+label1.setFont(fuente2_2);
 
 barra.add(logoucv);
 barra.addSeparator();

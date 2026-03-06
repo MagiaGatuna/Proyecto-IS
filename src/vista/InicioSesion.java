@@ -92,7 +92,7 @@ public class InicioSesion extends JFrame {
     Panel1.add(btnMostrarOcultar);
 
 //creamos el icono que poor diseño es ta en la interfaz
-    Panel1.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",190, 20, 120, 120));
+    Panel1.add(Diseño_interfaz.Creador_iconos("res/logoSistemaComedor.png",190, 20, 120, 120));
     
 //creamos el boton que redirecciona a el inicio de sesion
     boton_InicioSesion=Diseño_interfaz.Creador_Botones("INICIAR SESIÓN",150, 340, 200, 45,Diseño_interfaz.colorazul);

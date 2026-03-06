@@ -61,7 +61,7 @@ public class Registro extends JFrame {
 
 
         try{
-            ImageIcon Logo = new ImageIcon("res/LogoUCV.png");
+            ImageIcon Logo = new ImageIcon("res/logoSistemaComedor.png");
             if(Logo.getImageLoadStatus() == MediaTracker.COMPLETE) {
                 Image LogoEscalado = Logo.getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH);
                 ImageIcon logoFinal = new ImageIcon(LogoEscalado);
