@@ -63,15 +63,15 @@ public class Controlador_Reconocimiento implements ActionListener {
                 return;
             }
 
-            String V_Dia = Calcular_dia.getdia();
-            String V_Turno = Calcular_dia.getTurno();
+            String Dia = Calcular_dia.getdia();
+            String Turno = Calcular_dia.getTurno();
             String idMenu = "";
 
-            if(V_Turno==""){
+            if(Turno.isEmpty()){
                 JOptionPane.showMessageDialog(vista, "Lamentamos informar que el comedor no ofrece servicio en este horario");
                 return;
             }else{
-                idMenu = V_Dia + "_" + V_Turno;
+                idMenu = Dia + "_" + Turno;
             }
 
             Reserva reserva = ReservaDAO.buscarPorCedula(cedula, idMenu);
@@ -86,32 +86,16 @@ public class Controlador_Reconocimiento implements ActionListener {
             String turnoReserva = partes[1];
 
 
-            String diaActual = Calcular_dia.getdia();
-            int horaActualMinutos = Calcular_dia.gethora();
             int indiceDiaReserva = Calcular_dia.getIndiceDia(diaReserva);
-            int indiceDiaActual = Calcular_dia.getIndiceDia(diaActual);
+            int indiceDiaActual = Calcular_dia.getIndiceDia(Dia);
 
             if (indiceDiaReserva > indiceDiaActual) {
                 JOptionPane.showMessageDialog(vista, "Tu reserva es para el " + diaReserva + ". Aún no puedes retirarla.");
                 return;
-            } else if (indiceDiaReserva < indiceDiaActual) {
-                cancelarPorExpiracion(cedula, diaTurno, "La reserva era de un día anterior. Ha sido cancelada.");
-                return;
-            }
+            } 
 
 
-            int inicio = 0, fin = 0;
-            if (turnoReserva.equals("DESAYUNO")) { inicio = 420; fin = 600; } 
-            else if (turnoReserva.equals("ALMUERZO")) { inicio = 690; fin = 900; }
-            else if (turnoReserva.equals("CENA")) { inicio = 1020; fin = 1200; }
 
-            if (horaActualMinutos < inicio) {
-                JOptionPane.showMessageDialog(vista, "Aún es muy temprano para el " + turnoReserva);
-                return;
-            } else if (horaActualMinutos > fin) {
-                cancelarPorExpiracion(cedula, diaTurno, "La reserva fue hace mucho y fue cancelada.");
-                return;
-            }
 
             JSONObject menuData = Menus_lista.getMenuData(diaReserva, turnoReserva);
             double precioFinal = Calcular.calcularPrecio(diaTurno, usuario.getRol());
@@ -125,7 +109,7 @@ public class Controlador_Reconocimiento implements ActionListener {
             if (UsuarioDAO.actualizarSaldo(cedula, nuevoSaldo)) {
                 
                 ReservaDAO.eliminarPorCedula(cedula, idMenu);
-                
+                //AGREGAR AL NUEVO JSON DE CONSUMOS
                 JOptionPane.showMessageDialog(vista,
                     "¡Cobro Exitoso y Comida Entregada!\n" +
                     "Menú: " + menuData.getString("comida") + "\n" +
@@ -140,9 +124,10 @@ public class Controlador_Reconocimiento implements ActionListener {
         }
     }
 
-    private void cancelarPorExpiracion(String cedula, String diaTurno, String mensaje) {
+/*     private void cancelarPorExpiracion(String cedula, String diaTurno, String mensaje) {
         ReservaDAO.eliminarPorCedula(cedula, diaTurno);
         Menus_lista.decrementarReserva(diaTurno);
         JOptionPane.showMessageDialog(vista, mensaje, "Reserva Expirada", JOptionPane.WARNING_MESSAGE);
     }
+        */
 }
