@@ -226,7 +226,7 @@ public class MenuDView extends JFrame {
 
         mensaje.setForeground(colorFuente);
 
-        mensaje.setFont(new Font("Arial", Font.BOLD, size));
+        mensaje.setFont(new Font("SANS_SERIF", Font.BOLD, size));
     }
 
     private JPanel crearTarjetaEstandar(String titulo, JLabel lblNom, JLabel lblDesc, JLabel lblVal) {
@@ -238,7 +238,7 @@ public class MenuDView extends JFrame {
 
         JLabel lblTitulo = new JLabel(titulo);
         lblTitulo.setForeground(COLOR_COMIDA_TITULO); 
-        lblTitulo.setFont(new Font("Arial", Font.BOLD, 35));
+        lblTitulo.setFont(new Font("SANS_SERIF", Font.BOLD, 35));
         lblTitulo.setAlignmentX(Component.LEFT_ALIGNMENT);
         tarjeta.add(lblTitulo);
         

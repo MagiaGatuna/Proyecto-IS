@@ -52,7 +52,7 @@ mediopantalla(pantalla);
 
 private void barrasuperior(int pantalla){
 
-Font fuente2_1= new Font ("Arial", Font.PLAIN, 16);
+Font fuente2_1= new Font ("SANS_SERIF", Font.PLAIN, 16);
 
 label1= new JLabel("Sistema Comedor Universitario");
 
@@ -127,9 +127,9 @@ texto.setWrapStyleWord(true);
 texto.setEditable(false);
 texto.setFocusable(false);
 
-Font fuente1 = new Font ("Arial", Font.BOLD,50);
+Font fuente1 = new Font ("SANS_SERIF", Font.BOLD,50);
 titulo.setFont(fuente1);
-Font fuente3= new Font ("Arial", Font.PLAIN, 20);
+Font fuente3= new Font ("SANS_SERIF", Font.PLAIN, 20);
 
 titulo.setHorizontalAlignment(SwingConstants.CENTER);
 titulo.setBounds(0,130,pantalla,90);
@@ -161,7 +161,7 @@ barrita.setBounds(0,alto-100,pantalla,80);
 barrita.add(instagram_logo);
 
 label2= new JLabel("@comedor.ucv    @secretariaucve");
-label2.setFont(new Font("Arial", Font.PLAIN, 14));
+label2.setFont(new Font("SANS_SERIF", Font.PLAIN, 14));
 label2.setForeground(new Color(0,0,0));
 label2.setBounds(50,5,pantalla,40);
 barrita.add(label2);

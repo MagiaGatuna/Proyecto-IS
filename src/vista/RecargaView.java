@@ -70,7 +70,7 @@ public class RecargaView extends JFrame {
 
     //Título del Panel
     JLabel titulo = new JLabel("RECARGA DE SALDO", SwingConstants.CENTER);
-    titulo.setFont(new Font("Arial", Font.BOLD, 24));
+    titulo.setFont(new Font("SANS_SERIF", Font.BOLD, 24));
     titulo.setForeground(Color.WHITE);
     titulo.setBounds(0, 110, 500, 40);
     PanelRecarga.add(titulo);

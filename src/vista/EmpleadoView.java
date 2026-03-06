@@ -107,7 +107,7 @@ public class EmpleadoView extends JFrame {
         }
 
     
-        lblBienvenida.setFont(new Font("Arial", Font.BOLD, 50));
+        lblBienvenida.setFont(new Font("SANS_SERIF", Font.BOLD, 50));
         lblBienvenida.setForeground(COLOR_TEXTO_AZUL);
         lblBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);
         lblBienvenida.setBorder(BorderFactory.createEmptyBorder(0,300,0,0));

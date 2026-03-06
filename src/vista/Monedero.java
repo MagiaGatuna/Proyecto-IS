@@ -58,13 +58,13 @@ public class Monedero extends JPanel {
 
 //creamos el inico de el diseño conla palabra monedor virtual
       label_monedero=new JLabel("Monedero Virtual");//creamos objeto e ingresamos el texto
-      label_monedero.setFont(new Font("Arial", Font.BOLD, 20));//por diseño definifmos el tipo de fuente,color y tamaño de la letra
+      label_monedero.setFont(new Font("SANS_SERIF", Font.BOLD, 20));//por diseño definifmos el tipo de fuente,color y tamaño de la letra
       label_monedero.setForeground(Color.BLACK);//color de las letras
       label_monedero.setBounds(30, 20, 200, 30);//por diseño coocamos sus coordenadas
       add(label_monedero);//lo agregamos a el panel 
 //creamos el texto de nustro saldo actual 
       label_saldoactual=new JLabel("Saldo actual:" + cliente.getSaldo());
-      label_saldoactual.setFont(new Font("Arial", Font.BOLD, 16));//Fuente,tamaño,diseño
+      label_saldoactual.setFont(new Font("SANS_SERIF", Font.BOLD, 16));//Fuente,tamaño,diseño
       label_saldoactual.setForeground(new Color(20, 50, 80));//color de las letras
       label_saldoactual.setBounds(30, 55, 240, 25);//coordenadas
       add(label_saldoactual);//lo agregamos al panel
@@ -73,7 +73,7 @@ public class Monedero extends JPanel {
         label_descuento = new JLabel("Descuento por bandeja:" + porcentaje);//objeto y nombre
 
 
-        label_descuento.setFont(new Font("Arial", Font.PLAIN, 13));//fuente,diseño,tamaño
+        label_descuento.setFont(new Font("SANS_SERIF", Font.PLAIN, 13));//fuente,diseño,tamaño
         label_descuento.setForeground(Color.GRAY);//color de las letras
         label_descuento.setBounds(30, 80, 240, 20);//coordenadas
         add(label_descuento);//agregamos a el panel

@@ -64,7 +64,7 @@ public class InicioSesion extends JFrame {
 
 //creamos el saludo de el inico de sesion
     label_Saludo=new JLabel("ACCESO AL COMEDOR");//creamos el objeto con las letras 
-    label_Saludo.setFont(new Font("Arial", Font.BOLD, 26)); //Por diseño, se agrega una nueva configuaracion a la letra
+    label_Saludo.setFont(new Font("SANS_SERIF", Font.BOLD, 26)); //Por diseño, se agrega una nueva configuaracion a la letra
     label_Saludo.setHorizontalAlignment(SwingConstants.CENTER);//por diseño, alineamos las letras 
     label_Saludo.setBounds(0, 150, 500, 40);// Colocamos las coordenadas de el nuevo objeto
     Panel1.add(label_Saludo);//por diseño lo añadimos a nuestro contendor 

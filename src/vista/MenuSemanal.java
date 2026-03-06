@@ -88,7 +88,7 @@ public class MenuSemanal extends JFrame{
 
     public void barra_superior(int pantalla){
         
-        Font fuente2_1= new Font ("Arial", Font.PLAIN, 16);
+        Font fuente2_1= new Font ("SANS_SERIF", Font.PLAIN, 16);
         titulo_universidad= new JLabel("Sistema Comedor Universitario");
 
         barra_s= new JToolBar ();
@@ -137,7 +137,7 @@ public class MenuSemanal extends JFrame{
     public void barra_dias(int pantalla){
         
         titulo_pagina= new JLabel(" Menús Semanales ofrecidos por el Comedor ");
-        Font fuente1 = new Font ("Arial", Font.BOLD,40);
+        Font fuente1 = new Font ("SANS_SERIF", Font.BOLD,40);
         titulo_pagina.setFont(fuente1);
         titulo_pagina.setHorizontalAlignment(SwingConstants.CENTER);
         titulo_pagina.setBounds(0,120,pantalla,40);
@@ -189,7 +189,7 @@ public class MenuSemanal extends JFrame{
 
     public void panel_desayuno(int pantalla){
         
-        Font fuente1 = new Font ("Arial", Font.BOLD,16);
+        Font fuente1 = new Font ("SANS_SERIF", Font.BOLD,16);
 
         turno_m=new JLabel("Turno de la Mañana: 7am a 10 am");
         turno_m.setFont(fuente1);
@@ -202,8 +202,8 @@ public class MenuSemanal extends JFrame{
         desayuno.setBackground(new Color(92,180,155));
         desayuno.setBounds(68,270,390,430);
 
-        Font fuente2 = new Font ("Arial", Font.BOLD,16);
-        Font fuente3 = new Font ("Arial", Font.BOLD,14);
+        Font fuente2 = new Font ("SANS_SERIF", Font.BOLD,16);
+        Font fuente3 = new Font ("SANS_SERIF", Font.BOLD,14);
         aforo_d= new JLabel("Reservas Actuales: ");
         aforo_d.setFont(fuente3);
         aforo_d.setForeground(new Color(0,0,0));
@@ -230,8 +230,8 @@ public class MenuSemanal extends JFrame{
 
     }
     public void panel_almuerzo(int pantalla){
-        Font fuente1 = new Font ("Arial", Font.BOLD,16);
-        Font fuente3 = new Font ("Arial", Font.BOLD,14);
+        Font fuente1 = new Font ("SANS_SERIF", Font.BOLD,16);
+        Font fuente3 = new Font ("SANS_SERIF", Font.BOLD,14);
 
         turno_t=new JLabel("Turno de la Tarde: 12m a 3pm");
         turno_t.setFont(fuente1);
@@ -244,7 +244,7 @@ public class MenuSemanal extends JFrame{
         almuerzo.setBackground(new Color(92,180,155));
         almuerzo.setBounds(495,270,390,430);
 
-        Font fuente2 = new Font ("Arial", Font.BOLD,16);
+        Font fuente2 = new Font ("SANS_SERIF", Font.BOLD,16);
         aforo_a= new JLabel("Reservas Actuales: ");
         aforo_a.setFont(fuente3);
         aforo_a.setForeground(new Color(0,0,0));
@@ -272,8 +272,8 @@ public class MenuSemanal extends JFrame{
 
     }
     public void panel_cena(int pantalla){
-        Font fuente1 = new Font ("Arial", Font.BOLD,16);
-        Font fuente3 = new Font ("Arial", Font.BOLD,14);
+        Font fuente1 = new Font ("SANS_SERIF", Font.BOLD,16);
+        Font fuente3 = new Font ("SANS_SERIF", Font.BOLD,14);
 
         turno_n=new JLabel("Turno de la Noche: 6pm a 9pm");
         turno_n.setFont(fuente1);

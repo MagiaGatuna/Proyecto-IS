@@ -93,7 +93,7 @@ public class GestorCFView extends JFrame {
         panelCuerpo.setBackground(COLOR_FONDO_BLANCO);
 
         txtAreaInfo = new JTextArea("");
-        txtAreaInfo.setFont(new Font("Arial", Font.PLAIN, 14));
+        txtAreaInfo.setFont(new Font("SANS_SERIF", Font.PLAIN, 14));
         txtAreaInfo.setLineWrap(true);
         txtAreaInfo.setWrapStyleWord(true);
         txtAreaInfo.setEditable(false);
@@ -154,20 +154,20 @@ public class GestorCFView extends JFrame {
         txt.setPreferredSize(new Dimension(220, 30));
         txt.setAlignmentX(Component.LEFT_ALIGNMENT);
         txt.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-        txt.setFont(new Font("Arial", Font.PLAIN, 14));
+        txt.setFont(new Font("SANS_SERIF", Font.PLAIN, 14));
     }
 
     
     private JLabel crearLabelCampo(String texto) {
         JLabel lbl = new JLabel(texto);
-        lbl.setFont(new Font("Arial", Font.BOLD, 14));
+        lbl.setFont(new Font("SANS_SERIF", Font.BOLD, 14));
         lbl.setAlignmentX(Component.LEFT_ALIGNMENT);
         return lbl;
     }
 
     private void estilizarMensaje(JLabel mensaje, Color colorFuente, int size){
         mensaje.setForeground(colorFuente);
-        mensaje.setFont(new Font("Arial", Font.BOLD, size));
+        mensaje.setFont(new Font("SANS_SERIF", Font.BOLD, size));
     }
 
     public static void main(String[] args){

@@ -64,7 +64,7 @@ setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
       labela=new JLabel("¡Bienvenido administrador "+ userActivo.getNombre()+ "!");//creamos el objeto
     }
 
-labela.setFont(new Font("Arial", Font.BOLD, 30)); //Por diseño ajustamos la funte de la letra
+labela.setFont(new Font("SANS_SERIF", Font.BOLD, 30)); //Por diseño ajustamos la funte de la letra
 labela.setHorizontalAlignment(SwingConstants.CENTER);// nos aseguramos de alinearla
 labela.setBounds(0, 120,anchoP, 100);//Por diseño, colocam0so estas coordenadas
 add(labela);//lo agreagamos a la ventana principal
