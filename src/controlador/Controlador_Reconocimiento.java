@@ -98,7 +98,7 @@ public class Controlador_Reconocimiento implements ActionListener {
 
 
             JSONObject menuData = Menus_lista.getMenuData(diaReserva, turnoReserva);
-            double precioFinal = Calcular.calcularPrecio(diaTurno, usuario.getRol());
+            double precioFinal = Calcular.calcularPrecio(diaTurno, usuario);
 
             if (usuario.getSaldo() < precioFinal) {
                 JOptionPane.showMessageDialog(vista, "Saldo insuficiente para pagar la reserva.\nSaldo: " + usuario.getSaldo() + " Bs\nPrecio: " + precioFinal + " Bs");

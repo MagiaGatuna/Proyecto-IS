@@ -1,20 +1,29 @@
 package src.util;
 import src.modelo.Usuario;
-
-import javax.swing.JOptionPane;
-
-import src.modelo.MermayCCB;
+import src.modelo.MermayCCB; 
 
 public class Calcular {
-   // 
-    public static double PorcentajeEstudiante = 20.0; //20% a 30%
-    public static double PorcentajeProfesor = 70.0; //70% a 90%
-    public static double PorcentajeEmpleado = 90.0; //90% a 110%
+    public static double PorcentajeEstudiante = 20.0; 
+    public static double PorcentajeBecario = 5.0;     //5% (siempre menor al regular)
+    public static double PorcentajeProfesor = 70.0;   
+    public static double PorcentajeEmpleado = 90.0;   
 
-    public static double calcularPrecio(String idMenu, String rol) {
+    // OJOOOOO Cambié el parámetro de String rol a Usuario usuario
+    public static double calcularPrecio(String idMenu, Usuario usuario) {
         double CCB = src.modelo.MermayCCB.getCCB(idMenu);
+        String rol = usuario.getRol();
+        
         if (rol.equalsIgnoreCase("estudiante")) {
-            return CCB * (PorcentajeEstudiante / 100.0); 
+            String condicion = usuario.getCondicion();
+            
+            if ("Exonerado".equalsIgnoreCase(condicion)) {
+                return 0.0; // El exonerado no paga nada
+            } else if ("Becario".equalsIgnoreCase(condicion)) {
+                return CCB * (PorcentajeBecario / 100.0); 
+            } else {
+                return CCB * (PorcentajeEstudiante / 100.0); 
+            }
+            
         } else if (rol.equalsIgnoreCase("profesor")) {
             return CCB * (PorcentajeProfesor / 100.0); 
         } else if (rol.equalsIgnoreCase("empleado")) {
@@ -24,20 +33,20 @@ public class Calcular {
         }
     }
 
-    public static boolean cambiarPorcentaje(double NuevoPorcentaje, String rol) {
-        
-        if (rol.equals("estudiante")) {
+    public static boolean cambiarPorcentaje(double NuevoPorcentaje, String tipo) {
+        if (tipo.equalsIgnoreCase("estudiante")) {
             PorcentajeEstudiante = NuevoPorcentaje;
             return true;
-        } else if (rol.equals("profesor")) {
+        } else if (tipo.equalsIgnoreCase("becario")) { // Para que el Admin pueda cambiarlo
+            PorcentajeBecario = NuevoPorcentaje;
+            return true;
+        } else if (tipo.equalsIgnoreCase("profesor")) {
             PorcentajeProfesor = NuevoPorcentaje;
             return true;
-        } else if (rol.equals("empleado")) {
+        } else if (tipo.equalsIgnoreCase("empleado")) {
             PorcentajeEmpleado = NuevoPorcentaje;
             return true;
-        } else {
-            JOptionPane.showMessageDialog(null, "Rol no reconocido");
-            return false;
         }
+        return false;
     }
 }

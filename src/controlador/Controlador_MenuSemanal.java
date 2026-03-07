@@ -333,7 +333,7 @@ private void realizarReserva(String turno) {
             String idMenu = menuData.getString("dia_turno");
             double precioFinal = 0;
             try {
-                precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
+                precioFinal = Calcular.calcularPrecio(idMenu, usuario);
             } catch (Exception ex) {
                 ex.printStackTrace();
                 JOptionPane.showMessageDialog(menu, "Error al calcular el precio: " + ex.getMessage());

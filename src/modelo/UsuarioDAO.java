@@ -23,7 +23,8 @@ public class UsuarioDAO {
                     String nombre = obj.getString("nombres");
                     double saldo = obj.optDouble("saldo", 0.0); 
                     String rol = obj.getString("rol");
-                    return new Usuario(nombre, saldo, rol, cedula, null);
+                    String condicion = obj.optString("condicion", "Regular");
+                    return new Usuario(nombre, saldo, rol, cedula, null, condicion);
                 }
             }
         } catch (IOException e) {
