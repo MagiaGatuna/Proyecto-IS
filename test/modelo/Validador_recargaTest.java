@@ -22,7 +22,7 @@ JTextField referencia_vacia= new JTextField();
 JTextField Monto_positivo=new JTextField("12000");
 JTextField monto_negativo=new JTextField("-23.0");
 JTextField Monto_nulo=new JTextField("");
-Usuario user_actual_registrado= new Usuario("Jimin", 500.0, "Estudiante","4222", "Masculino");
+Usuario user_actual_registrado= new Usuario("Jimin", 500.0, "Estudiante","4222", "Masculino", "Regular");
 
 //Assert
 assertThat(Validador_recarga.ValidarCampos(cedula_Valida,referencia_Valida,Monto_positivo,user_actual_registrado), is(true));

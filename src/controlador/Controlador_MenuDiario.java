@@ -183,7 +183,7 @@ private void realizarReserva(String turno) {
         }
 
         String idMenu = menuData.getString("dia_turno");
-        double precioFinal = Calcular.calcularPrecio(idMenu, usuario.getRol());
+        double precioFinal = Calcular.calcularPrecio(idMenu, usuario);
 
         Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula(), idMenu);
         if (reservaExistente != null) {
