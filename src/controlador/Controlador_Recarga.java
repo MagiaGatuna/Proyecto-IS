@@ -17,6 +17,7 @@ public class Controlador_Recarga implements ActionListener {
     RecargaView vista_recarga;
     Usuario user_actual = validadorInicioS.getUsuarioActual();
     String Rol = user_actual.getRol();
+    String cedula = user_actual.getCedula();
 
     public Controlador_Recarga(AlumnoView vista_alumno, EmpleadoView vista_empleado, Monedero monedero, RecargaView vista_recarga) {
         this.monedero = monedero;
@@ -37,7 +38,7 @@ public class Controlador_Recarga implements ActionListener {
                 
                 double montoARecargar = Double.parseDouble(vista_recarga.Monto().getText().trim());
 
-                if (GestionSaldo.ActualizarSaldo(user_actual.getCedula(), montoARecargar)) {
+                if (GestionSaldo.ActualizarSaldo(user_actual.getCedula(),cedula, montoARecargar)) {
                     // Actualizamos el total en el objeto modelo
                     double nuevoSaldoTotal = user_actual.getSaldo() + montoARecargar;
                     user_actual.setSaldo(nuevoSaldoTotal);

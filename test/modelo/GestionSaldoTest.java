@@ -2,7 +2,7 @@ package test.modelo;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import static  org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 import src.modelo.*;
 
 
@@ -11,22 +11,22 @@ public class GestionSaldoTest {
     private final GestionSaldo prueba = new GestionSaldo();
 @Test
 void testActualizarSaldo(){
+    // Setup de datos
+    String panaValido = "1234";      
+    String panaExonerado = "5555";   
+    String miCedula = "4321";        
+    String cedulaInvalida = "0000"; 
+    
+    double montoPositivo = 500.0;
+    double montoNegativo = -100.0;
+    double montoNulo = 0;
 
-//Act
-String cedula_Valida="1234";
-String cedula_Invalida="512307";
-double monto_positivo=999999.9;
-double monto_negativo=-999999.9;
-double monto_nulo=0;
-
-//Assert
-assertThat(prueba.ActualizarSaldo(cedula_Valida,monto_positivo),is(true));
-assertThat(prueba.ActualizarSaldo(cedula_Valida,monto_negativo),is(false));
-assertThat(prueba.ActualizarSaldo(cedula_Valida,monto_nulo),is(false));
-assertThat(prueba.ActualizarSaldo(cedula_Invalida,monto_negativo),is(false));
-assertThat(prueba.ActualizarSaldo(cedula_Invalida,monto_positivo),is(false));
-assertThat(prueba.ActualizarSaldo(cedula_Invalida,monto_nulo),is(false));
-
+    assertThat(prueba.ActualizarSaldo(panaValido, miCedula, montoPositivo), is(true));
+    assertThat(prueba.ActualizarSaldo(panaValido, miCedula, montoNegativo), is(false));
+    assertThat(prueba.ActualizarSaldo(panaValido, miCedula, montoNulo), is(false));
+    assertThat(prueba.ActualizarSaldo(panaExonerado, miCedula, montoPositivo), is(false));
+    assertThat(prueba.ActualizarSaldo(cedulaInvalida, miCedula, montoPositivo), is(false));
+    assertThat(prueba.ActualizarSaldo(cedulaInvalida, miCedula, montoNegativo), is(false));
 }
     
 }

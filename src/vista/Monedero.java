@@ -28,6 +28,13 @@ public class Monedero extends JPanel {
       boton_recargar.addActionListener(new ActionListener() {
     @Override
     public void actionPerformed(ActionEvent e) {
+
+    if (cliente.getRol().equalsIgnoreCase("Exonerado")) {
+        JOptionPane.showMessageDialog(null, 
+            "Acceso denegado: Los estudiantes exonerados no necesitan recargar saldo.", 
+            "Restricción de Usuario", 
+            JOptionPane.WARNING_MESSAGE);
+    }else{
         // Creamos la vista de recarga
         src.vista.RecargaView vistaRecarga = new src.vista.RecargaView();
 
@@ -50,6 +57,7 @@ public class Monedero extends JPanel {
         if (ventanaTop != null) {
             ventanaTop.setVisible(false);
         }
+    }
     }
 });
       add(boton_recargar);
