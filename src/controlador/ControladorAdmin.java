@@ -5,6 +5,7 @@ import src.vista.GestorCFView;
 import src.vista.GestorCVView;
 import src.vista.GestorCostosView;
 import src.vista.MenuSemanal;
+import src.vista.ListadoComensales;
 import src.vista.HomeAdmin;
 import src.vista.InicioSesion;
 
@@ -18,8 +19,6 @@ public class ControladorAdmin implements ActionListener {
     private Landingpage landingpage;  
     private HomeAdmin homeAdmin;  
     private InicioSesion inicio_sesion;   
-    private GestorCFView gestorCFView;
-    private GestorCVView gestorCVView; 
     private MenuSemanal menu;
     
     public ControladorAdmin(Landingpage landingpage, HomeAdmin homeAdmin,InicioSesion inicio_sesion, MenuSemanal menu) {
@@ -33,7 +32,7 @@ public class ControladorAdmin implements ActionListener {
             this.homeAdmin.getBtnCostos().addActionListener(this);
             this.homeAdmin.getBtnMenu().addActionListener(this);
             avisoProximamente(this.homeAdmin.getBtnTurnos());
-            avisoProximamente(this.homeAdmin.getBtnReporte());
+            this.homeAdmin.getBtnListadoComensales().addActionListener(this);
             avisoProximamente(this.homeAdmin.getBtnInventario());
             avisoProximamente(this.homeAdmin.getBtnConsumos());
         }
@@ -60,15 +59,22 @@ public class ControladorAdmin implements ActionListener {
         if (source == homeAdmin.getBtnCostos()) {
             abrirGestorCostos();
         }
+        if (source == homeAdmin.getBtnListadoComensales()) {
+            abrirListadoComensales();
+        }
         if(source == homeAdmin.getBtnMenu()){
-        menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        menu.setVisible(true);
-        homeAdmin.setVisible(false);
+            menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            menu.setVisible(true);
+            homeAdmin.setVisible(false);
         }
         
     }
 
-
+    private void abrirListadoComensales(){
+        ListadoComensales vista = new ListadoComensales();
+        new Controlador_ListadoComensales(vista, homeAdmin);
+        homeAdmin.setVisible(false);
+    }
 
     
     private void abrirGestorCostos(){ 
