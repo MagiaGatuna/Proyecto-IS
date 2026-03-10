@@ -1,0 +1,96 @@
+{
+    "desayuno": {
+        "2026-03-09": {
+        "asistentes": [
+            { "cedula": "123", "rol": "estudiante", "tipo": "regular" },
+            { "cedula": "12548736", "rol": "empleado" },
+            { "cedula": "22222222", "rol": "profesor" }
+        ],
+        "resumen": {
+            "regular": 1,
+            "becario": 0,
+            "exonerado": 0,
+            "empleado": 1,
+            "profesor": 1,
+            "total": 3
+        }
+        },
+        "2026-03-08": {
+        "asistentes": [
+            { "cedula": "123", "rol": "estudiante", "tipo": "becario" },
+            { "cedula": "15151515", "rol": "estudiante", "tipo": "regular" },
+            { "cedula": "22222222", "rol": "profesor" }
+        ],
+        "resumen": {
+            "regular": 1,
+            "becario": 1,
+            "exonerado": 0,
+            "empleado": 0,
+            "profesor": 1,
+            "total": 3
+        }
+        },
+        "2026-03-07": {
+        "asistentes": [
+            { "cedula": "15151515", "rol": "estudiante", "tipo": "exonerado" },
+            { "cedula": "12548736", "rol": "empleado" },
+            { "cedula": "22222222", "rol": "profesor" },
+            { "cedula": "123", "rol": "estudiante", "tipo": "regular" }
+        ],
+        "resumen": {
+            "regular": 1,
+            "becario": 0,
+            "exonerado": 1,
+            "empleado": 1,
+            "profesor": 1,
+            "total": 4
+        }
+        }
+    },
+    "almuerzo": {
+        "2026-03-09": {
+        "asistentes": [
+            { "cedula": "15151515", "rol": "estudiante", "tipo": "regular" },
+            { "cedula": "12548736", "rol": "empleado" }
+        ],
+        "resumen": {
+            "regular": 1,
+            "becario": 0,
+            "exonerado": 0,
+            "empleado": 1,
+            "profesor": 0,
+            "total": 2
+        }
+        },
+        "2026-03-08": {
+        "asistentes": [
+            { "cedula": "123", "rol": "estudiante", "tipo": "exonerado" },
+            { "cedula": "22222222", "rol": "profesor" },
+            { "cedula": "15151515", "rol": "estudiante", "tipo": "becario" },
+            { "cedula": "12548736", "rol": "empleado" }
+        ],
+        "resumen": {
+            "regular": 0,
+            "becario": 1,
+            "exonerado": 1,
+            "empleado": 1,
+            "profesor": 1,
+            "total": 4
+        }
+        },
+        "2026-03-07": {
+        "asistentes": [
+            { "cedula": "123", "rol": "estudiante", "tipo": "regular" },
+            { "cedula": "22222222", "rol": "profesor" }
+        ],
+        "resumen": {
+            "regular": 1,
+            "becario": 0,
+            "exonerado": 0,
+            "empleado": 0,
+            "profesor": 1,
+            "total": 2
+        }
+        }
+    }
+}

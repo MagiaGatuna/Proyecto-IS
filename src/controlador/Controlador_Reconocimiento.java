@@ -15,6 +15,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import javax.swing.*;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Controlador_Reconocimiento implements ActionListener {
@@ -109,7 +111,7 @@ public class Controlador_Reconocimiento implements ActionListener {
             if (UsuarioDAO.actualizarSaldo(cedula, nuevoSaldo)) {
                 
                 ReservaDAO.eliminarPorCedula(cedula, idMenu);
-                //AGREGAR AL NUEVO JSON DE CONSUMOS
+                agregarConsumo(turnoReserva, usuario);
                 JOptionPane.showMessageDialog(vista,
                     "¡Cobro Exitoso y Comida Entregada!\n" +
                     "Menú: " + menuData.getString("comida") + "\n" +
@@ -130,4 +132,57 @@ public class Controlador_Reconocimiento implements ActionListener {
         JOptionPane.showMessageDialog(vista, mensaje, "Reserva Expirada", JOptionPane.WARNING_MESSAGE);
     }
         */
+
+    private void agregarConsumo(String turno, Usuario usuario){
+        try{
+            java.nio.file.Path ruta = java.nio.file.Paths.get("res/data/consumos.json").toAbsolutePath();
+            String contenido = new String(java.nio.file.Files.readAllBytes(ruta), java.nio.charset.StandardCharsets.UTF_8);
+            JSONObject consumos = new JSONObject(contenido);
+
+            String fecha = java.time.LocalDate.now().toString();
+
+            JSONObject turnoObj = consumos.getJSONObject(turno.toLowerCase());
+
+            if (!turnoObj.has(fecha)) {
+                JSONObject nuevoDia = new JSONObject();
+                nuevoDia.put("asistentes", new org.json.JSONArray());
+                JSONObject nuevoResumen = new JSONObject();
+                nuevoResumen.put("regular", 0);
+                nuevoResumen.put("becario", 0);
+                nuevoResumen.put("exonerado", 0);
+                nuevoResumen.put("empleado", 0);
+                nuevoResumen.put("profesor", 0);
+                nuevoResumen.put("total", 0);
+                nuevoDia.put("resumen", nuevoResumen);
+                turnoObj.put(fecha, nuevoDia);
+            }
+
+            JSONObject diaObj = turnoObj.getJSONObject(fecha);
+            org.json.JSONArray asistentes = diaObj.getJSONArray("asistentes");
+            JSONObject resumen = diaObj.getJSONObject("resumen");
+
+            JSONObject entrada = new JSONObject();
+            entrada.put("cedula", usuario.getCedula());
+            entrada.put("rol", usuario.getRol());
+            String rol = usuario.getRol().toLowerCase();
+            if (rol.equals("estudiante")) {
+                entrada.put("tipo", usuario.getCondicion().toLowerCase());
+            }
+            
+                if(rol.equals("estudiante")){
+                    String tipo = usuario.getCondicion().toLowerCase();
+                    resumen.put(tipo, resumen.getInt(tipo) + 1);
+                }else{
+                    resumen.put(rol, resumen.getInt(rol) + 1);
+                }
+                resumen.put("total", resumen.getInt("total") + 1);
+            asistentes.put(entrada);
+
+
+            java.nio.file.Files.write(ruta, consumos.toString(2).getBytes(java.nio.charset.StandardCharsets.UTF_8));
+
+        }catch (Exception e){
+            System.err.println("Error al registrar consumo: " + e.getMessage());
+        }
+    }
 }
