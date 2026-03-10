@@ -94,7 +94,7 @@ public static Usuario getUsuarioActual() {
         String cedula = datos.getString("cedula");
         String nombreReal = datos.getString("nombres");
         String sexo = datos.getString("sexo");
-        String condicion = datos.optString("condicion", "Regular");
+        String condicion = datos.optString("estado", "Regular");
         
         double saldoReal = datos.has("saldo") ? datos.getDouble("saldo") : 0.0;
         

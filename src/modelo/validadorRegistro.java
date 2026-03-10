@@ -139,6 +139,7 @@ public class validadorRegistro {
                     nuevoUsuario.put("contraseña", password2);
                     nuevoUsuario.put("rol", rol.getSelectedItem().toString());
                     nuevoUsuario.put("saldo", 0.00);
+                    nuevoUsuario.put("estado", "Regular");
                     listaUsuarios.put(nuevoUsuario);
 
                     Files.write(rutaUsuarios, listaUsuarios.toString(4).getBytes(StandardCharsets.UTF_8));

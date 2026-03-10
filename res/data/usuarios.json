@@ -6,7 +6,8 @@
         "sexo": "femenino",
         "rol": "Estudiante",
         "nombres": "Corina",
-        "contraseña": "123"
+        "contraseña": "123",
+        "estado":"Becario"
     },
     {
         "apellidos": "Moros",
@@ -15,7 +16,8 @@
         "sexo": "Femenino",
         "rol": "Empleado",
         "nombres": "Elena",
-        "contraseña": "123456"
+        "contraseña": "123456",
+        "estado":"Regular"
     },
     {
         "apellidos": "Vanrouge",
@@ -24,16 +26,18 @@
         "sexo": "Masculino",
         "rol": "Profesor",
         "nombres": "Lilia",
-        "contraseña": "1234567"
+        "contraseña": "1234567",
+        "estado":"Exhonerado"
     },
     {
         "apellidos": "A",
         "cedula": "15151515",
-        "saldo": 209,
+        "saldo": 1515151515,
         "sexo": "Femenino",
         "rol": "Estudiante",
         "nombres": "Alexandra",
-        "contraseña": "123"
+        "contraseña": "123",
+        "estado":"Becario"
     },
     {
         "apellidos": "Matheus",
@@ -42,6 +46,7 @@
         "sexo": "Masculino",
         "rol": "Administrador",
         "nombres": "Cristian",
-        "contraseña": "1234"
+        "contraseña": "1234",
+        "estado":"Regular"
     }
 ]

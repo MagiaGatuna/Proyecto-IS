@@ -111,7 +111,7 @@ public class Controlador_ListadoComensales implements ActionListener {
 
         vista.lblRegular.setText("Regulares: " + resumen.getInt("regular"));
         vista.lblBecario.setText("Becarios: " + resumen.getInt("becario"));
-        vista.lblExonerado.setText("Exonerados: " + resumen.getInt("exonerado"));
+        vista.lblExonerado.setText("Exonerados: " + resumen.getInt("exhonerado"));
         vista.lblEmpleado.setText("Empleados: " + resumen.getInt("empleado"));
         vista.lblProfesor.setText("Profesores: " + resumen.getInt("profesor"));
         vista.lblTotal.setText("Total: " + resumen.getInt("total"));
