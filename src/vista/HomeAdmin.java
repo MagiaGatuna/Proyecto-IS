@@ -13,6 +13,7 @@ public class HomeAdmin extends JFrame {
   JButton boton_Inventario;
   JButton boton_Consumos;
   JButton boton_Costos;
+  JButton boton_editar_estado;
   JLabel labela;
   private Usuario userActivo;
   public HomeAdmin(Usuario u){

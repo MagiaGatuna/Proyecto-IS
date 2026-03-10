@@ -26,5 +26,6 @@ public class Usuario {
     public String getCondicion() { return condicion; }
     public void setSaldo(double saldo) { this.saldo = saldo;}
     public void setCondicion(String condicion) { this.condicion = condicion; }
+    
 
 }
