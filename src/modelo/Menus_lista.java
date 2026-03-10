@@ -196,5 +196,32 @@ public static void decrementarReserva(String diaTurno) {
     }
 }
 
+public static String getDatos(String turno, String dia, String campo){
+boolean lo_encontro=false;
+    for (int i = 0; i < listaMenus.length(); i++) {
+        JSONObject menu = listaMenus.getJSONObject(i);
+        
+        if (menu.getString("dia").equalsIgnoreCase(dia) && 
+            menu.getString("turno").equalsIgnoreCase(turno)) {
+            lo_encontro=true;
+                if(campo.equalsIgnoreCase("comida")){
+                    return menu.getString("comida");
+                }
+                if(campo.equalsIgnoreCase("descripcion")){
+                    return menu.getString("descripcion");
+                }
+                if(campo.equalsIgnoreCase("valor_nutricional")){
+                    return menu.getString("valorNutricional");
+                }
+                if(campo.equalsIgnoreCase("aforo")){
+                    return String.valueOf(menu.optInt("aforo_max"));
+                }
+        }
+    }
+    if(lo_encontro==false){
+        return "No se encontraron datos";
+    }
+    return "No se encontraron datos";
+}
 
 }

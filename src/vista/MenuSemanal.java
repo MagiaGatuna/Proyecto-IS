@@ -494,6 +494,7 @@ public class MenuSemanal extends JFrame{
         descripcion_al.setVisible(true);
         valor_al.setVisible(true);
         aforo_al.setVisible(true);
+
     }
 
     public void dejar_editar(){
@@ -647,49 +648,51 @@ public class MenuSemanal extends JFrame{
             return aforo_max_d.getText().trim();
         }
 
-        if(turno.equals("Almuerzo") && campo.equals("Comida")){
+        if(turno.equalsIgnoreCase("Almuerzo") && campo.equalsIgnoreCase("Comida")){
             return comida_a.getText().trim();
         }
-        if(turno.equals("Almuerzo") && campo.equals("Descripcion")){
+        if(turno.equalsIgnoreCase("Almuerzo") && campo.equalsIgnoreCase("Descripcion")){
             return descripcion_a.getText().trim();
         }
-        if(turno.equals("Almuerzo") && campo.equals("Valor_nutricional")){
+        if(turno.equalsIgnoreCase("Almuerzo") && campo.equalsIgnoreCase("Valor_nutricional")){
             return valor_nutricional_a.getText().trim();
         }
-        if(turno.equals("Almuerzo") && campo.equals("Aforo")){
+        if(turno.equalsIgnoreCase("Almuerzo") && campo.equalsIgnoreCase("Aforo")){
             return aforo_max_a.getText().trim();
         }
 
         return "";
     }
-    public void setTexto(String turno,String campo) {
+    
+
+    public JTextField getCampos(String turno,String campo) {
         
-        if(turno.equals("Desayuno") && campo.equals("Comida")){
-            comida_d.setText("");;
+        if(turno.equals("DESAYUNO") && campo.equals("Comida")){
+            return comida_d;
         }
-        if(turno.equals("Desayuno") && campo.equals("Descripcion")){
-            descripcion_d.setText("");;
+        if(turno.equals("DESAYUNO") && campo.equals("Descripcion")){
+            return descripcion_d;
         }
-        if(turno.equals("Desayuno") && campo.equals("Valor_nutricional")){
-            valor_nutricional_d.setText("");;
+        if(turno.equals("DESAYUNO") && campo.equals("Valor_nutricional")){
+           return valor_nutricional_d;
         }
-        if(turno.equals("Desayuno") && campo.equals("Aforo")){
-            aforo_max_d.setText("");;
-        }
-
-        if(turno.equals("Almuerzo") && campo.equals("Comida")){
-            comida_a.setText("");;
-        }
-        if(turno.equals("Almuerzo") && campo.equals("Descripcion")){
-            descripcion_a.setText("");;
-        }
-        if(turno.equals("Almuerzo") && campo.equals("Valor_nutricional")){
-            valor_nutricional_a.setText("");;
-        }
-        if(turno.equals("Almuerzo") && campo.equals("Aforo")){
-            aforo_max_a.setText("");;
+        if(turno.equals("DESAYUNO") && campo.equals("Aforo")){
+             return aforo_max_d;
         }
 
+        if(turno.equalsIgnoreCase("ALMUERZO") && campo.equalsIgnoreCase("Comida")){
+             return comida_a;
+        }
+        if(turno.equalsIgnoreCase("ALMUERZO") && campo.equalsIgnoreCase("Descripcion")){
+            return descripcion_a;
+        }
+        if(turno.equalsIgnoreCase("ALMUERZO") && campo.equalsIgnoreCase("Valor_nutricional")){
+            return valor_nutricional_a;
+        }
+        if(turno.equalsIgnoreCase("ALMUERZO") && campo.equalsIgnoreCase("Aforo")){
+            return aforo_max_a;
+        }
+        return null;
     }
     
     public static void main (String args[]){

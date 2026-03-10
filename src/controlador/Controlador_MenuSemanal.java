@@ -34,6 +34,7 @@ public class Controlador_MenuSemanal implements ActionListener{
     private String dia;
     private String dia_seleccionado;
     private String pinta;
+    private boolean editable=false;
 
     public Controlador_MenuSemanal(AlumnoView alumno,EmpleadoView empleado, HomeAdmin admin ,MenuSemanal menu){
         this.alumno= alumno;
@@ -142,12 +143,16 @@ if (this.menu.getvolver() != null) {
         }
 
         if((e.getSource()==menu.getEditar())&&(Rol.equals("Administrador"))){
+            editable=true;
             menu.editar_paneles();
             menu.ocultaradmin();
+            vaciar_campos();
+
         }
         if((e.getSource()==menu.getNoEditar())&&(Rol.equals("Administrador"))){
             menu.dejar_editar();
             menu.ocultaradmin();
+            editable=false;
         }
         
        if(e.getSource()==menu.getboton_dia("MONDAY")){//Aqui va un && con el JSON del tipo de usuario
@@ -155,8 +160,9 @@ if (this.menu.getvolver() != null) {
             dia_seleccionado="MONDAY";
             desactivar_botones(hora);
             if(Rol.equals("Administrador")){
-            menu.getAceptar("Desayuno").setVisible(false);
-            menu.getAceptar("Almuerzo").setVisible(false);
+                if(editable){
+                    vaciar_campos();
+                }
             menu.ocultaradmin();
             }
         }
@@ -165,8 +171,9 @@ if (this.menu.getvolver() != null) {
             dia_seleccionado="TUESDAY";
             desactivar_botones(hora);
             if(Rol.equals("Administrador")){
-            menu.getAceptar("Desayuno").setVisible(false);
-            menu.getAceptar("Almuerzo").setVisible(false);
+            if(editable){
+                    vaciar_campos();
+                }
             menu.ocultaradmin();
             }
         }
@@ -175,18 +182,20 @@ if (this.menu.getvolver() != null) {
             dia_seleccionado="WEDNESDAY";
             desactivar_botones(hora);
             if(Rol.equals("Administrador")){
-            menu.getAceptar("Desayuno").setVisible(false);
-            menu.getAceptar("Almuerzo").setVisible(false);
+            if(editable){
+                    vaciar_campos();
+                }
             menu.ocultaradmin();
             }
         }
         if(e.getSource()==menu.getboton_dia("THURSDAY")){//Aqui va un && con el JSON del tipo de usuario
-             pinta = "THURSDAY";
+            pinta = "THURSDAY";
             dia_seleccionado="THURSDAY";
             desactivar_botones(hora);
             if(Rol.equals("Administrador")){
-            menu.getAceptar("Desayuno").setVisible(false);
-            menu.getAceptar("Almuerzo").setVisible(false);
+            if(editable){
+                    vaciar_campos();
+                }
             menu.ocultaradmin();
             }
         }
@@ -195,31 +204,32 @@ if (this.menu.getvolver() != null) {
             dia_seleccionado="FRIDAY";
             desactivar_botones(hora);
             if(Rol.equals("Administrador")){
-            menu.getAceptar("Desayuno").setVisible(false);
-            menu.getAceptar("Almuerzo").setVisible(false);
+                if(editable){
+                    vaciar_campos();
+                }
             menu.ocultaradmin();
             }
         }
 
         if(e.getSource()==menu.getAceptar("Desayuno")){
                 Menus_lista.actualizarMenu(dia_seleccionado, "DESAYUNO", menu.getTexto("Desayuno","Comida"), menu.getTexto("Desayuno","Descripcion"),menu.getTexto("Desayuno","Valor_nutricional"), menu.getTexto("Desayuno","Aforo"));
-                vaciar_campos("Desayuno");
+                vaciar_campos();
         
         }
         if(e.getSource()==menu.getAceptar("Almuerzo")){
 
         Menus_lista.actualizarMenu(dia_seleccionado, "ALMUERZO", menu.getTexto("Almuerzo","Comida"), menu.getTexto("Almuerzo","Descripcion"),menu.getTexto("Almuerzo","Valor_nutricional"), menu.getTexto("Almuerzo","Aforo"));
-        vaciar_campos("Almuerzo");
+        vaciar_campos();
         }
         if(e.getSource()==menu.getDefecto("Desayuno")){
         
         Menus_lista.actualizarMenu(dia_seleccionado, "DESAYUNO", "Lo sentimos, no hay menu para este turno", " ","0", "0");
-        vaciar_campos("Desayuno");
+        vaciar_campos();
 
         }
         if(e.getSource()==menu.getDefecto("Almuerzo")){
         Menus_lista.actualizarMenu(dia_seleccionado, "ALMUERZO", "Lo sentimos, no hay menu para este turno", " ","0", "0");
-        vaciar_campos("Almuerzo");
+        vaciar_campos();
         }
 
         if(dia_seleccionado != null && dia_seleccionado != "SUNDAY" && dia_seleccionado != "SATURDAY"){
@@ -235,17 +245,22 @@ if (this.menu.getvolver() != null) {
         menu.repaint();
     }
 
-public void vaciar_campos(String turno){
-    if(turno.equals("Desayuno")){
-        menu.setTexto("Desayuno","Comida");
-        menu.setTexto("Desayuno","Descripcion");
-        menu.setTexto("Desayuno","Valor_nutricional");
-        menu.setTexto("Desayuno","Aforo");
-    }else{
-        menu.setTexto("Almuerzo","Comida");
-        menu.setTexto("Almuerzo","Descripcion");
-        menu.setTexto("Almuerzo","Valor_nutricional");
-        menu.setTexto("Almuerzo","Aforo");
+public void vaciar_campos(){
+
+    if(menu.getCampos("DESAYUNO","Comida") != null && menu.getCampos("DESAYUNO","Descripcion")!= null && menu.getCampos("DESAYUNO","Valor_nutricional")!= null && menu.getCampos("DESAYUNO","Aforo")!= null){
+        if(menu.getCampos("ALMUERZO","Comida")!= null && menu.getCampos("ALMUERZO","Descripcion")!= null && menu.getCampos("ALMUERZO","Valor_nutricional")!= null && menu.getCampos("ALMUERZO","Aforo")!= null){
+
+            menu.getCampos("DESAYUNO","Comida").setText(Menus_lista.getDatos("DESAYUNO",dia_seleccionado,"comida"));
+            menu.getCampos("DESAYUNO","Descripcion").setText(Menus_lista.getDatos("DESAYUNO",dia_seleccionado,"descripcion"));
+            menu.getCampos("DESAYUNO","Valor_nutricional").setText(Menus_lista.getDatos("DESAYUNO",dia_seleccionado,"valor_nutricional"));
+            menu.getCampos("DESAYUNO","Aforo").setText(Menus_lista.getDatos("DESAYUNO",dia_seleccionado,"aforo"));
+
+            menu.getCampos("ALMUERZO","Comida").setText(Menus_lista.getDatos("ALMUERZO",dia_seleccionado,"comida"));
+            menu.getCampos("ALMUERZO","Descripcion").setText(Menus_lista.getDatos("ALMUERZO",dia_seleccionado,"descripcion"));
+            menu.getCampos("ALMUERZO","Valor_nutricional").setText(Menus_lista.getDatos("ALMUERZO",dia_seleccionado,"valor_nutricional"));
+            menu.getCampos("ALMUERZO","Aforo").setText(Menus_lista.getDatos("ALMUERZO",dia_seleccionado,"aforo"));
+        }
+
     }
     
 }
@@ -269,12 +284,6 @@ public void pintarboton(String hoy) {
 }
 
     public void desactivar_botones(int minutos){
-
-        if(Rol.equals("Administrador")){
-            menu.getAceptar("Desayuno").setVisible(false);
-            menu.getAceptar("Almuerzo").setVisible(false);
-            return;
-        }
 
         int indice_hoy= Calcular_dia.getIndiceDia(dia);
         int indice_seleccion= Calcular_dia.getIndiceDia(dia_seleccionado);

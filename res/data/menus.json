@@ -45,9 +45,9 @@
         "aforo_max": 1500,
         "comida": "Pasticho",
         "turno": "ALMUERZO",
-        "reservas_actual": 1001,
+        "reservas_actual": 0,
         "dia": "TUESDAY",
-        "valorNutricional": "300 Kcal"
+        "valorNutricional": "302"
     },
     {
         "descripcion": "Bebida de avena caliente acompañada de una porción de cambur.",
