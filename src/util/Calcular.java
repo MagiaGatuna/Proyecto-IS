@@ -14,11 +14,11 @@ public class Calcular {
         String rol = usuario.getRol();
         
         if (rol.equalsIgnoreCase("estudiante")) {
-            String condicion = usuario.getCondicion();
+            String estado = usuario.getCondicion();
             
-            if ("Exonerado".equalsIgnoreCase(condicion)) {
+            if ("Exonerado".equalsIgnoreCase(estado)) {
                 return 0.0; // El exonerado no paga nada
-            } else if ("Becario".equalsIgnoreCase(condicion)) {
+            } else if ("Becario".equalsIgnoreCase(estado)) {
                 return CCB * (PorcentajeBecario / 100.0); 
             } else {
                 return CCB * (PorcentajeEstudiante / 100.0); 

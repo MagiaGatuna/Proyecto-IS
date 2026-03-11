@@ -99,7 +99,7 @@ public void fondo_panel(int pantalla, int alto){
     JLabel logo= new JLabel(new ImageIcon(tam_icon));
     logo.setBounds(300,120,140,140);
 
-    String[] opcion={"Regular","Exhonerado","Becario"};
+    String[] opcion={"Regular","Exonerado","Becario"};
 
     opciones= new JComboBox<>(opcion);
     opciones.setBounds(270,370,200,40);

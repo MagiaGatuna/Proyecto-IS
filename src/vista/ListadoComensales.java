@@ -156,7 +156,7 @@ public class ListadoComensales extends JFrame{
         panel.setBackground(COLOR_TURQUEZA);
         panel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 50));
 
-        btnDesayuno = Diseño_interfaz.Creador_Botones("DESAYUNO", EXIT_ON_CLOSE, ERROR, 160, 40, COLOR_AZUL_OSCURO);
+        btnDesayuno = Diseño_interfaz.Creador_Botones("DESAYUNO", EXIT_ON_CLOSE, ERROR, 160, 40, COLOR_AZUL);
         btnAlmuerzo = Diseño_interfaz.Creador_Botones("ALMUERZO", EXIT_ON_CLOSE, ERROR, 160, 40, COLOR_AZUL);
 
         panel.add(btnDesayuno);
