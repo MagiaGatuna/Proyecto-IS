@@ -21,11 +21,7 @@
     },
     {
         "apellidos": "Vanrouge",
-<<<<<<< HEAD
-        "estado": "Exhonerado",
-=======
         "estado": "Regular",
->>>>>>> af5efcf0782d68c888149df7572cc9ef8b3eafc0
         "cedula": "22222222",
         "saldo": 505.25,
         "sexo": "Masculino",
@@ -45,11 +41,7 @@
     },
     {
         "apellidos": "Matheus",
-<<<<<<< HEAD
-        "estado": "Exhonerado",
-=======
         "estado": "Regular",
->>>>>>> af5efcf0782d68c888149df7572cc9ef8b3eafc0
         "cedula": "1234",
         "saldo": 5999999,
         "sexo": "Masculino",
