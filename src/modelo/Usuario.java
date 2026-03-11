@@ -1,5 +1,14 @@
 package src.modelo;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class Usuario {
     private String nombre;
     private double saldo;
@@ -26,6 +35,7 @@ public class Usuario {
     public String getCondicion() { return condicion; }
     public void setSaldo(double saldo) { this.saldo = saldo;}
     public void setCondicion(String condicion) { this.condicion = condicion; }
+
     
 
 }

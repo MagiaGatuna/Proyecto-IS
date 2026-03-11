@@ -8,6 +8,7 @@ import src.vista.MenuSemanal;
 import src.vista.ListadoComensales;
 import src.vista.HomeAdmin;
 import src.vista.InicioSesion;
+import src.vista.CambiarUsuario;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,17 +21,20 @@ public class ControladorAdmin implements ActionListener {
     private HomeAdmin homeAdmin;  
     private InicioSesion inicio_sesion;   
     private MenuSemanal menu;
+    private CambiarUsuario usuario;
     
-    public ControladorAdmin(Landingpage landingpage, HomeAdmin homeAdmin,InicioSesion inicio_sesion, MenuSemanal menu) {
+    public ControladorAdmin(Landingpage landingpage, HomeAdmin homeAdmin,InicioSesion inicio_sesion, MenuSemanal menu,CambiarUsuario usuario) {
         this.landingpage = landingpage;
         this.homeAdmin = homeAdmin;
         this.inicio_sesion = inicio_sesion;
         this.menu=menu;
+        this.usuario=usuario;
         
         if (this.homeAdmin != null) {
             this.homeAdmin.getHome2().addActionListener(this);
             this.homeAdmin.getBtnCostos().addActionListener(this);
             this.homeAdmin.getBtnMenu().addActionListener(this);
+            this.homeAdmin.getBtnUsuarios().addActionListener(this);
             avisoProximamente(this.homeAdmin.getBtnTurnos());
             this.homeAdmin.getBtnListadoComensales().addActionListener(this);
             avisoProximamente(this.homeAdmin.getBtnInventario());
@@ -65,6 +69,11 @@ public class ControladorAdmin implements ActionListener {
         if(source == homeAdmin.getBtnMenu()){
             menu.setExtendedState(JFrame.MAXIMIZED_BOTH);
             menu.setVisible(true);
+            homeAdmin.setVisible(false);
+        }
+        if(source == homeAdmin.getBtnUsuarios()){
+            usuario.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            usuario.setVisible(true);
             homeAdmin.setVisible(false);
         }
         

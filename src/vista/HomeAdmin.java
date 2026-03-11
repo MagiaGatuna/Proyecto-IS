@@ -34,9 +34,13 @@ public class HomeAdmin extends JFrame {
 //creamos el boton para regresar al inicio
 setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
     boton_cerrarsesion = Diseño_interfaz.Creador_Botones("CERRAR SESIÓN", anchoP - 220, 35, 180, 45, Diseño_interfaz.colorazul);
+    boton_editar_estado = Diseño_interfaz.Creador_Botones("EDITAR USUARIO", anchoP - 450, 35, 180, 45, Diseño_interfaz.colorazul);
     BotonUtil.darEstiloBoton(boton_cerrarsesion, 170, 40);
+    BotonUtil.darEstiloBoton(boton_editar_estado, 170, 40);
+
     //boton_cerrarsesion.addActionListener(e -> Conectar_ventanas.getInstancia().mostrarInicioSesion());
     barraSuperior.add(boton_cerrarsesion); // Se agrega a la barra
+    barraSuperior.add(boton_editar_estado);
 // Sección Menú
     add(Diseño_interfaz.Creador_iconos("res/Menu.png", (espacio * 0) + (espacio/2) - 75, yIconos, 150, 130));
     boton_Menu= Diseño_interfaz.Creador_Botones("EDITAR MENÚ SEMANAL", (espacio * 0) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul);
@@ -47,7 +51,8 @@ setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
     add(Diseño_interfaz.Creador_iconos("res/estadistica.png", (espacio * 1) + (espacio/2) - 60, yIconos + 15, 120, 120));
     boton_ListadoComensales=(Diseño_interfaz.Creador_Botones("COMENSALES", (espacio * 1) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
     add(boton_ListadoComensales);
-// Sección Inventario
+
+    // Sección Inventario
     add(Diseño_interfaz.Creador_iconos("res/suministros.png", (espacio * 2) + (espacio/2) - 60, yIconos + 15, 120, 120));
     boton_Inventario=(Diseño_interfaz.Creador_Botones("INVENTARIO", (espacio * 2) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
     add(boton_Inventario);
@@ -107,6 +112,10 @@ barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120,
 
   public JButton getBtnCostos(){
     return boton_Costos;
+  }
+
+  public JButton getBtnUsuarios(){
+    return boton_editar_estado;
   }
 
   public static void main(String[] args) {

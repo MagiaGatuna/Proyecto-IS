@@ -8,6 +8,7 @@ import src.vista.AlumnoView;
 import src.vista.EmpleadoView;
 import src.vista.MenuSemanal;
 import src.vista.MenuDView;
+import src.vista.CambiarUsuario;
 import src.modelo.Usuario;
 import src.modelo.validadorInicioS;
 import src.util.Calcular_dia;
@@ -66,8 +67,10 @@ public class Controlador_inicioS implements ActionListener{
                 if((Rol.equals("Administrador"))){
                 HomeAdmin admin = new HomeAdmin(usuarioLogueado);
                 MenuSemanal menu_s_a= new MenuSemanal();
-                new ControladorAdmin(inicio,admin,inicio_sesion,menu_s_a);
+                CambiarUsuario usuario =new CambiarUsuario();
+                new ControladorAdmin(inicio,admin,inicio_sesion,menu_s_a,usuario);
                 new Controlador_MenuSemanal(null, null,admin, menu_s_a);
+                new Controlador_Cambiar_Usuario(admin,usuario);
                 
 
                 admin.setExtendedState(JFrame.MAXIMIZED_BOTH);
