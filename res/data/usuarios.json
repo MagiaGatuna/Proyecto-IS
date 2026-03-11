@@ -3,7 +3,7 @@
         "apellidos": "Matheus",
         "estado": "Becario",
         "cedula": "123",
-        "saldo": 999684.083096856,
+        "saldo": 1000184.083096856,
         "sexo": "femenino",
         "rol": "Estudiante",
         "nombres": "Corina",
@@ -21,9 +21,13 @@
     },
     {
         "apellidos": "Vanrouge",
+<<<<<<< HEAD
         "estado": "Exhonerado",
+=======
+        "estado": "Regular",
+>>>>>>> af5efcf0782d68c888149df7572cc9ef8b3eafc0
         "cedula": "22222222",
-        "saldo": 5.25,
+        "saldo": 505.25,
         "sexo": "Masculino",
         "rol": "Profesor",
         "nombres": "Lilia",
@@ -33,7 +37,7 @@
         "apellidos": "A",
         "estado": "Becario",
         "cedula": "15151515",
-        "saldo": 1515151515,
+        "saldo": 1515152015,
         "sexo": "Femenino",
         "rol": "Estudiante",
         "nombres": "Alexandra",
@@ -41,7 +45,11 @@
     },
     {
         "apellidos": "Matheus",
+<<<<<<< HEAD
         "estado": "Exhonerado",
+=======
+        "estado": "Regular",
+>>>>>>> af5efcf0782d68c888149df7572cc9ef8b3eafc0
         "cedula": "1234",
         "saldo": 5999999,
         "sexo": "Masculino",

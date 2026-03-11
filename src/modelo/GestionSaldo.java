@@ -16,28 +16,41 @@ public class GestionSaldo {
  }
 
  //metodos 
- public static boolean ActualizarSaldo(String cedulaUsuario, double montoRecarga) {
+public static boolean ActualizarSaldo(String cedulaPana, String cedulaReacarga, double monto) {
     try {
         Path ruta = Paths.get("res/data/usuarios.json");
         String contenido = new String(Files.readAllBytes(ruta), StandardCharsets.UTF_8);
         JSONArray usuarios = new JSONArray(contenido);
 
+        JSONObject emisor = null;
+        JSONObject receptor = null;
+
         for (int i = 0; i < usuarios.length(); i++) {
-            JSONObject user = usuarios.getJSONObject(i);
-            
-            // Buscamos coincidencia con el usuario que tiene la sesión iniciada
-            if (user.getString("cedula").equals(cedulaUsuario)) {
-                if(montoRecarga<=0){return false;}
-                double saldoActual = user.optDouble("saldo", 0.0);
-                user.put("saldo", saldoActual + montoRecarga); // Sumamos el nuevo monto
-                
-                // Guardamos el archivo con formato 
-                Files.write(ruta, usuarios.toString(4).getBytes(StandardCharsets.UTF_8));
-                return true; 
+            JSONObject u = usuarios.getJSONObject(i);
+            if (u.getString("cedula").equals(cedulaPana)) emisor = u;
+            if (u.getString("cedula").equals(cedulaReacarga)) receptor = u;
+        }
+
+        if (emisor != null && receptor != null) {
+            if (monto <= 0) return false;
+
+            String rolE = emisor.getString("rol");
+            String estadoE = emisor.getString("estado");
+
+            if (estadoE.equalsIgnoreCase("Exonerado")) return false;
+
+            if (!cedulaPana.equals(cedulaReacarga) && !rolE.equalsIgnoreCase("Estudiante")) {
+                return false;
             }
+
+            double saldoViejo = receptor.optDouble("saldo", 0.0);
+            receptor.put("saldo", saldoViejo + monto);
+            
+            Files.write(ruta, usuarios.toString(4).getBytes(StandardCharsets.UTF_8));
+            return true;
         }
     } catch (Exception e) {
-        System.err.println("Error al actualizar saldo: " + e.getMessage());
+        System.err.println("Error en recarga: " + e.getMessage());
     }
     return false;
 }
