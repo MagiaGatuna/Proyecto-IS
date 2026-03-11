@@ -1,20 +1,19 @@
-ENTRADAS: Un número de cédula del emisor , un número de cédula del receptor y un monto positivo.
+ENTRADAS: Un número de cédula del emisor (Pana), un número de cédula del receptor (Recarga) y un monto positivo.
 PRECONDICIONES: 
 
 ESPECIFICACIONES:
-- Si cedulaPana está en JSON, su rol es "Estudiante", su estado no es "Exonerado" y el monto es positivo, entonces retorna true.
-- Si cedulaPana no cumple requisitos de rol/estado o no está en el JSON, retorna false.
+- Si cedulaPana == cedulaReacarga, permite recarga a cualquier Rol (excepto Exonerado).
+- Si cedulaPana != cedulaReacarga, el emisor debe ser Rol "Estudiante" y no Exonerado.
 - Si monto <= 0 entonces retorna false.
 
 SALIDAS:
 1- true
 2- false
 
-FACTOR                          CLASES DE EQUIVALENCIA                          ENTRADAS (Pana, Yo, Monto)  SALIDAS
-Pana válido, monto positivo     [CI Estudiante Activo, CI Yo y [0,max] ]        123, 456, 99999             true
-Pana válido, monto negativo     [CI Estudiante Activo, CI Yo y [-min,0]]        123, 456, -1                false
-Pana Exonerado, monto positivo  [CI Exonerado, CI Yo y [0,max]]                 555, 456, 99999             false
-Pana no registrado              [CI No registrada, CI Yo y [0,max]]             5175, 456, 99999            false
-Pana no Estudiante              [CI Administrativo, CI Yo y [0,max]]            888, 456, 99999             false
-Pana válido, monto=0            [CI Estudiante Activo, CI Yo y 0]               123, 456, 0                 false
-Invalido, monto=0               [CI No registrada, CI Yo y 0]                   1275, 456, 0                false
+FACTOR                          CLASES DE EQUIVALENCIA                          ENTRADAS (Pana, Recarga, Monto)  SALIDAS
+Autopago                     [cedulaPana == cedulaReacarga, No Exonerado]    22222222, 22222222, 100                    true
+Pana Estudiante valido             [cedulaPana != cedulaReacarga, Rol Estudiante]  123, 15151515, 100                    true
+Pana Admin a Tercero            [cedulaPana != cedulaReacarga, Rol Admin]       22222222, 15151515, 100                    false
+Pago de Exonerado               [Estado == "Exonerado"]                         555, 555, 100                    false
+Monto negativo                  [Monto < 0]                                     123, 123, -10                    false
+Cédula no registrada            [Cédula inexistente]                            999, 15151515, 100                    false

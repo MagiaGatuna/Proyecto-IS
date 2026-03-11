@@ -12,21 +12,20 @@ public class GestionSaldoTest {
 @Test
 void testActualizarSaldo(){
     // Setup de datos
-    String panaValido = "1234";      
-    String panaExonerado = "5555";   
-    String miCedula = "4321";        
-    String cedulaInvalida = "0000"; 
+    String cedulapropia= "22222222"; 
+    String yo_Estudiante = "123";   
+    String pana_Estudiante = "15151515"; 
+    String pana_Exonerado = "555";  
     
-    double montoPositivo = 500.0;
-    double montoNegativo = -100.0;
-    double montoNulo = 0;
+    double monto_pos = 500.0;
+    double monto_neg = -10.0;
 
-    assertThat(prueba.ActualizarSaldo(panaValido, miCedula, montoPositivo), is(true));
-    assertThat(prueba.ActualizarSaldo(panaValido, miCedula, montoNegativo), is(false));
-    assertThat(prueba.ActualizarSaldo(panaValido, miCedula, montoNulo), is(false));
-    assertThat(prueba.ActualizarSaldo(panaExonerado, miCedula, montoPositivo), is(false));
-    assertThat(prueba.ActualizarSaldo(cedulaInvalida, miCedula, montoPositivo), is(false));
-    assertThat(prueba.ActualizarSaldo(cedulaInvalida, miCedula, montoNegativo), is(false));
+
+    assertThat(prueba.ActualizarSaldo(cedulapropia,cedulapropia, monto_pos), is(true));
+    assertThat(prueba.ActualizarSaldo(pana_Estudiante, yo_Estudiante, monto_pos), is(true));
+    assertThat(prueba.ActualizarSaldo(cedulapropia, yo_Estudiante, monto_pos), is(false));
+    assertThat(prueba.ActualizarSaldo(pana_Exonerado, pana_Exonerado, monto_pos), is(false));
+    assertThat(prueba.ActualizarSaldo(yo_Estudiante, yo_Estudiante, monto_neg), is(false));
 }
     
 }
