@@ -7,13 +7,12 @@ ESPECIFICACIONES:
 - Si monto <= 0 entonces retorna false.
 
 SALIDAS:
-1- true
-2- false
+1- null = éxito
+2- String = mensaje de error
 
-FACTOR                          CLASES DE EQUIVALENCIA                          ENTRADAS (Pana, Recarga, Monto)  SALIDAS
-Autopago                     [cedulaPana == cedulaReacarga, No Exonerado]    22222222, 22222222, 100                    true
-Pana Estudiante valido             [cedulaPana != cedulaReacarga, Rol Estudiante]  123, 15151515, 100                    true
-Pana Admin a Tercero            [cedulaPana != cedulaReacarga, Rol Admin]       22222222, 15151515, 100                    false
-Pago de Exonerado               [Estado == "Exonerado"]                         555, 555, 100                    false
-Monto negativo                  [Monto < 0]                                     123, 123, -10                    false
-Cédula no registrada            [Cédula inexistente]                            999, 15151515, 100                    false
+FACTOR                          CLASES DE EQUIVALENCIA                                  ENTRADAS (Pana, Recarga, Monto)  SALIDAS
+Autopago                        [cedulaPana == cedulaReacarga, No Exonerado]            123, 123, 500                    null
+Pana Estudiante valido          [cedulaPana != cedulaReacarga, Ambos Estudiante]        15151515, 123, 500               null
+Pana Admin a Tercero            [cedulaPana != cedulaReacarga, emisor no Estudiante]    22222222, 123, 500               String
+Pago de Exonerado               [Estado == "Exonerado"]                                 555, 555, 500                    String
+Monto negativo                  [Monto < 0]                                             123, 123, -10                    String

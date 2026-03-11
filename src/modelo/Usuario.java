@@ -32,7 +32,7 @@ public class Usuario {
     public double getSaldo() { return saldo; }
     public String getCedula(){ return cedula;}
     public String getSexo(){ return sexo;}
-    public String getCondicion() { return estado; }
+    public String getEstado() { return estado; }
     public void setSaldo(double saldo) { this.saldo = saldo;}
     public void setCondicion(String estado) { this.estado = estado; }
 

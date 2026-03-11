@@ -29,7 +29,7 @@ public class Monedero extends JPanel {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-    if (cliente.getRol().equalsIgnoreCase("Exonerado")) {
+    if (cliente.getEstado().equalsIgnoreCase("Exonerado")) {
         JOptionPane.showMessageDialog(null, 
             "Acceso denegado: Los estudiantes exonerados no necesitan recargar saldo.", 
             "Restricción de Usuario", 

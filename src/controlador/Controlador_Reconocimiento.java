@@ -166,11 +166,11 @@ public class Controlador_Reconocimiento implements ActionListener {
             entrada.put("rol", usuario.getRol());
             String rol = usuario.getRol().toLowerCase();
             if (rol.equals("estudiante")) {
-                entrada.put("tipo", usuario.getCondicion().toLowerCase());
+                entrada.put("tipo", usuario.getEstado().toLowerCase());
             }
             
                 if(rol.equals("estudiante")){
-                    String tipo = usuario.getCondicion().toLowerCase();
+                    String tipo = usuario.getEstado().toLowerCase();
                     resumen.put(tipo, resumen.getInt(tipo) + 1);
                 }else{
                     resumen.put(rol, resumen.getInt(rol) + 1);

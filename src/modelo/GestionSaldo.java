@@ -16,7 +16,7 @@ public class GestionSaldo {
  }
 
  //metodos 
-public static boolean ActualizarSaldo(String cedulaPana, String cedulaReacarga, double monto) {
+public static String ActualizarSaldo(String cedulaPana, String cedulaReacarga, double monto) {
     try {
         Path ruta = Paths.get("res/data/usuarios.json");
         String contenido = new String(Files.readAllBytes(ruta), StandardCharsets.UTF_8);
@@ -31,27 +31,27 @@ public static boolean ActualizarSaldo(String cedulaPana, String cedulaReacarga, 
             if (u.getString("cedula").equals(cedulaReacarga)) receptor = u;
         }
 
-        if (emisor != null && receptor != null) {
-            if (monto <= 0) return false;
+        if (emisor == null || receptor == null) return "La cédula ingresada no existe en el sistema.";
+        if (monto <= 0) return "El monto debe ser mayor a cero.";
 
-            String rolE = emisor.getString("rol");
-            String estadoE = emisor.getString("estado");
+        String rolE = emisor.getString("rol");
+        String rolR = receptor.getString("rol");
+        String estadoR = receptor.getString("estado");
 
-            if (estadoE.equalsIgnoreCase("Exonerado")) return false;
+        if (!rolE.equalsIgnoreCase("Estudiante") && !cedulaPana.equals(cedulaReacarga)) 
+            return "Solo puedes recargarte a ti mismo.";
+        if (!rolR.equalsIgnoreCase("Estudiante")) 
+            return "Solo puedes recargar a otros estudiantes.";
+        if (estadoR.equalsIgnoreCase("Exonerado")) 
+            return "No puedes recargar a un estudiante exonerado.";
 
-            if (!cedulaPana.equals(cedulaReacarga) && !rolE.equalsIgnoreCase("Estudiante")) {
-                return false;
-            }
+        double saldoViejo = receptor.optDouble("saldo", 0.0);
+        receptor.put("saldo", saldoViejo + monto);
+        Files.write(ruta, usuarios.toString(4).getBytes(StandardCharsets.UTF_8));
+        return null; // éxito
 
-            double saldoViejo = receptor.optDouble("saldo", 0.0);
-            receptor.put("saldo", saldoViejo + monto);
-            
-            Files.write(ruta, usuarios.toString(4).getBytes(StandardCharsets.UTF_8));
-            return true;
-        }
     } catch (Exception e) {
-        System.err.println("Error en recarga: " + e.getMessage());
+        return "Error interno: " + e.getMessage();
     }
-    return false;
 }
 }

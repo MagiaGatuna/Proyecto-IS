@@ -3,10 +3,20 @@
         "apellidos": "Matheus",
         "estado": "Becario",
         "cedula": "123",
-        "saldo": 1000184.083096856,
+        "saldo": 1003684,
         "sexo": "femenino",
         "rol": "Estudiante",
         "nombres": "Corina",
+        "contraseña": "123"
+    },
+    {
+        "apellidos": "Almeida",
+        "estado": "Exonerado",
+        "cedula": "555",
+        "saldo": 500000,
+        "sexo": "femenino",
+        "rol": "Estudiante",
+        "nombres": "Valentina",
         "contraseña": "123"
     },
     {
@@ -33,7 +43,7 @@
         "apellidos": "A",
         "estado": "Becario",
         "cedula": "15151515",
-        "saldo": 1515152015,
+        "saldo": 1515152138,
         "sexo": "Femenino",
         "rol": "Estudiante",
         "nombres": "Alexandra",

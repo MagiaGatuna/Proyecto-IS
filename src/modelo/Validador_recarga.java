@@ -20,10 +20,10 @@ public static boolean ValidarCampos(JTextField id, JTextField ref, JTextField mo
     } else if (!ValidarUtil.cedulaEsValida(id)) {
         errores.append("- La cédula debe contener solo números.\n");
         hayErrores = true;
-    } else if (!(user.getCedula().equals(id.getText().trim()))) {
+    } /*else if (!(user.getCedula().equals(id.getText().trim()))) {
         errores.append("- La cédula no coincide con el usuario actual.\n");
         hayErrores = true;
-    }
+    }*/
 
     // Validación de Referencia
     if (ValidarUtil.campoEstaVacio(ref, "Número de referencia")) {

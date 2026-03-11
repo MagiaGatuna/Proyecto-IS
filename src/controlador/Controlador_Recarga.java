@@ -8,7 +8,15 @@ import src.modelo.GestionSaldo;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import javax.swing.*;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Controlador_Recarga implements ActionListener {
     AlumnoView vista_alumno;
@@ -17,7 +25,6 @@ public class Controlador_Recarga implements ActionListener {
     RecargaView vista_recarga;
     Usuario user_actual = validadorInicioS.getUsuarioActual();
     String Rol = user_actual.getRol();
-    String cedula = user_actual.getCedula();
 
     public Controlador_Recarga(AlumnoView vista_alumno, EmpleadoView vista_empleado, Monedero monedero, RecargaView vista_recarga) {
         this.monedero = monedero;
@@ -32,26 +39,25 @@ public class Controlador_Recarga implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        System.out.println("Evento recibido: " + e.getSource());
+        System.out.println("Verificar es: " + vista_recarga.GetVerificar());
         if (e.getSource() == vista_recarga.GetVerificar()) {
             if (Validador_recarga.ValidarCampos(vista_recarga.cedula(), vista_recarga.referencia(), vista_recarga.Monto(), user_actual)) {
                 
                 double montoARecargar = Double.parseDouble(vista_recarga.Monto().getText().trim());
+                String cedulaDestino = vista_recarga.cedula().getText().trim();
 
-                if (GestionSaldo.ActualizarSaldo(user_actual.getCedula(),cedula, montoARecargar)) {
-                    // Actualizamos el total en el objeto modelo
+                String error = GestionSaldo.ActualizarSaldo(user_actual.getCedula(), cedulaDestino, montoARecargar);
+                if (error == null) {
                     double nuevoSaldoTotal = user_actual.getSaldo() + montoARecargar;
                     user_actual.setSaldo(nuevoSaldoTotal);
-
-                    // Actualizamos la vista Monedero con el TOTAL
-                    if (this.monedero != null) {
-                        this.monedero.actualizarSaldoVisual(user_actual.getSaldo());
-                    }
-
+                    if (this.monedero != null) this.monedero.actualizarSaldoVisual(user_actual.getSaldo());
                     JOptionPane.showMessageDialog(vista_recarga, "Recarga Exitosa. Nuevo saldo: " + user_actual.getSaldo());
+                } else {
+                    JOptionPane.showMessageDialog(vista_recarga, error, "Error", JOptionPane.WARNING_MESSAGE);
                 }
             }
-        } 
+        }
     
         else if (e.getSource() == vista_recarga.GetVolver()) {
             if (Rol.equals("Estudiante")) {

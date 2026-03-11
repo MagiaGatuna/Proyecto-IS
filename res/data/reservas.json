@@ -5,10 +5,6 @@
     },
     {
         "cedula": "123",
-        "dia_turno": "TUESDAY_ALMUERZO"
-    },
-    {
-        "cedula": "123",
         "dia_turno": "TUESDAY_DESAYUNO"
     }
 ]

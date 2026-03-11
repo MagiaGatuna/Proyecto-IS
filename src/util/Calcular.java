@@ -14,7 +14,7 @@ public class Calcular {
         String rol = usuario.getRol();
         
         if (rol.equalsIgnoreCase("estudiante")) {
-            String estado = usuario.getCondicion();
+            String estado = usuario.getEstado();
             
             if ("Exonerado".equalsIgnoreCase(estado)) {
                 return 0.0; // El exonerado no paga nada
