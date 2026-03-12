@@ -9,8 +9,6 @@ public class Reconocimiento_facial extends JFrame{
 
 private JLabel titulo, label1;
 private JLabel instruccion1;
-private JLabel instruccion2;
-private JButton cerrar;
 private JButton subir_foto;
 private JTextField cedula;
 private JToolBar barra;
@@ -49,17 +47,8 @@ barra.addSeparator();
     label1.setBounds(200,10,200,30);
     label1.setFont(new Font ("SANS_SERIF", Font.BOLD, 20));
     barra.add(label1);
-cerrar= new JButton ("HOME");
-cerrar.setBackground(new Color(14,9,137));
-cerrar.setPreferredSize(new Dimension(150,45));
-cerrar.setForeground(new Color(255,255,255));
-cerrar.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 14));
-BotonUtil.darEstiloBoton(cerrar, 150, 30);
 
 barra.add(Box.createHorizontalGlue());
-barra.addSeparator();
-barra.add(cerrar);
-barra.addSeparator();
 barra.addSeparator();
 
 add(barra);
@@ -144,10 +133,6 @@ public JTextField getTxtCedula() {
 
 public JButton getBtnSubirFoto() {
     return subir_foto;
-}
-
-public JButton getCerrar(){
-    return cerrar;
 }
 
 }

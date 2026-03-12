@@ -21,22 +21,16 @@ import org.json.JSONObject;
 
 public class Controlador_Reconocimiento implements ActionListener {
 
-    private Landingpage landing;
     private Reconocimiento_facial vista;
 
-    public Controlador_Reconocimiento(Landingpage landing, Reconocimiento_facial vista) {
-        this.landing = landing;
+    public Controlador_Reconocimiento(Reconocimiento_facial vista) {
         this.vista = vista;
-        this.vista.getCerrar().addActionListener(this);
         this.vista.getBtnSubirFoto().addActionListener(this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == vista.getCerrar()) {
-            landing.setVisible(true);
-            vista.dispose();
-        } else if (e.getSource() == vista.getBtnSubirFoto()) {
+            if (e.getSource() == vista.getBtnSubirFoto()) {
             String cedula = vista.getTxtCedula().getText().trim();
             if (cedula.isEmpty()) {
                 JOptionPane.showMessageDialog(vista, "Debe ingresar una cédula.");
@@ -112,14 +106,14 @@ public class Controlador_Reconocimiento implements ActionListener {
                 
                 ReservaDAO.eliminarPorCedula(cedula, idMenu);
                 agregarConsumo(turnoReserva, usuario);
+                vista.getTxtCedula().setText("");
                 JOptionPane.showMessageDialog(vista,
                     "¡Cobro Exitoso y Comida Entregada!\n" +
                     "Menú: " + menuData.getString("comida") + "\n" +
                     "Precio pagado: " + precioFinal + " Bs\n" +
                     "Saldo restante: " + nuevoSaldo + " Bs");
-
-                landing.setVisible(true);
-                vista.dispose();
+                //landing.setVisible(true);
+                //vista.dispose();
             } else {
                 JOptionPane.showMessageDialog(vista, "Error al procesar el pago en la base de datos.");
             }
