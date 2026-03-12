@@ -1,18 +1,23 @@
-ENTRADAS: Un número de cédula del emisor (Pana), un número de cédula del receptor (Recarga) y un monto positivo.
-PRECONDICIONES: 
+ENTRADAS: Un número de cédula del emisor, un número de cédula del receptor  y un monto positivo.
+PRECONDICIONES: El archivo usuarios.json debe existir y ser accesible.
 
 ESPECIFICACIONES:
-- Si cedulaPana == cedulaReacarga, permite recarga a cualquier Rol (excepto Exonerado).
-- Si cedulaPana != cedulaReacarga, el emisor debe ser Rol "Estudiante" y no Exonerado.
-- Si monto <= 0 entonces retorna false.
+- Si la operación es exitosa (se actualiza el saldo), el método retorna null.
+- Si hay un error (cédula inexistente, monto <= 0, reglas de rol o estado), retorna un String con el mensaje de error.
+- Regla 1: Si no eres Estudiante, solo puedes recargarte a ti mismo (Autopago).
+- Regla 2: El receptor SIEMPRE debe ser de rol "Estudiante".
+- Regla 3: No se permite recargar a estudiantes con estado "Exonerado".
 
 SALIDAS:
-1- null = éxito
-2- String = mensaje de error
+1- null (Éxito)
+2- String (Mensaje de error específico)
 
-FACTOR                          CLASES DE EQUIVALENCIA                                  ENTRADAS (Pana, Recarga, Monto)  SALIDAS
-Autopago                        [cedulaPana == cedulaReacarga, No Exonerado]            123, 123, 500                    null
-Pana Estudiante valido          [cedulaPana != cedulaReacarga, Ambos Estudiante]        15151515, 123, 500               null
-Pana Admin a Tercero            [cedulaPana != cedulaReacarga, emisor no Estudiante]    22222222, 123, 500               String
-Pago de Exonerado               [Estado == "Exonerado"]                                 555, 555, 500                    String
-Monto negativo                  [Monto < 0]                                             123, 123, -10                    String
+FACTOR                          CLASES DE EQUIVALENCIA                          ENTRADAS (Pana, Recarga, Monto)      SALIDA (Retorno)
+Autopago Estudiante             [Cédulas iguales, Rol Estudiante]               "123", "123", 500.0                  null
+Estudiante a Estudiante         [Cédulas distintas, Ambos Estudiantes]          "15151515", "123", 500.0             null
+Autopago No Estudiante          [Cédulas iguales, Rol Profesor/Admin]           "22222222", "22222222", 100.0        null
+No Estudiante a Tercero         [Cédulas distintas, Emisor No Estudiante]       "22222222", "123", 100.0             "Solo puedes recargarte a ti mismo."
+Receptor No Estudiante          [Receptor es Profesor/Admin/Empleado]           "123", "22222222", 100.0             "Solo puedes recargar a otros estudiantes."
+Receptor Exonerado              [Receptor con estado "Exonerado"]               "123", "555", 100.0                  "No puedes recargar a un estudiante exonerado."
+Monto Inválido                  [Monto <= 0]                                    "123", "123", -10.0                  "El monto debe ser mayor a cero."
+Cédula Inexistente              [Cédula no registrada en JSON]                  "00000000", "123", 500.0             "La cédula ingresada no existe en el sistema."
