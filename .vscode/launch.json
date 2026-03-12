@@ -6,6 +6,13 @@
         "name": "MainReconocimiento",
         "request": "launch",
         "mainClass": "src.MainReconocimiento",
+        "projectName": "Comedor_final_final_f747f023"
+    },
+    {
+        "type": "java",
+        "name": "MainReconocimiento",
+        "request": "launch",
+        "mainClass": "src.MainReconocimiento",
         "projectName": "Proyecto-IS_ba75f666"
     },
     {
