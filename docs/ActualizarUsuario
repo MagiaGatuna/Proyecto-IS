@@ -1,0 +1,17 @@
+ENTRADAS: Un String con el nuevo estado (nuevo) y un String con la cédula del usuario (cedula).
+PRECONDICIONES: El archivo usuarios.json debe existir y el usuario debe tener todos los campos (nombres, apellidos, sexo, contraseña, rol y saldo).
+
+ESPECIFICACIONES:
+- Busca al usuario por cédula.
+- Si lo encuentra, sobrescribe los datos aplicando trim() y cambia el estado.
+- Guarda los cambios en el archivo JSON.
+- Retorna true si se actualizó y false si no se encontró el usuario.
+
+SALIDAS:
+1- true
+2- false
+
+FACTOR                          CLASES DE EQUIVALENCIA                  ENTRADAS              SALIDA
+Cambio de estado exitoso        [Cédula registrada en el JSON]         "Regular", "123"           true
+Cédula no encontrada            [Cédula no registrada en el JSON]       "Becario""0000"           false
+Escritura y persistencia        [Archivo accesible y usuario existe]  "Exonerado"  "15151515"     true
