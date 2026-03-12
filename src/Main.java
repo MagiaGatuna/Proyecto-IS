@@ -15,16 +15,14 @@ public class Main{
         Landingpage inicio= new Landingpage();
         Registro registro_b= new Registro();
         InicioSesion in_sesion= new InicioSesion();
-        Reconocimiento_facial reconocimiento= new Reconocimiento_facial();
+//        Reconocimiento_facial reconocimiento= new Reconocimiento_facial();
 
         Controlador_lp control1;
-        control1= new Controlador_lp(inicio, registro_b, in_sesion,reconocimiento);
+        control1= new Controlador_lp(inicio, registro_b, in_sesion);
         Controlador_reg control2;
         control2= new Controlador_reg(inicio, registro_b, in_sesion);
         Controlador_inicioS control3;
         control3=new Controlador_inicioS(inicio, registro_b, in_sesion);
-        Controlador_Reconocimiento control4;
-        control4= new Controlador_Reconocimiento(inicio, reconocimiento);
 
 
         inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
