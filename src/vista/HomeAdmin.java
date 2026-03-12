@@ -7,11 +7,8 @@ import src.modelo.Usuario;
 
 public class HomeAdmin extends JFrame {
   JButton boton_cerrarsesion;
-  JButton boton_Turnos;
   JButton boton_Menu;
   JButton boton_ListadoComensales;
-  JButton boton_Inventario;
-  JButton boton_Consumos;
   JButton boton_Costos;
   JButton boton_editar_estado;
   JLabel labela;
@@ -22,7 +19,7 @@ public class HomeAdmin extends JFrame {
      //centrammos la barra
     Dimension pantalla = Toolkit.getDefaultToolkit().getScreenSize();
     int anchoP = pantalla.width;
-    int espacio = anchoP / 4;
+    int espacio = anchoP / 3;
     int yIconos = 280;
     int yBotones = 420;
     //Por diseño creamos la barra superior 
@@ -45,25 +42,17 @@ setIconImage(new ImageIcon("res/logoSistemaComedor.png").getImage());
     add(Diseño_interfaz.Creador_iconos("res/Menu.png", (espacio * 0) + (espacio/2) - 75, yIconos, 150, 130));
     boton_Menu= Diseño_interfaz.Creador_Botones("EDITAR MENÚ SEMANAL", (espacio * 0) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul);
     add(boton_Menu);
-    boton_Turnos=(Diseño_interfaz.Creador_Botones("EDITAR TURNOS", (espacio * 0) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul));
-    add(boton_Turnos);
     // Sección ListadoComensaless
-    add(Diseño_interfaz.Creador_iconos("res/estadistica.png", (espacio * 1) + (espacio/2) - 60, yIconos + 15, 120, 120));
+    add(Diseño_interfaz.Creador_iconos("res/comida.png", (espacio * 1) + (espacio/2) - 60, yIconos + 15, 120, 120));
     boton_ListadoComensales=(Diseño_interfaz.Creador_Botones("COMENSALES", (espacio * 1) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
     add(boton_ListadoComensales);
 
     // Sección Inventario
-    add(Diseño_interfaz.Creador_iconos("res/suministros.png", (espacio * 2) + (espacio/2) - 60, yIconos + 15, 120, 120));
-    boton_Inventario=(Diseño_interfaz.Creador_Botones("INVENTARIO", (espacio * 2) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
-    add(boton_Inventario);
-    boton_Costos = Diseño_interfaz.Creador_Botones("COSTOS", (espacio * 2) + (espacio/2) - 90, yBotones + 50, 180, 40, Diseño_interfaz.colorazul);
+    add(Diseño_interfaz.Creador_iconos("res/estadistica.png", (espacio * 2) + (espacio/2) - 60, yIconos + 15, 120, 120));
+    boton_Costos = Diseño_interfaz.Creador_Botones("COSTOS", (espacio * 2) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul);
     add(boton_Costos);
 
-// Sección Consumos
-    add(Diseño_interfaz.Creador_iconos("res/comida.png", (espacio * 3) + (espacio/2) - 60, yIconos + 15, 120, 120));
-    boton_Consumos=(Diseño_interfaz.Creador_Botones("CONSUMOS", (espacio * 3) + (espacio/2) - 90, yBotones, 180, 40, Diseño_interfaz.colorazul));
-    add(boton_Consumos);
-    //creamos el saludo de bienvenida
+//creamos el saludo de bienvenida
     if(userActivo.getSexo().equals("Femenino")){
       labela=new JLabel("¡Bienvenida administradora "+ userActivo.getNombre()+ "!");//creamos el objeto
     }else{
@@ -94,20 +83,8 @@ barraSuperior.add(Diseño_interfaz.Creador_iconos("res/logo_ucv.png",20, 1, 120,
     return boton_Menu;
   }
 
-  public JButton getBtnTurnos(){
-    return boton_Turnos;
-  }
-
   public JButton getBtnListadoComensales(){
     return boton_ListadoComensales;
-  }
-
-  public JButton getBtnInventario(){
-    return boton_Inventario;
-  }
-
-  public JButton getBtnConsumos(){
-    return boton_Consumos;
   }
 
   public JButton getBtnCostos(){
