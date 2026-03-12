@@ -17,7 +17,7 @@ Autopago Estudiante             [Cédulas iguales, Rol Estudiante]              
 Estudiante a Estudiante         [Cédulas distintas, Ambos Estudiantes]          "15151515", "123", 500.0             null
 Autopago No Estudiante          [Cédulas iguales, Rol Profesor/Admin]           "22222222", "22222222", 100.0        null
 No Estudiante a Tercero         [Cédulas distintas, Emisor No Estudiante]       "22222222", "123", 100.0             "Solo puedes recargarte a ti mismo."
-Receptor No Estudiante          [Receptor es Profesor/Admin/Empleado]           "123", "22222222", 100.0             "Solo puedes recargar a otros estudiantes."
+Receptor No Estudiante          [Receptor es Profesor/Empleado]           "123", "22222222", 100.0             "Solo puedes recargar a otros estudiantes."
 Receptor Exonerado              [Receptor con estado "Exonerado"]               "123", "555", 100.0                  "No puedes recargar a un estudiante exonerado."
 Monto Inválido                  [Monto <= 0]                                    "123", "123", -10.0                  "El monto debe ser mayor a cero."
 Cédula Inexistente              [Cédula no registrada en JSON]                  "00000000", "123", 500.0             "La cédula ingresada no existe en el sistema."
