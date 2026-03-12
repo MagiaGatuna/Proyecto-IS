@@ -1,6 +1,8 @@
 package src.controlador;
 
 import src.vista.*;
+import src.modelo.Usuario;
+import src.modelo.validadorInicioS;
 import src.util.LimpiarFormulariosUtil;
 
 import java.awt.event.ActionEvent;
@@ -17,11 +19,11 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     private MenuDView menu_d;
     private InicioSesion inicio_sesion;
 
-   public Controlador_Alumno_Empleado(Landingpage inicio, AlumnoView alumno, EmpleadoView empleado, MenuSemanal menu_semanal, JPanel monedero, MenuDView menu_d,InicioSesion inicio_sesion) {
+   public Controlador_Alumno_Empleado(Landingpage inicio, AlumnoView alumno, EmpleadoView empleado, MenuSemanal menu_semanal, JPanel monedero, MenuDView menu_d, InicioSesion inicio_sesion) {
     this.inicio = inicio;
     this.menu_semanal = menu_semanal;
     this.alumno = alumno;
-    this.menu_d=menu_d;
+    this.menu_d = menu_d;
     this.empleado = empleado;
     this.monedero = monedero;
     this.inicio_sesion = inicio_sesion;
@@ -30,10 +32,9 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         this.alumno.getinicio().addActionListener(this);
         this.alumno.getMenuS().addActionListener(this);
         this.alumno.getMenuD().addActionListener(this);
-        avisoProximamente(this.alumno.getBtnConsumos());
+        this.alumno.getBtnConsumos().addActionListener(this);
         avisoProximamente(this.alumno.getmenu());
-        
-       
+
         if (monedero != null && alumno.getPanelMonedero() != null) {
             alumno.getPanelMonedero().add(monedero);
             alumno.getPanelMonedero().revalidate();
@@ -41,44 +42,41 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         }
     }
 
-    
     if (this.empleado != null) {
         this.empleado.getinicio().addActionListener(this);
         this.empleado.getMenuS().addActionListener(this);
         this.empleado.getMenuD().addActionListener(this);
-        avisoProximamente(this.empleado.getBtnConsumos());
+        this.empleado.getBtnConsumos().addActionListener(this);
         avisoProximamente(this.empleado.getmenu());
-        
-        
+
         if (monedero != null && empleado.getPanelMonedero() != null) {
             empleado.getPanelMonedero().add(monedero);
             empleado.getPanelMonedero().revalidate();
             empleado.getPanelMonedero().repaint();
         }
     }
-
-
 }
-    private void avisoProximamente(JButton boton) {
-            if (boton != null) {
-                boton.addActionListener(e -> {
-                    JOptionPane.showMessageDialog(null, 
-                        "Esta funcionalidad estará disponible en la próxima actualización.", 
-                        "En construcción", 
-                        JOptionPane.INFORMATION_MESSAGE);
-                });
-            }
-        }
 
-@Override
+    private void avisoProximamente(JButton boton) {
+        if (boton != null) {
+            boton.addActionListener(e -> {
+                JOptionPane.showMessageDialog(null, 
+                    "Esta funcionalidad estará disponible en la próxima actualización.", 
+                    "En construcción", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            });
+        }
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
-       
+
         if (alumno != null && e.getSource() == alumno.getinicio()) {
             volverAInicio(alumno);
         } else if (empleado != null && e.getSource() == empleado.getinicio()) {
             volverAInicio(empleado);
         }
-        
+
         // Lógica para ver el Menú Semanal
         if (alumno != null && e.getSource() == alumno.getMenuS()) {
             mostrarMenu(alumno);
@@ -88,22 +86,26 @@ public class Controlador_Alumno_Empleado implements ActionListener{
 
         if (alumno != null && e.getSource() == alumno.getMenuD()) {
             mostrarMenu2(alumno);
-            }else if (empleado != null && e.getSource() == empleado.getMenuD()) {
+        }else if (empleado != null && e.getSource() == empleado.getMenuD()) {
             mostrarMenu2(empleado);
-            }
+        }
+
+        if (alumno != null && e.getSource() == alumno.getBtnConsumos()) {
+            mostrarConsumos(alumno, null);
+        } else if (empleado != null && e.getSource() == empleado.getBtnConsumos()) {
+            mostrarConsumos(null, empleado);
+        }
+
     }
 
     private void volverAInicio(JFrame vistaActual) {
-
         if (inicio_sesion != null) {
             LimpiarFormulariosUtil.limpiarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña());
         }
-        
         inicio.setExtendedState(JFrame.MAXIMIZED_BOTH);
         inicio.setVisible(true);
         vistaActual.setVisible(false);
         vistaActual.dispose();
-       
     }
 
     private void mostrarMenu(JFrame vistaActual) {
@@ -118,7 +120,16 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         vistaActual.setVisible(false);
     }
 
-    
+    private void mostrarConsumos(AlumnoView alumnoV, EmpleadoView empleadoV) {
+        Usuario usuario = validadorInicioS.getUsuarioActual();
+        if (usuario == null) {
+            JOptionPane.showMessageDialog(null, "No hay usuario logueado.");
+            return;
+        }
+        ConsumosPersonalesView consumosVista = new ConsumosPersonalesView(usuario);
+        new Controlador_ConsumosPersonales(consumosVista, alumnoV, empleadoV);
 
-} 
-
+        if (alumnoV != null) alumnoV.setVisible(false);
+        if (empleadoV != null) empleadoV.setVisible(false);
+    }
+}

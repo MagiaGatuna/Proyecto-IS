@@ -120,7 +120,7 @@ if (this.menu.getvolver() != null) {
         }
 
         
-        if(e.getSource()==menu.getvolver() && (Rol.equals("Trabajador")||Rol.equals("Docente"))){//Aqui va un && con el JSON del tipo de usuario
+        if(e.getSource()==menu.getvolver() && (Rol.equals("Empleado")||Rol.equals("Profesor"))){//Aqui va un && con el JSON del tipo de usuario
             if(this.empleado != null){
         empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
             //empleado.setResizable(false);

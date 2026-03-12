@@ -65,7 +65,7 @@ public class Controlador_Recarga implements ActionListener {
                     vista_alumno.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     vista_alumno.setVisible(true);
                 }
-            } else if (Rol.equals("Trabajador") || Rol.equals("Profesor")) {
+            } else if (Rol.equals("Empleado") || Rol.equals("Profesor")) {
                 if (this.vista_empleado != null) {
                     vista_empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     vista_empleado.setVisible(true);
