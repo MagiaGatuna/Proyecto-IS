@@ -44,6 +44,16 @@ public class Controlador_inicioS implements ActionListener{
     if (validadorInicioS.validarInicioSesion(inicio_sesion.getCedula_id(), inicio_sesion.getContraseña())){
         Rol = validadorInicioS.getRol();
         Usuario usuarioLogueado = validadorInicioS.getUsuarioActual();
+
+        boolean seLeCancelo = src.modelo.ReservaDAO.limpiarYVerificarUsuario(usuarioLogueado.getCedula());
+        if (seLeCancelo) {
+                JOptionPane.showMessageDialog(null, 
+                    "¡Atención " + usuarioLogueado.getNombre() + "!\n" +
+                    "Se han detectado y cancelado reservas de fechas pasadas asociadas a tu cuenta.\n" +
+                    "El aforo se ha actualizado y puedes realizar nuevas reservas si lo deseas.", 
+                    "Aviso de Seguridad y Mantenimiento", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
             
             
             // Fecha traducida para logica del MenuD

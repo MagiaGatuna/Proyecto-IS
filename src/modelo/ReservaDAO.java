@@ -25,7 +25,8 @@ public class ReservaDAO {
             for (int i = 0; i < lista.length(); i++) {
                 JSONObject obj = lista.getJSONObject(i);
                 if (obj.getString("cedula").equals(cedula) && obj.getString("dia_turno").equals(diaTurno)) {
-                    return new Reserva(cedula, obj.getString("dia_turno"));
+                    String fecha = obj.has("fecha_exacta") ? obj.getString("fecha_exacta") : "";
+                    return new Reserva(cedula, obj.getString("dia_turno"), fecha);
                 }
             }
         } catch (IOException e) {
@@ -71,15 +72,46 @@ public class ReservaDAO {
         JSONObject nueva = new JSONObject();
         nueva.put("cedula", reserva.getCedula());
         nueva.put("dia_turno", reserva.getDiaTurno());
+        nueva.put("fecha_exacta", reserva.getFechaExacta());
         lista.put(nueva);
 
         Files.write(RUTA, lista.toString(4).getBytes(StandardCharsets.UTF_8));
     } catch (IOException e) {
         JOptionPane.showMessageDialog(null, "Error al guardar reserva: " + e.getMessage());
+    }}
+
+// Modifica el método en ReservaDAO.java
+    public static boolean limpiarYVerificarUsuario(String cedulaUsuario) {
+        boolean usuarioAfectado = false;
+        try {
+            if (!Files.exists(RUTA)) return false;
+            String contenido = new String(Files.readAllBytes(RUTA), StandardCharsets.UTF_8);
+            JSONArray listaOriginal = new JSONArray(contenido);
+            JSONArray listaNueva = new JSONArray();
+
+            for (int i = 0; i < listaOriginal.length(); i++) {
+                JSONObject res = listaOriginal.getJSONObject(i);
+                String fechaReserva = res.optString("fecha_exacta", "");
+                String idMenu = res.getString("dia_turno");
+                String cedulaReserva = res.getString("cedula");
+
+                if (!fechaReserva.isEmpty() && src.util.Calcular_dia.isFechaPasada(fechaReserva)) {
+                    src.modelo.Menus_lista.decrementarReserva(idMenu);
+                    
+                    if (cedulaReserva.equals(cedulaUsuario)) {
+                        usuarioAfectado = true;
+                    }
+                } else {
+                    // Si no ha pasado, la mantenemos en el sistema
+                    listaNueva.put(res);
+                }
+            }
+
+            Files.write(RUTA, listaNueva.toString(4).getBytes(StandardCharsets.UTF_8));
+        } catch (Exception e) {
+            System.out.println("Error en limpieza: " + e.getMessage());
+        }
+        return usuarioAfectado; // Nos dice si el usuario que entro perdió su reserva
     }
 }
 
-// ejemplo de hacer funcionar a guardar reserva
-//Reserva nuevaReserva = new Reserva(cedula, dia_turno);
-//ReservaDAO.guardar(nuevaReserva);
-}

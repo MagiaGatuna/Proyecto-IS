@@ -368,8 +368,8 @@ private void realizarReserva(String turno) {
                 JOptionPane.YES_NO_OPTION);
 
             if (opcion == JOptionPane.YES_OPTION) {
-
-                    Reserva nuevaReserva = new Reserva(usuario.getCedula(), idMenu);
+                    String fechaExactaMenu = src.util.Calcular_dia.calcularFechaMenu(dia_seleccionado);
+                    Reserva nuevaReserva = new Reserva(usuario.getCedula(), idMenu, fechaExactaMenu);
                     ReservaDAO.guardar(nuevaReserva);
 
                     Menus_lista.incrementarReserva(idMenu);
