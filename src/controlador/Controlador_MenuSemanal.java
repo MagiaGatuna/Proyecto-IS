@@ -75,6 +75,7 @@ public class Controlador_MenuSemanal implements ActionListener{
         }else{
             dia_seleccionado=dia;
         }
+        pinta = dia_seleccionado;
             Menus_lista.mostrarMenu(menu.get_texto("desayuno"), menu.getaforo("desayuno"),dia_seleccionado,"DESAYUNO");
             Menus_lista.mostrarMenu(menu.get_texto("almuerzo"), menu.getaforo("almuerzo"),dia_seleccionado,"ALMUERZO");
 
