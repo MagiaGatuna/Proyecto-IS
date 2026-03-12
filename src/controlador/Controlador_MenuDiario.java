@@ -134,7 +134,7 @@ public class Controlador_MenuDiario implements ActionListener {
                     menu.dispose();
                 }
             }
-            if (Rol.equals("Trabajador") || Rol.equals("Docente")) {
+            if (Rol.equals("Empleado") || Rol.equals("Profesor")) {
                 if (this.empleado != null) {
                     empleado.setExtendedState(JFrame.MAXIMIZED_BOTH);
                     //empleado.setResizable(false);

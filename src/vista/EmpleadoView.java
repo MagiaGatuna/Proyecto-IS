@@ -3,15 +3,15 @@ import javax.swing.*;
 import java.awt.*;
 import src.util.Conectar_ventanas;
 import src.util.Diseño_interfaz;
-
 import src.modelo.Usuario;
 public class EmpleadoView extends JFrame {
 
 
     private final Color COLOR_FONDO = Color.WHITE;
     private final Color COLOR_HEADER = Color.decode("#D9D9D9");
-    private final Color COLOR_BOTON_PRINCIPAL = Color.decode("#0086A3");
-    private final Color COLOR_BOTON_CERRAR = Color.decode("#625FBA");
+    private final Color COLOR_BOTON_PRINCIPAL = Diseño_interfaz.colorazul;
+    private final Color COLOR_BOTON_SECUNDARIO = Diseño_interfaz.turquesaOscuro;
+    private final Color COLOR_BOTON_CERRAR = Diseño_interfaz.colorazulOscuro;
     private final Color COLOR_TEXTO_AZUL = Color.decode("#050082");
 
 
@@ -19,7 +19,9 @@ public class EmpleadoView extends JFrame {
     private JButton btnVerMenuDiario;
     private JButton btnVerMenuSemanal;
     private JButton btnVerConsumos;
+    private JButton btnConsumos;
     private JButton btnCerrarSesion;
+    private JButton btnPerfil;
     private Usuario userLogueado;
     private JPanel panelContenedorMonedero;
 
@@ -33,7 +35,7 @@ public class EmpleadoView extends JFrame {
         add(panelNorte, BorderLayout.NORTH);
         add(panelCentro, BorderLayout.CENTER);
 
-       // setVisible(true);
+    // setVisible(true);
     }
 
     private void iniciarVentana() {
@@ -63,22 +65,26 @@ public class EmpleadoView extends JFrame {
         panel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
         panel.setBackground(COLOR_HEADER);
 
-        
         JLabel lblIconoUCV = new JLabel(cargarIcono("res/LogoUCV.png", 100, 100));
         panel.add(lblIconoUCV);
 
-        
         panel.add(Box.createHorizontalGlue());
 
-        JButton btnMonedero =Diseño_interfaz.Creador_Botones("MONEDERO", EXIT_ON_CLOSE, ERROR,130, 40,Color.BLUE);
+        btnPerfil = Diseño_interfaz.Creador_Botones("PERFIL", EXIT_ON_CLOSE, ERROR, 130, 40, COLOR_BOTON_SECUNDARIO);
+        btnPerfil.setForeground(Color.BLACK);
+        btnPerfil.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarPerfil(this, userLogueado));
+        panel.add(btnPerfil);
+
+        panel.add(Box.createHorizontalStrut(10));
+
+        JButton btnMonedero = Diseño_interfaz.Creador_Botones("MONEDERO", EXIT_ON_CLOSE, ERROR, 130, 40, COLOR_BOTON_SECUNDARIO);
+        btnMonedero.setForeground(Color.BLACK);
         btnMonedero.addActionListener(e -> Conectar_ventanas.getInstancia().desplegarMonedero(this, userLogueado));
         panel.add(btnMonedero);
 
-        
         panel.add(Box.createHorizontalStrut(10));
 
-        
-        btnCerrarSesion =Diseño_interfaz.Creador_Botones("CERRAR SESIÓN", EXIT_ON_CLOSE, ERROR,170, 40,COLOR_BOTON_CERRAR); 
+        btnCerrarSesion = Diseño_interfaz.Creador_Botones("CERRAR SESIÓN", EXIT_ON_CLOSE, ERROR, 170, 40, COLOR_BOTON_CERRAR);
         panel.add(btnCerrarSesion);
 
         return panel;
@@ -95,25 +101,23 @@ public class EmpleadoView extends JFrame {
         JLabel lblBienvenida = new JLabel();
         if(sexo.equalsIgnoreCase("Femenino")){
             if(rol.equalsIgnoreCase("Empleado")){
-                lblBienvenida = new JLabel("<html><center>¡BIENVENIDA " + "EMPLEADA" + "<br>" + username+ "!</center></html>");
+                lblBienvenida = new JLabel("<html><center>¡BIENVENIDA EMPLEADA<br>" + username + "!</center></html>");
             }else{
-                lblBienvenida = new JLabel("<html><center>¡BIENVENIDA " + "PROFESORA" + "<br>" + username+ "!</center></html>");
+                lblBienvenida = new JLabel("<html><center>¡BIENVENIDA PROFESORA<br>" + username + "!</center></html>");
             }
-            
         }else if(sexo.equalsIgnoreCase("Masculino")){
-            lblBienvenida = new JLabel("<html><center>¡BIENVENIDO " + rol.toUpperCase() + "<br>" + username+ "!</center></html>");
+            lblBienvenida = new JLabel("<html><center>¡BIENVENIDO " + rol.toUpperCase() + "<br>" + username + "!</center></html>");
         }else{
-            lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A " + rol.toUpperCase() + "<br>" + username+ "!</center></html>");
+            lblBienvenida = new JLabel("<html><center>¡BIENVENIDO/A " + rol.toUpperCase() + "<br>" + username + "!</center></html>");
         }
 
-    
         lblBienvenida.setFont(new Font("SANS_SERIF", Font.BOLD, 50));
         lblBienvenida.setForeground(COLOR_TEXTO_AZUL);
         lblBienvenida.setAlignmentX(Component.CENTER_ALIGNMENT);
-        lblBienvenida.setBorder(BorderFactory.createEmptyBorder(0,300,0,0));
-        
+        lblBienvenida.setBorder(BorderFactory.createEmptyBorder(0, 300, 0, 0));
+
         panel.add(lblBienvenida);
-        panel.add(Box.createVerticalStrut(100)); 
+        panel.add(Box.createVerticalStrut(100));
 
         JPanel panelIconos = new JPanel();
         panelIconos.setLayout(new BoxLayout(panelIconos, BoxLayout.X_AXIS));
@@ -130,17 +134,20 @@ public class EmpleadoView extends JFrame {
         bloqueMenu.add(lblIconoMenu);
         bloqueMenu.add(Box.createVerticalStrut(10));
 
-        btnVerMenu = Diseño_interfaz.Creador_Botones("VER MENÚ", EXIT_ON_CLOSE, ERROR,200, 40,COLOR_BOTON_PRINCIPAL); new JButton("VER MENÚ");
+        btnVerMenu = Diseño_interfaz.Creador_Botones("VER MENÚ", EXIT_ON_CLOSE, ERROR, 200, 40, COLOR_BOTON_PRINCIPAL);
+        for(java.awt.event.MouseListener ml : btnVerMenu.getMouseListeners()) {
+            btnVerMenu.removeMouseListener(ml);
+        }
         bloqueMenu.add(btnVerMenu);
+        bloqueMenu.add(Box.createVerticalStrut(10));
 
-        btnVerMenuDiario = new JButton("MENÚ DIARIO");
-        btnVerMenuDiario.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnVerMenuDiario.setMaximumSize(new Dimension(120, 40));
+        btnVerMenuDiario = Diseño_interfaz.Creador_Botones("VER MENÚ DIARIO", EXIT_ON_CLOSE, ERROR, 160, 40, COLOR_BOTON_SECUNDARIO);
+        btnVerMenuDiario.setForeground(Color.BLACK);
         bloqueMenu.add(btnVerMenuDiario);
+        bloqueMenu.add(Box.createVerticalStrut(10));
 
-        btnVerMenuSemanal = new JButton("MENÚ SEMANAL");
-        btnVerMenuSemanal.setAlignmentX(Component.CENTER_ALIGNMENT);
-        btnVerMenuSemanal.setMaximumSize(new Dimension(120, 40));
+        btnVerMenuSemanal = Diseño_interfaz.Creador_Botones("VER MENÚ SEMANAL", EXIT_ON_CLOSE, ERROR, 160, 40, COLOR_BOTON_SECUNDARIO);
+        btnVerMenuSemanal.setForeground(Color.BLACK);
         bloqueMenu.add(btnVerMenuSemanal);
 
 
@@ -154,13 +161,22 @@ public class EmpleadoView extends JFrame {
         bloqueConsumos.add(lblIconoConsumo);
         bloqueConsumos.add(Box.createVerticalStrut(10));
 
-        btnVerConsumos = Diseño_interfaz.Creador_Botones("CONSUMOS", EXIT_ON_CLOSE, ERROR,200, 40,COLOR_BOTON_PRINCIPAL);
+        btnVerConsumos = Diseño_interfaz.Creador_Botones("CONSUMOS", EXIT_ON_CLOSE, ERROR, 200, 40, COLOR_BOTON_PRINCIPAL);
+        for(java.awt.event.MouseListener ml : btnVerConsumos.getMouseListeners()) {
+            btnVerConsumos.removeMouseListener(ml);
+        }
+        btnVerConsumos.setForeground(Color.WHITE);
         bloqueConsumos.add(btnVerConsumos);
+        bloqueConsumos.add(Box.createVerticalStrut(10));
+
+        btnConsumos = Diseño_interfaz.Creador_Botones("VER CONSUMOS", EXIT_ON_CLOSE, ERROR, 160, 40, COLOR_BOTON_SECUNDARIO);
+        btnConsumos.setForeground(Color.BLACK);
+        bloqueConsumos.add(btnConsumos);
 
 
         panelIconos.add(Box.createHorizontalGlue());
         panelIconos.add(bloqueMenu);
-        panelIconos.add(Box.createHorizontalStrut(300)); 
+        panelIconos.add(Box.createHorizontalStrut(300));
         panelIconos.add(bloqueConsumos);
         panelIconos.add(Box.createHorizontalGlue());
 
@@ -173,7 +189,7 @@ public class EmpleadoView extends JFrame {
     private ImageIcon cargarIcono(String ruta, int ancho, int alto) {
         ImageIcon icono = new ImageIcon(ruta);
         if (icono.getImageLoadStatus() == MediaTracker.ERRORED) {
-            return new ImageIcon(); 
+            return new ImageIcon();
         }
         Image imgEscalada = icono.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
         return new ImageIcon(imgEscalada);
@@ -182,32 +198,25 @@ public class EmpleadoView extends JFrame {
     public JButton getinicio(){
         return btnCerrarSesion;
     }
-     public JButton getMenuS(){
+    public JButton getMenuS(){
         return btnVerMenuSemanal;
     }
     public JButton getMenuD(){
         return btnVerMenuDiario;
     }
     public JButton getBtnConsumos(){
-        return btnVerConsumos;
+        return btnConsumos;
+    }
+    public JButton getBtnPerfil(){
+        return btnPerfil;
     }
     public JPanel getPanelMonedero() {
-    return panelContenedorMonedero;
-
-}
-
+        return panelContenedorMonedero;
+    }
     public JButton getmenu() {
         return btnVerMenu;
     }
 
-
     public static void main(String[] args) {
-    //         Usuario pruebaEstudiante = new Usuario("Min Yoongi", 50.0, "empleado");
-
-    //  EmpleadoView vista = new EmpleadoView(pruebaEstudiante);
-    
-    // vista.setVisible(true);
-    
-    // vista.setExtendedState(javax.swing.JFrame.MAXIMIZED_BOTH);
     }
 }
