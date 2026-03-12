@@ -33,7 +33,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         this.alumno.getMenuS().addActionListener(this);
         this.alumno.getMenuD().addActionListener(this);
         this.alumno.getBtnConsumos().addActionListener(this);
-        avisoProximamente(this.alumno.getmenu());
+        
 
         if (monedero != null && alumno.getPanelMonedero() != null) {
             alumno.getPanelMonedero().add(monedero);
@@ -47,7 +47,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
         this.empleado.getMenuS().addActionListener(this);
         this.empleado.getMenuD().addActionListener(this);
         this.empleado.getBtnConsumos().addActionListener(this);
-        avisoProximamente(this.empleado.getmenu());
+        
 
         if (monedero != null && empleado.getPanelMonedero() != null) {
             empleado.getPanelMonedero().add(monedero);
@@ -57,7 +57,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
     }
 }
 
-    private void avisoProximamente(JButton boton) {
+/*     private void avisoProximamente(JButton boton) {
         if (boton != null) {
             boton.addActionListener(e -> {
                 JOptionPane.showMessageDialog(null, 
@@ -66,7 +66,7 @@ public class Controlador_Alumno_Empleado implements ActionListener{
                     JOptionPane.INFORMATION_MESSAGE);
             });
         }
-    }
+    } */
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -84,10 +84,25 @@ public class Controlador_Alumno_Empleado implements ActionListener{
             mostrarMenu(empleado);
         }
 
+        // Logica para ver menu diario
         if (alumno != null && e.getSource() == alumno.getMenuD()) {
-            mostrarMenu2(alumno);
+            String diaEspanol = menu_d.getDiaSemana();
+                if (diaEspanol.equalsIgnoreCase("Sabado") || diaEspanol.equalsIgnoreCase("Domingo")){
+                    JOptionPane.showMessageDialog(menu_d, 
+                        "Estimado usuario: Es fin de semana y nuestro comedor está fuera de servicio.", 
+                        "Servicio Cerrado", 
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    } else {mostrarMenu2(alumno);}
         }else if (empleado != null && e.getSource() == empleado.getMenuD()) {
-            mostrarMenu2(empleado);
+            String diaEspanol = menu_d.getDiaSemana();
+                if (diaEspanol.equalsIgnoreCase("Sabado") || diaEspanol.equalsIgnoreCase("Domingo")){
+                    JOptionPane.showMessageDialog(menu_d, 
+                        "Estimado usuario: Es fin de semana y nuestro comedor está fuera de servicio.", 
+                        "Servicio Cerrado", 
+                        JOptionPane.INFORMATION_MESSAGE);
+                        
+                    } else {mostrarMenu2(empleado);}
         }
 
         if (alumno != null && e.getSource() == alumno.getBtnConsumos()) {
