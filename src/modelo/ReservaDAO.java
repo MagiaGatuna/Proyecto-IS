@@ -113,5 +113,46 @@ public class ReservaDAO {
         }
         return usuarioAfectado; // Nos dice si el usuario que entro perdió su reserva
     }
+
+    public static void limpiarReservasCaducadas() {
+    Path RUTA_RESERVAS = Paths.get("res/data/reservas.json").toAbsolutePath();
+
+    try {
+        if (!Files.exists(RUTA_RESERVAS)) return;
+
+        String contenido = new String(Files.readAllBytes(RUTA_RESERVAS), StandardCharsets.UTF_8);
+        if (contenido.trim().isEmpty()) return;
+
+        JSONArray listaOriginal = new JSONArray(contenido);
+        JSONArray listaLimpia = new JSONArray();
+        boolean huboCambios = false;
+
+        for (int i = 0; i < listaOriginal.length(); i++) {
+            JSONObject res = listaOriginal.getJSONObject(i);
+            
+            String fechaReserva = res.optString("fecha_exacta", ""); 
+
+            if (!fechaReserva.isEmpty() && src.util.Calcular_dia.isFechaPasada(fechaReserva)) {
+                
+                huboCambios = true;
+                String idMenu = res.getString("dia_turno");
+                
+                src.modelo.Menus_lista.decrementarReserva(idMenu);
+
+            } else {
+
+                listaLimpia.put(res);
+            }
+        }
+
+        // Solo sobreescribimos el archivo si realmente borramos algo caducado
+        if (huboCambios) {
+            Files.write(RUTA_RESERVAS, listaLimpia.toString(4).getBytes(StandardCharsets.UTF_8));
+        }
+
+    } catch (Exception e) {
+        System.err.println("Error en la limpieza de reservas: " + e.getMessage());
+    }
+}
 }
 
