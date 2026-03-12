@@ -30,14 +30,94 @@
         "contraseña": "123456"
     },
     {
+        "apellidos": "Moros",
+        "estado": "Regular",
+        "cedula": "12548736",
+        "saldo": 100000.5,
+        "sexo": "Femenino",
+        "rol": "Empleado",
+        "nombres": "Elena",
+        "contraseña": "123456"
+    },
+    {
+        "apellidos": "Moros",
+        "estado": "Regular",
+        "cedula": "12548736",
+        "saldo": 100000.5,
+        "sexo": "Femenino",
+        "rol": "Empleado",
+        "nombres": "Elena",
+        "contraseña": "123456"
+    },
+    {
+        "apellidos": "Mendez",
+        "estado": "Regular",
+        "cedula": "6666",
+        "saldo": 100000.5,
+        "sexo": "Masculino",
+        "rol": "Profesor",
+        "nombres": "Lucho",
+        "contraseña": "1233"
+    },
+    {
+        "apellidos": "Martinez",
+        "estado": "Regular",
+        "cedula": "9876",
+        "saldo": 1080.5,
+        "sexo": "Masculino",
+        "rol": "Estudiante",
+        "nombres": "Mateo",
+        "contraseña": "2020"
+    },
+    {
+        "apellidos": "De la Rosa",
+        "estado": "Regular",
+        "cedula": "5150",
+        "saldo": 100000.5,
+        "sexo": "Masculino",
+        "rol": "Estudiante",
+        "nombres": "Tomas",
+        "contraseña": "2121"
+    },
+    {
+        "apellidos": "Min",
+        "estado": "Regular",
+        "cedula": "1313",
+        "saldo": 1000.5,
+        "sexo": "Masculino",
+        "rol": "Profesor",
+        "nombres": "Yohan",
+        "contraseña": "3030"
+    },
+    {
         "apellidos": "Vanrouge",
         "estado": "Regular",
         "cedula": "22222222",
         "saldo": 505.25,
-        "sexo": "Masculino",
+        "sexo": "Femenino",
         "rol": "Profesor",
         "nombres": "Lilia",
         "contraseña": "1234567"
+    },
+    {
+        "apellidos": "Lanister",
+        "estado": "Regular",
+        "cedula": "126",
+        "saldo": 10.5,
+        "sexo": "Masculino",
+        "rol": "Empleado",
+        "nombres": "Tyron",
+        "contraseña": "12225"
+    },
+     {
+        "apellidos": "Diaz",
+        "estado": "Regular",
+        "cedula": "4567",
+        "saldo": 505.25,
+        "sexo": "Masculino",
+        "rol": "Profesor",
+        "nombres": "Pancho",
+        "contraseña": "4444"
     },
     {
         "apellidos": "A",

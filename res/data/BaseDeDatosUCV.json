@@ -1,18 +1,50 @@
 [
     {
-        "cedula": "1234",
-        "rol": "Administrador"
+        "cedula": "123",
+        "rol": "Estudiante"
+    },
+    {
+        "cedula": "555",
+        "rol": "Estudiante"
     },
     {
         "cedula": "12548736",
         "rol": "Empleado"
     },
     {
+        "cedula": "6666",
+        "rol": "Profesor"
+    },
+    {
+        "cedula": "9876",
+        "rol": "Estudiante"
+    },
+    {
+        "cedula": "5150",
+        "rol": "Estudiante"
+    },
+    {
+        "cedula": "1313",
+        "rol": "Profesor"
+    },
+    {
         "cedula": "22222222",
         "rol": "Profesor"
     },
     {
-        "cedula": "123",
+        "cedula": "126",
+        "rol": "Empleado"
+    },
+    {
+        "cedula": "4567",
+        "rol": "Profesor"
+    },
+    {
+        "cedula": "15151515",
         "rol": "Estudiante"
+    },
+    {
+        "cedula": "1234",
+        "rol": "Administrador"
     }
 ]
