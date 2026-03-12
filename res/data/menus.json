@@ -15,7 +15,7 @@
         "aforo_max": 1006,
         "comida": "Ensalada César y pollo",
         "turno": "ALMUERZO",
-        "reservas_actual": 0,
+        "reservas_actual": 1,
         "dia": "MONDAY",
         "valorNutricional": "236"
     },

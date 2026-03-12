@@ -69,5 +69,40 @@ public static int getIndiceDia(String dia_consultar){
 
 }
 
+// (Formato YYYY-MM-DD)
+    public static String getFechaActualStr() {
+        LocalDate hoy = LocalDate.now();
+        return hoy.toString(); // Devuelve algo como 2026-03-12
+    }
+
+    public static String calcularFechaMenu(String diaMenuStr) {
+        LocalDate hoy = LocalDate.now();
+        DayOfWeek diaHoy = hoy.getDayOfWeek();
+        
+        // Convertimos el String al tipo DayOfWeek de Java
+        DayOfWeek diaMenu = DayOfWeek.valueOf(diaMenuStr.toUpperCase()); 
+        
+        int diasDiferencia = diaMenu.getValue() - diaHoy.getValue();
+        
+        if (diasDiferencia < 0) {
+            diasDiferencia += 7;
+        }
+        
+        LocalDate fechaReserva = hoy.plusDays(diasDiferencia);
+        return fechaReserva.toString();
+    }
+
+    public static boolean isFechaPasada(String fechaGuardadaStr) {
+        try {
+            LocalDate fechaGuardada = LocalDate.parse(fechaGuardadaStr); // Lee YYYY-MM-DD
+            LocalDate hoy = LocalDate.now();
+            
+            // isBefore() devuelve true si la fecha guardada es anterior a hoy
+            return fechaGuardada.isBefore(hoy); 
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }
 

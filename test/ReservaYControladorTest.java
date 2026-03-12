@@ -21,7 +21,7 @@ public class ReservaYControladorTest {
     void testFlujoCompletoReservaYPay() {
         double precio = Calcular.calcularPrecio(idMenu, usuarioPrueba);
         double saldoInicial = usuarioPrueba.getSaldo();
-        Reserva nueva = new Reserva(usuarioPrueba.getCedula(), idMenu);
+        Reserva nueva = new Reserva(usuarioPrueba.getCedula(), idMenu, null); //aqui va la fecha exacta en el null
         ReservaDAO.guardar(nueva);
         
         Reserva guardada = ReservaDAO.buscarPorCedula("9999", idMenu);

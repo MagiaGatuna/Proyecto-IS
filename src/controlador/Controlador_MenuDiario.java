@@ -172,6 +172,7 @@ private void realizarReserva(String turno) {
         }
 
         String idMenu = menuData.getString("dia_turno");
+        String fechaExactaMenu = Calcular_dia.calcularFechaMenu(diaIngles);
         double precioFinal = Calcular.calcularPrecio(idMenu, usuario);
 
         Reserva reservaExistente = ReservaDAO.buscarPorCedula(usuario.getCedula(), idMenu);
@@ -193,8 +194,9 @@ private void realizarReserva(String turno) {
             JOptionPane.YES_NO_OPTION);
 
         if (opcion == JOptionPane.YES_OPTION) {
-                
-                Reserva nuevaReserva = new Reserva(usuario.getCedula(), idMenu);
+
+                String fechaExactaMe = src.util.Calcular_dia.calcularFechaMenu(diaIngles);
+                Reserva nuevaReserva = new Reserva(usuario.getCedula(), idMenu, fechaExactaMe);
                 ReservaDAO.guardar(nuevaReserva);
                 Menus_lista.incrementarReserva(idMenu);
                 actualizarTurno(diaIngles, turno); 
