@@ -14,17 +14,17 @@ public class Controlador_lp implements ActionListener{
     private Landingpage inicio;
     private Registro ventanaRegistro;
     private InicioSesion inicio_sesion;
-    private Reconocimiento_facial reconocimiento;
+//    private Reconocimiento_facial reconocimiento;
 
-    public Controlador_lp(Landingpage inicio, Registro ventanaRegistro, InicioSesion inicio_sesion, Reconocimiento_facial reconocimiento){
+    public Controlador_lp(Landingpage inicio, Registro ventanaRegistro, InicioSesion inicio_sesion){
         this.inicio=inicio;
         this.ventanaRegistro=ventanaRegistro;
         this.inicio_sesion=inicio_sesion;
-        this.reconocimiento= reconocimiento;
+//        this.reconocimiento= reconocimiento;
         this.inicio.getRegistro().addActionListener(this);
         this.inicio.getAcercade().addActionListener(this);
         this.inicio.getInicio().addActionListener(this);
-        this.inicio.getReconocimiento().addActionListener(this);
+        //this.inicio.getReconocimiento().addActionListener(this);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class Controlador_lp implements ActionListener{
             inicio.setVisible(false);
 
         }
-        if(e.getSource()==inicio.getReconocimiento()){
+/*         if(e.getSource()==inicio.getReconocimiento()){
 
             reconocimiento.setExtendedState(JFrame.MAXIMIZED_BOTH);
             reconocimiento.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +59,7 @@ public class Controlador_lp implements ActionListener{
             inicio.setVisible(false);
 
         }
-
+*/ 
     }
 }
 
