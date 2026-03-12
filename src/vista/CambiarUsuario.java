@@ -73,7 +73,7 @@ public void fondo_panel(int pantalla, int alto){
     JLayeredPane panel_capas= new JLayeredPane();
     panel_capas.setBounds(0,0,pantalla,alto);
     
-    ImageIcon fondo_icon= new ImageIcon ("res/fondo_reconocimiento.jpg");
+    ImageIcon fondo_icon= new ImageIcon ("res/fondocomedor2.jpeg");
     Image tam_fondo= fondo_icon.getImage().getScaledInstance(pantalla,alto,Image.SCALE_SMOOTH);
     JLabel fondo= new JLabel(new ImageIcon(tam_fondo));
     fondo.setBounds(0,0,pantalla,alto);

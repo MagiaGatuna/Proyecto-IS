@@ -3,7 +3,7 @@
         "apellidos": "Matheus",
         "estado": "Becario",
         "cedula": "123",
-        "saldo": 1004684,
+        "saldo": 1005684,
         "sexo": "femenino",
         "rol": "Estudiante",
         "nombres": "Corina",
@@ -109,7 +109,7 @@
         "nombres": "Tyron",
         "contraseña": "12225"
     },
-     {
+    {
         "apellidos": "Diaz",
         "estado": "Regular",
         "cedula": "4567",
