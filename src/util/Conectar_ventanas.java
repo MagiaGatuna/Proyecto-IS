@@ -3,6 +3,7 @@ import src.vista.InicioSesion;
 import src.vista.HomeAdmin;
 import src.vista.Monedero;
 import src.vista.Perfil;
+import src.vista.Tarifas;
 import src.modelo.Usuario;
 import javax.swing.*; 
 import java.awt.*;
@@ -27,7 +28,7 @@ public class Conectar_ventanas {
     }
 
     public void desplegarMonedero(JFrame ventanaDondeEstoy, Usuario u) {
-    // 1. Buscamos si ya existe un monedero abierto para cerrarlo (evita duplicados)    
+        // 1. Buscamos si ya existe un monedero abierto para cerrarlo (evita duplicados)    
         for (Component c : ventanaDondeEstoy.getLayeredPane().getComponents()) {
             if (c instanceof Monedero) {
                 ventanaDondeEstoy.getLayeredPane().remove(c);
@@ -84,7 +85,32 @@ public class Conectar_ventanas {
         ventanaDondeEstoy.repaint();
     }
 
-    private void cambiarVentana(JFrame nueva) {//aqui nos aseguramos de que al abrir la ventana la vieja se cierre 
+    public void desplegarTarifas(JFrame ventanaDondeEstoy) {
+        for (Component c : ventanaDondeEstoy.getLayeredPane().getComponents()) {
+            if (c instanceof Tarifas) {
+                ventanaDondeEstoy.getLayeredPane().remove(c);
+                ventanaDondeEstoy.repaint();
+                return;
+            }
+        }
+
+        for (Component c : ventanaDondeEstoy.getLayeredPane().getComponents()) {
+            if (c instanceof Monedero || c instanceof Perfil) {
+                ventanaDondeEstoy.getLayeredPane().remove(c);
+                ventanaDondeEstoy.repaint();
+                break;
+            }
+        }
+
+        Tarifas tarifas = new Tarifas();
+        int x = ventanaDondeEstoy.getWidth() - 340;
+        int y = 130;
+        tarifas.setBounds(x, y, 320, 380);
+        ventanaDondeEstoy.getLayeredPane().add(tarifas, JLayeredPane.PALETTE_LAYER);
+        ventanaDondeEstoy.repaint();
+    }
+
+    private void cambiarVentana(JFrame nueva) {
         if (ventanaActual != null) ventanaActual.dispose();
         ventanaActual = nueva;
         ventanaActual.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
