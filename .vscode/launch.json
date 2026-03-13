@@ -6,6 +6,13 @@
         "name": "Main_Decision",
         "request": "launch",
         "mainClass": "src.Main_Decision",
+        "projectName": "Comedor_final_final_f747f023"
+    },
+    {
+        "type": "java",
+        "name": "Main_Decision",
+        "request": "launch",
+        "mainClass": "src.Main_Decision",
         "projectName": "Proyecto-IS_bc937f84"
     },
     {
