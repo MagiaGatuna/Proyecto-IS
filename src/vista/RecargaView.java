@@ -58,7 +58,7 @@ public class RecargaView extends JFrame {
             super.paintComponent(g);
             Graphics2D g2 = (Graphics2D) g.create();
             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);//para que dibuje el panel
-            g2.setColor(new Color(0, 128, 128, 100));//r,g,b y alpha ese hace que sea transparente 
+            g2.setColor(new Color(173, 216, 230, 100));//r,g,b y alpha ese hace que sea transparente 
             g2.fillRoundRect(0, 0, getWidth(), getHeight(), 50, 50);//coordenadas de el panel 
             g2.dispose();
         }
