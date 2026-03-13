@@ -8,6 +8,7 @@
 |--------|------|
 | Sprint 1 | [Ver commit](https://github.com/MagiaGatuna/Proyecto-IS/tree/132924707575e91f80ab7dae1cbdc76427db8eab) |
 | Sprint 2 | [Ver commit](https://github.com/MagiaGatuna/Proyecto-IS/tree/b3ef212b842d107bbb3d4c9b8dae2f4bafe9946f) |
+| Sprint 3 | [Ver commit](https://github.com/MagiaGatuna/Proyecto-IS/tree/c101269d55c078147fd1363aff2f428449a6a38a) |
 
 ---
 
