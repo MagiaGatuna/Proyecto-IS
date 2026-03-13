@@ -52,11 +52,11 @@ public class Controlador_MenuDiario implements ActionListener {
             menu.deshabilitarBoton("DESAYUNO");
             menu.deshabilitarBoton("ALMUERZO");
          } else {
-            if (horaActual >= 600) {
+            if (horaActual >= 420) {
                 menu.deshabilitarBoton("DESAYUNO");
             }
 
-            if (horaActual >= 900) {
+            if (horaActual >= 720) {
                 menu.deshabilitarBoton("ALMUERZO");
             }
          }
