@@ -68,12 +68,6 @@ Integrado en VScode en la seccion Java Projects y en el apartado Referenced Libr
 - `org.json.JSONException`
 - `org.json.JSONObject`
 
-La librería ha sido utilizada en las siguientes clases de modelo:
-- `editarCostos.java`
-- `Menus_lista.java`
-- `validadorInicioS.java`
-- `validadorRegistro.java`
-
 Con la finalidad de preservar la siguiente informacion en archivos `.json`:
 
 <details>
@@ -143,6 +137,253 @@ Con la finalidad de preservar la siguiente informacion en archivos `.json`:
         "saldo" : 999999.99
     }
 ]
+```
+**`reservas.json`** : Guardar todas las reservas actuales del sistema
+```json
+[
+    {
+        "cedula": "12345678",
+        "dia_turno": "MONDAY_ALMUERZO",
+        "fecha_exacta": "2026-03-16"
+    },
+    {
+        "cedula": "123",
+        "dia_turno": "FRIDAY_DESAYUNO",
+        "fecha_exacta": "2026-03-13"
+    }
+]
+```
+
+**`Merma.json`** : Guardar la merma actual de trodos los menu
+```json
+[
+    {
+        "merma": 20,
+        "dia_turno": "MONDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "MONDAY_ALMUERZO"
+    },
+    {
+        "merma": 20,
+        "dia_turno": "MONDAY_CENA"
+    },
+    {
+        "merma": 50,
+        "dia_turno": "FRIDAY_CENA"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "TUESDAY_ALMUERZO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "WEDNESDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "THURSDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "THURSDAY_ALMUERZO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "TUESDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "WEDNESDAY_ALMUERZO"
+    },
+    {
+    "merma": 0,
+    "dia_turno": "FRIDAY_DESAYUNO"
+    },
+    {
+        "merma": 0,
+        "dia_turno": "FRIDAY_ALMUERZO"
+    }
+]
+```
+**`consumos.json`** : Guardar informacion de los consumos realizados por los comensales organizados por fecha y turno
+```json
+
+{
+  "almuerzo": {
+    "2026-03-10": {
+      "resumen": {
+        "total": 1,
+        "empleado": 0,
+        "exonerado": 0,
+        "becario": 1,
+        "profesor": 0,
+        "regular": 0
+      },
+      "asistentes": [{
+        "tipo": "becario",
+        "cedula": "123",
+        "rol": "Estudiante"
+      }]
+    },
+    "2026-03-09": {
+      "resumen": {
+        "total": 2,
+        "empleado": 1,
+        "exonerado": 0,
+        "becario": 0,
+        "profesor": 0,
+        "regular": 1
+      },
+      "asistentes": [
+        {
+          "tipo": "regular",
+          "cedula": "15151515",
+          "rol": "estudiante"
+        },
+        {
+          "cedula": "12548736",
+          "rol": "empleado"
+        }
+      ]
+    },
+    "2026-03-07": {
+      "resumen": {
+        "total": 2,
+        "empleado": 0,
+        "exonerado": 0,
+        "becario": 0,
+        "profesor": 1,
+        "regular": 1
+      },
+      "asistentes": [
+        {
+          "tipo": "regular",
+          "cedula": "123",
+          "rol": "estudiante"
+        },
+        {
+          "cedula": "22222222",
+          "rol": "profesor"
+        }
+      ]
+    },
+    "2026-03-08": {
+      "resumen": {
+        "total": 4,
+        "empleado": 1,
+        "exonerado": 1,
+        "becario": 1,
+        "profesor": 1,
+        "regular": 0
+      },
+      "asistentes": [
+        {
+          "tipo": "exonerado",
+          "cedula": "123",
+          "rol": "estudiante"
+        },
+        {
+          "cedula": "22222222",
+          "rol": "profesor"
+        },
+        {
+          "tipo": "becario",
+          "cedula": "15151515",
+          "rol": "estudiante"
+        },
+        {
+          "cedula": "12548736",
+          "rol": "empleado"
+        }
+      ]
+    }
+  },
+  "desayuno": {
+    "2026-03-09": {
+      "resumen": {
+        "total": 3,
+        "empleado": 1,
+        "exonerado": 0,
+        "becario": 0,
+        "profesor": 1,
+        "regular": 1
+      },
+      "asistentes": [
+        {
+          "tipo": "regular",
+          "cedula": "123",
+          "rol": "estudiante"
+        },
+        {
+          "cedula": "12548736",
+          "rol": "empleado"
+        },
+        {
+          "cedula": "22222222",
+          "rol": "profesor"
+        }
+      ]
+    },
+    "2026-03-07": {
+      "resumen": {
+        "total": 4,
+        "empleado": 1,
+        "exonerado": 1,
+        "becario": 0,
+        "profesor": 1,
+        "regular": 1
+      },
+      "asistentes": [
+        {
+          "tipo": "exonerado",
+          "cedula": "15151515",
+          "rol": "estudiante"
+        },
+        {
+          "cedula": "12548736",
+          "rol": "empleado"
+        },
+        {
+          "cedula": "22222222",
+          "rol": "profesor"
+        },
+        {
+          "tipo": "regular",
+          "cedula": "123",
+          "rol": "estudiante"
+        }
+      ]
+    },
+    "2026-03-08": {
+      "resumen": {
+        "total": 3,
+        "empleado": 0,
+        "exonerado": 0,
+        "becario": 1,
+        "profesor": 1,
+        "regular": 1
+      },
+      "asistentes": [
+        {
+          "tipo": "becario",
+          "cedula": "123",
+          "rol": "estudiante"
+        },
+        {
+          "tipo": "regular",
+          "cedula": "15151515",
+          "rol": "estudiante"
+        },
+        {
+          "cedula": "22222222",
+          "rol": "profesor"
+        }
+      ]
+    }
+  }
+}
 ```
 
 </details>
