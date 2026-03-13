@@ -1,5 +1,5 @@
 package src.controlador;
-
+ 
 import src.vista.Landingpage;
 import src.vista.GestorCFView;
 import src.vista.GestorCVView;
@@ -9,12 +9,13 @@ import src.vista.ListadoComensales;
 import src.vista.HomeAdmin;
 import src.vista.InicioSesion;
 import src.vista.CambiarUsuario;
-
+ 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import src.util.LimpiarFormulariosUtil;
-
+import src.util.Conectar_ventanas;
+ 
 public class ControladorAdmin implements ActionListener {
     
     private Landingpage landingpage;  
@@ -36,9 +37,10 @@ public class ControladorAdmin implements ActionListener {
             this.homeAdmin.getBtnMenu().addActionListener(this);
             this.homeAdmin.getBtnUsuarios().addActionListener(this);
             this.homeAdmin.getBtnListadoComensales().addActionListener(this);
+            this.homeAdmin.getBtnTarifas().addActionListener(this);
         }
     }
-
+ 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
@@ -57,6 +59,9 @@ public class ControladorAdmin implements ActionListener {
             menu.setVisible(true);
             homeAdmin.setVisible(false);
         }
+        if(source == homeAdmin.getBtnTarifas()){
+            Conectar_ventanas.getInstancia().desplegarTarifas(homeAdmin);
+        }
         if(source == homeAdmin.getBtnUsuarios()){
             usuario.setExtendedState(JFrame.MAXIMIZED_BOTH);
             usuario.setVisible(true);
@@ -64,13 +69,13 @@ public class ControladorAdmin implements ActionListener {
         }
         
     }
-
+ 
     private void abrirListadoComensales(){
         ListadoComensales vista = new ListadoComensales();
         new Controlador_ListadoComensales(vista, homeAdmin);
         homeAdmin.setVisible(false);
     }
-
+ 
     
     private void abrirGestorCostos(){ 
         GestorCostosView vistaCostos = new GestorCostosView();

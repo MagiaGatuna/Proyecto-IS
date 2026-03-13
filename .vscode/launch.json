@@ -20,7 +20,11 @@
         "name": "MainReconocimiento",
         "request": "launch",
         "mainClass": "src.MainReconocimiento",
+<<<<<<< HEAD
+        "projectName": "Proyecto-IS-1_16bd43f2"
+=======
         "projectName": "Comedor_final_final_f747f023"
+>>>>>>> 8441e51f5d8414850666159f6fc62029d8835577
     },
     {
         "type": "java",

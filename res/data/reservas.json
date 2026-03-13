@@ -1,5 +1,12 @@
-[{
-    "cedula": "12345678",
-    "dia_turno": "MONDAY_ALMUERZO",
-    "fecha_exacta": "2026-03-16"
-}]
+[
+    {
+        "cedula": "12345678",
+        "dia_turno": "MONDAY_ALMUERZO",
+        "fecha_exacta": "2026-03-16"
+    },
+    {
+        "cedula": "123",
+        "dia_turno": "FRIDAY_DESAYUNO",
+        "fecha_exacta": "2026-03-13"
+    }
+]
