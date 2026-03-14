@@ -3,6 +3,13 @@
 "configurations": [
     {
         "type": "java",
+        "name": "InicioSesion",
+        "request": "launch",
+        "mainClass": "src.vista.InicioSesion",
+        "projectName": "Proyecto-IS-1_16bd43f2"
+    },
+    {
+        "type": "java",
         "name": "AlumnoView",
         "request": "launch",
         "mainClass": "src.vista.AlumnoView",

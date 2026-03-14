@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class CambiarUsuario extends JFrame{
 
-private JLabel titulo;
+private JLabel titulo, label1;
 private JLabel instruccion1;
 private JButton cerrar;
 private JTextField cedula;
@@ -44,6 +44,11 @@ logoucv.setBounds(10,5,60,60);
 
 barra.add(logoucv);
 barra.addSeparator();
+
+    label1= new JLabel("Sistema Comedor Universitario");
+    label1.setBounds(200,10,200,30);
+    label1.setFont(new Font ("SANS_SERIF", Font.BOLD, 20));
+    barra.add(label1);
 
 cerrar= new JButton ("HOME");
 cerrar.setBackground(new Color(14,9,137));

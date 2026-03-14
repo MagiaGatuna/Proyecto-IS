@@ -78,6 +78,10 @@ public class InicioSesion extends JFrame {
     
     cedula_id= new JTextField("Cédula de identidad");//creamos el objeto
     cedula_id.setBounds(125, 210, 250, 40);//colocamos las coordenadas de el objeto
+    cedula_id.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(0xCCCCCC), 1),
+            BorderFactory.createEmptyBorder(0, 5, 0, 0)
+        ));
     Panel1.add(cedula_id);//Por diseño lo agregamos a el contenedor
     PasswordYPlaceholderUtil.configurarPlaceholder(cedula_id, "Cédula de identidad"); 
     //cedula_id.requestFocusInWindow();
@@ -85,6 +89,10 @@ public class InicioSesion extends JFrame {
 //creamos el campo donde el usuario ingresa su contraseña
     contraseña= new JPasswordField();//creamos el objeto
     contraseña.setBounds(125, 270, 250, 40);//colocamos sus coodenadas 
+    contraseña.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(0xCCCCCC), 1),
+            BorderFactory.createEmptyBorder(0, 5, 0, 0)
+        ));
     PasswordYPlaceholderUtil.configurarPasswordConPlaceholder(contraseña, "Contraseña");
     Panel1.add(contraseña);//Por diseño se agrega a el contenedor
     

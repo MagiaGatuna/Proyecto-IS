@@ -35,23 +35,9 @@ public class ControladorAdmin implements ActionListener {
             this.homeAdmin.getBtnCostos().addActionListener(this);
             this.homeAdmin.getBtnMenu().addActionListener(this);
             this.homeAdmin.getBtnUsuarios().addActionListener(this);
-            avisoProximamente(this.homeAdmin.getBtnTurnos());
             this.homeAdmin.getBtnListadoComensales().addActionListener(this);
-            avisoProximamente(this.homeAdmin.getBtnInventario());
-            avisoProximamente(this.homeAdmin.getBtnConsumos());
         }
     }
-    
-    private void avisoProximamente(JButton boton) {
-            if (boton != null) {
-                boton.addActionListener(e -> {
-                    JOptionPane.showMessageDialog(null, 
-                        "Esta funcionalidad estará disponible en la próxima actualización.", 
-                        "En construcción", 
-                        JOptionPane.INFORMATION_MESSAGE);
-                });
-            }
-        }
 
     @Override
     public void actionPerformed(ActionEvent e) {
